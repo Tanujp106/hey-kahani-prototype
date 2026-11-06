@@ -5,6 +5,8 @@
 .tmp/
 node_modules/
 .cursor/
+__pycache__/
+*.pyc
 *.log
 .AppleDouble
 .LSOverride
