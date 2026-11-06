@@ -1,0 +1,90 @@
+/* Homepage companion-app section. Phone screens are decorative design concepts. */
+.hk-app.hk-section {
+  display: block;
+  position: relative;
+  /* Keep document order: do not paint over the experience while its sticky stage releases. */
+  z-index: 0;
+  background: var(--hk-paper);
+  padding-top: clamp(2.75rem, 4.5vw, 4.5rem);
+}
+.hk-app-heading { text-align: center; max-width: 58rem; margin-inline: auto; }
+.hk-app-icon { display: grid; place-items: center; width: 112px; height: 112px; padding: 16px; margin: 0 auto 1.75rem; border-radius: 26px; background: var(--hk-sindoor); }
+.hk-app-icon img { width: 80px; height: auto; }
+.hk-app-heading h2 { font-size: clamp(2.25rem, 3.8vw, 4.25rem); line-height: 1.12; letter-spacing: -.035em; text-wrap: balance; }
+.hk-app-intro { margin: 1.5rem auto 0; max-width: 38rem; font-size: clamp(.95rem, 1.2vw, 1.15rem); }
+.hk-app-mobile-break { display: none; }
+.hk-app-downloads { display: flex; justify-content: center; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.hk-app-store-badge { display: inline-flex; gap: .6rem; align-items: center; min-width: 148px; min-height: 48px; padding: .4rem .8rem; color: white; background: #080808; border: 1px solid #777; border-radius: 7px; text-align: left; user-select: none; }
+.hk-app-store-badge > svg { width: 25px; height: 29px; flex-shrink: 0; }
+.hk-app-store-badge small { display: block; font-size: .55rem; line-height: 1.2; letter-spacing: .015em; }
+.hk-app-store-badge strong { display: block; font-size: 1.2rem; line-height: 1.3; font-weight: 600; letter-spacing: -.04em; }
+.hk-app-download-note { margin-top: .65rem; font-size: .7rem; text-align: center; }
+.hk-app-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 1.8vw, 2rem); list-style: none; padding: 0; margin: 2.5rem auto 0; max-width: 96rem; }
+.hk-app-card { min-width: 0; overflow: hidden; border-radius: 22px; background: var(--hk-sand); }
+.hk-app-visual { position: relative; aspect-ratio: 1 / 1; overflow: hidden; isolation: isolate; }
+.hk-app-visual-setup { background: var(--hk-mango); }
+.hk-app-visual-parent { background: color-mix(in srgb, var(--hk-sky) 40%, white); }
+.hk-app-visual-label { position: absolute; z-index: 2; top: 6%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .4rem; width: max-content; max-width: 92%; padding: .55rem .8rem; border: 1px solid currentColor; border-radius: 30px; font-size: clamp(.55rem, .8vw, .8rem); line-height: 1.3; }
+.hk-app-visual-label svg { width: 18px; height: 18px; flex-shrink: 0; }
+.hk-app-phone { position: absolute; top: 24%; left: 50%; width: 69%; aspect-ratio: 1 / 1.98; transform: translateX(-50%) rotate(-4deg); border: 5px solid #202629; border-radius: 38px; background: var(--hk-sand); box-shadow: 0 0 0 2px #8b9293, 0 18px 28px #05334a30; overflow: hidden; }
+.hk-app-phone-parent { top: 21%; transform: translateX(-50%) rotate(5deg); }
+.hk-app-phone-camera { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 32%; height: 15px; border-radius: 20px; background: #202629; }
+.hk-app-phone-status { display: flex; justify-content: space-between; padding: 10px 18px 0; font: 600 clamp(7px, .72vw, 11px)/1 var(--hk-font-body); }
+.hk-app-phone-content { padding: 10% 8% 0; }
+.hk-app-phone-logo { width: 80px; height: auto; margin-bottom: 8%; }
+.hk-app-screen-kicker { display: block; font-size: clamp(5px, .5vw, 8px); letter-spacing: .1em; font-weight: 700; margin-bottom: 6%; }
+.hk-app-screen-title { display: block; font: 400 clamp(16px, 1.9vw, 30px)/1.12 var(--hk-font-heading); letter-spacing: -.035em; }
+.hk-app-setup-player { width: 55%; height: auto; margin: 4% auto 5%; }
+.hk-app-screen-action { display: flex; justify-content: space-between; gap: .5rem; border-radius: 8px; padding: 8%; background: var(--hk-sindoor); color: var(--hk-sand); font-size: clamp(7px, .75vw, 12px); }
+.hk-app-screen-topline { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+.hk-app-profile { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid var(--hk-line); border-radius: 50%; }
+.hk-app-profile svg { width: 15px; height: 15px; }
+.hk-app-device-tile { display: grid; justify-items: center; margin-top: 10%; padding: 7%; border-radius: 12px; background: white; }
+.hk-app-device-tile > span { justify-self: start; font-size: clamp(7px, .72vw, 11px); }
+.hk-app-device-tile img { width: 45%; margin: 3% 0; }
+.hk-app-device-tile strong { font-size: clamp(8px, .8vw, 12px); font-weight: 600; }
+.hk-app-screen-row { display: flex; justify-content: space-between; padding: 8% 0; border-bottom: 1px solid var(--hk-line); font-size: clamp(7px, .7vw, 11px); }
+.hk-app-parent-note { position: absolute; z-index: 2; top: 8%; right: 6%; display: flex; align-items: center; gap: .6rem; padding: .85rem 1rem; border: 1px solid #ffffff80; border-radius: 18px; background: var(--hk-sand); box-shadow: 0 8px 20px #05334a15; font: 400 clamp(.75rem, 1.15vw, 1.2rem)/1.25 var(--hk-font-heading); transform: rotate(-3deg); }
+.hk-app-parent-note strong, .hk-app-story-note strong { font-weight: 400; }
+.hk-app-note-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--hk-mango); color: var(--hk-sindoor); }
+.hk-app-note-icon svg { width: 20px; height: 20px; }
+.hk-app-visual-listen { background: var(--hk-husk); }
+.hk-app-lifestyle { width: 100%; height: 100%; object-fit: cover; }
+.hk-app-story-note { position: absolute; bottom: 7%; left: 6%; display: flex; align-items: center; gap: .65rem; padding: .65rem 1.15rem .65rem .5rem; border-radius: 40px; background: var(--hk-sand); box-shadow: 0 8px 20px #05334a15; font: 400 clamp(.85rem, 1.25vw, 1.35rem)/1.2 var(--hk-font-heading); transform: rotate(-4deg); }
+.hk-app-story-note img { width: clamp(45px, 4vw, 70px); height: auto; }
+.hk-app-card-copy { padding: clamp(1.2rem, 1.7vw, 2rem); }
+.hk-app-card h3 { font-size: clamp(1.25rem, 1.85vw, 2rem); letter-spacing: -.035em; }
+.hk-app-card-copy p { margin-top: .75rem; font-size: clamp(.85rem, 1vw, 1rem); line-height: 1.6; }
+.hk-app-concept-note { margin: 1.4rem auto 0; max-width: 45rem; text-align: center; font-size: .7rem; line-height: 1.6; }
+@media (min-width: 751px) and (max-width: 1000px) {
+  .hk-app-phone { border-width: 4px; border-radius: 27px; }
+  .hk-app-phone-logo { width: 80px; margin-bottom: 6%; }
+  .hk-app-phone-camera { height: 11px; top: 7px; }
+  .hk-app-phone-status { padding: 8px 12px 0; }
+  .hk-app-parent-note { padding: .6rem; gap: .35rem; }
+  .hk-app-note-icon { width: 23px; height: 23px; }
+  .hk-app-note-icon svg { width: 16px; height: 16px; }
+}
+@media (max-width: 750px) {
+  .hk-app-heading { max-width: 35rem; }
+  .hk-app-heading h2 { font-size: clamp(2.1rem, 6vw, 3rem); }
+  .hk-app-icon { width: 108px; height: 108px; padding: 14px; margin-bottom: 1.5rem; }
+  .hk-app-intro { margin-top: 1.25rem; }
+  .hk-app-mobile-break { display: block; }
+  .hk-app-downloads { gap: .5rem; margin-top: 1.5rem; }
+  .hk-app-store-badge { min-width: 140px; padding-inline: .65rem; }
+  .hk-app-features { grid-template-columns: 1fr; max-width: 29rem; gap: 1.5rem; margin-top: 2rem; }
+  .hk-app-visual-label { font-size: .75rem; }
+  .hk-app-phone-status { font-size: 10px; }
+  .hk-app-phone-logo { width: 88px; }
+  .hk-app-screen-kicker { font-size: 7px; }
+  .hk-app-screen-title { font-size: clamp(23px, 6.5vw, 34px); }
+  .hk-app-screen-action, .hk-app-device-tile > span, .hk-app-screen-row { font-size: 10px; }
+  .hk-app-device-tile strong { font-size: 11px; }
+  .hk-app-parent-note { font-size: clamp(.9rem, 3vw, 1.1rem); }
+  .hk-app-story-note { font-size: 1.1rem; }
+  .hk-app-story-note img { width: 56px; }
+  .hk-app-card-copy { padding: 1.4rem; }
+  .hk-app-card h3 { font-size: 1.65rem; }
+  .hk-app-card-copy p { font-size: .95rem; }
+}

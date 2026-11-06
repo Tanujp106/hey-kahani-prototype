@@ -1,0 +1,13 @@
+/* Actual GLB geometry; the image remains available if WebGL or loading fails. */
+.hk-player-depth { position: absolute; inset: 0; }
+.hk-player-view { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.hk-player-model { position: absolute; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; pointer-events: none; --poster-color: transparent; --progress-bar-color: transparent; }
+.hk-player-model [slot^='hotspot-'] { visibility: hidden; pointer-events: none; }
+.hk-player-depth.is-model-ready .hk-player-view { opacity: 0; }
+.hk-player-depth.is-model-ready .hk-player-model { opacity: 1; }
+/* Keep the picture and its WebGL shadow in the same moving scroll wrapper. */
+.hk-story-player:has(.is-model-ready) { filter: none; }
+@media (max-width: 850px) {
+  /* The full-width narrative boxes must not block scroll over the Player. */
+  .is-scroll-story .hk-story-panel { pointer-events: none; }
+}

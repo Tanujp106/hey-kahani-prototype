@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.tmp/
+node_modules/
+.cursor/
+*.log
+.AppleDouble
+.LSOverride

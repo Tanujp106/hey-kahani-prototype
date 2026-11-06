@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hey Kahani UI"
+  short_description: "Check Hey Kahani brand rules before UI work"
+  default_prompt: "Use $hey-kahani-ui to make this UI change using the project's design.md and brand guide."
+policy:
+  allow_implicit_invocation: true

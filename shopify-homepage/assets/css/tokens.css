@@ -1,0 +1,70 @@
+:root {
+  --hk-gulab: #d3000a;
+  --hk-sindoor: #b40023;
+  --hk-temple: #6a0526;
+  --hk-kesar: #fff1d6;
+  --hk-husk: #e6cead;
+  --hk-mango: #fecb74;
+  --hk-sky: #63c3fe;
+  --hk-monsoon: #2578b7;
+  --hk-story-ink: #05334a; /* brand PDF Story Ink — keep for reference */
+  --hk-ink: #000000; /* page text / headings — user direction Nov 7, 2026 */
+  --hk-parrot: #2b9863;
+  --hk-marigold: #ff5d27;
+  --hk-lavender: #d6c9e4;
+
+  --hk-action: var(--hk-gulab);
+  --hk-action-hover: var(--hk-sindoor);
+  --hk-action-pressed: var(--hk-temple);
+  --hk-on-action: #ffffff;
+  --hk-body: var(--hk-ink);
+  --hk-muted: #3d3d3d;
+  --hk-canvas: #ffffff;
+  --hk-canvas-soft: #fff8ec;
+  --hk-canvas-warm: var(--hk-kesar);
+  --hk-hairline: #e8d9c4;
+  --hk-divider: #f3e6d4;
+  --hk-focus: var(--hk-monsoon);
+
+  --hk-font-display: "Averia Serif Libre", Georgia, serif;
+  --hk-font-body: "Open Sans", Helvetica, Arial, sans-serif;
+  --hk-font-weight-body: 500;
+
+  /* Type scale — use these tokens only; no one-off section sizes */
+  --hk-text-hero: clamp(2.125rem, 5vw, 3.5rem); /* 56px max — hero h1 only */
+  --hk-text-section: clamp(1.85rem, 4vw, 2.5rem); /* 40px max — every section h2 */
+  --hk-text-md: clamp(1.5rem, 2.8vw, 2rem); /* 32px max — secondary display */
+  --hk-text-subhead: clamp(1.25rem, 2vw, 1.5rem); /* feature / card h3 */
+  --hk-text-step: clamp(1.425rem, 2.4vw, 1.875rem); /* how-it-works step titles */
+  --hk-text-hero-lead: clamp(0.9375rem, 1.2vw, 1.125rem); /* 15–18px — hero + how leads */
+  --hk-text-lead: clamp(0.8125rem, 1vw, 0.9375rem); /* section supporting copy — 13–15px */
+  --hk-text-body: 1.0625rem; /* 17px — all running body paragraphs */
+  --hk-text-body-sm: 0.9375rem; /* 15px — dense UI / meta / nav */
+  --hk-text-fine: 0.75rem; /* 12px — legal / fine print only */
+  --hk-text-eyebrow: 0.8125rem; /* 13px */
+
+  --hk-radius-sm: 10px;
+  --hk-radius-md: 14px;
+  --hk-radius-lg: 20px;
+  --hk-radius-xl: 28px;
+  --hk-pill: 9999px;
+
+  --hk-space-xs: 8px;
+  --hk-space-sm: 12px;
+  --hk-space-md: 16px;
+  --hk-space-lg: 24px;
+  --hk-space-xl: 32px;
+  --hk-space-xxl: 48px;
+  --hk-section: 72px;
+  --hk-section-lg: 96px;
+  --hk-gutter: 24px;
+  --hk-content: 1120px;
+  --hk-prose: 640px;
+
+  --hk-shadow-product: 0 8px 28px rgba(5, 51, 74, 0.14);
+  --hk-shadow-soft: 0 4px 16px rgba(5, 51, 74, 0.1);
+
+  --hk-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hk-duration: 240ms;
+  --hk-nav-h: 64px;
+}

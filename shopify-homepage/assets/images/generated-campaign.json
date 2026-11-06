@@ -1,0 +1,102 @@
+{
+  "status": "Generated concept art",
+  "path_base": "shopify-homepage/",
+  "assets": [
+    {
+      "name": "Hero with text space on the left",
+      "path": "assets/images/hero/hk-shot-01.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-01.png",
+      "width": 1122,
+      "height": 1402,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Bliss listening",
+      "path": "assets/images/editorial/hk-shot-02.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-02.png",
+      "width": 1086,
+      "height": 1448,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Holding / show-and-tell",
+      "path": "assets/images/editorial/hk-shot-03.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-03.png",
+      "width": 1122,
+      "height": 1402,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Parent companion app concept",
+      "path": "assets/images/app/hk-shot-04.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-04.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Creative table",
+      "path": "assets/images/editorial/hk-shot-05.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-05.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Bedtime wind-down",
+      "path": "assets/images/editorial/hk-shot-06.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-06.png",
+      "width": 1672,
+      "height": 941,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Clean Player product concept",
+      "path": "assets/images/product/hk-shot-07.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-07.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Holi kite play",
+      "path": "assets/images/koels/hk-shot-08-01-holi-kite.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-08-01-holi-kite.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Kerala houseboat",
+      "path": "assets/images/koels/hk-shot-08-02-kerala-houseboat.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-08-02-kerala-houseboat.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Festival family",
+      "path": "assets/images/koels/hk-shot-08-03-festival-family.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-08-03-festival-family.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Park mindfulness picnic",
+      "path": "assets/images/koels/hk-shot-08-04-park-mindfulness.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-08-04-park-mindfulness.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    },
+    {
+      "name": "Market and temple travel",
+      "path": "assets/images/koels/hk-shot-08-05-market-temple.png",
+      "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-08-05-market-temple.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "Generated concept art"
+    }
+  ]
+}

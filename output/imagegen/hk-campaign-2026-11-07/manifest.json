@@ -1,0 +1,120 @@
+{
+  "status": "Generated concept art",
+  "created": "2026-11-07",
+  "tool": "Built-in image_gen",
+  "files": [
+    {
+      "filename": "hk-shot-01.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-562065ed-08ac-4e0d-973a-497c518540b4.png",
+      "status": "Generated concept art",
+      "width": 1122,
+      "height": 1402,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-02.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-f8628b6e-92eb-4333-931a-3f75372b5bae.png",
+      "status": "Generated concept art",
+      "width": 1086,
+      "height": 1448,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-03.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-4e30745a-17bb-4b1a-894f-1c704de1eaf7.png",
+      "status": "Generated concept art",
+      "width": 1122,
+      "height": 1402,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-05.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-025ffeda-fd04-41cb-8e72-d82be28ea436.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-08-01-holi-kite.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-92832dd0-d659-46ce-bb3a-2de2ae8ea857.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-08-02-kerala-houseboat.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-abd3094e-dee2-43e9-bc70-3cea4794afce.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-08-03-festival-family.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-231cbf9f-3f62-413f-b738-c39146cb2a5a.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-08-04-park-mindfulness.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-eea105c4-6139-46a5-b988-0d66383cc274.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-08-05-market-temple.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-96657026-ec2b-4614-9296-055cbdce9a87.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-04.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-ee5ae556-3c9e-4892-8e26-bbd76835cd41.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-06.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-fa3378c9-b968-465f-8455-1581b96aab3d.png",
+      "status": "Generated concept art",
+      "width": 1672,
+      "height": 941,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    },
+    {
+      "filename": "hk-shot-07.png",
+      "source": "/Users/tanuj/.codex/generated_images/01a1b259-39fb-7e21-9162-809e766ad693/exec-73b18114-bbe2-4f94-8bf3-bf310ad57a4e.png",
+      "status": "Generated concept art",
+      "width": 1254,
+      "height": 1254,
+      "color_space": "RGB; embedded ICC profile not reported",
+      "native_resolution": true
+    }
+  ],
+  "limitations": [
+    "All files are generated concept art with approximate product geometry.",
+    "Native output long edges are below 2400px; no upscaling performed.",
+    "Embedded sRGB ICC profile not verified."
+  ]
+}

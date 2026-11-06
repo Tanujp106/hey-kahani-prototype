@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hey-kahani:static-fixtures",
+  "title": "Hey Kahani static fixture datasets",
+  "description": "Validate an object containing the four named JSON datasets. Null means unknown, never zero stock or a free product. Fixtures are not evidence of publication or approval.",
+  "type": "object",
+  "properties": {
+    "site": {
+      "$ref": "#/$defs/site"
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/product"
+      }
+    },
+    "series": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/series"
+      }
+    },
+    "stories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/story"
+      }
+    }
+  },
+  "required": [
+    "site",
+    "products",
+    "series",
+    "stories"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "image": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "src": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "discArtworkScale": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 2,
+          "description": "Optional artboard crop for a circular Koel face; presentation only."
+        }
+      },
+      "required": [
+        "src",
+        "alt"
+      ],
+      "additionalProperties": false
+    },
+    "publicSample": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "handle": {
+          "type": "string"
+        },
+        "src": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "approvedPublicExcerpt": {
+          "const": true
+        }
+      },
+      "required": [
+        "handle",
+        "src",
+        "title",
+        "approvedPublicExcerpt"
+      ],
+      "additionalProperties": false
+    },
+    "link": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "href": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "label",
+        "href"
+      ],
+      "additionalProperties": false
+    },
+    "site": {
+      "type": "object",
+      "properties": {
+        "fixture": {
+          "const": true
+        },
+        "brand": {
+          "type": "string"
+        },
+        "announcement": {
+          "type": "string"
+        },
+        "navigation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/link"
+          }
+        },
+        "featuredSeries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "featuredKoels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "featuredPreview": {
+          "$ref": "#/$defs/publicSample"
+        },
+        "faqs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question",
+              "answer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "supportLinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/link"
+          }
+        },
+        "socialLinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/link"
+          }
+        },
+        "founder": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "testimonials": {
+          "type": "array",
+          "maxItems": 0
+        }
+      },
+      "required": [
+        "fixture",
+        "brand",
+        "announcement",
+        "navigation",
+        "featuredSeries",
+        "featuredKoels",
+        "featuredPreview",
+        "faqs",
+        "supportLinks",
+        "socialLinks",
+        "founder",
+        "testimonials"
+      ],
+      "additionalProperties": false
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "fixture": {
+          "const": true
+        },
+        "handle": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "type": {
+          "enum": [
+            "player",
+            "bundle",
+            "koel"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/image"
+          }
+        },
+        "priceMinor": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z]{3}$"
+        },
+        "available": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "sku": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shopifyProductId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shopifyVariantId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kahaniContentId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "coinTone": {
+              "type": "string",
+              "description": "Presentation palette hint for fixture Koels."
+            },
+            "modelSrc": {
+              "type": ["string", "null"],
+              "description": "Optional GLB product-media source for the shared homepage viewer."
+            },
+            "recommendedAge": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "language": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "seriesHandle": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "volume": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "storyCount": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "storyHandles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "previewHandle": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "contentsApproval": {
+              "enum": [
+                "pending-client-confirmation",
+                "approved"
+              ]
+            },
+            "source": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "includedProductHandles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "physicalKoelCount": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            }
+          },
+          "required": [
+            "previewHandle"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "fixture",
+        "handle",
+        "type",
+        "title",
+        "images",
+        "priceMinor",
+        "currency",
+        "available",
+        "sku",
+        "shopifyProductId",
+        "shopifyVariantId",
+        "kahaniContentId",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    "series": {
+      "type": "object",
+      "properties": {
+        "fixture": {
+          "const": true
+        },
+        "handle": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "synopsis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "artwork": {
+          "$ref": "#/$defs/image"
+        },
+        "category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "productHandles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "previewHandle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "publicationStatus": {
+          "const": "fixture"
+        }
+      },
+      "required": [
+        "fixture",
+        "handle",
+        "title",
+        "synopsis",
+        "artwork",
+        "category",
+        "productHandles",
+        "previewHandle",
+        "publicationStatus"
+      ],
+      "additionalProperties": false
+    },
+    "story": {
+      "type": "object",
+      "properties": {
+        "fixture": {
+          "const": true
+        },
+        "handle": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "synopsis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seriesHandle": {
+          "type": "string"
+        },
+        "durationSeconds": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "narrator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "artwork": {
+          "$ref": "#/$defs/image"
+        },
+        "publicSample": {
+          "$ref": "#/$defs/publicSample"
+        },
+        "kahaniContentId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "publicationStatus": {
+          "const": "fixture"
+        }
+      },
+      "required": [
+        "fixture",
+        "handle",
+        "title",
+        "synopsis",
+        "seriesHandle",
+        "durationSeconds",
+        "language",
+        "narrator",
+        "order",
+        "artwork",
+        "publicSample",
+        "kahaniContentId",
+        "publicationStatus"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

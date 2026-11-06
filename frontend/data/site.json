@@ -1,0 +1,50 @@
+{
+  "fixture": true,
+  "brand": "Hey Kahani",
+  "announcement": "A little story. A whole world of imagination.",
+  "navigation": [
+    { "label": "The experience", "href": "#experience" },
+    { "label": "The app", "href": "#app" },
+    { "label": "Shop Koels", "href": "#koels" },
+    { "label": "About", "href": "#about" }
+  ],
+  "featuredSeries": ["daily-life", "festivals"],
+  "featuredKoels": [
+    "daily-life-koel",
+    "festivals-koel",
+    "koel-preview-03",
+    "koel-preview-04",
+    "koel-preview-05",
+    "koel-preview-06",
+    "koel-preview-07",
+    "koel-preview-08",
+    "koel-preview-09",
+    "koel-preview-10",
+    "koel-preview-11",
+    "koel-preview-12",
+    "koel-preview-13",
+    "koel-preview-14",
+    "koel-preview-15"
+  ],
+  "featuredPreview": null,
+  "faqs": [
+    { "question": "What is Hey Kahani?", "answer": "Hey Kahani is a screen-free audio storytelling experience for children, with stories rooted in South Asian cultures. Physical Koel story cards bring stories to life on the Kahani Player." },
+    { "question": "How does a Koel work?", "answer": "Choose a Koel, tap it on the Kahani Player, and listen. Each physical Koel is associated with a collection of individual audio stories." },
+    { "question": "What does the Kahani mobile app do?", "answer": "The companion app supports device setup and parent-facing functions. Children listen to stories on the Kahani Player." },
+    { "question": "Who is it for?", "answer": "Hey Kahani is designed primarily for children ages 3–6. Individual story and Koel age guidance will be shown when confirmed." },
+    { "question": "Is there a recurring subscription?", "answer": "The experience is designed around owned story content, with no recurring subscription." },
+    { "question": "What is in the Founder’s Bundle?", "answer": "The proposed bundle in the project SOW includes one Kahani Player, two physical Koels (Daily Life and Festivals), and 20 individual stories. Final bundle contents and pricing are awaiting confirmation." },
+    { "question": "Can I order from this preview?", "answer": "This is a frontend design preview. Ordering, shipping, returns, warranty details, and newsletter signup will be available after the Shopify store is connected and the content is approved." }
+  ],
+  "supportLinks": [
+    { "label": "Contact", "href": null },
+    { "label": "Getting Started", "href": null },
+    { "label": "Shipping & Returns", "href": null },
+    { "label": "Warranty", "href": null },
+    { "label": "Privacy Policy", "href": null },
+    { "label": "Terms of Service", "href": null }
+  ],
+  "socialLinks": [],
+  "founder": null,
+  "testimonials": []
+}

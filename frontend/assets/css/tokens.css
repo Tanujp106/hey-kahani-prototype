@@ -1,0 +1,25 @@
+:root {
+  --hk-sindoor: #b40023;
+  --hk-gulab: #d3000a;
+  --hk-temple: #6a0526;
+  --hk-sky: #63c3fe;
+  --hk-monsoon: #2578b7;
+  --hk-parrot: #2b9863;
+  --hk-marigold: #ff5d27;
+  --hk-lavender: #d6c9e4;
+  --hk-saffron: #ffaf27;
+  --hk-violet: #b558dd;
+  --hk-hibiscus: #ef2289;
+  --hk-peacock: #14c5a1;
+  --hk-sand: #fff1d6;
+  --hk-ink: #05334a;
+  --hk-husk: #e6cead;
+  --hk-mango: #fecb74;
+  --hk-paper: #ffffff;
+  --hk-line: #05334a30;
+  --hk-font-heading: 'Averia Serif Libre', Georgia, serif;
+  --hk-font-body: 'Open Sans', Arial, sans-serif;
+  --hk-gutter: clamp(1.25rem, 4.7vw, 5rem);
+  --hk-section-space: clamp(3.5rem, 7vw, 7.5rem);
+  --hk-radius: .35rem;
+}

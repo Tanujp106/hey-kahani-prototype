@@ -1,0 +1,4 @@
+[
+  { "fixture": true, "handle": "daily-life", "title": "Daily Life", "synopsis": null, "artwork": null, "category": "Everyday experiences", "productHandles": ["daily-life-koel"], "previewHandle": null, "publicationStatus": "fixture" },
+  { "fixture": true, "handle": "festivals", "title": "Festivals", "synopsis": null, "artwork": null, "category": "Festivals & traditions", "productHandles": ["festivals-koel"], "previewHandle": null, "publicationStatus": "fixture" }
+]

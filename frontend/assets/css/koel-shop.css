@@ -1,0 +1,440 @@
+/* A staircase in the page's Sand/Husk palette. Only the objects rotate. */
+.hk-koel-shop-heading {
+  max-width: 40rem;
+  margin-bottom: 2rem;
+}
+.hk-koel-shop-heading h2 { margin-bottom: .85rem; }
+.hk-koel-shop-subcopy {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  max-width: 28rem;
+}
+.hk-koel-shop-heading .hk-fixture-label { margin: 1rem 0 0; }
+
+.hk-koel-shop {
+  --hk-disc-size: clamp(3.5rem, 8.5vw, 8.25rem);
+  --hk-shelf-top: clamp(1.75rem, 3.2vw, 3rem);
+  --hk-shelf-inset: clamp(.75rem, 2vw, 1.75rem);
+  --hk-step-space: clamp(2rem, 3.5vw, 3.5rem);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: calc(var(--hk-gutter) * -.35);
+  padding: clamp(3rem, 6vw, 6rem) clamp(.75rem, 3vw, 3rem) clamp(4.5rem, 7vw, 7rem);
+  background: transparent;
+  overflow: hidden;
+}
+.hk-koel-shop::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: auto 4% 3%;
+  height: 14%;
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--hk-temple) 14%, transparent), transparent 68%);
+  pointer-events: none;
+}
+
+.hk-koel-tier {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(var(--hk-tier-cols, 6), minmax(0, 1fr));
+  justify-items: center;
+  align-items: end;
+  gap: clamp(.25rem, 1vw, .8rem);
+  padding: 0 var(--hk-shelf-inset) var(--hk-step-space);
+}
+/* Top plane: the receding corners belong to the plinth, never the Koels. */
+.hk-koel-tier::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: calc(var(--hk-shelf-inset) * -1);
+  right: calc(var(--hk-shelf-inset) * -1);
+  top: calc(var(--hk-disc-size) - .55rem);
+  height: var(--hk-shelf-top);
+  background: linear-gradient(170deg, var(--hk-sand) 15%, color-mix(in srgb, var(--hk-sand) 70%, var(--hk-husk) 30%) 80%, var(--hk-husk));
+  clip-path: polygon(var(--hk-shelf-inset) 0, calc(100% - var(--hk-shelf-inset)) 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+/* Each tall riser continues behind the next row: one staircase, no floating trays. */
+.hk-koel-tier::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: calc(var(--hk-shelf-inset) * -1);
+  right: calc(var(--hk-shelf-inset) * -1);
+  top: calc(var(--hk-disc-size) - .55rem + var(--hk-shelf-top));
+  height: calc(var(--hk-disc-size) + var(--hk-step-space));
+  border-top: 1px solid var(--hk-sand);
+  background: linear-gradient(105deg, color-mix(in srgb, var(--hk-husk) 85%, var(--hk-sand) 15%), var(--hk-husk));
+  box-shadow: 8px 12px 20px color-mix(in srgb, var(--hk-temple) 10%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--hk-temple) 12%, transparent);
+  pointer-events: none;
+}
+.hk-koel-tier:nth-child(2) { width: 90%; z-index: 2; }
+.hk-koel-tier:nth-child(3) { width: 100%; z-index: 3; }
+.hk-koel-tier:last-child::after { height: clamp(1.75rem, 3.5vw, 3rem); }
+
+/* Deliberately separate from the hero's .hk-koel-coin and its scroll transforms. */
+.hk-shop-koel {
+  position: relative;
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: var(--hk-disc-size);
+  height: var(--hk-disc-size);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  perspective: 700px;
+  -webkit-tap-highlight-color: transparent;
+}
+/* A soft cast shadow and a small, darker point of contact on the shelf. */
+.hk-shop-koel::before,
+.hk-shop-koel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.hk-shop-koel::before {
+  width: 112%;
+  height: 24%;
+  left: 8%;
+  bottom: -13%;
+  transform: rotate(-9deg);
+  background: radial-gradient(ellipse, #4436294a, #44362920 37%, transparent 70%);
+}
+.hk-shop-koel::after {
+  width: 53%;
+  height: 8%;
+  bottom: -3%;
+  left: 27%;
+  background: radial-gradient(ellipse, #35291f88, transparent 72%);
+}
+.hk-koel-coin-shell {
+  --hk-coin-yaw: -23deg;
+  --hk-coin-roll: -3deg;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transform: rotateX(6deg) rotateY(var(--hk-coin-yaw)) rotateZ(var(--hk-coin-roll));
+}
+.hk-shop-koel:nth-child(even) .hk-koel-coin-shell {
+  --hk-coin-yaw: -16deg;
+  --hk-coin-roll: 2deg;
+}
+.hk-shop-koel:nth-child(3n) .hk-koel-coin-shell {
+  --hk-coin-yaw: -28deg;
+  --hk-coin-roll: -1deg;
+}
+.hk-koel-coin-edge {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.hk-koel-coin-edge > span {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(115deg, #f2e9d9, #c5b9a6 48%, #8c7b65);
+  transform: translateZ(calc(var(--hk-edge-depth) * -.7px));
+  box-shadow: inset 0 0 0 1px #76644f25;
+}
+.hk-koel-coin-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fffdf7 10%, #efe6d5 48%, #b4a58e 100%);
+  box-shadow: inset 1px 1px 1px #fff, inset -1px -2px 2px #87755a70, 1px 3px 5px #38271730;
+  transform: translateZ(.5px);
+}
+.hk-koel-coin-art {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--hk-husk);
+  box-shadow: 0 0 0 1px #8a74563b;
+}
+.hk-koel-coin-art img,
+.hk-koel-dialog-coin img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  transform: scale(var(--hk-art-scale, 1.03));
+}
+.hk-koel-coin-shine {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: linear-gradient(126deg, #ffffff32, transparent 35%, transparent 58%, #34200a18);
+  box-shadow: inset 0 0 3px 1px #37290b20;
+  transform: translateZ(1px);
+}
+.hk-koel-coin-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: inset 1px 1px 0 #fffefa, inset -1px -1px 0 #6f5c414a;
+  transform: translateZ(1.5px);
+}
+.hk-koel-coin-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.hk-shop-koel:focus-visible {
+  outline: 3px solid var(--hk-sindoor);
+  outline-offset: 8px;
+  border-radius: 50%;
+}
+/* Small pick-up feedback; stable button hitbox. Static geometry survives reduce. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hk-koel-coin-shell { transition: transform 180ms cubic-bezier(.19, 1, .22, 1); }
+  .hk-shop-koel:hover .hk-koel-coin-shell {
+    transform: translateY(-4px) rotateX(6deg) rotateY(-10deg) rotateZ(var(--hk-coin-roll));
+  }
+  .hk-shop-koel:active .hk-koel-coin-shell {
+    transform: rotateX(6deg) rotateY(-10deg) rotateZ(var(--hk-coin-roll)) scale(.98);
+  }
+}
+
+.hk-koel-dialog {
+  width: min(44rem, calc(100% - 2rem));
+  max-height: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #171717;
+  overflow: visible;
+}
+.hk-koel-dialog-panel {
+  position: relative;
+  max-height: min(88dvh, 42rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0;
+  border: 1px solid #00000012;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 24px 60px #00000024;
+}
+.hk-koel-dialog::backdrop {
+  opacity: 1;
+  transition: opacity 260ms ease;
+  background: #00000066;
+}
+@starting-style {
+  .hk-koel-dialog[open]::backdrop { opacity: 0; }
+}
+.hk-koel-dialog[data-hk-motion-state="closing"]::backdrop,
+.hk-koel-dialog[data-hk-motion-state="closing-reduced"]::backdrop {
+  opacity: 0;
+  transition-duration: 180ms;
+}
+.hk-koel-dialog-close {
+  position: absolute;
+  z-index: 2;
+  top: .75rem;
+  right: .75rem;
+  background: color-mix(in srgb, var(--hk-paper) 88%, transparent);
+  color: #171717;
+  border-color: #00000018;
+  backdrop-filter: blur(8px);
+}
+.hk-koel-dialog-stage {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  grid-template-areas: "media intro" "media audio" "shop shop";
+  align-items: center;
+  gap: 1.25rem 1.5rem;
+  padding: 2rem;
+  text-align: left;
+}
+.hk-koel-dialog-media {
+  grid-area: media;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 16rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--hk-sand);
+}
+.hk-koel-dialog-coin {
+  position: relative;
+  width: min(14rem, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border: .35rem solid color-mix(in srgb, var(--hk-paper) 70%, var(--hk-sand));
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--hk-husk);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #fff 55%, transparent),
+    0 14px 28px #00000020;
+}
+.hk-koel-dialog-intro {
+  grid-area: intro;
+  align-self: end;
+  display: grid;
+  gap: .45rem;
+  min-width: 0;
+  padding-right: 1rem;
+}
+.hk-koel-dialog .hk-koel-dialog-kicker { margin: 0 0 .25rem; color: var(--hk-sindoor); font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.hk-koel-dialog h2 {
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -.03em;
+  overflow-wrap: anywhere;
+  color: #171717;
+}
+.hk-koel-dialog .hk-koel-dialog-desc {
+  margin: 0;
+  font-size: .82rem;
+  line-height: 1.55;
+  color: #57524d;
+  text-wrap: pretty;
+}
+.hk-koel-dialog .hk-koel-dialog-audio.hk-audio {
+  display: flex;
+  grid-area: audio;
+  align-self: start;
+  flex-direction: row;
+  align-items: center;
+  gap: .85rem;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: .85rem;
+  border: 1px solid #0000000d;
+  border-radius: .85rem;
+  background: color-mix(in srgb, var(--hk-sand) 32%, #fff);
+  color: #171717;
+}
+.hk-koel-dialog-listen { min-width: 0; flex: 1; }
+.hk-koel-dialog-listen-label { display: block; font-size: .75rem; font-weight: 600; }
+.hk-koel-dialog-times { display: flex; justify-content: space-between; font-size: .6rem; font-variant-numeric: tabular-nums; color: #57524d; }
+.hk-audio-play {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hk-sindoor);
+  color: var(--hk-paper);
+  cursor: pointer;
+}
+.hk-audio-play:not(:disabled):hover {
+  background: var(--hk-temple);
+}
+.hk-audio-play:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+.hk-audio-play:focus-visible {
+  outline: 3px solid var(--hk-sindoor);
+  outline-offset: 3px;
+}
+.hk-audio-play-icon { display: block; }
+.hk-audio-wave {
+  width: 100%;
+  height: 1.6rem;
+  color: #57524d;
+}
+.hk-audio-wave-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.hk-koel-dialog-shop {
+  grid-area: shop;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #00000012;
+}
+.hk-koel-dialog-price-label { display: block; margin-bottom: .15rem; font-size: .7rem; color: #57524d; }
+.hk-koel-dialog .hk-koel-dialog-price {
+  margin: 0;
+  font-family: var(--hk-font-body);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  color: #171717;
+}
+.hk-koel-dialog-shop .hk-button {
+  min-width: 12rem;
+  gap: 1.5rem;
+  color: var(--hk-sand);
+}
+.hk-koel-dialog-shop .hk-button:not(:disabled):hover { background: var(--hk-temple); border-color: var(--hk-temple); }
+/* Lives inside the native dialog's top layer, outside the scrolling panel. */
+.hk-koel-flight {
+  position: fixed;
+  z-index: 1;
+  max-width: none;
+  margin: 0;
+  transform-origin: top left;
+  pointer-events: none;
+}
+.hk-koel-dialog[data-hk-motion-state="closing"] .hk-koel-dialog-panel,
+.hk-koel-dialog[data-hk-motion-state="closing-reduced"] .hk-koel-dialog-panel { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .hk-koel-dialog::backdrop { transition-duration: 120ms; }
+}
+@media (max-width: 600px) {
+  .hk-koel-dialog { width: min(26rem, calc(100% - 1.25rem)); }
+  .hk-koel-dialog-panel { max-height: 90dvh; border-radius: 1rem; }
+  .hk-koel-dialog-stage { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "media" "audio" "shop"; gap: 1.1rem; padding: 1.5rem 1.25rem 1.25rem; }
+  .hk-koel-dialog-intro { padding-right: 2.25rem; }
+  .hk-koel-dialog-media { min-height: 0; padding: 1rem; }
+  .hk-koel-dialog-coin { width: min(11rem, 60vw); }
+  .hk-koel-dialog-shop .hk-button { flex: 1; min-width: 9rem; gap: .65rem; padding-inline: .85rem; }
+  .hk-koel-dialog-close { top: .65rem; right: .65rem; }
+}
+
+@media (max-width: 750px) {
+  .hk-koel-shop {
+    --hk-disc-size: clamp(3.2rem, 17vw, 6.5rem);
+    --hk-shelf-top: 1.65rem;
+    --hk-step-space: 2rem;
+    --hk-shelf-inset: .65rem;
+    margin-inline: 0;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .hk-koel-tier:nth-child(n) { width: 100%; }
+  .hk-koel-tier:nth-child(4) { z-index: 4; }
+  .hk-koel-tier:nth-child(5) { z-index: 5; }
+  .hk-koel-tier:last-child::after { height: 1.65rem; }
+  .hk-koel-coin-edge > span { transform: translateZ(calc(var(--hk-edge-depth) * -.45px)); }
+}

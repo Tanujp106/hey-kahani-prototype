@@ -1,0 +1,504 @@
+[
+  {
+    "fixture": true,
+    "handle": "kahani-player",
+    "type": "player",
+    "title": "Kahani Player",
+    "images": [
+      {
+        "src": "assets/images/player-production-v2.png",
+        "alt": "Kahani Player concept based on manufacturing renders, with white housing, five controls, Gulab Red speaker band and wooden base"
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "recommendedAge": "3\u20136",
+      "modelSrc": "assets/models/kahani-player.glb",
+      "previewHandle": null
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "founders-bundle",
+    "type": "bundle",
+    "title": "Founder\u2019s Bundle",
+    "images": [],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "contentsApproval": "pending-client-confirmation",
+      "source": "Website Build SOW",
+      "includedProductHandles": [
+        "kahani-player",
+        "daily-life-koel",
+        "festivals-koel"
+      ],
+      "physicalKoelCount": 2,
+      "storyCount": 20,
+      "previewHandle": null
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "daily-life-koel",
+    "type": "koel",
+    "title": "Daily Life Koel",
+    "images": [
+      {
+        "src": "assets/images/koel-cutout.png",
+        "alt": "Illustrative circular Koel story disc with children and a house; concept artwork",
+        "discArtworkScale": 1.32
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": "daily-life",
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [
+        "daily-life-story-pending"
+      ],
+      "previewHandle": null,
+      "coinTone": "husk"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "festivals-koel",
+    "type": "koel",
+    "title": "Festivals Koel",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/festivals.jpg",
+        "alt": "Abstract festive rangoli-inspired circular Koel artwork; concept preview",
+        "discArtworkScale": 1.32
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": "festivals",
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "mango"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-03",
+    "type": "koel",
+    "title": "Koel preview 03",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/lotus.jpg",
+        "alt": "Soft lotus pond circular Koel artwork; concept preview",
+        "discArtworkScale": 1.04
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "sky"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-04",
+    "type": "koel",
+    "title": "Koel preview 04",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/waves.jpg",
+        "alt": "Silk wave abstract circular Koel artwork; concept preview",
+        "discArtworkScale": 1.22
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "lavender"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-05",
+    "type": "koel",
+    "title": "Koel preview 05",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/peacock.jpg",
+        "alt": "Peacock feather abstract circular Koel artwork; concept preview",
+        "discArtworkScale": 1.04
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "peacock"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-06",
+    "type": "koel",
+    "title": "Koel preview 06",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/marigold.jpg",
+        "alt": "Marigold blossom circular Koel artwork; concept preview",
+        "discArtworkScale": 1.04
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "saffron"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-07",
+    "type": "koel",
+    "title": "Koel preview 07",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/garden.jpg",
+        "alt": "Garden blossom circular Koel artwork; concept preview",
+        "discArtworkScale": 1.04
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "hibiscus"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-08",
+    "type": "koel",
+    "title": "Koel preview 08",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/kitchen.jpg",
+        "alt": "Warm home-life abstract circular Koel artwork; concept preview",
+        "discArtworkScale": 1.05
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "parrot"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-09",
+    "type": "koel",
+    "title": "Koel preview 09",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/diya.jpg",
+        "alt": "Diya glow festive circular Koel artwork; concept preview",
+        "discArtworkScale": 1.04
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "marigold"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-10",
+    "type": "koel",
+    "title": "Koel preview 10",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/monsoon.jpg",
+        "alt": "Monsoon mist circular Koel artwork; concept preview",
+        "discArtworkScale": 1.04
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "monsoon"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-11",
+    "type": "koel",
+    "title": "Koel preview 11",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/birds.jpg",
+        "alt": "Dawn birds circular Koel artwork; concept preview",
+        "discArtworkScale": 1.04
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "violet"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-12",
+    "type": "koel",
+    "title": "Koel preview 12",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/night.jpg",
+        "alt": "Illustrative moonlit landscape circular Koel artwork; concept preview",
+        "discArtworkScale": 1.09
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "husk"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-13",
+    "type": "koel",
+    "title": "Koel preview 13",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/train.jpg",
+        "alt": "Playful track abstract circular Koel artwork; concept preview",
+        "discArtworkScale": 1.07
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "mango"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-14",
+    "type": "koel",
+    "title": "Koel preview 14",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/rain.jpg",
+        "alt": "Rainy window circular Koel artwork; concept preview",
+        "discArtworkScale": 1.12
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "sky"
+    }
+  },
+  {
+    "fixture": true,
+    "handle": "koel-preview-15",
+    "type": "koel",
+    "title": "Koel preview 15",
+    "images": [
+      {
+        "src": "assets/images/koel-covers/market.jpg",
+        "alt": "Market color abstract circular Koel artwork; concept preview",
+        "discArtworkScale": 1.18
+      }
+    ],
+    "priceMinor": null,
+    "currency": null,
+    "available": null,
+    "sku": null,
+    "shopifyProductId": null,
+    "shopifyVariantId": null,
+    "kahaniContentId": null,
+    "metadata": {
+      "seriesHandle": null,
+      "volume": null,
+      "language": null,
+      "recommendedAge": null,
+      "storyCount": null,
+      "storyHandles": [],
+      "previewHandle": null,
+      "coinTone": "lavender"
+    }
+  }
+]
