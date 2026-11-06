@@ -126,11 +126,11 @@
 
   const faqRoot = document.querySelector("[data-hk-faq]");
   if (faqRoot) {
-    faqRoot.querySelectorAll("details").forEach((details) => {
+    const faqItems = Array.from(faqRoot.querySelectorAll("details")).map((details) => {
       const summary = details.querySelector("summary");
       const panel = details.querySelector(".hk-faq__panel");
       const content = details.querySelector(".hk-faq__content");
-      if (!summary || !panel || !content) return;
+      if (!summary || !panel || !content) return null;
 
       let animating = false;
       let endListener = null;
@@ -167,23 +167,21 @@
         }, 350);
       };
 
-      setExpanded(false);
-      panel.style.height = "0px";
-
-      summary.addEventListener("click", (event) => {
-        event.preventDefault();
-        if (animating) return;
-
-        if (reduceMotion) {
-          stopWaiting();
-          details.classList.remove("is-closing");
-          const next = !details.open;
-          setExpanded(next);
-          panel.style.height = next ? "auto" : "0px";
-          return;
+      const close = ({ instant = false } = {}) => {
+        if (!details.open && !details.classList.contains("is-closing")) {
+          return Promise.resolve();
         }
 
-        if (details.open) {
+        if (instant || reduceMotion) {
+          stopWaiting();
+          details.classList.remove("is-closing");
+          setExpanded(false);
+          panel.style.height = "0px";
+          animating = false;
+          return Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
           animating = true;
           details.classList.add("is-closing");
           panel.style.height = `${content.scrollHeight}px`;
@@ -193,19 +191,58 @@
             details.classList.remove("is-closing");
             setExpanded(false);
             animating = false;
+            resolve();
           });
+        });
+      };
+
+      const open = () => {
+        if (details.open) return Promise.resolve();
+
+        if (reduceMotion) {
+          stopWaiting();
+          details.classList.remove("is-closing");
+          setExpanded(true);
+          panel.style.height = "auto";
+          animating = false;
+          return Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
+          animating = true;
+          setExpanded(true);
+          panel.style.height = "0px";
+          panel.offsetHeight;
+          panel.style.height = `${content.scrollHeight}px`;
+          afterHeight(() => {
+            panel.style.height = "auto";
+            animating = false;
+            resolve();
+          });
+        });
+      };
+
+      setExpanded(false);
+      panel.style.height = "0px";
+
+      return { details, summary, close, open, isAnimating: () => animating };
+    }).filter(Boolean);
+
+    faqItems.forEach((item) => {
+      item.summary.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (faqItems.some((entry) => entry.isAnimating())) return;
+
+        if (item.details.open) {
+          item.close();
           return;
         }
 
-        animating = true;
-        setExpanded(true);
-        panel.style.height = "0px";
-        panel.offsetHeight;
-        panel.style.height = `${content.scrollHeight}px`;
-        afterHeight(() => {
-          panel.style.height = "auto";
-          animating = false;
-        });
+        Promise.all(
+          faqItems
+            .filter((entry) => entry !== item)
+            .map((entry) => entry.close())
+        ).then(() => item.open());
       });
     });
   }

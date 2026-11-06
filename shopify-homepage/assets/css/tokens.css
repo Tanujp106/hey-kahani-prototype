@@ -36,9 +36,9 @@
   --hk-text-md: clamp(1.5rem, 2.8vw, 2rem); /* 32px max — secondary display */
   --hk-text-subhead: clamp(1.25rem, 2vw, 1.5rem); /* feature / card h3 */
   --hk-text-step: clamp(1.425rem, 2.4vw, 1.875rem); /* how-it-works step titles */
-  --hk-text-hero-lead: clamp(0.9375rem, 1.2vw, 1.125rem); /* 15–18px — hero + how leads */
-  --hk-text-lead: clamp(0.8125rem, 1vw, 0.9375rem); /* section supporting copy — 13–15px */
-  --hk-text-body: 1.0625rem; /* 17px — all running body paragraphs */
+  --hk-text-hero-lead: 1.0625rem; /* alias of body — Nov 7, 2026: all leads match body */
+  --hk-text-lead: 1.0625rem; /* alias of body — section intros / hk-lead */
+  --hk-text-body: 1.0625rem; /* 17px — all leads + running body paragraphs */
   --hk-text-body-sm: 0.9375rem; /* 15px — dense UI / meta / nav */
   --hk-text-fine: 0.75rem; /* 12px — legal / fine print only */
   --hk-text-eyebrow: 0.8125rem; /* 13px */
@@ -66,5 +66,5 @@
 
   --hk-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --hk-duration: 240ms;
-  --hk-nav-h: 64px;
+  --hk-nav-h: 76px;
 }

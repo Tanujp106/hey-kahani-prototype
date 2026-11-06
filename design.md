@@ -85,20 +85,18 @@ The guide does not prescribe a website type scale. The **active storefront type 
 | Role | Token | Size | Class / use |
 | --- | --- | --- | --- |
 | Hero title | `--hk-text-hero` | clamp → **56px** max | `h1.hk-display--hero` only |
-| Hero / How lead | `--hk-text-hero-lead` | clamp → **18px** max | Hero supporting line and How it works lead (same size) |
 | Section title | `--hk-text-section` | clamp → **40px** max | **Every** section `h2.hk-display--lg` (How it works, App, Koels, About, Founder, Community, FAQ). Same size always. |
 | Secondary display | `--hk-text-md` | clamp → **32px** max | `hk-display--md` |
 | Subhead / feature h3 | `--hk-text-subhead` | clamp → **24px** max | About feature titles, strip lines, newsletter h3, founder sign-off |
 | Step title | `--hk-text-step` | clamp → **30px** max | How it works accordion step titles only |
-| Lead / supporting | `--hk-text-lead` | clamp → **15px** max | Section intro paragraphs under titles (`hk-lead` outside hero) |
-| Body | `--hk-text-body` | **17px** | All running body paragraphs (How steps, app USPs, About, Founder, FAQ answers, footer brand, newsletter). Open Sans **medium 500** |
-| Body small | `--hk-text-body-sm` | **15px** | Dense UI / meta / nav / quote attribution |
+| Lead + body | `--hk-text-body` | **17px** | **All** leads (`hk-lead`, hero, How, App, section intros) and running body paragraphs. Open Sans **medium 500**. `--hk-text-lead` / `--hk-text-hero-lead` alias this size. |
+| Body small | `--hk-text-body-sm` | **15px** | Dense UI / meta / nav / quote attribution only |
 | Fine print | `--hk-text-fine` | **12px** | Legal and newsletter disclaimer only |
 | Eyebrow | `--hk-text-eyebrow` | **13px** | Uppercase section labels |
 
 **Hard rule:** If two section titles look different, a local override snuck in. Delete it and use `--hk-text-section` / `hk-display--lg`.
 
-**Hard rule:** Running body copy must use `--hk-text-body` only. Do not set one-off `font-size` (px/rem) on paragraphs, feature descriptions, or FAQ answers.
+**Hard rule:** Leads and running body copy must use `--hk-text-body` only (same size everywhere). Do not set one-off `font-size` (px/rem) on paragraphs, leads, feature descriptions, or FAQ answers. Dense UI stays on `--hk-text-body-sm`; legal on `--hk-text-fine`.
 
 ## Logo and brand marks
 

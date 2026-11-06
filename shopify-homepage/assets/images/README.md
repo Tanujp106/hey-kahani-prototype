@@ -33,3 +33,7 @@ Example from `shopify-homepage/index.html`:
 `generated-campaign.json` provides the same paths, dimensions, and provenance for later integration. These files have been saved for use; this step does not assign them to page sections or change existing image references.
 
 All files remain generated concept art, with approximate hardware geometry and unapproved story illustrations. The parent phone interface is a fictional app concept. Native files are below the brief's 2400px long-edge target and have no verified embedded sRGB ICC profile. No resizing, cropping, recoloring, or format conversion was applied.
+
+## Testimonial content
+
+The five quotes and parent attributions are draft mock content. The original three were retained from the prior homepage section; two additional samples were added for the second row on November 7, 2026. They must be replaced with approved customer testimonials before launch.

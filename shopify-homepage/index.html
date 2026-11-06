@@ -204,8 +204,7 @@
                 <path d="M4.8 8.5 3.2 7M19.2 8.5l1.6-1.5M4.8 15.5 3.2 17M19.2 15.5l1.6 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
             </span>
-            <strong>Screen free by design</strong>
-            <p>Stories play on the Player. No phones, no tablets, no endless scroll.</p>
+            <p>Screen free by design</p>
           </li>
           <li>
             <span class="hk-strip__icon" aria-hidden="true">
@@ -215,8 +214,7 @@
                 <path d="M5.6 16.2h12.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
             </span>
-            <strong>Made for little hands</strong>
-            <p>Pick a Koel, place it on top, and the story starts. That simple.</p>
+            <p>Made for little hands</p>
           </li>
           <li>
             <span class="hk-strip__icon" aria-hidden="true">
@@ -225,8 +223,7 @@
                 <circle cx="12" cy="11.6" r="1.2" fill="currentColor" stroke="none"/>
               </svg>
             </span>
-            <strong>Stories that feel like home</strong>
-            <p>South Asian festivals, humour, and everyday life kids recognise.</p>
+            <p>Stories that feel like home</p>
           </li>
         </ul>
       </div>
@@ -247,7 +244,6 @@
               <span><small>GET IT ON</small><strong>Google Play</strong></span>
             </span>
           </div>
-          <p class="hk-app__download-note">Store links will replace these previews when the companion app is live.</p>
         </header>
 
         <div class="hk-app__media hk-reveal">
@@ -367,14 +363,17 @@
       </div>
     </section>
 
-    <section class="hk-section hk-section--soft" id="koels" aria-labelledby="koels-title">
+    <section class="hk-section" id="koels" aria-labelledby="koels-title">
       <div class="hk-wrap">
-        <div class="hk-section__intro hk-reveal">
+        <div class="hk-section__intro hk-koels__intro hk-reveal">
           <h2 class="hk-display hk-display--lg" id="koels-title">Find their next favourite Koel.</h2>
-          <p>Stories kids recognise at a glance. Tap a cover to preview, then add it to the bag when you’re ready.</p>
+          <p class="hk-lead">Stories kids recognise at a glance. Tap a cover to preview, then add it to the bag when you’re ready.</p>
+          <div class="hk-btn-row">
+            <a class="hk-btn hk-btn--primary" href="#koel-rail">Explore Koels</a>
+          </div>
         </div>
       </div>
-      <div class="hk-koel-rail" aria-label="Featured Koels">
+      <div class="hk-koel-rail" id="koel-rail" aria-label="Featured Koels">
         <button
           class="hk-koel hk-reveal"
           type="button"
@@ -388,7 +387,7 @@
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
               <span class="hk-koel__title">Holi Kite Play</span>
-              <span class="hk-koel__meta">A Kahani Original</span>
+              <span class="hk-koel__badge">Kahani Original</span>
             </span>
           </span>
         </button>
@@ -405,7 +404,7 @@
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
               <span class="hk-koel__title">Kerala Houseboat</span>
-              <span class="hk-koel__meta">A Kahani Original</span>
+              <span class="hk-koel__badge">Kahani Original</span>
             </span>
           </span>
         </button>
@@ -422,7 +421,7 @@
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
               <span class="hk-koel__title">Festival Family</span>
-              <span class="hk-koel__meta">Celebrate the year</span>
+              <span class="hk-koel__badge">Celebrate the year</span>
             </span>
           </span>
         </button>
@@ -439,7 +438,7 @@
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
               <span class="hk-koel__title">Park Mindfulness</span>
-              <span class="hk-koel__meta">A Kahani Original</span>
+              <span class="hk-koel__badge">Kahani Original</span>
             </span>
           </span>
         </button>
@@ -456,7 +455,7 @@
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
               <span class="hk-koel__title">Market &amp; Temple Travel</span>
-              <span class="hk-koel__meta">Wander with wonder</span>
+              <span class="hk-koel__badge">Wander with wonder</span>
             </span>
           </span>
         </button>
@@ -511,33 +510,73 @@
       </div>
     </section>
 
-    <section class="hk-section hk-section--soft" id="community" aria-labelledby="community-title">
-      <div class="hk-wrap">
-        <div class="hk-section__intro hk-reveal">
-          <p class="hk-eyebrow">Loved by families</p>
+    <section class="hk-section hk-community" id="community" aria-labelledby="community-title">
+      <div class="hk-wrap hk-community__content">
+        <div class="hk-section__intro hk-community__intro hk-reveal">
           <h2 class="hk-display hk-display--lg" id="community-title">Stories worth sharing.</h2>
-          <p>Parents tell us bedtime got easier, car rides got calmer, and culture finally felt close enough to touch.</p>
+          <p class="hk-lead">Parents tell us bedtime got easier, car rides got calmer, and culture finally felt close enough to touch.</p>
         </div>
-        <ul class="hk-proof__logos hk-reveal" aria-label="Featured in">
-          <li>TechCrunch</li>
-          <li>Parents</li>
-          <li>Romper</li>
-          <li>The Juggernaut</li>
-          <li>Motherly</li>
-        </ul>
-        <div class="hk-quotes">
-          <blockquote class="hk-quote hk-reveal">
-            <p>“Bedtime used to be a negotiation. Now she asks for one more Kahani, and actually settles.”</p>
-            <footer>Ananya R. · mother of two · Brooklyn</footer>
-          </blockquote>
-          <blockquote class="hk-quote hk-reveal">
-            <p>“It’s the first thing that feels like our house. The festivals, the jokes, the names she already knows.”</p>
-            <footer>Dev Patel · father of a 5-year-old · Chicago</footer>
-          </blockquote>
-          <blockquote class="hk-quote hk-reveal">
-            <p>“Screen free without feeling like a compromise. He picks the Koel. We get the quiet.”</p>
-            <footer>Meera &amp; Josh · Austin</footer>
-          </blockquote>
+        <div class="hk-quotes hk-reveal">
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <span class="hk-quote__mark" aria-hidden="true">“</span>
+                <p>Bedtime used to be a negotiation. Now she asks for one more Kahani, and actually settles.</p>
+                <footer>
+                  <span class="hk-quote__avatar" aria-hidden="true">A</span>
+                  <span><strong>Ananya R.</strong><small>Mother of two · Brooklyn</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <span class="hk-quote__mark" aria-hidden="true">“</span>
+                <p>It’s the first thing that feels like our house. The festivals, the jokes, the names she already knows.</p>
+                <footer>
+                  <span class="hk-quote__avatar" aria-hidden="true">D</span>
+                  <span><strong>Dev Patel</strong><small>Dad of a 5-year-old · Chicago</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <span class="hk-quote__mark" aria-hidden="true">“</span>
+                <p>Screen free without feeling like a compromise. He picks the Koel. We get the quiet.</p>
+                <footer>
+                  <span class="hk-quote__avatar" aria-hidden="true">M</span>
+                  <span><strong>Meera &amp; Josh</strong><small>Parents · Austin</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <span class="hk-quote__mark" aria-hidden="true">“</span>
+                <p>She lines up her Koels and decides what we’re listening to. That little bit of independence is lovely.</p>
+                <footer>
+                  <span class="hk-quote__avatar" aria-hidden="true">P</span>
+                  <span><strong>Priya S.</strong><small>Mum of a 4-year-old · London</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <span class="hk-quote__mark" aria-hidden="true">“</span>
+                <p>The familiar names and little details start so many conversations. Story time is something we share now.</p>
+                <footer>
+                  <span class="hk-quote__avatar" aria-hidden="true">R</span>
+                  <span><strong>Rohan &amp; Aisha</strong><small>Parents · Toronto</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -594,33 +633,61 @@
   </main>
 
   <footer class="hk-footer" id="footer">
-    <div class="hk-wrap">
-      <div class="hk-footer__top">
-        <div class="hk-footer__brand">
-          <a class="hk-wordmark" href="#top">
-            <img src="assets/images/brand/wordmark.svg" width="275" height="131" alt="Hey Kahani">
-          </a>
-          <p>Little stories. Lasting connections.</p>
-        </div>
-        <div class="hk-newsletter">
-          <h3>A little Kahani in your inbox.</h3>
+    <div class="hk-footer__signup">
+      <div class="hk-wrap hk-footer__signup-inner">
+        <div class="hk-footer__signup-copy">
+          <h2 class="hk-footer__signup-title">A little Kahani in your inbox</h2>
           <p>Stories and updates, when there’s something to share.</p>
-          <form class="hk-newsletter__row" action="#" method="post" onsubmit="return false;">
-            <label class="visually-hidden" for="newsletter-email" style="position:absolute;left:-9999px">Email address</label>
-            <input id="newsletter-email" type="email" name="email" placeholder="Your email address" autocomplete="email">
+        </div>
+        <form class="hk-newsletter" action="#" method="post" onsubmit="return false;">
+          <label class="visually-hidden" for="newsletter-email">Email address</label>
+          <div class="hk-newsletter__row">
+            <input id="newsletter-email" type="email" name="email" placeholder="Email address" autocomplete="email">
             <button class="hk-btn hk-btn--primary" type="submit">Join</button>
-          </form>
+          </div>
           <small>We’ll connect this to the Shopify email flow when the store is live.</small>
+        </form>
+      </div>
+    </div>
+
+    <div class="hk-wrap hk-footer__main">
+      <div class="hk-footer__brand">
+        <a class="hk-wordmark" href="#top">
+          <img src="assets/images/brand/wordmark.svg" width="275" height="131" alt="Hey Kahani">
+        </a>
+        <p>Little stories. Lasting connections.</p>
+      </div>
+
+      <nav class="hk-footer__cols" aria-label="Footer">
+        <div class="hk-footer__col">
+          <h3>Explore</h3>
+          <a href="#koels">Shop Koels</a>
+          <a href="#how">How it works</a>
+          <a href="#app">The app</a>
+        </div>
+        <div class="hk-footer__col">
+          <h3>About</h3>
+          <a href="#about">Our story</a>
+          <a href="#community">Community</a>
+          <a href="#faqs">FAQs</a>
+        </div>
+        <div class="hk-footer__col">
+          <h3>Help</h3>
+          <a href="#faqs">Support</a>
+          <a href="#app">Companion app</a>
+          <a href="#top">Back to top</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="hk-footer__base">
+      <div class="hk-wrap hk-footer__base-inner">
+        <p class="hk-footer__legal">© <span id="year">2026</span> Hey Kahani. All rights reserved.</p>
+        <div class="hk-footer__legal-links">
+          <a href="#faqs">Privacy</a>
+          <a href="#faqs">Terms</a>
         </div>
       </div>
-      <nav class="hk-footer__nav" aria-label="Footer">
-        <a href="#how">How it works</a>
-        <a href="#app">The app</a>
-        <a href="#koels">Shop Koels</a>
-        <a href="#about">About</a>
-        <a href="#faqs">FAQs</a>
-      </nav>
-      <p class="hk-footer__legal">© <span id="year">2026</span> Hey Kahani. All rights reserved.</p>
     </div>
   </footer>
 

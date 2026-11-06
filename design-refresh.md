@@ -86,25 +86,25 @@ typography:
     cssToken: "--hk-text-subhead"
   hero-lead:
     fontFamily: "Open Sans, Helvetica, Arial, sans-serif"
-    fontSize: 18px # --hk-text-hero-lead clamp max
+    fontSize: 17px # alias of body — Nov 7, 2026
     fontWeight: 500
-    lineHeight: 1.45
+    lineHeight: 1.5
     letterSpacing: -0.01em
     cssToken: "--hk-text-hero-lead"
     className: "hk-hero .hk-lead, .hk-how__lead"
   lead:
     fontFamily: "Open Sans, Helvetica, Arial, sans-serif"
-    fontSize: 15px # --hk-text-lead clamp max
+    fontSize: 17px # same as body — Nov 7, 2026
     fontWeight: 500
-    lineHeight: 1.45
+    lineHeight: 1.5
     letterSpacing: -0.01em
     cssToken: "--hk-text-lead"
     className: "hk-lead"
   lead-strong:
     fontFamily: "Open Sans, Helvetica, Arial, sans-serif"
-    fontSize: 15px
+    fontSize: 17px
     fontWeight: 500
-    lineHeight: 1.45
+    lineHeight: 1.5
     letterSpacing: -0.01em
   title:
     fontFamily: "Averia Serif Libre, Georgia, serif"
