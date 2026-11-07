@@ -2,10 +2,15 @@
   const menuBtn = document.querySelector("[data-hk-menu]");
   const drawer = document.querySelector("[data-hk-drawer]");
   const bagBtn = document.querySelectorAll("[data-hk-open-bag]");
+  const searchBtn = document.querySelectorAll("[data-hk-open-search]");
+  const accountBtn = document.querySelectorAll("[data-hk-open-account]");
   const bagDialog = document.querySelector("#bag-dialog");
+  const searchDialog = document.querySelector("#search-dialog");
+  const accountDialog = document.querySelector("#account-dialog");
   const koelDialog = document.querySelector("#koel-dialog");
   const koelButtons = document.querySelectorAll("[data-hk-koel]");
   const closeButtons = document.querySelectorAll("[data-hk-close-dialog]");
+  const searchInput = document.querySelector("[data-hk-search-input]");
 
   const dialogTitle = koelDialog?.querySelector("[data-hk-koel-title]");
   const dialogMeta = koelDialog?.querySelector("[data-hk-koel-meta]");
@@ -25,6 +30,17 @@
 
   bagBtn.forEach((btn) => {
     btn.addEventListener("click", () => bagDialog?.showModal());
+  });
+
+  searchBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      searchDialog?.showModal();
+      window.requestAnimationFrame(() => searchInput?.focus());
+    });
+  });
+
+  accountBtn.forEach((btn) => {
+    btn.addEventListener("click", () => accountDialog?.showModal());
   });
 
   koelButtons.forEach((btn) => {

@@ -15,21 +15,28 @@
 
   <header class="hk-nav">
     <div class="hk-wrap hk-nav__inner">
-      <a class="hk-wordmark" href="#top" aria-label="Hey Kahani home">
+      <a class="hk-wordmark" href="/" aria-label="Hey Kahani home">
         <img src="assets/images/brand/wordmark.svg" width="275" height="131" alt="Hey Kahani">
       </a>
       <nav aria-label="Primary">
         <ul class="hk-nav__links">
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#app">The app</a></li>
-          <li><a href="#koels">Shop Koels</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#faqs">FAQs</a></li>
+          <li><a class="hk-nav__link" href="/kahani-player">Player</a></li>
+          <li><a class="hk-nav__link" href="/koels-listing">Koel</a></li>
+          <li><a class="hk-nav__link" href="/collections/bestsellers">Bestsellers</a></li>
+          <li><a class="hk-nav__link" href="/products/founders-bundle">Founder's Bundle</a></li>
         </ul>
       </nav>
       <div class="hk-nav__actions">
-        <button class="hk-icon-btn" type="button" data-hk-open-bag aria-label="Open bag">
+        <a class="hk-nav__cta" href="/kahani-app">Download App</a>
+        <button class="hk-icon-btn" type="button" data-hk-open-search aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="M16.2 16.2 20 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
+        <button class="hk-icon-btn hk-nav__account" type="button" data-hk-open-account aria-label="Account">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 19.25c1.5-3 3.9-4.5 6.5-4.5s5 1.5 6.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
+        <button class="hk-icon-btn hk-nav__bag" type="button" data-hk-open-bag aria-label="Open bag, 0 items">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8zm3-3a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="hk-nav__bag-count" aria-hidden="true">0</span>
         </button>
         <button class="hk-icon-btn hk-menu-btn" type="button" data-hk-menu aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
@@ -38,16 +45,29 @@
     </div>
     <div class="hk-wrap hk-nav__drawer" id="mobile-nav" data-hk-drawer>
       <ul>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#app">The app</a></li>
-        <li><a href="#koels">Shop Koels</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="/kahani-player">Player</a></li>
+        <li><a href="/koels-listing">Koel</a></li>
+        <li><a href="/collections/bestsellers">Bestsellers</a></li>
+        <li><a href="/products/founders-bundle">Founder's Bundle</a></li>
+        <li><a class="hk-nav__drawer-cta" href="/kahani-app">Download App</a></li>
       </ul>
     </div>
   </header>
 
   <main id="main">
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;overflow:hidden;clip:rect(0,0,0,0)">
+      <symbol id="hk-doodle-star" viewBox="0 0 48 48"><path fill="#FECB74" stroke="#D3000A" stroke-width="2.2" stroke-linejoin="round" d="M24.2 5.2 28.8 17.4l12.8 1.1-9.7 8.6 3.1 12.4L24 32.8 13 39.5l3.1-12.4-9.7-8.6 12.8-1.1L24.2 5.2Z"/><circle cx="24" cy="24" r="2.2" fill="#D3000A"/></symbol>
+      <symbol id="hk-doodle-moon" viewBox="0 0 48 48"><path fill="#63C3FE" stroke="#2578B7" stroke-width="2.2" stroke-linejoin="round" d="M30.5 8.2c-1.4-.4-2.9-.6-4.5-.6C16.2 7.6 8.4 15.4 8.4 25S16.2 42.4 26 42.4c1.6 0 3.1-.2 4.5-.6C24.2 39.4 19.6 32.8 19.6 25s4.6-14.4 10.9-16.8Z"/><circle cx="31.5" cy="14.5" r="1.6" fill="#FFF1D6"/><circle cx="35" cy="21" r="1.1" fill="#FFF1D6"/></symbol>
+      <symbol id="hk-doodle-sun" viewBox="0 0 48 48"><circle cx="24" cy="24" r="9.2" fill="#FECB74" stroke="#FF5D27" stroke-width="2.2"/><path stroke="#FF5D27" stroke-width="2.2" stroke-linecap="round" d="M24 5.5v5.2M24 37.3v5.2M5.5 24h5.2M37.3 24h5.2M11.2 11.2l3.7 3.7M33.1 33.1l3.7 3.7M11.2 36.8l3.7-3.7M33.1 14.9l3.7-3.7"/><circle cx="24" cy="24" r="3.4" fill="#FF5D27"/></symbol>
+      <symbol id="hk-doodle-ball" viewBox="0 0 48 48"><circle cx="24" cy="24" r="14" fill="#2B9863" stroke="#05334A" stroke-width="2.2"/><path stroke="#FFF1D6" stroke-width="2" stroke-linecap="round" d="M10.8 24h26.4M24 10.8v26.4"/><path stroke="#FFF1D6" stroke-width="2" fill="none" d="M14.5 14.5c4.2 3.4 14.8 3.4 19 0M14.5 33.5c4.2-3.4 14.8-3.4 19 0"/></symbol>
+      <symbol id="hk-doodle-archer" viewBox="0 0 56 48"><path stroke="#B40023" stroke-width="2.4" stroke-linecap="round" fill="none" d="M12 8c12 8 12 24 0 32"/><path stroke="#05334A" stroke-width="2.2" stroke-linecap="round" d="M12 24h30"/><path fill="#D3000A" stroke="#6A0526" stroke-width="1.6" stroke-linejoin="round" d="m40 20 10 4-10 4V20Z"/><path stroke="#E6CEAD" stroke-width="2.2" stroke-linecap="round" d="M12 10v28"/></symbol>
+      <symbol id="hk-doodle-kite" viewBox="0 0 48 56"><path fill="#63C3FE" stroke="#2578B7" stroke-width="2.2" stroke-linejoin="round" d="M24 6 38 24 24 30 10 24 24 6Z"/><path stroke="#D3000A" stroke-width="2" stroke-linecap="round" d="M24 30c0 6 4 10 2 18"/><path fill="#FECB74" d="m24 6 4 10-4 4-4-4 4-10Z"/><path stroke="#FF5D27" stroke-width="1.8" stroke-linecap="round" d="M26 44c3 1 5 4 4 8M22 48c-3 1-4 4-3 7"/></symbol>
+      <symbol id="hk-doodle-crayon" viewBox="0 0 48 48"><path fill="#D6C9E4" stroke="#05334A" stroke-width="2" stroke-linejoin="round" d="M16 36 28 8l6 3.2L22 39.2 16 36Z"/><path fill="#D3000A" d="m28 8 6 3.2-2.4 4.6-6-3.2L28 8Z"/><path stroke="#05334A" stroke-width="1.6" stroke-linecap="round" d="M18.2 34.5 30.2 11.8"/></symbol>
+      <symbol id="hk-doodle-cloud" viewBox="0 0 56 36"><path fill="#FFF1D6" stroke="#E6CEAD" stroke-width="2.2" stroke-linejoin="round" d="M14 26c-5 0-8-3.4-8-7.2S9 11.6 14 11.6c1.2-4.2 5-7 9.6-7 5.6 0 9.8 4 10.4 9.2 3.8.4 6.8 3.4 6.8 7S37.6 26 34 26H14Z"/></symbol>
+      <symbol id="hk-doodle-spark" viewBox="0 0 32 32"><path stroke="#FF5D27" stroke-width="2.4" stroke-linecap="round" d="M16 4v8M16 20v8M4 16h8M20 16h8M8.5 8.5l5 5M18.5 18.5l5 5M8.5 23.5l5-5M18.5 13.5l5-5"/></symbol>
+      <symbol id="hk-doodle-leaf" viewBox="0 0 40 48"><path fill="#2B9863" stroke="#05334A" stroke-width="2" stroke-linejoin="round" d="M20 6c10 8 14 18 10 28-8 2-16-2-22-12C12 14 16 8 20 6Z"/><path stroke="#FFF1D6" stroke-width="1.8" stroke-linecap="round" d="M20 10c-1 8 0 16 4 22"/></symbol>
+    </svg>
+
     <section class="hk-hero" id="top" aria-labelledby="hero-title">
       <img
         class="hk-hero__image"
@@ -69,7 +89,13 @@
       </div>
     </section>
 
-    <section class="hk-section hk-section--how" id="how" aria-labelledby="how-title">
+    <section class="hk-section hk-section--how hk-has-doodles" id="how" aria-labelledby="how-title">
+      <div class="hk-doodles" aria-hidden="true">
+        <svg class="hk-doodle hk-doodle--sun hk-doodle--tl" width="56" height="56"><use href="#hk-doodle-sun"/></svg>
+        <svg class="hk-doodle hk-doodle--star hk-doodle--tr" width="44" height="44"><use href="#hk-doodle-star"/></svg>
+        <svg class="hk-doodle hk-doodle--kite hk-doodle--bl" width="42" height="50"><use href="#hk-doodle-kite"/></svg>
+        <svg class="hk-doodle hk-doodle--spark hk-doodle--br" width="36" height="36"><use href="#hk-doodle-spark"/></svg>
+      </div>
       <div class="hk-wrap">
         <header class="hk-how__header hk-reveal">
           <h2 class="hk-display hk-display--lg" id="how-title">Koel on. Story begins.</h2>
@@ -193,34 +219,44 @@
       </div>
     </section>
 
-    <aside class="hk-strip hk-pattern" aria-label="Why families choose Hey Kahani">
+    <aside class="hk-strip hk-pattern hk-has-doodles" aria-label="Why families choose Hey Kahani">
+      <div class="hk-doodles" aria-hidden="true">
+        <svg class="hk-doodle hk-doodle--star hk-doodle--ml" width="34" height="34"><use href="#hk-doodle-star"/></svg>
+        <svg class="hk-doodle hk-doodle--leaf hk-doodle--mr" width="30" height="36"><use href="#hk-doodle-leaf"/></svg>
+      </div>
       <div class="hk-wrap">
         <ul class="hk-strip__usps">
           <li>
             <span class="hk-strip__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="7.2" y="5.2" width="9.6" height="13.6" rx="2.2" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M9.4 9.2h5.2M9.4 12h5.2M9.4 14.8h3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M4.8 8.5 3.2 7M19.2 8.5l1.6-1.5M4.8 15.5 3.2 17M19.2 15.5l1.6 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <svg viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="7.5" r="4.4" stroke="currentColor" stroke-width="2.2"/>
+                <circle cx="16" cy="7.5" r="1.5" fill="currentColor"/>
+                <path d="M9.2 14.2h13.6c1.4 0 2.5 1.1 2.5 2.5v8.6c0 1.4-1.1 2.5-2.5 2.5H9.2c-1.4 0-2.5-1.1-2.5-2.5v-8.6c0-1.4 1.1-2.5 2.5-2.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M7 21.2h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
               </svg>
             </span>
             <p>Screen free by design</p>
           </li>
           <li>
             <span class="hk-strip__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="7.2" r="3.1" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M7.4 11h9.2c1.1 0 2 .9 2 2v5.2c0 1.1-.9 2-2 2H7.4c-1.1 0-2-.9-2-2V13c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M5.6 16.2h12.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <svg viewBox="0 0 32 32" fill="none">
+                <circle cx="15" cy="13.5" r="8.2" stroke="currentColor" stroke-width="2.2"/>
+                <circle cx="15" cy="13.5" r="2.8" stroke="currentColor" stroke-width="2"/>
+                <circle cx="15" cy="13.5" r="1.1" fill="currentColor"/>
+                <path d="M21.2 22.4c1.6 1.1 3.7 1.5 5.6.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M22.6 19.2c1.9-.2 3.6.6 4.8 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M20.4 25.2c1.2 1.4 3.1 2.2 5.1 2.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
               </svg>
             </span>
             <p>Made for little hands</p>
           </li>
           <li>
             <span class="hk-strip__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 4.5c2.8 2.2 4.8 4.4 4.8 7.1a4.8 4.8 0 1 1-9.6 0c0-2.7 2-4.9 4.8-7.1Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                <circle cx="12" cy="11.6" r="1.2" fill="currentColor" stroke="none"/>
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M5.5 14.5 16 5.8l10.5 8.7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.2 13.2V25a1.6 1.6 0 0 0 1.6 1.6h12.4a1.6 1.6 0 0 0 1.6-1.6V13.2" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                <circle cx="16" cy="19.2" r="3.4" stroke="currentColor" stroke-width="2.1"/>
+                <circle cx="16" cy="19.2" r="1.15" fill="currentColor"/>
               </svg>
             </span>
             <p>Stories that feel like home</p>
@@ -229,7 +265,13 @@
       </div>
     </aside>
 
-    <section class="hk-section hk-section--app" id="app" aria-labelledby="app-title">
+    <section class="hk-section hk-section--app hk-has-doodles" id="app" aria-labelledby="app-title">
+      <div class="hk-doodles" aria-hidden="true">
+        <svg class="hk-doodle hk-doodle--moon hk-doodle--tl" width="50" height="50"><use href="#hk-doodle-moon"/></svg>
+        <svg class="hk-doodle hk-doodle--crayon hk-doodle--tr" width="48" height="48"><use href="#hk-doodle-crayon"/></svg>
+        <svg class="hk-doodle hk-doodle--ball hk-doodle--br" width="46" height="46"><use href="#hk-doodle-ball"/></svg>
+        <svg class="hk-doodle hk-doodle--cloud hk-doodle--bl" width="58" height="38"><use href="#hk-doodle-cloud"/></svg>
+      </div>
       <div class="hk-wrap hk-app">
         <header class="hk-app__header hk-reveal">
           <h2 class="hk-display hk-display--lg" id="app-title">A little help for you.<br>A world of stories for them.</h2>
@@ -363,7 +405,12 @@
       </div>
     </section>
 
-    <section class="hk-section" id="koels" aria-labelledby="koels-title">
+    <section class="hk-section hk-has-doodles" id="koels" aria-labelledby="koels-title">
+      <div class="hk-doodles" aria-hidden="true">
+        <svg class="hk-doodle hk-doodle--archer hk-doodle--tl" width="58" height="50"><use href="#hk-doodle-archer"/></svg>
+        <svg class="hk-doodle hk-doodle--star hk-doodle--tr" width="40" height="40"><use href="#hk-doodle-star"/></svg>
+        <svg class="hk-doodle hk-doodle--kite hk-doodle--mr" width="40" height="48"><use href="#hk-doodle-kite"/></svg>
+      </div>
       <div class="hk-wrap">
         <div class="hk-section__intro hk-koels__intro hk-reveal">
           <h2 class="hk-display hk-display--lg" id="koels-title">Find their next favourite Koel.</h2>
@@ -462,7 +509,13 @@
       </div>
     </section>
 
-    <section class="hk-section hk-section--warm hk-pattern" id="about" aria-labelledby="about-title">
+    <section class="hk-section hk-section--warm hk-pattern hk-has-doodles" id="about" aria-labelledby="about-title">
+      <div class="hk-doodles" aria-hidden="true">
+        <svg class="hk-doodle hk-doodle--sun hk-doodle--tr" width="52" height="52"><use href="#hk-doodle-sun"/></svg>
+        <svg class="hk-doodle hk-doodle--moon hk-doodle--bl" width="44" height="44"><use href="#hk-doodle-moon"/></svg>
+        <svg class="hk-doodle hk-doodle--leaf hk-doodle--br" width="36" height="44"><use href="#hk-doodle-leaf"/></svg>
+        <svg class="hk-doodle hk-doodle--spark hk-doodle--ml" width="32" height="32"><use href="#hk-doodle-spark"/></svg>
+      </div>
       <div class="hk-wrap">
         <div class="hk-section__intro hk-reveal">
           <p class="hk-eyebrow">Why Hey Kahani</p>
@@ -652,7 +705,7 @@
 
     <div class="hk-wrap hk-footer__main">
       <div class="hk-footer__brand">
-        <a class="hk-wordmark" href="#top">
+        <a class="hk-wordmark" href="/">
           <img src="assets/images/brand/wordmark.svg" width="275" height="131" alt="Hey Kahani">
         </a>
         <p>Little stories. Lasting connections.</p>
@@ -712,6 +765,36 @@
         <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close bag">×</button>
       </div>
       <p class="hk-muted">Your bag is empty. Explore Koels and add a favourite when you’re ready.</p>
+      <div class="hk-btn-row">
+        <button class="hk-btn hk-btn--primary" type="button" data-hk-close-dialog>Keep exploring</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="hk-dialog" id="search-dialog" aria-labelledby="search-title">
+    <div class="hk-dialog__body">
+      <div class="hk-dialog__head">
+        <h2 id="search-title">Search</h2>
+        <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close search">×</button>
+      </div>
+      <label class="hk-nav-search">
+        <span class="visually-hidden">Search the store</span>
+        <input type="search" name="q" placeholder="Search stories, Player, Koels…" autocomplete="off" data-hk-search-input>
+      </label>
+      <p class="hk-muted">Search connects when the Shopify storefront is wired. Until then, browse Shop Koels below.</p>
+      <div class="hk-btn-row">
+        <a class="hk-btn hk-btn--primary" href="#koels" data-hk-close-dialog>Browse Koels</a>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="hk-dialog" id="account-dialog" aria-labelledby="account-title">
+    <div class="hk-dialog__body">
+      <div class="hk-dialog__head">
+        <h2 id="account-title">Account</h2>
+        <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close account">×</button>
+      </div>
+      <p class="hk-muted">Sign-in will use Shopify Customer Accounts when checkout goes live.</p>
       <div class="hk-btn-row">
         <button class="hk-btn hk-btn--primary" type="button" data-hk-close-dialog>Keep exploring</button>
       </div>

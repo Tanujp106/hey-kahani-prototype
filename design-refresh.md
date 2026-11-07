@@ -262,7 +262,7 @@ components:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.ink}"
     typography: "{typography.nav}"
-    height: 64px
+    height: 96px
     borderBottom: "1px solid {colors.divider-soft}"
   hero-product:
     backgroundColor: "{colors.canvas}"
@@ -460,7 +460,7 @@ Primary and secondary CTAs are **full pills** (`9999px`) sitewide — solid Gula
 ## Components
 
 ### Navigation — `global-nav`
-Light white/cream bar, Story Ink links, official wordmark, quiet bag/search icons. Height ~64px. No black Apple-style global bar.
+Light white/cream bar, Story Ink links, official stacked wordmark with clearspace, quiet search / account / bag utilities (ecommerce chrome). Height ~96px so the stacked lockup is not vertically cramped. No black Apple-style global bar; no sticky promo/announcement bar in the first viewport.
 
 ### Buttons
 - **`button-primary`**: solid Gulab pill, white label, soft red shadow; few per view. Class `hk-btn hk-btn--primary`.

@@ -82,6 +82,7 @@ Client pain this solves: **too colorful/busy** → balanced application, not a d
 - Prefer authentic family moments over staged costume tropes.
 - Soft natural light; avoid harsh neon product stacks.
 - Pattern may appear in warm bands as a Yoto-like playful hint — keep it behind content, muted, removable without breaking layout.
+- **Kids doodles (Headspace-inspired, Nov 7, 2026):** Colorful hand-drawn **objects only** (star, moon, sun, kite, ball, bow/arrow, crayon, cloud, leaf, spark). No faces, mascots, or characters. Place sparsely around How / strip / App / Koels / About — never on hero product media, never in the red testimonial section. Use brand accents (Gulab, Mango, Sky, Parrot, Marigold, Lavender).
 
 ## 6. Component taste
 
