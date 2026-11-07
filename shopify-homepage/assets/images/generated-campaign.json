@@ -11,6 +11,14 @@
       "status": "Generated concept art"
     },
     {
+      "name": "Extended wide hero for desktop",
+      "path": "assets/images/hero/hk-shot-01-wide.png",
+      "source": "Generated edit of assets/images/hero/hk-shot-01.png",
+      "width": 1672,
+      "height": 941,
+      "status": "Generated concept art; desktop hero variation"
+    },
+    {
       "name": "Bliss listening",
       "path": "assets/images/editorial/hk-shot-02.png",
       "source": "output/imagegen/hk-campaign-2026-11-07/hk-shot-02.png",

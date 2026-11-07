@@ -20,14 +20,14 @@
       </a>
       <nav aria-label="Primary">
         <ul class="hk-nav__links">
-          <li><a class="hk-nav__link" href="/kahani-player">Player</a></li>
-          <li><a class="hk-nav__link" href="/koels-listing">Koel</a></li>
+          <li><a class="hk-nav__link" href="/kahani-player">Shop Player</a></li>
+          <li><a class="hk-nav__link" href="/koels-listing">Shop Koel</a></li>
           <li><a class="hk-nav__link" href="/collections/bestsellers">Bestsellers</a></li>
           <li><a class="hk-nav__link" href="/products/founders-bundle">Founder's Bundle</a></li>
         </ul>
       </nav>
       <div class="hk-nav__actions">
-        <a class="hk-nav__cta" href="/kahani-app">Download App</a>
+        <a class="hk-nav__cta hk-btn hk-btn--primary" href="/kahani-app">Download App</a>
         <button class="hk-icon-btn" type="button" data-hk-open-search aria-label="Search">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="M16.2 16.2 20 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         </button>
@@ -45,8 +45,8 @@
     </div>
     <div class="hk-wrap hk-nav__drawer" id="mobile-nav" data-hk-drawer>
       <ul>
-        <li><a href="/kahani-player">Player</a></li>
-        <li><a href="/koels-listing">Koel</a></li>
+        <li><a href="/kahani-player">Shop Player</a></li>
+        <li><a href="/koels-listing">Shop Koel</a></li>
         <li><a href="/collections/bestsellers">Bestsellers</a></li>
         <li><a href="/products/founders-bundle">Founder's Bundle</a></li>
         <li><a class="hk-nav__drawer-cta" href="/kahani-app">Download App</a></li>
@@ -69,13 +69,16 @@
     </svg>
 
     <section class="hk-hero" id="top" aria-labelledby="hero-title">
-      <img
-        class="hk-hero__image"
-        src="assets/images/hero/hk-shot-01.png"
-        width="1122"
-        height="1402"
-        alt="A child laughing beside the Kahani Player on a cream rug"
-        fetchpriority="high">
+      <picture class="hk-hero__media">
+        <source media="(min-width: 721px)" srcset="assets/images/hero/hk-shot-01-wide.png" width="1672" height="941">
+        <img
+          class="hk-hero__image"
+          src="assets/images/hero/hk-shot-01.png"
+          width="1122"
+          height="1402"
+          alt="A child smiling beside the Kahani Player and illustrated Koel discs on a cream rug"
+          fetchpriority="high">
+      </picture>
       <div class="hk-hero__scrim" aria-hidden="true"></div>
       <div class="hk-hero__content">
         <div class="hk-hero__copy">
@@ -412,100 +415,237 @@
         <svg class="hk-doodle hk-doodle--kite hk-doodle--mr" width="40" height="48"><use href="#hk-doodle-kite"/></svg>
       </div>
       <div class="hk-wrap">
-        <div class="hk-section__intro hk-koels__intro hk-reveal">
-          <h2 class="hk-display hk-display--lg" id="koels-title">Find their next favourite Koel.</h2>
-          <p class="hk-lead">Stories kids recognise at a glance. Tap a cover to preview, then add it to the bag when you’re ready.</p>
-          <div class="hk-btn-row">
-            <a class="hk-btn hk-btn--primary" href="#koel-rail">Explore Koels</a>
+        <div class="hk-koels__head hk-reveal">
+          <div class="hk-koels__intro">
+            <h2 class="hk-display hk-display--lg" id="koels-title">Find their next favourite Koel.</h2>
+            <p class="hk-lead">Browse the catalogue. Preview a cover, then add it to the bag when you’re ready.</p>
+          </div>
+          <div class="hk-koels__toolbar">
+            <a class="hk-koels__view-all" href="/koels-listing">View all</a>
           </div>
         </div>
-      </div>
-      <div class="hk-koel-rail" id="koel-rail" aria-label="Featured Koels">
-        <button
+      <div class="hk-koel-grid" id="koel-rail" aria-label="Featured Koels">
+        <article
           class="hk-koel hk-reveal"
-          type="button"
           data-hk-koel
           data-title="Holi Kite Play"
           data-meta="A Kahani Original · Colour, wind, and laughter"
           data-image="assets/images/koels/hk-shot-08-01-holi-kite.png">
-          <span class="hk-koel__poster">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Holi Kite Play">
             <img src="assets/images/koels/hk-shot-08-01-holi-kite.png" width="1254" height="1254" alt="">
-            <span class="hk-koel__rank" aria-hidden="true">1</span>
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
-              <span class="hk-koel__title">Holi Kite Play</span>
               <span class="hk-koel__badge">Kahani Original</span>
+              <span class="hk-koel__title">Holi Kite Play</span>
             </span>
-          </span>
-        </button>
-        <button
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
           class="hk-koel hk-reveal"
-          type="button"
           data-hk-koel
           data-title="Kerala Houseboat"
           data-meta="A Kahani Original · Waterways and palm shade"
           data-image="assets/images/koels/hk-shot-08-02-kerala-houseboat.png">
-          <span class="hk-koel__poster">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Kerala Houseboat">
             <img src="assets/images/koels/hk-shot-08-02-kerala-houseboat.png" width="1254" height="1254" alt="">
-            <span class="hk-koel__rank" aria-hidden="true">2</span>
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
-              <span class="hk-koel__title">Kerala Houseboat</span>
               <span class="hk-koel__badge">Kahani Original</span>
+              <span class="hk-koel__title">Kerala Houseboat</span>
             </span>
-          </span>
-        </button>
-        <button
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
           class="hk-koel hk-reveal"
-          type="button"
           data-hk-koel
           data-title="Festival Family"
           data-meta="Celebrate the year · Ritual, joy, and togetherness"
           data-image="assets/images/koels/hk-shot-08-03-festival-family.png">
-          <span class="hk-koel__poster">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Festival Family">
             <img src="assets/images/koels/hk-shot-08-03-festival-family.png" width="1254" height="1254" alt="">
-            <span class="hk-koel__rank" aria-hidden="true">3</span>
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
-              <span class="hk-koel__title">Festival Family</span>
               <span class="hk-koel__badge">Celebrate the year</span>
+              <span class="hk-koel__title">Festival Family</span>
             </span>
-          </span>
-        </button>
-        <button
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
           class="hk-koel hk-reveal"
-          type="button"
           data-hk-koel
           data-title="Park Mindfulness"
           data-meta="A Kahani Original · Calm stories for quiet moments"
           data-image="assets/images/koels/hk-shot-08-04-park-mindfulness.png">
-          <span class="hk-koel__poster">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Park Mindfulness">
             <img src="assets/images/koels/hk-shot-08-04-park-mindfulness.png" width="1254" height="1254" alt="">
-            <span class="hk-koel__rank" aria-hidden="true">4</span>
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
-              <span class="hk-koel__title">Park Mindfulness</span>
               <span class="hk-koel__badge">Kahani Original</span>
+              <span class="hk-koel__title">Park Mindfulness</span>
             </span>
-          </span>
-        </button>
-        <button
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
           class="hk-koel hk-reveal"
-          type="button"
           data-hk-koel
           data-title="Market &amp; Temple Travel"
           data-meta="Wander with wonder · Markets, temples, journeys"
           data-image="assets/images/koels/hk-shot-08-05-market-temple.png">
-          <span class="hk-koel__poster">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Market and Temple Travel">
             <img src="assets/images/koels/hk-shot-08-05-market-temple.png" width="1254" height="1254" alt="">
-            <span class="hk-koel__rank" aria-hidden="true">5</span>
             <span class="hk-koel__shade" aria-hidden="true"></span>
             <span class="hk-koel__copy">
-              <span class="hk-koel__title">Market &amp; Temple Travel</span>
               <span class="hk-koel__badge">Wander with wonder</span>
+              <span class="hk-koel__title">Market &amp; Temple Travel</span>
             </span>
-          </span>
-        </button>
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
+          class="hk-koel hk-reveal"
+          data-hk-koel
+          data-title="Lotus Pond"
+          data-meta="A Kahani Original · Soft light and quiet water"
+          data-image="assets/images/koels/hk-koel-lotus.png">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Lotus Pond">
+            <img src="assets/images/koels/hk-koel-lotus.png" width="1254" height="1254" alt="">
+            <span class="hk-koel__shade" aria-hidden="true"></span>
+            <span class="hk-koel__copy">
+              <span class="hk-koel__badge">Kahani Original</span>
+              <span class="hk-koel__title">Lotus Pond</span>
+            </span>
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
+          class="hk-koel hk-reveal"
+          data-hk-koel
+          data-title="Peacock Sky"
+          data-meta="A Kahani Original · Colour, feathers, and song"
+          data-image="assets/images/koels/hk-koel-peacock.png">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Peacock Sky">
+            <img src="assets/images/koels/hk-koel-peacock.png" width="1254" height="1254" alt="">
+            <span class="hk-koel__shade" aria-hidden="true"></span>
+            <span class="hk-koel__copy">
+              <span class="hk-koel__badge">Kahani Original</span>
+              <span class="hk-koel__title">Peacock Sky</span>
+            </span>
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
+          class="hk-koel hk-reveal"
+          data-hk-koel
+          data-title="Monsoon Songs"
+          data-meta="Celebrate the year · Rain on the rooftop"
+          data-image="assets/images/koels/hk-koel-monsoon.png">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Monsoon Songs">
+            <img src="assets/images/koels/hk-koel-monsoon.png" width="1254" height="1254" alt="">
+            <span class="hk-koel__shade" aria-hidden="true"></span>
+            <span class="hk-koel__copy">
+              <span class="hk-koel__badge">Celebrate the year</span>
+              <span class="hk-koel__title">Monsoon Songs</span>
+            </span>
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
+          class="hk-koel hk-reveal"
+          data-hk-koel
+          data-title="Night Train"
+          data-meta="Wander with wonder · Journeys after dark"
+          data-image="assets/images/koels/hk-koel-train.png">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Night Train">
+            <img src="assets/images/koels/hk-koel-train.png" width="1254" height="1254" alt="">
+            <span class="hk-koel__shade" aria-hidden="true"></span>
+            <span class="hk-koel__copy">
+              <span class="hk-koel__badge">Wander with wonder</span>
+              <span class="hk-koel__title">Night Train</span>
+            </span>
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+        <article
+          class="hk-koel hk-reveal"
+          data-hk-koel
+          data-title="Kitchen Stories"
+          data-meta="A Kahani Original · Everyday smells and smiles"
+          data-image="assets/images/koels/hk-koel-kitchen.png">
+          <button class="hk-koel__poster" type="button" data-hk-koel-preview aria-label="Preview Kitchen Stories">
+            <img src="assets/images/koels/hk-koel-kitchen.png" width="1254" height="1254" alt="">
+            <span class="hk-koel__shade" aria-hidden="true"></span>
+            <span class="hk-koel__copy">
+              <span class="hk-koel__badge">Everyday wonder</span>
+              <span class="hk-koel__title">Kitchen Stories</span>
+            </span>
+          </button>
+          <div class="hk-koel__actions">
+            <button class="hk-koel__preview" type="button" data-hk-koel-preview>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+              Preview
+            </button>
+            <button class="hk-koel__add" type="button" data-hk-koel-add>Add to bag</button>
+          </div>
+        </article>
+      </div>
       </div>
     </section>
 
@@ -754,7 +894,7 @@
         <img data-hk-koel-image src="assets/images/koels/hk-shot-08-04-park-mindfulness.png" width="1254" height="1254" alt="">
       </div>
       <p class="hk-dialog__meta" data-hk-koel-meta></p>
-      <button class="hk-btn hk-btn--primary" type="button" data-hk-close-dialog style="width:100%">Add to bag</button>
+      <button class="hk-btn hk-btn--primary" type="button" data-hk-koel-dialog-add style="width:100%">Add to bag</button>
     </div>
   </dialog>
 
@@ -764,7 +904,8 @@
         <h2 id="bag-title">Your story bag</h2>
         <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close bag">×</button>
       </div>
-      <p class="hk-muted">Your bag is empty. Explore Koels and add a favourite when you’re ready.</p>
+      <p class="hk-muted" data-hk-bag-empty>Your bag is empty. Explore Koels and add a favourite when you’re ready.</p>
+      <ul class="hk-bag-list" data-hk-bag-list hidden></ul>
       <div class="hk-btn-row">
         <button class="hk-btn hk-btn--primary" type="button" data-hk-close-dialog>Keep exploring</button>
       </div>

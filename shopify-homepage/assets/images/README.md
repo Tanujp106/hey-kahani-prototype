@@ -6,7 +6,8 @@ All 12 generated PNGs are saved in this website's asset tree. Paths below are re
 
 | Intended use | Website path | Native pixels |
 | --- | --- | --- |
-| Hero with text space on the left | `assets/images/hero/hk-shot-01.png` | 1122 × 1402 |
+| Hero with text space on the left (narrow screens) | `assets/images/hero/hk-shot-01.png` | 1122 × 1402 |
+| Extended wide hero for desktop | `assets/images/hero/hk-shot-01-wide.png` | 1672 × 941 |
 | Bliss listening | `assets/images/editorial/hk-shot-02.png` | 1086 × 1448 |
 | Holding / show-and-tell | `assets/images/editorial/hk-shot-03.png` | 1122 × 1402 |
 | Parent companion app concept | `assets/images/app/hk-shot-04.png` | 1254 × 1254 |
@@ -19,20 +20,20 @@ All 12 generated PNGs are saved in this website's asset tree. Paths below are re
 | Park mindfulness picnic | `assets/images/koels/hk-shot-08-04-park-mindfulness.png` | 1254 × 1254 |
 | Market and temple travel | `assets/images/koels/hk-shot-08-05-market-temple.png` | 1254 × 1254 |
 
+The hero uses the extended wide image above 720px and keeps the original portrait image for narrower screens. The wide image is an edited concept variation of the original hero, with more room around the child and Player.
+
 Example from `shopify-homepage/index.html`:
 
 ```html
-<img
-  src="assets/images/hero/hk-shot-01.png"
-  alt="A child laughing beside the Kahani Player on a cream rug"
-  width="1122"
-  height="1402"
->
+<picture>
+  <source media="(min-width: 721px)" srcset="assets/images/hero/hk-shot-01-wide.png">
+  <img src="assets/images/hero/hk-shot-01.png" alt="A child smiling beside the Kahani Player and illustrated Koel discs on a cream rug">
+</picture>
 ```
 
-`generated-campaign.json` provides the same paths, dimensions, and provenance for later integration. These files have been saved for use; this step does not assign them to page sections or change existing image references.
+`generated-campaign.json` provides the paths, dimensions, and provenance. Homepage sections reference these campaign assets directly; the hero uses the extended wide variant on desktop and the original portrait image on narrow screens.
 
-All files remain generated concept art, with approximate hardware geometry and unapproved story illustrations. The parent phone interface is a fictional app concept. Native files are below the brief's 2400px long-edge target and have no verified embedded sRGB ICC profile. No resizing, cropping, recoloring, or format conversion was applied.
+All files remain generated concept art, with approximate hardware geometry and unapproved story illustrations. The parent phone interface is a fictional app concept. Native files are below the brief's 2400px long-edge target and have no verified embedded sRGB ICC profile. The original campaign assets were not resized, cropped, recolored, or format converted; the wide hero is a separate generated edit.
 
 ## Testimonial content
 
