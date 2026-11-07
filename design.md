@@ -180,7 +180,7 @@ These are project decisions from this chat, not rules stated in the PDF:
    User correction on November 4, 2026: keep the collection on the continuous page ground (now white), without a grey studio backdrop or framed panel. Pedestals still use Kesar Sand and Coconut Husk with tonal shading for depth.
    User direction on November 4, 2026 (updated later same day): Koel preview is a centered vertical overlay — title, circular Koel art, circular play control, live continuous sound wavelength (Web Audio analyser; collapses to a single line when paused), then Add to bag. Keep the existing open motion. A design-preview sample may drive the wavelength until approved excerpts exist.
 4. About (asymmetric bento feature showcase for brand pillars).
-5. Founder story (homepage section replaced the earlier Founder’s Bundle slot on November 4, 2026): Daylight-style “note from our founders” letter—personal origin, why Hey Kahani exists, invitation, sign-off, and shop CTA—set flat on the white page ground with no atmospheric background and no paper/card plate. Content follows the live site founder narrative. Founder names stay generic until approved.
+5. Founder story (homepage section replaced the earlier Founder’s Bundle slot on November 4, 2026; layout updated November 7, 2026): open split on the page ground—no card containers. Left: eyebrow, display title, origin story, sign-off, Gulab shop CTA. Right: founder portrait (`assets/images/founders/founder-portrait.jpg`) as a bare image. No Story Ink/blue surfaces. Content follows the live site founder narrative. Founder names stay generic until approved.
 6. Customer stories.
 7. FAQs.
 8. Footer.

@@ -1644,24 +1644,26 @@ input {
 
 .hk-koel__badge {
   position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  max-width: calc(100% - 12px);
-  padding: 5px 9px;
-  border-radius: 0 var(--hk-radius-lg) 0 var(--hk-radius-sm);
-  border: 0;
-  background: var(--hk-kesar);
+  max-width: calc(100% - 24px);
+  padding: 5px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(5, 51, 74, 0.14);
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(5, 51, 74, 0.1);
   font-size: var(--hk-text-fine);
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   line-height: 1.2;
   color: var(--hk-ink);
   text-align: center;
+  white-space: nowrap;
 }
 
 .hk-koel__actions {
@@ -1946,20 +1948,64 @@ input {
   }
 }
 
-/* Founder */
+/* Founder — open split, no card containers */
 .hk-founder {
-  max-width: 40rem;
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+  max-width: none;
 }
 
-.hk-founder p {
+@media (min-width: 900px) {
+  .hk-founder {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(40px, 5vw, 72px);
+  }
+}
+
+.hk-founder__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   color: var(--hk-ink);
+}
+
+.hk-founder__copy .hk-eyebrow {
+  margin: 0;
+}
+
+.hk-founder__copy .hk-display {
+  margin: 0;
+  max-width: 14ch;
+}
+
+.hk-founder__copy > p {
+  margin: 0;
+  max-width: 40ch;
+  color: var(--hk-ink);
+  font-size: var(--hk-text-body);
+  font-weight: var(--hk-font-weight-body);
+  line-height: 1.5;
 }
 
 .hk-founder__sign {
-  margin-top: 28px;
+  margin-top: 8px;
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-subhead);
   color: var(--hk-ink);
+}
+
+.hk-founder__copy .hk-btn-row {
+  margin-top: 8px;
+}
+
+.hk-founder__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
 }
 
 /* Family stories — staggered keepsake windows */
