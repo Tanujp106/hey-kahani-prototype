@@ -1504,24 +1504,20 @@ input {
   }
 }
 
-/* Koels — catalogue rail: posters + View all / arrows + on-card actions */
+/* Koels — catalogue grid: centered intro + Explore CTA + cards */
 .hk-koels__head {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px 28px;
+  justify-content: center;
   margin-bottom: 4px;
 }
 
 .hk-koels__intro {
-  flex: 1 1 18rem;
-  max-width: 38rem;
-  text-align: left;
+  max-width: 40rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
 }
 
 .hk-koels__intro .hk-lead {
@@ -1529,26 +1525,9 @@ input {
   max-width: 42ch;
 }
 
-.hk-koels__toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px;
-  margin-left: auto;
-}
-
-.hk-koels__view-all {
-  font-size: var(--hk-text-body-sm);
-  font-weight: 600;
-  color: var(--hk-ink);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--hk-duration) var(--hk-ease), color var(--hk-duration) var(--hk-ease);
-}
-
-.hk-koels__view-all:hover {
-  border-bottom-color: currentColor;
+.hk-koels__intro .hk-btn-row {
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .hk-koel-grid {
@@ -1562,7 +1541,7 @@ input {
 .hk-koel {
   width: 100%;
   min-width: 0;
-  padding: 20px;
+  padding: 12px 14px 14px;
   border: 1px solid var(--hk-hairline);
   border-radius: var(--hk-radius-lg);
   background: var(--hk-canvas-soft);
@@ -1573,7 +1552,7 @@ input {
   isolation: isolate;
   display: grid;
   grid-template-rows: 1fr auto;
-  gap: 16px;
+  gap: 10px;
 }
 
 .hk-koel.hk-reveal {
@@ -1596,7 +1575,7 @@ input {
   }
 
   .hk-koel {
-    padding: 12px;
+    padding: 12px 10px 10px;
   }
 }
 
@@ -1607,9 +1586,9 @@ input {
   margin: 0;
   position: relative;
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   justify-items: center;
-  gap: 8px;
+  gap: 4px;
   width: 100%;
   border-radius: var(--hk-radius-sm);
   background: transparent;
@@ -1620,7 +1599,7 @@ input {
 .hk-koel__poster img {
   z-index: 0;
   display: block;
-  width: 100%;
+  width: 88%;
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
@@ -1639,8 +1618,8 @@ input {
   display: grid;
   align-content: start;
   justify-items: center;
-  gap: 8px;
-  padding: 4px 2px 0;
+  gap: 4px;
+  padding: 0 2px;
   text-align: center;
   pointer-events: none;
 }
@@ -1648,7 +1627,7 @@ input {
 .hk-koel__title {
   margin: 0;
   font-family: var(--hk-font-body);
-  font-size: var(--hk-text-body);
+  font-size: 1.125rem; /* ~18px — a step above body for card titles */
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -1664,16 +1643,20 @@ input {
 }
 
 .hk-koel__badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  max-width: 100%;
-  padding: 4px 7px;
-  border-radius: 9999px;
+  max-width: calc(100% - 12px);
+  padding: 5px 9px;
+  border-radius: 0 var(--hk-radius-lg) 0 var(--hk-radius-sm);
   border: 0;
-  background: color-mix(in srgb, var(--hk-mango) 30%, var(--hk-kesar));
-  font-size: var(--hk-text-body-sm);
+  background: var(--hk-kesar);
+  font-size: var(--hk-text-fine);
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -1684,7 +1667,7 @@ input {
 .hk-koel__actions {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 10px;
+  gap: 8px;
   min-height: 36px;
 }
 
@@ -1760,14 +1743,14 @@ input {
 
 .hk-koel__add {
   appearance: none;
-  position: relative;
   width: 100%;
   min-width: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-height: 44px;
-  padding: 0 32px;
+  padding: 0 16px;
   border: 0;
   border-radius: 9999px;
   background: var(--hk-action);
@@ -1785,8 +1768,7 @@ input {
 }
 
 .hk-koel__add svg {
-  position: absolute;
-  left: 14px;
+  flex: 0 0 auto;
   display: block;
 }
 
@@ -1868,14 +1850,6 @@ input {
   outline-offset: 3px;
 }
 
-@media (max-width: 720px) {
-  .hk-koels__toolbar {
-    width: 100%;
-    justify-content: space-between;
-    margin-left: 0;
-  }
-}
-
 /* About — belief + three feelings */
 .hk-about {
   background: var(--hk-canvas);
@@ -1885,16 +1859,21 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  max-width: 40rem;
+  gap: 16px;
+  max-width: 48rem;
   margin-inline: auto;
   text-align: center;
 }
 
 .hk-about__intro .hk-lead {
-  margin: 4px 0 0;
-  max-width: 48ch;
+  margin: 0;
+  max-width: 62ch;
   text-wrap: balance;
+}
+
+.hk-about__intro .hk-about__cta {
+  justify-content: center;
+  margin: 4px 0 0;
 }
 
 .hk-about__moments {
@@ -1949,11 +1928,6 @@ input {
   margin: 0;
   max-width: 28ch;
   color: var(--hk-ink);
-}
-
-.hk-about__cta {
-  justify-content: center;
-  margin-top: clamp(28px, 4vw, 40px);
 }
 
 @media (hover: hover) and (pointer: fine) {
