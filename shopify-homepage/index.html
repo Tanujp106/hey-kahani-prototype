@@ -698,10 +698,10 @@
       <div class="hk-wrap">
         <div class="hk-about__intro hk-reveal">
           <h2 class="hk-display hk-display--lg" id="about-title">Stories that feel like them.</h2>
+          <p class="hk-lead">Too many kids never hear themselves in the story. We keep South Asian storytelling close — screen-free, and full of home.</p>
           <div class="hk-about__cta hk-btn-row">
             <a class="hk-btn hk-btn--primary" href="#koels">Explore Koels</a>
           </div>
-          <p class="hk-lead">Too many kids never hear themselves in the story. We keep South Asian storytelling close — screen-free, and full of home.</p>
         </div>
         <div class="hk-about__moments" role="list">
           <article class="hk-about__moment hk-reveal" role="listitem">
@@ -732,9 +732,10 @@
     <section class="hk-section" id="founder" aria-labelledby="founder-title">
       <div class="hk-wrap">
         <div class="hk-founder hk-reveal">
-          <div class="hk-founder__copy">
-            <p class="hk-eyebrow">From our founders</p>
+          <header class="hk-founder__intro">
             <h2 class="hk-display hk-display--lg" id="founder-title">We started for our kids.</h2>
+          </header>
+          <div class="hk-founder__copy">
             <p>We’re South Asian parents raising children in the diaspora too. As a 4th generation Gujarati-Kenyan married to a 1st generation Tamil-American, we wanted our daughters to feel connected to every part of their heritage. The stories we found were never quite the right fit.</p>
             <p>We started Hey Kahani because our kids deserve stories that feel like them. Full of our values, festivals, heroes, and humour. Not a simplified version of culture. The real thing.</p>
             <p>Join us in keeping those stories close for the next generation of diaspora kids.</p>
@@ -743,12 +744,29 @@
               <a class="hk-btn hk-btn--primary" href="#koels">Shop now</a>
             </div>
           </div>
-          <img
-            class="hk-founder__photo"
-            src="assets/images/founders/founder-portrait.jpg"
-            width="1024"
-            height="753"
-            alt="Hey Kahani founder seated beside the Kahani Player">
+          <div class="hk-founder__media">
+            <img
+              class="hk-founder__photo"
+              src="assets/images/founders/founder-portrait.jpg"
+              width="1024"
+              height="753"
+              alt="Hey Kahani founder seated beside the Kahani Player">
+            <svg class="hk-founder__postmark" viewBox="0 0 208 112" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.72">
+                <rect x="130" y="10" width="68" height="88" fill="#fff8ec" stroke-dasharray="2 3"/>
+                <rect x="137" y="17" width="54" height="74"/>
+                <circle cx="57" cy="56" r="31"/>
+                <circle cx="57" cy="56" r="26"/>
+                <path d="M84 42c12-9 22 9 34 0s22 9 34 0M86 53c12-9 22 9 34 0s22 9 34 0M84 64c12-9 22 9 34 0s22 9 34 0"/>
+                <path d="M164 65l-14-13c-13-12 6-26 14-12 8-14 27 0 14 12z" stroke-width="1.7"/>
+              </g>
+              <g fill="currentColor" font-family="Open Sans, sans-serif" font-size="8" font-weight="600" text-anchor="middle" letter-spacing="1">
+                <text x="57" y="53">FROM OUR</text>
+                <text x="57" y="65">FAMILY</text>
+                <text x="164" y="81" font-size="6.5">WITH LOVE</text>
+              </g>
+            </svg>
+          </div>
         </div>
       </div>
     </section>
@@ -876,55 +894,55 @@
   </main>
 
   <footer class="hk-footer" id="footer">
-    <div class="hk-footer__signup">
-      <div class="hk-wrap hk-footer__signup-inner">
-        <div class="hk-footer__signup-copy">
-          <h2 class="hk-footer__signup-title">A little Kahani in your inbox</h2>
-          <p>Stories and updates, when there’s something to share.</p>
-        </div>
-        <form class="hk-newsletter" action="#" method="post" onsubmit="return false;">
-          <label class="visually-hidden" for="newsletter-email">Email address</label>
-          <div class="hk-newsletter__row">
-            <input id="newsletter-email" type="email" name="email" placeholder="Email address" autocomplete="email">
-            <button class="hk-btn hk-btn--primary" type="submit">Join</button>
-          </div>
-          <small>We’ll connect this to the Shopify email flow when the store is live.</small>
-        </form>
-      </div>
-    </div>
-
-    <div class="hk-wrap hk-footer__main">
-      <div class="hk-footer__brand">
-        <a class="hk-wordmark" href="/">
+    <div class="hk-wrap">
+      <div class="hk-footer__brand-row">
+        <a class="hk-wordmark hk-footer__wordmark" href="/">
           <img src="assets/images/brand/wordmark.svg" width="275" height="131" alt="Hey Kahani">
         </a>
-        <p>Little stories. Lasting connections.</p>
+        <p class="hk-footer__community">
+          Little stories. Lasting connections.
+          <a href="#community">Meet the community</a>
+        </p>
       </div>
 
-      <nav class="hk-footer__cols" aria-label="Footer">
-        <div class="hk-footer__col">
-          <h3>Explore</h3>
-          <a href="#koels">Shop Koels</a>
-          <a href="#how">How it works</a>
-          <a href="#app">The app</a>
+      <div class="hk-footer__grid">
+        <div class="hk-footer__newsletter">
+          <p class="hk-footer__label">Newsletter</p>
+          <h2 class="hk-display hk-display--md hk-footer__newsletter-title">A little Kahani in your inbox</h2>
+          <p class="hk-footer__newsletter-lead">Stories and updates, when there’s something to share.</p>
+          <form class="hk-newsletter" action="#" method="post" onsubmit="return false;">
+            <label class="visually-hidden" for="newsletter-email">Email address</label>
+            <div class="hk-newsletter__row">
+              <input id="newsletter-email" type="email" name="email" placeholder="Email address" autocomplete="email">
+              <button class="hk-btn hk-btn--primary" type="submit">Join</button>
+            </div>
+            <small>We’ll connect this to the Shopify email flow when the store is live.</small>
+          </form>
         </div>
-        <div class="hk-footer__col">
-          <h3>About</h3>
-          <a href="#about">Our story</a>
-          <a href="#community">Community</a>
-          <a href="#faqs">FAQs</a>
-        </div>
-        <div class="hk-footer__col">
-          <h3>Help</h3>
-          <a href="#faqs">Support</a>
-          <a href="#app">Companion app</a>
-          <a href="#top">Back to top</a>
-        </div>
-      </nav>
-    </div>
 
-    <div class="hk-footer__base">
-      <div class="hk-wrap hk-footer__base-inner">
+        <nav class="hk-footer__cols" aria-label="Footer">
+          <div class="hk-footer__col">
+            <h3>Explore</h3>
+            <a href="#koels">Shop Koels</a>
+            <a href="#how">How it works</a>
+            <a href="#app">The app</a>
+          </div>
+          <div class="hk-footer__col">
+            <h3>About</h3>
+            <a href="#about">Our story</a>
+            <a href="#community">Community</a>
+            <a href="#faqs">FAQs</a>
+          </div>
+          <div class="hk-footer__col">
+            <h3>Help</h3>
+            <a href="#faqs">Support</a>
+            <a href="#app">Companion app</a>
+            <a href="#top">Back to top</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hk-footer__base">
         <p class="hk-footer__legal">© <span id="year">2026</span> Hey Kahani. All rights reserved.</p>
         <div class="hk-footer__legal-links">
           <a href="#faqs">Privacy</a>

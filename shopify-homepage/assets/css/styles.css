@@ -107,8 +107,6 @@ input {
 .hk-about__moment p,
 .hk-founder p,
 .hk-faq details p,
-.hk-footer__brand p,
-.hk-newsletter p,
 .hk-how__step-text,
 .hk-dialog__meta {
   font-size: var(--hk-text-body);
@@ -1948,64 +1946,169 @@ input {
   }
 }
 
-/* Founder — open split, no card containers */
-.hk-founder {
-  display: grid;
-  gap: clamp(28px, 4vw, 48px);
-  align-items: center;
-  max-width: none;
+/* Founder — a tactile postcard, with a live letter and framed portrait. */
+#founder.hk-section {
+  padding-block: clamp(40px, 5vw, 64px);
 }
 
-@media (min-width: 900px) {
-  .hk-founder {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(40px, 5vw, 72px);
-  }
+.hk-founder {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 24px;
+  align-items: start;
+  max-width: var(--hk-content);
+  margin-inline: auto;
+  padding: clamp(24px, 3.6vw, 44px);
+  border: 1px solid rgba(106, 5, 38, 0.17);
+  border-radius: 3px;
+  background-color: var(--hk-kesar);
+  background-image:
+    linear-gradient(125deg, rgba(255, 255, 255, 0.18), transparent 55%),
+    url("../images/textures/postcard-paper.webp");
+  background-size: auto, 768px 512px;
+  box-shadow:
+    0 2px 3px rgba(85, 52, 27, 0.09),
+    0 16px 36px rgba(85, 52, 27, 0.10),
+    inset 0 0 24px rgba(230, 206, 173, 0.25);
+}
+
+.hk-founder::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(106, 5, 38, 0.12);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.hk-founder__media {
+  position: relative;
+  min-width: 0;
+  margin-top: 24px;
+}
+
+.hk-founder__media::after {
+  content: "";
+  display: block;
+  width: 76%;
+  height: 44px;
+  margin: 16px 10px 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 13px,
+    rgba(106, 5, 38, 0.18) 13px 14px,
+    transparent 14px 15px
+  );
+  pointer-events: none;
+}
+
+.hk-founder__postmark {
+  position: absolute;
+  z-index: 1;
+  top: -38px;
+  right: -10px;
+  width: 164px;
+  height: auto;
+  color: var(--hk-sindoor);
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+
+.hk-founder__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+}
+
+.hk-founder__intro .hk-eyebrow {
+  margin: 0;
+}
+
+.hk-founder__intro .hk-display {
+  margin: 0;
+  text-wrap: balance;
 }
 
 .hk-founder__copy {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  max-width: 60ch;
   color: var(--hk-ink);
-}
-
-.hk-founder__copy .hk-eyebrow {
-  margin: 0;
-}
-
-.hk-founder__copy .hk-display {
-  margin: 0;
-  max-width: 14ch;
 }
 
 .hk-founder__copy > p {
   margin: 0;
-  max-width: 40ch;
   color: var(--hk-ink);
+  font-family: var(--hk-font-display);
   font-size: var(--hk-text-body);
   font-weight: var(--hk-font-weight-body);
   line-height: 1.5;
 }
 
 .hk-founder__sign {
-  margin-top: 8px;
+  margin-top: 4px;
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-subhead);
+  line-height: 1.35;
   color: var(--hk-ink);
 }
 
 .hk-founder__copy .hk-btn-row {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .hk-founder__photo {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 4;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
+  border: 8px solid var(--hk-canvas-soft);
+  background: var(--hk-canvas-soft);
+  box-shadow: 0 3px 9px rgba(85, 52, 27, 0.17);
+  transform: rotate(-1deg);
+}
+
+@media (min-width: 980px) {
+  .hk-founder {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "intro photo"
+      "copy photo";
+    column-gap: clamp(36px, 4vw, 48px);
+    row-gap: 20px;
+  }
+
+  .hk-founder::after {
+    content: "";
+    position: absolute;
+    top: 32px;
+    bottom: 32px;
+    left: calc(54% - 5px);
+    border-left: 1px solid rgba(106, 5, 38, 0.17);
+    pointer-events: none;
+  }
+
+  .hk-founder__intro {
+    grid-area: intro;
+  }
+
+  .hk-founder__copy {
+    grid-area: copy;
+    max-width: none;
+  }
+
+  .hk-founder__media {
+    grid-area: photo;
+    align-self: center;
+    margin-top: 20px;
+  }
 }
 
 /* Family stories — staggered keepsake windows */
@@ -2315,51 +2418,102 @@ input {
   }
 }
 
-/* Footer — light ecommerce columns + signup band (Mobbin: UO / Dollar Shave Club structure) */
+/* Footer — VanMoof-style: brand row, newsletter column + links, legal base */
 .hk-footer {
   background: var(--hk-canvas-warm);
-  padding: 0;
+  padding: clamp(40px, 6vw, 72px) 0 clamp(28px, 4vw, 40px);
   color: var(--hk-ink);
 }
 
-.hk-footer__signup {
+.hk-footer__brand-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding-bottom: clamp(28px, 4vw, 40px);
   border-bottom: 1px solid var(--hk-hairline);
-  padding: clamp(28px, 4vw, 40px) 0;
 }
 
-.hk-footer__signup-inner {
+.hk-footer__wordmark img {
+  width: 132px;
+  height: auto;
+}
+
+.hk-footer__community {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
+  font-size: var(--hk-text-body-sm);
+  font-weight: var(--hk-font-weight-body);
+  line-height: 1.4;
+  color: var(--hk-ink);
+  text-align: right;
+}
+
+.hk-footer__community a {
+  color: var(--hk-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hk-footer__community a:hover {
+  color: var(--hk-sindoor);
+}
+
+.hk-footer__grid {
   display: grid;
-  gap: 20px;
-  align-items: end;
+  gap: clamp(36px, 5vw, 56px);
+  padding: clamp(36px, 5vw, 56px) 0;
+  border-bottom: 1px solid var(--hk-hairline);
 }
 
-@media (min-width: 800px) {
-  .hk-footer__signup-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
-    gap: 40px;
+@media (min-width: 900px) {
+  .hk-footer__grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: clamp(48px, 6vw, 80px);
+    align-items: start;
   }
 }
 
-.hk-footer__signup-title {
-  margin: 0 0 8px;
-  font-family: var(--hk-font-display);
-  font-size: var(--hk-text-subhead);
+.hk-footer__newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 34rem;
+}
+
+.hk-footer__label {
+  margin: 0;
+  font-family: var(--hk-font-body);
+  font-size: var(--hk-text-body-sm);
   font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--hk-muted);
+}
+
+.hk-footer__newsletter-title {
+  margin: 0;
+  max-width: 14ch;
   color: var(--hk-ink);
 }
 
-.hk-footer__signup-copy p {
+.hk-footer__newsletter-lead {
   margin: 0;
+  max-width: 36ch;
   font-size: var(--hk-text-body-sm);
   font-weight: var(--hk-font-weight-body);
   line-height: 1.45;
   color: var(--hk-ink);
-  max-width: 36ch;
 }
 
 .hk-footer .hk-newsletter {
+  width: 100%;
+  margin-top: 8px;
   min-width: 0;
 }
 
@@ -2391,44 +2545,16 @@ input {
   color: var(--hk-muted);
 }
 
-.hk-footer__main {
-  display: grid;
-  gap: 36px;
-  padding: clamp(36px, 5vw, 56px) 0 clamp(28px, 4vw, 40px);
-}
-
-@media (min-width: 800px) {
-  .hk-footer__main {
-    grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr);
-    gap: 48px;
-    align-items: start;
-  }
-}
-
-.hk-footer__brand p {
-  margin: 12px 0 0;
-  font-size: var(--hk-text-body-sm);
-  font-weight: var(--hk-font-weight-body);
-  line-height: 1.45;
-  color: var(--hk-ink);
-  max-width: 24ch;
-}
-
-.hk-footer__brand .hk-wordmark img {
-  width: 118px;
-  height: auto;
-}
-
 .hk-footer__cols {
   display: grid;
   gap: 28px 32px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-@media (min-width: 720px) {
+@media (min-width: 600px) {
   .hk-footer__cols {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px 40px;
+    gap: 24px 36px;
   }
 }
 
@@ -2445,7 +2571,7 @@ input {
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--hk-ink);
+  color: var(--hk-muted);
 }
 
 .hk-footer__col a {
@@ -2461,16 +2587,12 @@ input {
 }
 
 .hk-footer__base {
-  border-top: 1px solid var(--hk-hairline);
-  padding: 18px 0 28px;
-}
-
-.hk-footer__base-inner {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 24px;
   justify-content: space-between;
   align-items: center;
+  padding-top: 20px;
 }
 
 .hk-footer__legal {
