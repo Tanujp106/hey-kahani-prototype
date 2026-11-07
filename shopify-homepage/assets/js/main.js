@@ -14,24 +14,47 @@
   const bagCountEls = document.querySelectorAll(".hk-nav__bag-count");
   const bagEmpty = bagDialog?.querySelector("[data-hk-bag-empty]");
   const bagList = bagDialog?.querySelector("[data-hk-bag-list]");
+  const bagFoot = bagDialog?.querySelector("[data-hk-bag-foot]");
+  const bagTotal = bagDialog?.querySelector("[data-hk-bag-total]");
+  const accountForm = accountDialog?.querySelector("[data-hk-account-form]");
 
   const dialogTitle = koelDialog?.querySelector("[data-hk-koel-title]");
   const dialogMeta = koelDialog?.querySelector("[data-hk-koel-meta]");
   const dialogImage = koelDialog?.querySelector("[data-hk-koel-image]");
   const dialogAdd = koelDialog?.querySelector("[data-hk-koel-dialog-add]");
 
-  /** @type {{ title: string, meta: string, image: string }[]} */
+  /** @type {{ key: string, title: string, meta: string, image: string, price: number, qty: number }[]} */
   const bagItems = [];
   let activeKoel = null;
 
-  const readKoel = (card) => ({
-    title: card?.dataset.title || "Koel",
-    meta: card?.dataset.meta || "",
-    image: card?.dataset.image || "",
-  });
+  const parsePrice = (value) => {
+    const amount = Number.parseFloat(String(value || "").replace(/[^0-9.]/g, ""));
+    return Number.isFinite(amount) ? amount : 0;
+  };
+
+  const formatPrice = (amount) => `$${amount.toFixed(2)}`;
+
+  const readKoel = (card) => {
+    const priceEl = card?.querySelector?.("[data-hk-koel-price]");
+    const priceLabel = priceEl?.textContent?.trim() || "$0.00";
+    const title = card?.dataset?.title || "Koel";
+    const image = card?.dataset?.image || "";
+    return {
+      key: `${title}::${image}`,
+      title,
+      meta: card?.dataset?.meta || "",
+      image,
+      price: parsePrice(priceLabel),
+    };
+  };
+
+  const bagUnitCount = () => bagItems.reduce((sum, item) => sum + item.qty, 0);
+
+  const bagSubtotal = () =>
+    bagItems.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const updateBagChrome = () => {
-    const count = bagItems.length;
+    const count = bagUnitCount();
     bagCountEls.forEach((el) => {
       el.textContent = String(count);
     });
@@ -40,16 +63,60 @@
     });
 
     if (!bagEmpty || !bagList) return;
-    const empty = count === 0;
+    const empty = bagItems.length === 0;
     bagEmpty.hidden = !empty;
     bagList.hidden = empty;
+    if (bagFoot) bagFoot.hidden = empty;
+    if (bagTotal) bagTotal.textContent = formatPrice(bagSubtotal());
+
     bagList.replaceChildren();
     bagItems.forEach((item) => {
       const li = document.createElement("li");
       li.className = "hk-bag-list__item";
-      li.innerHTML = `<img src="${item.image}" width="48" height="48" alt=""><div><strong></strong><span></span></div>`;
+      li.innerHTML = `
+        <img src="" width="72" height="72" alt="">
+        <div class="hk-bag-list__copy">
+          <strong></strong>
+          <span class="hk-bag-list__meta"></span>
+          <div class="hk-bag-list__row">
+            <div class="hk-bag-list__qty" role="group" aria-label="Quantity">
+              <button type="button" data-hk-bag-qty="-1" aria-label="Decrease quantity">−</button>
+              <span data-hk-bag-qty-value></span>
+              <button type="button" data-hk-bag-qty="1" aria-label="Increase quantity">+</button>
+            </div>
+            <span class="hk-bag-list__price"></span>
+            <button type="button" class="hk-bag-list__remove" data-hk-bag-remove aria-label="Remove from bag">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h16M9 7V5h6v2m-7 3v8m4-8v8m4-8v8M6 7l1 13h10l1-13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>`;
+      const img = li.querySelector("img");
+      img.src = item.image;
+      img.alt = "";
       li.querySelector("strong").textContent = item.title;
-      li.querySelector("span").textContent = item.meta;
+      li.querySelector(".hk-bag-list__meta").textContent = item.meta;
+      li.querySelector("[data-hk-bag-qty-value]").textContent = String(item.qty);
+      li.querySelector(".hk-bag-list__price").textContent = formatPrice(item.price * item.qty);
+      li.querySelectorAll("[data-hk-bag-qty]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const delta = Number(btn.getAttribute("data-hk-bag-qty")) || 0;
+          const next = item.qty + delta;
+          if (next <= 0) {
+            const at = bagItems.findIndex((entry) => entry.key === item.key);
+            if (at >= 0) bagItems.splice(at, 1);
+          } else {
+            item.qty = next;
+          }
+          updateBagChrome();
+        });
+      });
+      li.querySelector("[data-hk-bag-remove]")?.addEventListener("click", () => {
+        const at = bagItems.findIndex((entry) => entry.key === item.key);
+        if (at >= 0) bagItems.splice(at, 1);
+        updateBagChrome();
+      });
       bagList.appendChild(li);
     });
   };
@@ -59,10 +126,28 @@
   const koelBagCheckIcon =
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 12.5 10 17l8.5-9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+  const bagSnackbar = document.querySelector("[data-hk-snackbar]");
+  const bagSnackbarMessage = bagSnackbar?.querySelector("[data-hk-snackbar-message]");
+  let bagSnackbarTimer;
+
+  const showBagConfirmation = (title) => {
+    if (!bagSnackbar || !bagSnackbarMessage) return;
+    window.clearTimeout(bagSnackbarTimer);
+    bagSnackbarMessage.textContent = `${title} added to bag`;
+    bagSnackbar.classList.add("is-visible");
+    bagSnackbarTimer = window.setTimeout(() => {
+      bagSnackbar.classList.remove("is-visible");
+      bagSnackbarMessage.textContent = "";
+    }, 3500);
+  };
+
   const addKoelToBag = (koel, trigger) => {
     if (!koel?.title) return;
-    bagItems.push(koel);
+    const existing = bagItems.find((item) => item.key === koel.key);
+    if (existing) existing.qty += 1;
+    else bagItems.push({ ...koel, qty: 1 });
     updateBagChrome();
+    showBagConfirmation(koel.title);
     if (trigger) {
       trigger.classList.add("is-added");
       trigger.setAttribute("aria-label", "Added to bag");
@@ -84,6 +169,10 @@
     dialogImage.alt = `${activeKoel.title} artwork`;
     koelDialog.showModal();
   };
+
+  accountForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+  });
 
   const nav = document.querySelector(".hk-nav");
   const hero = document.querySelector(".hk-hero");

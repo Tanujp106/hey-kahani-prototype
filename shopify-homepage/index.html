@@ -13,6 +13,15 @@
 <body>
   <a class="hk-skip" href="#main">Skip to content</a>
 
+  <aside class="hk-announcement" aria-label="Store announcements">
+    <!-- Replace these existing USPs with approved delivery or promotional copy as needed. -->
+    <ul class="hk-announcement__messages">
+      <li>Screen free by design</li>
+      <li>Made for little hands</li>
+      <li>Stories that feel like home</li>
+    </ul>
+  </aside>
+
   <header class="hk-nav">
     <div class="hk-wrap hk-nav__inner">
       <a class="hk-wordmark" href="/" aria-label="Hey Kahani home">
@@ -907,7 +916,6 @@
 
       <div class="hk-footer__main">
         <div class="hk-footer__newsletter">
-          <p class="hk-footer__label">Newsletter</p>
           <h2 class="hk-display hk-display--md hk-footer__newsletter-title">A little Kahani in your inbox</h2>
           <p class="hk-footer__newsletter-lead">Stories and updates, when there’s something to share.</p>
           <form class="hk-newsletter" action="#" method="post" onsubmit="return false;">
@@ -916,7 +924,6 @@
               <input id="newsletter-email" type="email" name="email" placeholder="Email address" autocomplete="email">
               <button class="hk-btn hk-btn--primary" type="submit">Join</button>
             </div>
-            <small>We’ll connect this to the Shopify email flow when the store is live.</small>
           </form>
         </div>
 
@@ -966,16 +973,38 @@
     </div>
   </dialog>
 
-  <dialog class="hk-dialog" id="bag-dialog" aria-labelledby="bag-title">
-    <div class="hk-dialog__body">
-      <div class="hk-dialog__head">
-        <h2 id="bag-title">Your story bag</h2>
+  <dialog class="hk-dialog hk-dialog--drawer" id="bag-dialog" aria-labelledby="bag-title">
+    <div class="hk-drawer">
+      <div class="hk-drawer__head">
+        <h2 id="bag-title">My bag</h2>
         <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close bag">×</button>
       </div>
-      <p class="hk-muted" data-hk-bag-empty>Your bag is empty. Explore Koels and add a favourite when you’re ready.</p>
-      <ul class="hk-bag-list" data-hk-bag-list hidden></ul>
-      <div class="hk-btn-row">
-        <button class="hk-btn hk-btn--primary" type="button" data-hk-close-dialog>Keep exploring</button>
+      <div class="hk-drawer__body">
+        <div class="hk-drawer__empty" data-hk-bag-empty>
+          <svg class="hk-drawer__empty-art" viewBox="0 0 160 160" width="160" height="160" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="80" cy="80" r="69" fill="var(--hk-kesar)"/>
+            <ellipse cx="80" cy="137" rx="42" ry="5" fill="var(--hk-husk)" opacity="0.45"/>
+            <path d="M48 60h64l6 65q1 10-9 10H51q-10 0-9-10Z" fill="var(--hk-canvas)" stroke="var(--hk-gulab)" stroke-width="2.8" stroke-linejoin="round"/>
+            <path d="M62 67V49a18 18 0 0 1 36 0v18" stroke="var(--hk-gulab)" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="m128 31 2.5 7.5L138 41l-7.5 2.5L128 51l-2.5-7.5L118 41l7.5-2.5Z" fill="var(--hk-husk)"/>
+            <path d="M25 92v12m-6-6h12" stroke="var(--hk-gulab)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3 class="hk-drawer__empty-title">Your bag is empty</h3>
+          <p class="hk-drawer__empty-copy">Explore our Koels and find a story to bring home.</p>
+          <a class="hk-btn hk-btn--primary hk-drawer__empty-cta" href="#koels" data-hk-close-dialog>Explore Koels</a>
+        </div>
+        <ul class="hk-bag-list" data-hk-bag-list hidden></ul>
+      </div>
+      <div class="hk-drawer__foot" data-hk-bag-foot hidden>
+        <div class="hk-drawer__total">
+          <span>Total</span>
+          <strong data-hk-bag-total>$0.00</strong>
+        </div>
+        <button class="hk-btn hk-btn--primary hk-drawer__checkout" type="button" data-hk-bag-checkout disabled>
+          Checkout
+        </button>
+        <button class="hk-drawer__link" type="button" data-hk-close-dialog>Keep exploring</button>
+        <p class="hk-drawer__note">Checkout connects when the Shopify storefront is live. Prices shown are design placeholders.</p>
       </div>
     </div>
   </dialog>
@@ -997,18 +1026,38 @@
     </div>
   </dialog>
 
-  <dialog class="hk-dialog" id="account-dialog" aria-labelledby="account-title">
-    <div class="hk-dialog__body">
-      <div class="hk-dialog__head">
-        <h2 id="account-title">Account</h2>
-        <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close account">×</button>
+  <dialog class="hk-dialog hk-dialog--account" id="account-dialog" aria-labelledby="account-title">
+    <div class="hk-account">
+      <button class="hk-icon-btn hk-account__close" type="button" data-hk-close-dialog aria-label="Close account">×</button>
+      <a class="hk-wordmark hk-account__wordmark" href="/">
+        <img src="assets/images/brand/wordmark.svg" width="275" height="131" alt="Hey Kahani">
+      </a>
+      <h2 id="account-title">Log in</h2>
+      <form class="hk-account__form" action="#" method="post" data-hk-account-form>
+        <label class="hk-account__field">
+          <span class="visually-hidden">Email address</span>
+          <input id="account-email" type="email" name="email" placeholder="Email address*" autocomplete="email" required>
+        </label>
+        <label class="hk-account__field">
+          <span class="visually-hidden">Password</span>
+          <input id="account-password" type="password" name="password" placeholder="Password*" autocomplete="current-password" required>
+        </label>
+        <button class="hk-btn hk-btn--primary hk-account__submit" type="submit">Continue</button>
+      </form>
+      <div class="hk-account__links">
+        <p>Don’t have an account? <a href="#account-dialog">Sign up</a></p>
+        <p><a href="#account-dialog">Forgot your password?</a></p>
       </div>
-      <p class="hk-muted">Sign-in will use Shopify Customer Accounts when checkout goes live.</p>
-      <div class="hk-btn-row">
-        <button class="hk-btn hk-btn--primary" type="button" data-hk-close-dialog>Keep exploring</button>
-      </div>
+      <p class="hk-account__note">Sign-in will use Shopify Customer Accounts when checkout goes live.</p>
     </div>
   </dialog>
+
+  <div class="hk-snackbar" data-hk-snackbar role="status" aria-live="polite" aria-atomic="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 12.5 9.5 17 19 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span data-hk-snackbar-message></span>
+  </div>
 
   <script>
     document.getElementById("year").textContent = String(new Date().getFullYear());

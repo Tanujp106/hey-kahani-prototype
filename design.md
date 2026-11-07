@@ -162,6 +162,8 @@ A generated transparent cutout based on these renders is still a **concept recre
 
 These are project decisions from this chat, not rules stated in the PDF:
 
+- User direction on November 8, 2026: add a slim Sindoor/Kesar announcement bar above the navbar for USP/delivery messaging. Use existing product USPs until approved delivery copy is supplied. Show one concise message on narrow screens; the announcement scrolls away while the existing navbar remains sticky. This explicitly supersedes the earlier preference to omit first-viewport announcement bars; preserve the navbar’s wordmark clearspace.
+
 - User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place a warm Coconut Husk-tinted Preview button beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 
 - User direction on November 7, 2026: section titles across the `shopify-homepage/` refresh must share one size (`--hk-text-section` / `hk-display--lg`). No per-section heading size overrides (e.g. How it works vs companion app). Body copy uses Open Sans medium (500). Keep the scale in `design.md` and `tokens.css` in sync.
@@ -187,6 +189,7 @@ These are project decisions from this chat, not rules stated in the PDF:
 6. Customer stories.
 7. FAQs.
 8. Footer.
+9. Bag is a right-side overlay drawer (`#bag-dialog.hk-dialog--drawer`): line items with thumb, title, meta, qty −/+, line price, remove; sticky foot with Total, disabled Gulab Checkout placeholder, Keep exploring. Add-to-bag keeps the snackbar only and does not auto-open the drawer. Account is a centered form-only modal (`#account-dialog.hk-dialog--account`) with Yoto-inspired fields, Gulab Continue, and a Shopify Customer Accounts note—no photo panel.
 
 The Player moves from the right toward center as the second section arrives. A circular Koel is hidden in the initial landing fold, then enters the explanation and docks on its top plate. The first and second fold share the same white page background.
 
