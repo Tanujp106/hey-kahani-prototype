@@ -104,8 +104,7 @@ input {
   max-width: 42ch;
 }
 
-.hk-about__feature-copy p,
-.hk-about__item p,
+.hk-about__moment p,
 .hk-founder p,
 .hk-faq details p,
 .hk-footer__brand p,
@@ -1554,8 +1553,8 @@ input {
 
 .hk-koel-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 28px 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 24px;
   margin-top: 18px;
   padding-block: 8px 12px;
 }
@@ -1563,9 +1562,10 @@ input {
 .hk-koel {
   width: 100%;
   min-width: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  padding: 20px;
+  border: 1px solid var(--hk-hairline);
+  border-radius: var(--hk-radius-lg);
+  background: var(--hk-canvas-soft);
   text-align: center;
   color: inherit;
   position: relative;
@@ -1573,7 +1573,13 @@ input {
   isolation: isolate;
   display: grid;
   grid-template-rows: 1fr auto;
-  gap: 10px;
+  gap: 16px;
+}
+
+.hk-koel.hk-reveal {
+  transition: opacity var(--hk-duration) var(--hk-ease),
+    transform 180ms var(--hk-ease),
+    box-shadow 180ms var(--hk-ease);
 }
 
 @media (max-width: 1100px) {
@@ -1586,7 +1592,11 @@ input {
 @media (max-width: 720px) {
   .hk-koel-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 12px;
+    gap: 24px 12px;
+  }
+
+  .hk-koel {
+    padding: 12px;
   }
 }
 
@@ -1597,17 +1607,14 @@ input {
   margin: 0;
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
+  justify-items: center;
+  gap: 8px;
   width: 100%;
   border-radius: var(--hk-radius-sm);
   background: transparent;
-  transform-origin: center center;
   cursor: pointer;
   color: inherit;
-  transition:
-    transform var(--hk-duration) var(--hk-ease),
-    box-shadow var(--hk-duration) var(--hk-ease);
-  will-change: transform;
 }
 
 .hk-koel__poster img {
@@ -1640,12 +1647,19 @@ input {
 
 .hk-koel__title {
   margin: 0;
-  min-block-size: 2.4em;
   font-family: var(--hk-font-body);
-  font-size: var(--hk-text-body-sm);
+  font-size: var(--hk-text-body);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
+  color: var(--hk-ink);
+}
+
+.hk-koel__price {
+  font-family: var(--hk-font-body);
+  font-size: var(--hk-text-body);
+  font-weight: 700;
+  line-height: 1.4;
   color: var(--hk-ink);
 }
 
@@ -1655,7 +1669,7 @@ input {
   justify-content: center;
   margin: 0;
   max-width: 100%;
-  padding: 5px 8px;
+  padding: 4px 7px;
   border-radius: 9999px;
   border: 0;
   background: color-mix(in srgb, var(--hk-mango) 30%, var(--hk-kesar));
@@ -1668,25 +1682,26 @@ input {
 }
 
 .hk-koel__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
   min-height: 36px;
 }
 
 .hk-koel__preview {
   appearance: none;
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
-  flex: 1 1 72px;
+  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
   gap: 6px;
   margin: 0;
-  min-height: 36px;
-  padding: 0 8px;
-  border: 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--hk-hairline);
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.62);
   box-shadow: var(--hk-shadow-soft);
@@ -1704,18 +1719,55 @@ input {
   flex: 0 0 auto;
 }
 
+.hk-koel__preview > svg,
+.hk-koel__preview > span {
+  position: relative;
+  z-index: 1;
+}
+
+.hk-koel__preview .hk-koel__wave {
+  display: none;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: calc(100% - 24px);
+  height: 24px;
+  margin: auto;
+  fill: var(--hk-gulab);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.hk-koel__preview.is-playing .hk-koel__wave {
+  display: block;
+}
+
+.hk-koel__wave rect {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-koel__preview .hk-koel__wave {
+    /* JavaScript holds a representative bar pattern instead of updating it. */
+    opacity: 0.22;
+  }
+}
+
 .hk-koel__preview:hover {
   color: var(--hk-action);
 }
 
 .hk-koel__add {
   appearance: none;
-  flex: 1 1 72px;
+  position: relative;
+  width: 100%;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
-  padding: 0 10px;
+  min-height: 44px;
+  padding: 0 32px;
   border: 0;
   border-radius: 9999px;
   background: var(--hk-action);
@@ -1723,14 +1775,23 @@ input {
   font-family: var(--hk-font-body);
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
+  line-height: 1.2;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(211, 0, 10, 0.22);
   transition:
     background var(--hk-duration) var(--hk-ease),
     transform var(--hk-duration) var(--hk-ease),
     box-shadow var(--hk-duration) var(--hk-ease);
+}
+
+.hk-koel__add svg {
+  position: absolute;
+  left: 14px;
+  display: block;
+}
+
+.hk-koel__add-label {
+  text-align: center;
 }
 
 .hk-koel__add:hover {
@@ -1796,14 +1857,9 @@ input {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .hk-koel:has(.hk-koel__poster:hover),
-  .hk-koel:has(.hk-koel__poster:focus-visible) {
-    z-index: 3;
-  }
-
-  .hk-koel__poster:hover,
-  .hk-koel__poster:focus-visible {
-    transform: scale(1.04);
+  .hk-koel.is-in:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--hk-shadow-soft);
   }
 }
 
@@ -1820,81 +1876,100 @@ input {
   }
 }
 
-/* About */
-.hk-about__grid {
-  display: grid;
-  gap: 28px;
+/* About — belief + three feelings */
+.hk-about {
+  background: var(--hk-canvas);
 }
 
-@media (min-width: 900px) {
-  .hk-about__grid {
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
-    align-items: stretch;
+.hk-about__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hk-about__intro .hk-lead {
+  margin: 4px 0 0;
+  max-width: 48ch;
+  text-wrap: balance;
+}
+
+.hk-about__moments {
+  display: grid;
+  gap: 28px;
+  margin-top: clamp(36px, 5vw, 56px);
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 800px) {
+  .hk-about__moments {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 22px;
   }
 }
 
-.hk-about__feature {
-  position: relative;
-  border-radius: var(--hk-radius-xl);
-  overflow: hidden;
-  min-height: 340px;
+.hk-about__moment {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-width: 0;
 }
 
-.hk-about__feature img {
+.hk-about__moment-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--hk-radius-xl);
+  aspect-ratio: 4 / 5;
+  background: var(--hk-kesar);
+}
+
+.hk-about__moment-media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute;
-  inset: 0;
+  object-position: center;
+  transition: transform 640ms var(--hk-ease);
 }
 
-.hk-about__feature-copy {
-  position: relative;
-  z-index: 1;
-  max-width: 28rem;
-  margin-top: auto;
-  padding: 28px;
-  color: #fff;
-  background: linear-gradient(transparent, rgba(5, 51, 74, 0.72));
-  min-height: 340px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.hk-about__feature-copy h3 {
-  margin: 0 0 8px;
+.hk-about__moment-title {
+  margin: 0;
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-subhead);
-}
-
-.hk-about__feature-copy p {
-  margin: 0;
-}
-
-.hk-about__stack {
-  display: grid;
-  gap: 20px;
-}
-
-.hk-about__item h3 {
-  margin: 0 0 8px;
-  font-family: var(--hk-font-display);
-  font-size: var(--hk-text-subhead);
-}
-
-.hk-about__item p {
-  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--hk-ink);
 }
 
-.hk-about__item img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: var(--hk-radius-lg);
-  margin-bottom: 14px;
+.hk-about__moment p {
+  margin: 0;
+  max-width: 28ch;
+  color: var(--hk-ink);
+}
+
+.hk-about__cta {
+  justify-content: center;
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hk-about__moment:hover .hk-about__moment-media img {
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-about__moment-media img {
+    transition: none;
+  }
+
+  .hk-about__moment:hover .hk-about__moment-media img {
+    transform: none;
+  }
 }
 
 /* Founder */
@@ -2499,7 +2574,7 @@ input {
     transition: none;
   }
 
-  .hk-koel__poster,
+  .hk-koel.hk-reveal,
   .hk-btn {
     transition: none;
   }
@@ -2509,8 +2584,7 @@ input {
     -webkit-backdrop-filter: none;
   }
 
-  .hk-koel__poster:hover,
-  .hk-koel__poster:focus-visible {
+  .hk-koel.is-in:hover {
     transform: none;
   }
 }

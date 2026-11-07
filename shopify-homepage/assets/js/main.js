@@ -54,16 +54,23 @@
     });
   };
 
+  const koelBagIcon =
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8zm3-3a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const koelBagCheckIcon =
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 12.5 10 17l8.5-9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
   const addKoelToBag = (koel, trigger) => {
     if (!koel?.title) return;
     bagItems.push(koel);
     updateBagChrome();
     if (trigger) {
       trigger.classList.add("is-added");
-      trigger.textContent = "Added";
+      trigger.setAttribute("aria-label", "Added to bag");
+      trigger.innerHTML = `${koelBagCheckIcon}<span class="hk-koel__add-label">Added to bag</span>`;
       window.setTimeout(() => {
         trigger.classList.remove("is-added");
-        trigger.textContent = "Add to bag";
+        trigger.setAttribute("aria-label", "Add to bag");
+        trigger.innerHTML = `${koelBagIcon}<span class="hk-koel__add-label">Add to bag</span>`;
       }, 1200);
     }
   };
@@ -117,9 +124,6 @@
   });
 
   koelCards.forEach((card) => {
-    card.querySelectorAll("[data-hk-koel-preview]").forEach((btn) => {
-      btn.addEventListener("click", () => openKoelPreview(card));
-    });
     card.querySelectorAll("[data-hk-koel-add]").forEach((btn) => {
       btn.addEventListener("click", () => addKoelToBag(readKoel(card), btn));
     });
