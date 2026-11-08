@@ -26,7 +26,7 @@
       : loading ? 'Loading…' : state === 'error' ? 'Retry' : state === 'unavailable' ? 'No audio' : 'Preview';
     entry.icon.setAttribute('d', playing ? 'M6 4h4v16H6zm8 0h4v16h-4z' : 'M8 5v14l11-7z');
     entry.button.setAttribute('title', state === 'error' ? 'Audio could not play. Select to retry.'
-      : entry.demo ? 'Design preview sample — not approved story audio.' : `Preview ${entry.title}`);
+      : entry.demo ? 'Design preview sample. Not approved story audio.' : `Preview ${entry.title}`);
     entry.bars.forEach((bar, i) => { bar.style.transform = `scaleY(${pattern[i]})`; });
   };
   const paintWave = () => {

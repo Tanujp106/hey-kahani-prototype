@@ -1,0 +1,9 @@
+# Hey Kahani kickoff quiz
+
+User requests a hosted, quiz-style replacement for the previously drafted long-form discovery questionnaire. Build a separate app; preserve the existing storefront and its uncommitted changes.
+
+Use selectable answers, ranked choices, five-point preferences and small CSS visual examples. Cover goals, audience, brand personality, design direction, AI asset boundaries, page priorities and collaboration. No right/wrong score or claim that selections constitute final design approval. Include a decide-together choice; no preselected substantive answers. Optional name/email identification; name required at submission, email optional. Respondents can review and edit all answers, download a copy, and submit durable responses. Save drafts on the device with honest status and reset after confirmation. No silent data submission. Persist a stable UUID for idempotent retries. No public response-read route; results are accessible to the owner through Sites database tools.
+
+Use the supplied vector wordmark, Averia Serif Libre / Open Sans, Gulab #D3000A, Sindoor #B40023, Kesar #FFF1D6, Coconut #E6CEAD, black type. Calm cream/white quiz, no generated photographs or new illustration assets. Native inputs, keyboard focus, accessible labels, mobile stacking, no required motion. Site starts private; access change awaits the pending user answer. No browser use is authorized.
+
+Architecture: Sites default Vinext starter, React client quiz, shared typed question data and validation, POST-only D1-backed response endpoint. Database records schema version, participant name, optional email, labels/answer IDs, created time and client submission UUID. Limit payload size, reject unknown answers, cap selections, restrict single-choice and exclusive undecided selections, require complete questionnaire and same-origin requests. Use prepared insert and on-conflict-do-nothing for retries. No email sending or external integrations.

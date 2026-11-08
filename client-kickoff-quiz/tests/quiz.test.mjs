@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { validateSubmission, toggleChoice, selectionError } from '../lib/quiz.ts';
+import { questions } from '../lib/questions.ts';
+const multi={id:'traits',type:'multi',max:2,options:[{id:'warm',label:'Warm'},{id:'bold',label:'Bold'},{id:'calm',label:'Calm'},{id:'discuss',label:'Decide together',exclusive:true}]};
+const valid=()=>({id:'380b8f25-7e56-4c3f-8145-1b9428422c80',name:'Client',email:'',answers:Object.fromEntries(questions.map(q=>[q.id,[q.options[0].id]]))});
+test('exclusive undecided choice replaces previous preferences',()=>assert.deepEqual(toggleChoice(multi,['warm','bold'],'discuss'),['discuss']));
+test('a preference replaces an exclusive answer',()=>assert.deepEqual(toggleChoice(multi,['discuss'],'warm'),['warm']));
+test('removing and readding a ranked choice preserves the selected order',()=>{assert.deepEqual(toggleChoice(multi,['warm','bold'],'warm'),['bold']);assert.deepEqual(toggleChoice(multi,['bold'],'warm'),['bold','warm']);});
+test('selection cap prevents adding another choice',()=>assert.deepEqual(toggleChoice(multi,['warm','bold'],'calm'),['warm','bold']));
+test('validation rejects fabricated, duplicate and contradictory selections',()=>{assert.ok(selectionError(multi,['invented']));assert.ok(selectionError(multi,['warm','warm']));assert.ok(selectionError(multi,['warm','discuss']));assert.ok(selectionError(multi,['warm','bold','calm']));});
+test('server rejects incomplete response and missing identity',()=>{assert.equal(validateSubmission({}).ok,false);const p=valid();delete p.answers[questions[0].id];assert.equal(validateSubmission(p).ok,false);assert.equal(validateSubmission({...valid(),name:'   '}).ok,false);});
+test('server validates and normalizes complete submission',()=>{const r=validateSubmission({...valid(),name:'  Client  ',email:'person@example.com'});assert.equal(r.ok,true);assert.equal(r.data.name,'Client');assert.equal(r.data.email,'person@example.com');assert.equal(r.data.schemaVersion,1);});
+test('server rejects malformed email, ids, answer values and unknown questions',()=>{assert.equal(validateSubmission({...valid(),email:'not-an-email'}).ok,false);assert.equal(validateSubmission({...valid(),id:'invalid'}).ok,false);assert.equal(validateSubmission({...valid(),answers:{...valid().answers,unknown:['x']}}).ok,false);const p=valid();p.answers[questions[0].id]=['fabricated'];assert.equal(validateSubmission(p).ok,false);});
+test('single choice rejects multiple selections',()=>{const q=questions.find(q=>q.type==='single');assert.ok(selectionError(q,[q.options[0].id,q.options[1].id]));});
