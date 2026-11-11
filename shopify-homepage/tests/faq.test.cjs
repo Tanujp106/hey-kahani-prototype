@@ -12,16 +12,33 @@ function setup(reducedMotion = false) {
     const classes = new Set();
     const listeners = new Map();
     const attributes = {};
+    const styleLog = [];
+    const style = new Proxy(
+      {},
+      {
+        set(target, prop, value) {
+          styleLog.push([String(prop), value]);
+          target[prop] = value;
+          return true;
+        },
+        get(target, prop) {
+          return target[prop];
+        },
+      }
+    );
     const summary = {
       setAttribute(name, value) { attributes[name] = value; },
       addEventListener(name, listener) { listeners.set(`summary:${name}`, listener); },
     };
     const panel = {
-      style: {}, offsetHeight: 0,
+      style,
+      styleLog,
+      offsetHeight: 0,
+      scrollHeight: height,
       addEventListener(name, listener) { listeners.set(name, listener); },
       removeEventListener(name) { listeners.delete(name); },
     };
-    const content = { scrollHeight: height };
+    const content = { scrollHeight: height - 16 };
     const details = {
       open: false,
       classList: {
@@ -35,7 +52,7 @@ function setup(reducedMotion = false) {
       },
     };
     return {
-      details, panel, attributes, classes,
+      details, panel, attributes, classes, styleLog,
       click() { listeners.get('summary:click')({ preventDefault() {} }); },
       finish() { listeners.get('transitionend')?.({ target: panel, propertyName: 'height' }); },
     };
@@ -76,6 +93,38 @@ test('switching FAQ answers starts opening before the old answer finishes closin
   second.click();
   second.finish();
   assert.equal(second.details.open, false);
+});
+
+test('close locks measured panel height with transition disabled before collapsing', async () => {
+  const { items: [first] } = setup();
+  first.click();
+  await new Promise(setImmediate);
+  first.finish();
+  assert.equal(first.panel.style.height, 'auto');
+
+  first.styleLog.length = 0;
+  first.click();
+  await new Promise(setImmediate);
+
+  const heightWrites = first.styleLog.filter(([prop]) => prop === 'height');
+  const transitionWrites = first.styleLog.filter(([prop]) => prop === 'transition');
+
+  assert.equal(heightWrites[0]?.[1], '80px', 'must lock panel.scrollHeight, not collapsed content.scrollHeight');
+  assert.ok(
+    transitionWrites.some(([_, value]) => value === 'none'),
+    'must disable transition while locking auto → px'
+  );
+
+  const lockIndex = first.styleLog.findIndex(([prop, value]) => prop === 'height' && value === '80px');
+  const collapseIndex = first.styleLog.findIndex(([prop, value]) => prop === 'height' && value === '0px');
+  const noneIndex = first.styleLog.findIndex(([prop, value]) => prop === 'transition' && value === 'none');
+  const restoreIndex = first.styleLog.findIndex(
+    ([prop, value], index) => prop === 'transition' && value === '' && index > noneIndex
+  );
+
+  assert.ok(noneIndex !== -1 && noneIndex < lockIndex, 'transition:none before pixel lock');
+  assert.ok(restoreIndex !== -1 && restoreIndex < collapseIndex, 'restore transition before collapse to 0');
+  assert.equal(first.classes.has('is-closing'), true);
 });
 
 test('reduced motion switches FAQ answers immediately without animation timers', () => {

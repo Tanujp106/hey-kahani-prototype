@@ -354,6 +354,14 @@
         }, 350);
       };
 
+      // Lock a pixel height with transitions off so auto → px never interpolates.
+      const setHeightInstant = (value) => {
+        panel.style.transition = "none";
+        panel.style.height = value;
+        panel.offsetHeight;
+        panel.style.transition = "";
+      };
+
       const close = ({ instant = false } = {}) => {
         if (!details.open && !details.classList.contains("is-closing")) {
           return Promise.resolve();
@@ -363,7 +371,7 @@
           stopWaiting();
           details.classList.remove("is-closing");
           setExpanded(false);
-          panel.style.height = "0px";
+          setHeightInstant("0px");
           animating = false;
           return Promise.resolve();
         }
@@ -371,8 +379,7 @@
         return new Promise((resolve) => {
           animating = true;
           details.classList.add("is-closing");
-          panel.style.height = `${content.scrollHeight}px`;
-          panel.offsetHeight;
+          setHeightInstant(`${panel.scrollHeight}px`);
           panel.style.height = "0px";
           afterHeight(() => {
             details.classList.remove("is-closing");
@@ -390,7 +397,7 @@
           stopWaiting();
           details.classList.remove("is-closing");
           setExpanded(true);
-          panel.style.height = "auto";
+          setHeightInstant("auto");
           animating = false;
           return Promise.resolve();
         }
@@ -398,11 +405,10 @@
         return new Promise((resolve) => {
           animating = true;
           setExpanded(true);
-          panel.style.height = "0px";
-          panel.offsetHeight;
-          panel.style.height = `${content.scrollHeight}px`;
+          setHeightInstant("0px");
+          panel.style.height = `${panel.scrollHeight}px`;
           afterHeight(() => {
-            panel.style.height = "auto";
+            setHeightInstant("auto");
             animating = false;
             resolve();
           });

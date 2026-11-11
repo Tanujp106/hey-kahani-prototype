@@ -1,10 +1,26 @@
 ---
-version: alpha
+version: questionnaire-2026-11-10
 name: Hey-Kahani-refresh
-description: A light-only, photography-first kids-audio ecommerce system. Yoto-warm product clarity with an Apple hint of air, hierarchy, and quiet chrome. Brand red carries action; cream and soft neutrals carry the canvas; playful pattern is optional seasoning, never the main meal.
-authority: This file governs the detached shopify-homepage/ refresh only. The existing design.md and frontend/ remain the archive of the prior homepage and are not to be mixed into this system.
+description: A light kids-audio ecommerce system that feels human and kid-focused through minimal organic framing, small flat vectors and occasional hand-drawn details. Mostly white and Kesar Sand, with occasional Mango or Sky areas and Gulab actions.
+authority: This file governs shopify-homepage/ with taste.md and the active questionnaire decisions in design.md. frontend/ remains the prior implementation. Latest explicit user decisions take precedence.
 mode: light-only
-references_sentiment: Yoto primary; Apple clarity secondary; Diaspora cultural warmth for imagery; Nodi/Matic for product storytelling calm. No dark-mode tiles.
+references_sentiment: Supplied references inform playful composition, simplified for minimal density and the Hey Kahani brand. No copied layouts, faces or dense decorative scenes.
+
+graphics:
+  intent: human and kid-focused, minimal and purposeful
+  primary-language: soft organic shapes framing content
+  contour: gently irregular, smooth and confident
+  supporting-language: small simple flat vectors with a few hand-drawn details
+  outline: occasional thin dark outlines, not required on every shape
+  faces: none in new decorative graphics
+  section-edges: shaped boundaries permitted for important sections
+  card-silhouette: regular rounded rectangle
+  heading-treatment: small nearby accents on selected headings
+  image-treatment: occasional simple shape behind unobstructed media
+  density: principles and examples, no fixed shape counts
+  mobile: retain only the strongest decorative shape or graphic per section
+  motion: a few brief entrances, no continuous decorative movement
+  handwriting-font: none
 
 colors:
   # Brand primaries — verified from brand guide / design.md
@@ -31,9 +47,9 @@ colors:
   action-hover: "#B40023"
   action-pressed: "#6A0526"
   on-action: "#FFFFFF"
-  ink: "#05334A"
-  body: "#05334A"
-  body-soft: "#6A0526"
+  ink: "#000000" # existing Nov 7 page-text decision
+  body: "#000000"
+  body-soft: "#000000"
   muted: "#7A5A4A"
   muted-soft: "#9A7A6A"
   canvas: "#FFFFFF"
@@ -47,7 +63,7 @@ colors:
   focus-ring: "#2578B7"
   pattern-ink: "#05334A"
   pattern-soft: "#E6CEAD"
-  on-warm: "#05334A"
+  on-warm: "#000000"
   on-action-muted: "#FFF1D6"
   paper: "#FFFFFF"
   # Forbidden in this refresh
@@ -294,7 +310,8 @@ components:
   koel-tile:
     backgroundColor: transparent
     textColor: "{colors.ink}"
-    rounded: "{rounded.koel}"
+    rounded: "{rounded.lg}"
+    aspectRatio: "2 / 3"
   faq-item:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.ink}"
@@ -322,202 +339,130 @@ components:
 
 ## Overview
 
-Hey Kahani’s refresh is a **light-only ecommerce homepage**: warm like Yoto, clear like Apple, culturally present like Diaspora Co. The product leads. UI chrome stays quiet. Color is balanced — brand reds for action and emphasis, cream/sand for atmosphere, secondary hues only as sparse accents or soft pattern. There is **no dark mode** and no alternating near-black product tiles.
+Hey Kahani's refresh should feel **human, kid-focused and minimal**. Soft organic shapes frame content, supported by small flat vectors and occasional hand-drawn details. The product and copy remain easy to understand. Most backgrounds are white or Kesar Sand, with occasional Mango Yellow or Sky Blue areas and Gulab actions.
 
-The client rejected the prior direction for being **too busy/colorful**, **not premium enough**, and **too motion-heavy**. This system answers those three complaints directly: restrained palette application, premium product-first hierarchy, and subtle motion only.
+The November 10, 2026 questionnaire narrows the earlier request to use graphics throughout the experience: this is a coherent brand language, not dense decoration in every section. The maximal generated concepts were rejected. The simpler revision is a discussion reference, not an approved page layout or source for product geometry, fonts or colours.
 
-**Key characteristics**
-- Light canvases only: white, soft cream, Kesar Sand, light tints — never dark tiles.
-- Product-first hero: Player (and/or Koel) as the dominant visual; headline supports, does not overpower the product.
-- Solid Gulab Red primary CTAs; few per viewport.
-- Averia Serif Libre for display with slightly tightened tracking; Open Sans for body/UI at a readable 17px base.
-- Photography mix: crisp product hero + warm lifestyle/cultural support imagery.
-- Playful pattern allowed as a light wash or section texture — never as visual noise over product or type.
-- Cards only for interactive modules (Koel tiles, FAQ rows, shop/dialog surfaces).
-- Medium density: clear section blocks with breathing room; not museum-sparse, not catalog-crammed.
-- Medium proof: a short press/logo row and a few quotes — not a wall of social proof.
-- Detached implementation target: `shopify-homepage/`. Do not import or couple to `frontend/`.
+### Authority and scope
 
-**Authority**
-- Brand hexes, logo rules, Player/Koel geometry, and voice still come from the brand guide (summarized in `design.md`).
-- Layout taste, density, motion, light-only rule, and refresh component grammar come from **this file** + `taste.md`.
-- Latest explicit user decisions win over both docs.
+- The questionnaire decisions in [design.md](design.md#active-graphic-direction--november-10-2026) are the active graphic direction. They are user choices, separate from the PDF's source rules.
+- Brand colour values, logo rules and voice remain grounded in the brand guide. Its primary/secondary/accent hierarchy remains in force.
+- This file defines system details; [taste.md](taste.md) supplies composition principles and examples.
+- Existing dated product and section decisions in `design.md` continue to govern their own details. This update does not change section order, product facts, commerce behaviour or content approvals.
+- Implementation remains confined to `shopify-homepage/`. `frontend/` remains the earlier implementation; updating the shared design reference does not authorise restyling it.
+- The YAML contains the broader brand palette and existing implementation tokens. Their presence does not approve using every colour or component treatment equally. Dated section-specific decisions take precedence over generic component examples.
 
-## Colors
+## Colour roles
 
-### Action
-- **Action / Gulab** (`{colors.action}` — `#D3000A`): Primary CTAs, key interactive emphasis, production Player speaker band in product art.
-- **Action Hover / Sindoor** (`{colors.action-hover}` — `#B40023`): Hover for primary buttons.
-- **Action Pressed / Temple Maroon** (`{colors.action-pressed}` — `#6A0526`): Pressed/active primary.
-- **On Action** (`{colors.on-action}` — `#FFFFFF`): Text/icons on solid red buttons.
+| Role | Application |
+| --- | --- |
+| White and Kesar Sand `#FFF1D6` | Main page grounds and breathing room. |
+| Gulab Red `#D3000A` | Primary actions, selected graphic details and the Player's production speaker band. |
+| Mango Yellow `#FECB74` and Sky Blue `#63C3FE` | Occasional background areas or simple framing shapes. Do not assign a new colour theme to every section. |
+| Other PDF colours | Supporting roles under the primary/secondary/accent hierarchy; no palette expansion or broad rainbow of decorative colours. |
+| Black `#000000` | Page headings and running copy, preserving the November 7 text decision. |
+| Existing neutrals, borders and focus tokens | Supporting interface roles; do not turn them into additional decorative palette themes. |
 
-### Surfaces (light only)
-- **Canvas** (`{colors.canvas}` — `#FFFFFF`): Default page ground and product-hero ground.
-- **Canvas Soft** (`{colors.canvas-soft}` — `#FFF8EC`): Alternate light band for gentle rhythm without dark mode.
-- **Canvas Warm / Kesar Sand** (`{colors.canvas-warm}` — `#FFF1D6`): Warm section bands, footer, quote blocks, pattern wash base.
-- **Surface Husk** (`{colors.surface-husk}` — `#E6CEAD`): Soft pedestals, subtle fills, pattern support.
-- **Tint Sky / Tint Mango**: Optional light section washes for variety; keep large areas mostly white/sand.
+The guide says primaries appear most often, secondaries complement without overshadowing them, and accents are minimal. Existing approved story artwork retains its own identity. Do not recolour product art merely to enforce the decorative palette. Existing section-specific inverse treatments remain governed by their dated decisions.
 
-### Text
-- **Ink / Story Ink** (`{colors.ink}` — `#05334A`): Headlines and primary body on light surfaces.
-- **Body Soft / Temple Maroon** (`{colors.body-soft}` — `#6A0526`): Secondary body where a warmer dark is needed.
-- **Muted**: Supporting labels, proof row, captions.
+Check actual text/background contrast; the PDF's sample badges do not validate arbitrary UI combinations. Avoid multicolour gradients, saturated colour on every surface and decorative wallpaper behind copy. Existing specific product-card fades are separate from this graphic direction.
 
-### Lines
-- **Hairline** (`{colors.hairline}` — `#E8D9C4`): Interactive card borders, FAQ dividers.
-- **Divider Soft** (`{colors.divider-soft}` — `#F3E6D4`): Nav underline, quiet separators.
-- **Focus Ring / Monsoon** (`{colors.focus-ring}` — `#2578B7`): Keyboard focus only — not a second brand CTA color.
+## Shapes and section rhythm
 
-### Accents & pattern
-Secondary and accent brand hues exist for illustration, Koel art, and rare highlights. On marketing chrome they stay sparse. Pattern washes use soft husk/ink at low opacity — never full-saturation doodle carpets behind dense copy.
+**Lead with soft organic shapes with slightly irregular edges.** Curves should be smooth and confident, not mechanically perfect or deliberately messy. Reuse a coherent family; simple circles, semicircles and arches can support it without becoming the dominant vocabulary.
 
-### Explicitly out of system
-- Near-black section tiles, dark cinematic bands, dark-mode counterparts.
-- Purple-glow SaaS gradients, multi-layer card shadows, rainbow pill clusters.
+A shape should frame an image, group content, support a heading or mark a meaningful section transition. Empty space can remain empty. Minimality is judged through hierarchy, breathing room and relevance; there is no fixed number of shapes per section.
 
-## Typography
+Important sections may have organic shaped boundaries. The user explicitly did not require every section to keep a straight, flat edge. Equally, avoid repeated waves or scallops between every section. Mostly white and Kesar Sand provide continuity, with occasional Mango or Sky areas where helpful.
 
-### Families
-- **Display**: `Averia Serif Libre` — headlines, section titles, brand moments.
-- **Body / UI**: `Open Sans` — paragraphs, nav, buttons, captions, forms.
+### Functional surface geometry
 
-Do not substitute Inter/Roboto/system stacks as the brand voice. Fallbacks may keep the page readable while fonts load; they are not a design direction.
+| Surface | Treatment |
+| --- | --- |
+| Cards | Regular rounded rectangles throughout; graphics supply variety. Use the existing `rounded.lg` / `rounded.xl` family as appropriate. |
+| Buttons | Existing full pills: solid Gulab primary, frosted light secondary. Preserve shared CTA classes and states. |
+| Inputs and utility controls | Existing simple radius tokens and clear interaction affordances. |
+| Physical Koels | Circular discs; this does not make storefront card silhouettes circular. |
+| Section boundaries and background frames | Soft organic shapes where purposeful, separate from functional card geometry. |
 
-### Hierarchy principles
-- Display sizes use slight negative tracking for a tighter, more premium product feel (Apple hint) while remaining Averia.
-- Body stays at **17px / 400 / ~1.5** for a reading pace, not a dashboard scan pace.
-- Weight ladder for UI: 400 / 600 / 700. Avoid inventing a mid “500 everywhere” look.
-- One headline job per section. Supporting copy is one short lead, not a paragraph essay above the fold.
+Do not introduce cloud-shaped, scalloped, arched, tilted or asymmetric card silhouettes as the new card system. Organic framing can sit behind a media composition without changing its functional container or obscuring content.
 
-### Responsive display steps (guideline)
-| Context | Token | Approx desktop | Approx phone |
-|---|---|---|---|
-| Hero | `hero-display` | 56px | 34–40px |
-| Section | `display-lg` / `display-md` | 40 / 32px | 28 / 26px |
-| Lead | `lead` | 22px | 18–20px |
-| Body | `body` | 17px | 16–17px |
+## Icons, vectors and handmade detail
 
-## Layout
+- Use simple flat vectors with a few hand-drawn details. Filled shapes may have occasional thin dark outlines; outlines are not compulsory on every shape.
+- Keep stroke weight, line caps and the degree of irregularity consistent across decorative objects. Functional icons remain in the existing Lucide-style system; decorative vectors must not create a competing control language.
+- No faces, mascots or personified objects in new decoration. Existing approved story art and photography do not need to lose people or faces.
+- Choose familiar objects that relate to listening, stories, play or the section's content. Making the page human and kid-focused is the motivation; a culturally themed motif inventory is not compulsory.
+- Avoid dense scenic compositions, sticker collages, confetti, heavy paper-cut depth and decorative texture as the default vector style. Existing specifically requested media treatments remain separately governed.
+- Use crafted shapes, vectors and relevant product/UI compositions as the main presentation language. Lifestyle photos are occasional support when the content needs them.
 
-### Spacing
-- Base unit **8px**. Section padding `{spacing.section}` (72px) default; hero can use `{spacing.section-lg}` (96px).
-- Content max ~`{spacing.content-max}` (1120px); prose ~640px; hero media may breathe wider up to ~1200px.
-- Medium density: enough modules to sell (hero, how-it-works/app, shop, about, founder, proof, FAQ, footer) without stacking competing promos in one viewport.
+## Typography and heading accents
 
-### Section rhythm (light pulse)
-Alternate **white ↔ soft cream/sand** bands for rhythm. Color change is the divider — not dark tiles, not heavy rules.
+Retain **Averia Serif Libre** for display and **Open Sans** for body and interface text. No additional handwritten font; the handmade quality comes from graphics.
 
-Suggested pulse for the refresh homepage:
-1. White product hero
-2. Soft/warm benefit or app band
-3. White Koel shop
-4. Warm about / cultural editorial
-5. White founder note
-6. Soft proof + quotes
-7. White FAQ
-8. Warm footer
+| Role | Existing token / class | Rule |
+| --- | --- | --- |
+| Hero title | `--hk-text-hero` / `hk-display--hero` | Existing responsive scale, 56px maximum. |
+| Every section h2 | `--hk-text-section` / `hk-display--lg` | Same shared responsive scale, 40px maximum; no local heading-size overrides. |
+| Secondary display | `--hk-text-md` | Existing responsive scale, 32px maximum; not an alternate section h2 size. |
+| Leads and running copy | `--hk-text-body` and existing lead aliases | 17px, Open Sans medium 500. |
+| Dense UI / metadata | `--hk-text-body-sm` | Existing 15px role. |
+| Legal / fine print | `--hk-text-fine` | Existing 12px role. |
 
-### Whitespace
-Product imagery gets a pedestal of air. Crowding the Player or Koel with badges, stickers, or floating chips is forbidden. First viewport: brand, one headline, one short support line, one CTA group, one dominant product image.
+A small nearby icon or accent may support selected headings. Leave title letterforms, line breaks and reading order clear. Avoid combining icon clusters, highlights, underlines and squiggles around the same heading. Not every heading needs a graphic lockup.
 
-## Elevation & depth
+## Product and image framing
 
-| Level | Treatment | Use |
-|---|---|---|
-| Flat | No shadow | Sections, nav, text blocks, FAQ |
-| Hairline | 1px `{colors.hairline}` | Interactive cards only |
-| Product soft | `{shadow.product-soft}` | Small product/Koel thumbs |
-| Product | `{shadow.product}` | Hero Player / featured product resting on a surface |
-| Interactive | `{shadow.interactive}` | Optional hover on interactive cards only |
+Occasional simple shapes can sit **behind** images, including hero product media. Preserve the Player silhouette, controls, handle, Koel artwork and image clarity. Do not cover the product with stickers, decorative badges or foreground graphics. Keep official logo clearspace intact.
 
-Shadows are for **product weight** and light interactive affordance — never for decorative card stacks across the page.
+Maintain product fidelity: cream cylindrical body and arch handle, actual control layout, Gulab woven speaker band and wood-toned base. Generated mockups are concept recreations, not approved product photography. Approved product media remains replaceable through normal product/section references.
 
-## Shapes
+The parent companion-app section may show UI; core child-listening imagery must not suggest that the listening experience requires a phone or tablet. Custom graphics do not authorise invented app capabilities, story titles or product claims.
 
-| Token | Value | Use |
-|---|---|---|
-| `none` | 0 | Full-bleed section frames |
-| `sm` / `md` | 10 / 14px | Buttons, inputs |
-| `lg` / `xl` | 20 / 28px | Interactive cards, soft media frames |
-| `pill` / `koel` | 9999px | All storefront CTAs; Koel discs; rare status chips |
+## Layout and components
 
-Primary and secondary CTAs are **full pills** (`9999px`) sitewide — solid Gulab primary, frosted light secondary — matching the hero pair.
+Preserve the existing content hierarchy and useful ecommerce structure. Start with clear alignment and reading space, then add purposeful organic framing or a small vector where it helps. Do not fill a viewport with secondary promotions or decoration.
 
-## Imagery
+Existing spacing tokens remain starting points: an 8px base unit, 72px default section spacing, 96px for larger sections, roughly 1120px content width and 640px prose width. They do not impose a fixed graphic treatment on every section.
 
-### Mix (preference D)
-- **Hero**: product-first — clear Player silhouette, Gulab Red production band, honest geometry.
-- **Support**: warm lifestyle and cultural editorial photography (family listening, home ritual, South Asian cues without cliché).
-- **Koels**: circular story art as shopable discs.
-- **Pattern**: optional light Yoto-like doodle/motif wash on warm bands at low opacity.
+| Component | Guidance |
+| --- | --- |
+| Header / announcement | Preserve official assets, clearspace, current navigation behaviour and the separately requested slim announcement bar. Keep utility controls quiet. |
+| Hero | Clear product, headline, short supporting copy and CTA group. A purposeful organic background shape may frame the product without competing with it. |
+| How it works | Relevant small object vectors can clarify steps; avoid an illustrated scene around every instruction. |
+| Koel cards | Keep current rounded rectangular 2:3 artwork cards, category and title treatment, price/data boundaries, preview and bag behaviour. Follow the detailed existing decision in `design.md`. |
+| App / About / editorial | Organic framing may group an image or content area; do not stack multiple competing treatments. |
+| Founder / community | Preserve existing content and specific media treatments. This graphic direction does not approve replacement images, testimonials or claims. |
+| FAQ / forms / footer | Keep reading and task completion easy. Quiet treatment is a valid part of the shared brand language. Preserve existing functionality and specific palette decisions. |
 
-### Rules
-- Prefer real or approved product/lifestyle media over decorative gradient blobs.
-- No phones/tablets in core child-listening storytelling imagery; companion-app section may show the parent app role carefully.
-- Avoid stereotypical “Indian culture” stock, harsh saturation, and busy collage heroes.
-- Manufacturing grey band → depict production **Gulab Red** in concept art; label approximations honestly in preview states.
-
-## Components
-
-### Navigation — `global-nav`
-Light white/cream bar, Story Ink links, official stacked wordmark with clearspace, quiet search / account / bag utilities (ecommerce chrome). Height ~96px so the stacked lockup is not vertically cramped. No black Apple-style global bar; no sticky promo/announcement bar in the first viewport.
-
-### Buttons
-- **`button-primary`**: solid Gulab pill, white label, soft red shadow; few per view. Class `hk-btn hk-btn--primary`.
-- **`button-secondary`**: frosted light pill, black label, thin tonal border; second action only when needed. Class `hk-btn hk-btn--secondary`.
-- **`button-quiet` / `text-link`**: for tertiary navigation inside sections.
-
-### Hero — `hero-product`
-Edge-conscious but light. Centered or product-weighted composition: product dominates; type is confident and shorter than the old scroll-theater pages. No detached floating badges on the product.
-
-### Sections
-`section-white`, `section-soft`, `section-warm` — the only canvas modes. Use them to pulse rhythm.
-
-### Interactive only cards
-- **`koel-tile`**: circular, tappable, opens shop/preview affordance.
-- **`interactive-card`**: FAQ is usually divider rows; use cards if a control needs a hit target container.
-- **`faq-item`**: hairline-separated disclosure rows, not heavy panels.
-
-### Proof
-- **`proof-row`**: logos / “as seen in” in muted mono treatment.
-- **`quote-block`**: a few short parent quotes on warm canvas — not a dense ticker of competing cards unless later requested.
-
-### Footer — `footer`
-Warm sand canvas, quiet links, newsletter preview may remain honestly disabled until Shopify wiring.
+These are examples and guardrails, not a prescribed redesign for every section. Regular card shapes and simple controls should remain consistent even where backgrounds or graphics vary.
 
 ## Motion
 
-Subtle only (`{motion.duration}` ~240ms, soft ease):
-- Soft fade/translate reveals on scroll (`reveal-distance` ≤ 12px).
-- Hover color/lift on fine-pointer only.
-- No scroll-hijacking product theater, no multi-stage docking narratives unless explicitly re-requested.
-- Honor `prefers-reduced-motion`: instant state, no reveal travel.
+The user chose **a few brief entrance animations, with no continuous decorative movement**. Introduce selected shapes or vectors briefly, then leave them still; do not animate every decorative element.
 
-## Responsive behavior
+Existing timing tokens are implementation starting points, not newly selected questionnaire values: approximately 240ms with the shared easing and small opacity/translate entrances, up to the existing 12px reveal distance. Avoid extended staggers, scroll-owned shape choreography, heavy parallax or motion that delays reading.
 
-| Band | Width | Notes |
-|---|---|---|
-| Phone | ≤ 640px | Single column; hero type steps down; CTAs full-width optional |
-| Tablet | 641–1023px | 2-column feature/about where useful |
-| Desktop | ≥ 1024px | Full hero split or centered product stack; content lock ~1120–1200px |
+New decoration must not float, rotate, bounce or draw paths continuously. Under `prefers-reduced-motion`, show the final static composition without entrance travel or stagger; keep all content visible. Hover feedback remains subtle and restricted to fine pointers that support hover.
 
-Touch targets ≥ 44px. Nav collapses cleanly; do not hide primary shop CTA on mobile.
+This rule concerns new decorative graphics. It does not silently change existing functional feedback, audio visualisation or the testimonial ticker. No autoplay audio.
 
-## Iteration guide
+## Mobile and accessibility
 
-1. Change one component at a time; reference YAML keys.
-2. Use `{token.refs}` — do not invent near-hexes for brand colors.
-3. Stay light-only. If a section feels flat, switch white ↔ sand before adding chrome.
-4. If a section feels busy, remove color/pattern before enlarging type.
-5. Cards only when interaction needs a container.
-6. Document default + pressed/focus; keep hover subtle and pointer-conditioned.
-7. Implement in `shopify-homepage/` only — zero imports from `frontend/`.
+On mobile, keep only the strongest decorative shape or graphic in each section. Remove or simplify subordinate decoration instead of shrinking the complete desktop composition. Retain functional icons, content, images, readable headings and useful controls.
 
-## Known gaps
+Shapes must not cause horizontal overflow, obscure text or intercept interaction. Decorative assets should be hidden from assistive technology; meaningful illustrations need appropriate accessible descriptions. Preserve keyboard focus, readable contrast and touch targets of at least 44px.
 
-- Exact Shopify section schema / Liquid mapping not specified yet.
-- Approved final product photography vs concept recreations still need provenance labels in preview.
-- Testimonial/press content must stay fictional-labeled or approved — do not invent launch claims.
-- Pattern motif library not drawn yet; treat pattern as optional until assets exist.
-- Companion-app UI shots and Koel catalog media will be plugged via product/media references, not hardcoded marketing claims.
-- Browser visual verification of reference sites and of this refresh remains unperformed until explicitly authorized.
+Existing layout bands remain implementation references: phone up to 640px, tablet 641–1023px, desktop from 1024px. Use content needs and the selected strongest graphic to determine placement within those bands.
+
+## Applying and reviewing the guidelines
+
+1. Begin with the section's content and purpose.
+2. Use the shared typography, controls and regular rounded cards.
+3. Add an organic frame, a small vector or a shaped boundary only where it contributes.
+4. Compare with the restrained/excessive examples in `taste.md`. Judge density as a composition, not a count.
+5. Keep the brand palette focused, product imagery unobstructed and mobile decoration simplified.
+6. If adding motion, use a brief entrance and a readable static reduced-motion variant.
+7. Preserve ordinary HTML/CSS/JS or Liquid-friendly equivalents, product-media boundaries and truthful prototype states.
+
+The reusable shape/vector library and exact section applications remain to be designed. No generated preview is a production asset selection. These documents do not claim that the page has been restyled or visually verified. Browser verification remains current-message opt-in only.

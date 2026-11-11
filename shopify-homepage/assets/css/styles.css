@@ -104,7 +104,6 @@ input {
   max-width: 42ch;
 }
 
-.hk-about__moment p,
 .hk-founder p,
 .hk-faq details p,
 .hk-how__step-text,
@@ -1553,6 +1552,32 @@ input {
 }
 
 /* Koels — catalogue grid: centered intro + Explore CTA + cards */
+.hk-koels {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hk-koels > .hk-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.hk-koels__edge {
+  position: absolute;
+  inset: 0 0 auto;
+  display: block;
+  width: 100%;
+  height: clamp(24px, 3vw, 48px);
+  fill: var(--hk-canvas);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hk-koels__edge--bottom {
+  inset: auto 0 0;
+}
+
 .hk-koels__head {
   display: flex;
   justify-content: center;
@@ -1566,6 +1591,27 @@ input {
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+
+.hk-koels__mark {
+  display: block;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 4px;
+  pointer-events: none;
+}
+
+.hk-koels__mark-shape {
+  fill: var(--hk-mango);
+}
+
+.hk-koels__mark-line {
+  fill: none;
+  stroke: var(--hk-ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .hk-koels__intro .hk-lead {
@@ -1584,6 +1630,23 @@ input {
   gap: 32px 24px;
   margin-top: 18px;
   padding-block: 8px 12px;
+}
+
+.hk-koels .hk-koel-grid {
+  margin-top: 28px;
+}
+
+@media (max-width: 720px) {
+  .hk-koels__edge,
+  .hk-koels__edge--bottom {
+    display: none;
+  }
+
+  .hk-koels__mark {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+  }
 }
 
 .hk-koel {
@@ -1719,8 +1782,10 @@ input {
   max-width: calc(100% - 24px);
   padding: 5px 10px;
   border-radius: 9999px;
-  border: 1px solid rgba(5, 51, 74, 0.14);
-  background: #fff;
+  border: 1px solid rgba(5, 51, 74, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px) saturate(1.05);
+  -webkit-backdrop-filter: blur(12px) saturate(1.05);
   box-shadow: 0 4px 14px rgba(5, 51, 74, 0.1);
   font-size: var(--hk-text-fine);
   font-weight: 700;
@@ -1757,9 +1822,11 @@ input {
   min-width: 0;
   min-height: 44px;
   padding: 0 6px;
-  border: 1px solid rgba(106, 5, 38, 0.16);
+  border: 1px solid rgba(106, 5, 38, 0.1);
   border-radius: 9999px;
-  background: rgba(230, 206, 173, 0.7);
+  background: rgba(255, 252, 247, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: none;
   color: var(--hk-ink);
   font-family: var(--hk-font-body);
@@ -2089,102 +2156,6 @@ input {
   outline-offset: -4px;
 }
 
-/* About — belief + three feelings */
-.hk-about {
-  background: var(--hk-canvas);
-}
-
-.hk-about__intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  max-width: 48rem;
-  margin-inline: auto;
-  text-align: center;
-}
-
-.hk-about__intro .hk-lead {
-  margin: 0;
-  max-width: 62ch;
-  text-wrap: balance;
-}
-
-.hk-about__intro .hk-about__cta {
-  justify-content: center;
-  margin: 4px 0 0;
-}
-
-.hk-about__moments {
-  display: grid;
-  gap: 28px;
-  margin-top: clamp(36px, 5vw, 56px);
-  list-style: none;
-  padding: 0;
-}
-
-@media (min-width: 800px) {
-  .hk-about__moments {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px 22px;
-  }
-}
-
-.hk-about__moment {
-  display: grid;
-  gap: 14px;
-  align-content: start;
-  min-width: 0;
-}
-
-.hk-about__moment-media {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--hk-radius-xl);
-  aspect-ratio: 4 / 5;
-  background: var(--hk-kesar);
-}
-
-.hk-about__moment-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 640ms var(--hk-ease);
-}
-
-.hk-about__moment-title {
-  margin: 0;
-  font-family: var(--hk-font-display);
-  font-size: var(--hk-text-subhead);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--hk-ink);
-}
-
-.hk-about__moment p {
-  margin: 0;
-  max-width: 28ch;
-  color: var(--hk-ink);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .hk-about__moment:hover .hk-about__moment-media img {
-    transform: scale(1.03);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hk-about__moment-media img {
-    transition: none;
-  }
-
-  .hk-about__moment:hover .hk-about__moment-media img {
-    transform: none;
-  }
-}
-
 /* Founder — a tactile postcard, with a live letter and framed portrait. */
 #founder.hk-section {
   padding-block: clamp(40px, 5vw, 64px);
@@ -2416,29 +2387,49 @@ input {
 
 .hk-quote {
   --hk-quote-tilt: -3deg;
-  padding: 4px;
-  border: 1px solid var(--hk-sindoor);
-  border-radius: 15px;
-  background: linear-gradient(145deg, var(--hk-gulab), var(--hk-sindoor));
-  box-shadow: 0 12px 22px -12px rgba(106, 5, 38, 0.28), 0 2px 3px rgba(106, 5, 38, 0.07);
+  --hk-quote-surface: var(--hk-kesar);
+  --hk-quote-accent: var(--hk-sindoor);
+  --hk-quote-shape-color: var(--hk-husk);
+  --hk-quote-shape-opacity: 0.3;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
   transform: rotate(var(--hk-quote-tilt));
   transition: transform 220ms var(--hk-ease), box-shadow 220ms var(--hk-ease);
 }
 
 .hk-quote-slot:nth-child(2) .hk-quote {
   --hk-quote-tilt: 2deg;
+  --hk-quote-surface: var(--hk-lavender);
+  --hk-quote-accent: var(--hk-story-ink);
+  --hk-quote-shape-color: var(--hk-monsoon);
+  --hk-quote-shape-opacity: 0.07;
 }
 
 .hk-quote-slot:nth-child(3) .hk-quote {
   --hk-quote-tilt: -2deg;
+  --hk-quote-surface: var(--hk-mango);
+  --hk-quote-accent: var(--hk-temple);
+  --hk-quote-shape-color: var(--hk-marigold);
+  --hk-quote-shape-opacity: 0.07;
 }
 
 .hk-quote-slot:nth-child(4) .hk-quote {
   --hk-quote-tilt: 1.5deg;
+  --hk-quote-surface: var(--hk-husk);
+  --hk-quote-accent: var(--hk-temple);
+  --hk-quote-shape-color: var(--hk-sindoor);
+  --hk-quote-shape-opacity: 0.07;
 }
 
 .hk-quote-slot:nth-child(5) .hk-quote {
   --hk-quote-tilt: -1.5deg;
+  --hk-quote-surface: var(--hk-sky);
+  --hk-quote-accent: var(--hk-story-ink);
+  --hk-quote-shape-color: var(--hk-monsoon);
+  --hk-quote-shape-opacity: 0.09;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2448,7 +2439,7 @@ input {
 
   .hk-quote-slot:hover .hk-quote {
     transform: translateY(-6px) rotate(0deg);
-    box-shadow: 0 20px 32px -14px rgba(106, 5, 38, 0.3), 0 4px 8px rgba(106, 5, 38, 0.08);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.07);
   }
 }
 
@@ -2463,19 +2454,71 @@ input {
 }
 
 .hk-quote__body {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   min-height: 350px;
   margin: 0;
   padding: clamp(22px, 2.5vw, 30px);
-  border: 1px solid rgba(106, 5, 38, 0.1);
-  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: inherit;
   background: var(--hk-canvas);
+  background: color-mix(in srgb, var(--hk-quote-surface, var(--hk-kesar)) 48%, white);
+  overflow: hidden;
+}
+
+.hk-quote__shape {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  top: -54px;
+  right: -54px;
+  width: min(76%, 240px);
+  height: auto;
+  fill: var(--hk-quote-shape-color);
+  opacity: var(--hk-quote-shape-opacity);
+  pointer-events: none;
+}
+
+.hk-quote__shape--moon {
+  top: -16px;
+  right: -28px;
+  width: min(72%, 220px);
+  transform: rotate(-12deg);
+}
+
+.hk-quote__shape--doorway {
+  top: -20px;
+  right: auto;
+  left: -42px;
+  width: min(64%, 200px);
+  transform: rotate(-12deg);
+}
+
+.hk-quote__shape--wave {
+  top: -44px;
+  right: auto;
+  left: -48px;
+  width: min(90%, 280px);
+}
+
+.hk-quote__shape--steps {
+  top: -16px;
+  right: -40px;
+  width: min(70%, 220px);
+}
+
+.hk-quote__shape--together {
+  top: -20px;
+  right: -34px;
+  width: min(72%, 220px);
+  transform: rotate(10deg);
 }
 
 .hk-quote__mark {
   height: 48px;
-  color: var(--hk-gulab);
+  color: var(--hk-quote-accent, var(--hk-sindoor));
   font-family: var(--hk-font-display);
   font-size: 5rem;
   line-height: 1;
@@ -2496,7 +2539,7 @@ input {
   gap: 10px;
   margin-top: auto;
   padding-top: 22px;
-  border-top: 1px dashed var(--hk-husk);
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
   color: var(--hk-ink);
   font-size: var(--hk-text-body-sm);
 }
@@ -2514,19 +2557,6 @@ input {
   margin-top: 3px;
   font-size: var(--hk-text-fine);
   line-height: 1.5;
-}
-
-.hk-quote__avatar {
-  display: grid;
-  flex: 0 0 36px;
-  place-items: center;
-  height: 36px;
-  border: 1px solid var(--hk-husk);
-  border-radius: 50%;
-  background: var(--hk-kesar);
-  color: var(--hk-sindoor);
-  font-family: var(--hk-font-display);
-  font-weight: 700;
 }
 
 @media (max-width: 900px) {
@@ -2564,6 +2594,7 @@ input {
     min-height: 0;
     padding: 24px;
   }
+
 }
 
 /* FAQ */
@@ -2629,10 +2660,12 @@ input {
 
 .hk-faq__content {
   min-height: 0;
+  /* Padding (not p margin) so measured height matches the open auto height. */
+  padding: 12px 0 4px;
 }
 
 .hk-faq details p {
-  margin: 12px 0 4px;
+  margin: 0;
   color: var(--hk-ink);
   max-width: none;
   opacity: 0;

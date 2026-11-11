@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=faq-height-20261111-1">
 </head>
 <body>
   <a class="hk-skip" href="#main">Skip to content</a>
@@ -417,15 +417,17 @@
       </div>
     </section>
 
-    <section class="hk-section hk-section--warm hk-has-doodles" id="koels" aria-labelledby="koels-title" data-preview-src="assets/audio/preview-sample.mp3" data-preview-demo="true">
-      <div class="hk-doodles" aria-hidden="true">
-        <svg class="hk-doodle hk-doodle--archer hk-doodle--tl" width="58" height="50"><use href="#hk-doodle-archer"/></svg>
-        <svg class="hk-doodle hk-doodle--star hk-doodle--tr" width="40" height="40"><use href="#hk-doodle-star"/></svg>
-        <svg class="hk-doodle hk-doodle--kite hk-doodle--mr" width="40" height="48"><use href="#hk-doodle-kite"/></svg>
-      </div>
+    <section class="hk-section hk-section--warm hk-koels" id="koels" aria-labelledby="koels-title" data-preview-src="assets/audio/preview-sample.mp3" data-preview-demo="true">
+      <svg class="hk-koels__edge" width="1440" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path fill="var(--hk-canvas, #ffffff)" d="M0 0h1440v19c-187 26-326 26-514 9C691 7 587 9 395 29 219 47 102 45 0 27Z"/>
+      </svg>
       <div class="hk-wrap">
         <div class="hk-koels__head hk-reveal">
           <div class="hk-koels__intro">
+            <svg class="hk-koels__mark" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path class="hk-koels__mark-shape" fill="var(--hk-mango, #FECB74)" d="M24 3c12-2 21 6 21 18 2 12-7 23-19 24C13 47 3 39 3 27 1 15 10 5 24 3Z"/>
+              <path class="hk-koels__mark-line" fill="none" stroke="var(--hk-ink, #000000)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M24 17c-4-3-8-3-13-2v18c5-1 9-1 13 2m0-18c4-3 8-3 13-2v18c-5-1-9-1-13 2V17Z"/>
+            </svg>
             <h2 class="hk-display hk-display--lg" id="koels-title">Find their next favourite Koel.</h2>
             <p class="hk-lead">Have a look through the stories. Preview a cover, then add one to the bag when it feels right.</p>
             <div class="hk-btn-row">
@@ -697,45 +699,9 @@
         </article>
       </div>
       </div>
-    </section>
-
-    <section class="hk-section hk-about hk-has-doodles" id="about" aria-labelledby="about-title">
-      <div class="hk-doodles" aria-hidden="true">
-        <svg class="hk-doodle hk-doodle--sun hk-doodle--tr" width="48" height="48"><use href="#hk-doodle-sun"/></svg>
-        <svg class="hk-doodle hk-doodle--leaf hk-doodle--bl" width="36" height="44"><use href="#hk-doodle-leaf"/></svg>
-      </div>
-      <div class="hk-wrap">
-        <div class="hk-about__intro hk-reveal">
-          <h2 class="hk-display hk-display--lg" id="about-title">Stories that feel like them.</h2>
-          <p class="hk-lead">Too many kids never hear themselves in the story. We keep South Asian storytelling close, screen free, and full of home.</p>
-          <div class="hk-about__cta hk-btn-row">
-            <a class="hk-btn hk-btn--primary" href="#koels">Explore Koels</a>
-          </div>
-        </div>
-        <div class="hk-about__moments" role="list">
-          <article class="hk-about__moment hk-reveal" role="listitem">
-            <div class="hk-about__moment-media">
-              <img src="assets/images/editorial/hk-shot-05.png" width="1254" height="1254" alt="Children arranging Kahani Koels and drawings on a play table">
-            </div>
-            <h3 class="hk-about__moment-title">Hear themselves</h3>
-            <p>Festivals, kitchen chatter, heroes, and humour that sound like your house.</p>
-          </article>
-          <article class="hk-about__moment hk-reveal" role="listitem">
-            <div class="hk-about__moment-media">
-              <img src="assets/images/editorial/hk-shot-02.png" width="1086" height="1448" alt="Child listening peacefully with the Kahani Player">
-            </div>
-            <h3 class="hk-about__moment-title">No scroll</h3>
-            <p>They can listen on their own. The Player stays simple so imagination can do the rest.</p>
-          </article>
-          <article class="hk-about__moment hk-reveal" role="listitem">
-            <div class="hk-about__moment-media">
-              <img src="assets/images/editorial/hk-shot-06.png" width="1672" height="941" alt="Bedtime wind-down with the Kahani Player nearby">
-            </div>
-            <h3 class="hk-about__moment-title">Come back tomorrow</h3>
-            <p>Bedtime favourites and rainy-day repeats. The stories they ask for again.</p>
-          </article>
-        </div>
-      </div>
+      <svg class="hk-koels__edge hk-koels__edge--bottom" width="1440" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path fill="var(--hk-canvas, #ffffff)" d="M0 48h1440V29c-172-24-338-28-528-10C721 38 594 40 402 20 228 2 108 4 0 22Z"/>
+      </svg>
     </section>
 
     <section class="hk-section" id="founder" aria-labelledby="founder-title">
@@ -790,10 +756,11 @@
           <div class="hk-quote-slot">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
+                <!-- Bedtime: a crescent settling into the corner. -->
+                <svg class="hk-quote__shape hk-quote__shape--moon" width="220" height="220" viewBox="0 0 24 24" fill="#E6CEAD" opacity=".3" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 0 1 11.2 3 9 9 0 1 0 21 12.8Z"/></svg>
                 <span class="hk-quote__mark" aria-hidden="true">“</span>
                 <p>Bedtime used to be a negotiation. Now she asks for one more Kahani, and actually settles.</p>
                 <footer>
-                  <span class="hk-quote__avatar" aria-hidden="true">A</span>
                   <span><strong>Ananya R.</strong><small>Mother of two · Brooklyn</small></span>
                 </footer>
               </blockquote>
@@ -802,10 +769,11 @@
           <div class="hk-quote-slot">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
+                <!-- Feeling at home: an open doorway. -->
+                <svg class="hk-quote__shape hk-quote__shape--doorway" width="200" height="240" viewBox="0 0 100 120" fill="#2578B7" opacity=".07" aria-hidden="true" focusable="false"><path d="M6 120V48a44 44 0 0 1 88 0v72H72V48a22 22 0 0 0-44 0v72Z"/></svg>
                 <span class="hk-quote__mark" aria-hidden="true">“</span>
                 <p>It’s the first thing that feels like our house. The festivals, the jokes, the names she already knows.</p>
                 <footer>
-                  <span class="hk-quote__avatar" aria-hidden="true">D</span>
                   <span><strong>Dev Patel</strong><small>Dad of a 5-year-old · Chicago</small></span>
                 </footer>
               </blockquote>
@@ -814,10 +782,11 @@
           <div class="hk-quote-slot">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
+                <!-- Quiet: a single unhurried wave. -->
+                <svg class="hk-quote__shape hk-quote__shape--wave" width="280" height="202" viewBox="0 0 100 72" fill="#FF5D27" opacity=".07" aria-hidden="true" focusable="false"><path d="M0 24C18 8 32 8 50 24s32 16 50 0v24C82 64 68 64 50 48S18 32 0 48Z"/></svg>
                 <span class="hk-quote__mark" aria-hidden="true">“</span>
                 <p>Screen free without feeling like a compromise. He picks the Koel. We get the quiet.</p>
                 <footer>
-                  <span class="hk-quote__avatar" aria-hidden="true">M</span>
                   <span><strong>Meera &amp; Josh</strong><small>Parents · Austin</small></span>
                 </footer>
               </blockquote>
@@ -826,10 +795,11 @@
           <div class="hk-quote-slot">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
+                <!-- Independence: small steps upward. -->
+                <svg class="hk-quote__shape hk-quote__shape--steps" width="220" height="220" viewBox="0 0 100 100" fill="#B40023" opacity=".07" aria-hidden="true" focusable="false"><path d="M8 100V74q0-6 6-6h18V48q0-6 6-6h18V22q0-6 6-6h24q6 0 6 6v78Z"/></svg>
                 <span class="hk-quote__mark" aria-hidden="true">“</span>
                 <p>She lines up her Koels and decides what we’re listening to. That little bit of independence is lovely.</p>
                 <footer>
-                  <span class="hk-quote__avatar" aria-hidden="true">P</span>
                   <span><strong>Priya S.</strong><small>Mum of a 4-year-old · London</small></span>
                 </footer>
               </blockquote>
@@ -838,10 +808,11 @@
           <div class="hk-quote-slot">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
+                <!-- Shared stories: two forms meeting in the middle. -->
+                <svg class="hk-quote__shape hk-quote__shape--together" width="220" height="242" viewBox="0 0 100 110" fill="#2578B7" opacity=".09" aria-hidden="true" focusable="false"><rect x="4" y="12" width="62" height="62" rx="24" opacity=".7"/><rect x="36" y="42" width="62" height="62" rx="24" opacity=".7"/></svg>
                 <span class="hk-quote__mark" aria-hidden="true">“</span>
                 <p>The familiar names and little details start so many conversations. Story time is something we share now.</p>
                 <footer>
-                  <span class="hk-quote__avatar" aria-hidden="true">R</span>
                   <span><strong>Rohan &amp; Aisha</strong><small>Parents · Toronto</small></span>
                 </footer>
               </blockquote>
@@ -936,7 +907,7 @@
           </div>
           <div class="hk-footer__col">
             <h3>About</h3>
-            <a href="#about">Our story</a>
+            <a href="#founder">Our story</a>
             <a href="#community">Community</a>
             <a href="#faqs">FAQs</a>
           </div>
