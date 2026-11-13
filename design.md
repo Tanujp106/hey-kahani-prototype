@@ -12,7 +12,39 @@ This is the working UI reference for this project. It summarizes the supplied br
 
 Page numbers below mean **PDF page numbers (1–30)**, not the guide’s printed chapter numbers. The PDF is image-based; the relevant pages were visually inspected rather than relying on an empty text extraction.
 
-## Active graphic direction — November 10, 2026
+## Locked shape and illustration system — November 13, 2026
+
+The user selected **H / Freeform rhythm** for abstract shapes and **A / Loose
+cut shapes** for illustrative vectors, supplying both boards again and asking
+for a varied asset library. This is the selected direction for new graphic
+asset creation. The library is in `outputs/brand-library-v1/`; its `GUIDE.md`
+documents the system and `manifest.json` lists the individual files.
+
+For placement decisions, use "Start here", the chooser tables and homepage
+recipes in `outputs/brand-library-v1/GUIDE.md` (added November 14, 2026). These
+are application recommendations; the selected drawing style remains the same.
+Choose the asset's content role before choosing its shape.
+
+- Abstract language: asymmetrical blobs, open loops, rounded zigzags, broad
+  ribbons and uneven bursts, with thoughtful negative space.
+- Illustration language: recognisable objects and plants in simple flat fills,
+  gently imperfect silhouettes and selective curved Story Ink details.
+- Mostly faceless. The small closed-eye strokes on the selected sun are allowed;
+  the system is not mascot-led.
+- Include both filled content containers with broad usable centres and separate
+  small decorative accents. Distinct silhouettes and different illustration
+  subjects matter; recolouring or rotating one design does not supply variety.
+- Use exact existing brand colours, transparent asset backgrounds and ordinary
+  editable SVG paths. No 3D, gradients, grain or universal outline treatment in
+  this selected library.
+
+This selection supersedes the older absolute no-faces and regular-card-only
+rules below for new asset creation. The existing website is not changed by
+delivery of this library; fonts, content, product facts and interactions retain
+their existing requirements. The selected reference attachments are preserved
+in `outputs/brand-library-v1/reference/`.
+
+## Earlier homepage graphic direction — November 10, 2026
 
 These are the user's questionnaire decisions for the active `shopify-homepage/`
 refresh. They supplement the supplied brand guide; they are not rules quoted
@@ -153,10 +185,11 @@ The guide does not prescribe a website type scale. The **active storefront type 
 | Role | Token | Size | Class / use |
 | --- | --- | --- | --- |
 | Hero title | `--hk-text-hero` | clamp → **56px** max | `h1.hk-display--hero` only |
-| Section title | `--hk-text-section` | clamp → **40px** max | **Every** section `h2.hk-display--lg` (How it works, App, Koels, Founder, Community, FAQ). Same size always. |
+| Section title | `--hk-text-section` | clamp → **48px** max | **Every** section `h2.hk-display--lg` (Why, App, Koels, Founder, Community, FAQ). Same size always. Raised from 40px on November 14, 2026. |
 | Secondary display | `--hk-text-md` | clamp → **32px** max | `hk-display--md` |
-| Subhead / feature h3 | `--hk-text-subhead` | clamp → **24px** max | Strip lines, newsletter h3, founder sign-off |
-| Step title | `--hk-text-step` | clamp → **30px** max | How it works bento card titles only |
+| Subhead / feature h3 | `--hk-text-subhead` | clamp → **24px** max | Strip lines, newsletter h3, founder sign-off, FAQ question summaries |
+| Step title | `--hk-text-step` | clamp → **30px** max | Legacy step titles only |
+| USP card title | `--hk-text-md` → `--hk-text-section` on desktop | **32px** → **48px** | Why Hey Kahani feature panel `h3` titles (tracks section title token) |
 | Lead + body | `--hk-text-body` | **17px** | **All** leads (`hk-lead`, hero, How, App, section intros) and running body paragraphs. Open Sans **medium 500**. `--hk-text-lead` / `--hk-text-hero-lead` alias this size. |
 | Body small | `--hk-text-body-sm` | **15px** | Dense UI / meta / nav / quote attribution only |
 | Fine print | `--hk-text-fine` | **12px** | Legal and newsletter disclaimer only |
@@ -230,23 +263,55 @@ A generated transparent cutout based on these renders is still a **concept recre
 
 These are project decisions from this chat, not rules stated in the PDF:
 
-- User direction on November 12, 2026 (`shopify-homepage/` How it works): replace the interactive left-steps + right-stage accordion with a **static three-column bento**. Keep the centered header, lead, and Shop Koels CTA. Layout: tall left card = Choose a Koel + editorial art; center stack = Place it on the Player (text + simple glyph) over a Listen together image card with caption pill; tall right card = short listen/product copy above an arch-masked Player photo. Soft canvas section ground, large rounded white/Kesar tiles, no click-to-swap behaviour. Existing step copy and product-accurate icons stay; reference screenshots are layout-only.
+- User direction on November 14, 2026 (`shopify-homepage/` second fold): one large feature card at a time with a **top pill tab switcher** (Calm-style reference). Soft brand pastel card grounds, squircle media, Averia titles, Gulab primary CTAs, directional crossfade; reduced motion keeps opacity/color only. Same-day refinements: tighten empty cards and add selected brand-library vectors; **rework copy from how-to steps into USPs**. Section id `#why`. Header belief line: “Stories that feel like yours.” (not the discarded “Why families choose it” slogan). Four panels use existing store messaging: Screen free by design; Made for little hands; Stories that feel like home; Tap a Koel. Hear a Kahani. Hero/footer CTAs say “Why Hey Kahani,” not “How it works.” Not a horizontal card carousel and not earlier how-to bentos.
+
+- Same-day cleanup: remove pre-guideline hand-drawn `hk-doodle-*` sprites (kite, spark, sun, star, etc.), the `kids-objects.svg` sprite sheet, and Why bottom pager dots from markup/CSS/JS. Decorative graphics must come from `outputs/brand-library-v1` (or Lucide for UI icons), not the old doodle set.
+
+- Same day card polish: section ground **white**; larger squircle media and USP titles (`--hk-text-md` / desktop `--hk-text-section`). Card colours Sky / Mango / Lavender / Marigold-on-Kesar.
+
+- Same day shape update (superseded): landscape Quiet tide / Double hill / Soft postcard / Plump panel read as empty banners when forced full-bleed.
+
+- Restored (Nov 14, 2026 user correction): Why USP panels keep the **agreed landscape brand-library containers** — Quiet tide, Double hill, Soft postcard, Plump panel — stretched onto tall filled cards (`preserveAspectRatio="none"`, ~68–72vh). Do **not** swap container silhouettes (e.g. to portrait arches) without asking. Accents stay secondary.
+
+- Superseded earlier November 14, 2026: static 2×2 Yoto-style feature bento. Superseded November 12, 2026 three-column step bento. Both replaced by the tabbed one-card feature stage above.
+
+- User direction on November 14, 2026 (`shopify-homepage/` FAQ): question summaries use `--hk-text-subhead` (not body); give the section more vertical padding, roomier row padding, and a clear gap between accordion items so the list does not feel squished. Answers stay `--hk-text-body`; keep accordion height measurement via `.hk-faq__content` padding (no vertical margin on answer `p`).
+
+- User direction on November 14, 2026 (`shopify-homepage/` section order): place Koels (`#koels`) immediately after Why (`#why`), with the companion app / phone section (`#app`) directly below Koels. Order: Hero → Why → Koels → App → Founder → Community → FAQs.
 
 - User direction on November 13, 2026 (`shopify-homepage/` Koels section): add Yoto-like atmosphere of soft layered depth waves and faint spark accents on the Sindoor ground — patterns and colour only. No floating doodle/illustration assets in this section. Keep organic edges, white intro type, and Kesar Explore CTA.
 
+  November 14 asset application: the user explicitly requested the selected
+  library in Koels and testimonials, with restrained density and cautious
+  removal of anything that competes. Koels now uses the library's Open storybook
+  in the existing header-mark position; its Sindoor ground, depth waves, edges
+  and product-card controls remain. The redundant spark overlay was removed.
+  This permits the header illustration, not floating graphics over the products.
+
+  Testimonials now place Moon and stars, Little home, Rain cloud, Spinning top
+  and Pebble pair in a separate header area beside each quote mark, replacing
+  the old large motifs behind the words. Long wave was removed from the
+  quiet/screen-free card on November 14, 2026. Content-sized, softly irregular
+  card surfaces retain the existing brand-pastel mix and quote hierarchy.
+  Fixed-aspect container SVGs are not stretched to hold long quotes. The copy,
+  attributions, five-card arrangement and existing interaction behaviour are
+  preserved.
+
 - User direction on November 11, 2026 (`shopify-homepage/` testimonial cards): use different soft brand-derived colours and genuinely distinct decorative shapes, informed by the supplied pastel-card references. Keep the treatment minimal, with one tonal background silhouette per card and clear black quote text. This supersedes earlier white/red-only card styling and the faint neutral corner-blob iterations for this section. Preserve the existing quotes, attributions and card layout; reference ratings and review links do not authorise adding ratings or claims.
 
-  Later refinement: the user liked the coloured shapes and asked for a reason behind each. The current motifs connect to the quote: crescent for bedtime, open doorway for feeling at home, gentle wave for quiet, ascending steps for independence, and overlapping rounded forms for shared stories. Keep them abstract and tonal; the mapping is visual interpretation, not a new product claim.
+  Later refinement: the user liked the coloured shapes and asked for a reason behind each. The current motifs connect to the quote: crescent for bedtime, open doorway for feeling at home, rain cloud for quiet/screen-free calm (replaced the Long wave on November 14, 2026 after the user said the wave did not make sense), ascending steps for independence, and overlapping rounded forms for shared stories. Keep them recognisable and tonal; the mapping is visual interpretation, not a new product claim.
 
   Latest colour correction: use slightly poppy pastel shades of the brand guide's named colours. Full-strength surfaces were too dark; the 28% colour wash was too light. The current balance uses Kesar Sand, Lavender tea, Mango Yellow, Coconut Husk and Sky Blue at 48% brand colour / 52% white, not unrelated pastel hexes. Shapes and quote marks use existing named brand shades; lower shape opacity keeps the background motifs quiet. Shape meanings, placement, black body text and layout remain unchanged.
 
 - User direction on November 8, 2026: add a slim Sindoor/Kesar announcement bar above the navbar for USP/delivery messaging. Use existing product USPs until approved delivery copy is supplied. Show one concise message on narrow screens; the announcement scrolls away while the existing navbar remains sticky. This explicitly supersedes the earlier preference to omit first-viewport announcement bars; preserve the navbar’s wordmark clearspace.
+- User direction on November 14, 2026 (`shopify-homepage/` navbar): solid **Sindoor Red** (`#B40023`, `--hk-sindoor`) — the **same token as the announcement strip** — with **no box-shadow**. Exact brand tokens only. Cream wordmark (`wordmark-cream.svg`), Kesar Sand links/icons/dividers, Temple Maroon hover/border, Kesar bag badge with Sindoor label. Mobile drawer matches the Sindoor ground.
 
 - User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 - User direction on November 11, 2026: Koel Preview pill is a near-white frosted surface (`rgba(255, 252, 247, 0.92)` with light blur), not Coconut Husk. Category badges use a frosted white blur background over artwork.
 - User direction on November 12, 2026: match the Koels section ground to the footer's Sindoor Red (`#B40023`), not Gulab Red. Keep white heading/intro text and organic edges showing the white sections above and below. Reverse the Explore CTA to Kesar Sand with a Sindoor Red label for contrast. Keep the Koel cards on their Kesar Sand foundation with black card copy and existing brand-red bag controls; hide the organic edges on narrow screens as already configured.
 
 - User direction on November 7, 2026: section titles across the `shopify-homepage/` refresh must share one size (`--hk-text-section` / `hk-display--lg`). No per-section heading size overrides (e.g. How it works vs companion app). Body copy uses Open Sans medium (500). Keep the scale in `design.md` and `tokens.css` in sync.
+- User direction on November 14, 2026: increase all section header (`h2.hk-display--lg`) sizes — they felt too small. Raise `--hk-text-section` to clamp → **48px** max (was 40px). Keep one shared token for every section; do not add per-section size overrides. Hero (`--hk-text-hero`, 56px max) stays larger.
 - User direction on November 7, 2026: page text (headings, leads, body, FAQ, founder, footer copy) uses **black `#000000`** via `--hk-ink` / `--hk-body`. Do not use Temple Maroon for running copy. Brand Story Ink `#05334A` remains available as `--hk-story-ink` for reference only. Remove unused section eyebrows when the user cuts them (App “For grown-ups”, Koels “Kahani Koels”).
 - User direction on November 7, 2026: all storefront CTAs use the hero button pair sitewide — **primary** solid Gulab pill with white label and soft red shadow; **secondary** frosted light pill with black label. No outline-red ghosts, soft-rect CTAs, or per-section button skins. Classes: `hk-btn hk-btn--primary` / `hk-btn hk-btn--secondary`.
 - Superseded graphic direction, November 7, 2026: sparse hand-drawn object doodles were limited to selected sections. The November 10 questionnaire above now governs graphic style and placement: minimal organic framing throughout the experience, regular rounded cards, and unobstructed product media. The earlier object list is optional inspiration, not a required motif inventory.

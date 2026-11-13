@@ -3,10 +3,8 @@
   const drawer = document.querySelector("[data-hk-drawer]");
   const bagBtn = document.querySelectorAll("[data-hk-open-bag]");
   const searchBtn = document.querySelectorAll("[data-hk-open-search]");
-  const accountBtn = document.querySelectorAll("[data-hk-open-account]");
   const bagDialog = document.querySelector("#bag-dialog");
   const searchDialog = document.querySelector("#search-dialog");
-  const accountDialog = document.querySelector("#account-dialog");
   const koelDialog = document.querySelector("#koel-dialog");
   const koelCards = document.querySelectorAll("[data-hk-koel]");
   const closeButtons = document.querySelectorAll("[data-hk-close-dialog]");
@@ -16,7 +14,6 @@
   const bagList = bagDialog?.querySelector("[data-hk-bag-list]");
   const bagFoot = bagDialog?.querySelector("[data-hk-bag-foot]");
   const bagTotal = bagDialog?.querySelector("[data-hk-bag-total]");
-  const accountForm = accountDialog?.querySelector("[data-hk-account-form]");
 
   const dialogTitle = koelDialog?.querySelector("[data-hk-koel-title]");
   const dialogMeta = koelDialog?.querySelector("[data-hk-koel-meta]");
@@ -170,10 +167,6 @@
     koelDialog.showModal();
   };
 
-  accountForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-  });
-
   const nav = document.querySelector(".hk-nav");
   const hero = document.querySelector(".hk-hero");
   if (nav && hero) {
@@ -206,10 +199,6 @@
       searchDialog?.showModal();
       window.requestAnimationFrame(() => searchInput?.focus());
     });
-  });
-
-  accountBtn.forEach((btn) => {
-    btn.addEventListener("click", () => accountDialog?.showModal());
   });
 
   koelCards.forEach((card) => {
@@ -366,6 +355,126 @@
         item.open();
       });
     });
+  }
+
+  const howRoot = document.querySelector("[data-hk-how]");
+  if (howRoot) {
+    const howTabs = Array.from(howRoot.querySelectorAll("[data-hk-how-tab]"));
+    const howPanels = Array.from(howRoot.querySelectorAll("[data-hk-how-panel]"));
+    const howStage = howRoot.querySelector("[data-hk-how-stage]");
+    let howIndex = Math.max(
+      0,
+      howPanels.findIndex((panel) => panel.classList.contains("is-active"))
+    );
+    let howBusy = false;
+    let howLeaveTimer = 0;
+
+    const syncHowHeight = () => {
+      if (!howStage) return;
+      let max = 0;
+      howPanels.forEach((panel) => {
+        max = Math.max(max, panel.scrollHeight);
+      });
+      const active = howPanels[howIndex];
+      if (active) max = Math.max(max, active.getBoundingClientRect().height);
+      if (max > 0) howStage.style.minHeight = `${Math.ceil(max)}px`;
+    };
+
+    const setHowIndex = (nextIndex) => {
+      if (!howPanels.length) return;
+      const next = ((nextIndex % howPanels.length) + howPanels.length) % howPanels.length;
+      if (next === howIndex) return;
+
+      if (howBusy) {
+        howPanels.forEach((panel) => panel.classList.remove("is-leaving"));
+        howBusy = false;
+      }
+
+      const prev = howIndex;
+      const wrapNext = prev === howPanels.length - 1 && next === 0;
+      const wrapPrev = prev === 0 && next === howPanels.length - 1;
+      howRoot.dataset.hkHowDir = wrapPrev || (!wrapNext && next < prev) ? "prev" : "next";
+
+      const leaving = howPanels[prev];
+      const entering = howPanels[next];
+
+      howBusy = true;
+      howIndex = next;
+
+      howTabs.forEach((tab, i) => {
+        const active = i === next;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+        tab.tabIndex = active ? 0 : -1;
+      });
+
+      howPanels.forEach((panel, i) => {
+        const active = i === next;
+        panel.querySelectorAll("a, button").forEach((el) => {
+          if (active) el.removeAttribute("tabindex");
+          else el.setAttribute("tabindex", "-1");
+        });
+      });
+
+      if (howLeaveTimer) window.clearTimeout(howLeaveTimer);
+
+      leaving.classList.remove("is-active");
+      leaving.classList.add("is-leaving");
+      leaving.setAttribute("aria-hidden", "true");
+
+      entering.classList.remove("is-leaving");
+      entering.classList.add("is-active");
+      entering.setAttribute("aria-hidden", "false");
+
+      window.requestAnimationFrame(syncHowHeight);
+
+      const duration = reduceMotion ? 180 : 420;
+      howLeaveTimer = window.setTimeout(() => {
+        leaving.classList.remove("is-leaving");
+        howBusy = false;
+        howLeaveTimer = 0;
+        syncHowHeight();
+      }, duration);
+    };
+
+    howTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        setHowIndex(Number(tab.dataset.hkHowTab));
+      });
+
+      tab.addEventListener("keydown", (event) => {
+        const key = event.key;
+        if (key !== "ArrowRight" && key !== "ArrowLeft" && key !== "Home" && key !== "End") {
+          return;
+        }
+        event.preventDefault();
+        if (key === "Home") {
+          setHowIndex(0);
+          howTabs[0]?.focus();
+          return;
+        }
+        if (key === "End") {
+          setHowIndex(howPanels.length - 1);
+          howTabs[howPanels.length - 1]?.focus();
+          return;
+        }
+        const delta = key === "ArrowRight" ? 1 : -1;
+        const target = (howIndex + delta + howPanels.length) % howPanels.length;
+        setHowIndex(target);
+        howTabs[target]?.focus();
+      });
+    });
+
+    howPanels.forEach((panel, i) => {
+      const active = i === howIndex;
+      panel.querySelectorAll("a, button").forEach((el) => {
+        if (active) el.removeAttribute("tabindex");
+        else el.setAttribute("tabindex", "-1");
+      });
+    });
+
+    syncHowHeight();
+    window.addEventListener("resize", syncHowHeight);
   }
 
   if (!reduceMotion && "IntersectionObserver" in window) {

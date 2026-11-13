@@ -35,6 +35,29 @@ Example from `shopify-homepage/index.html`:
 
 All files remain generated concept art, with approximate hardware geometry and unapproved story illustrations. The parent phone interface is a fictional app concept. Native files are below the brief's 2400px long-edge target and have no verified embedded sRGB ICC profile. The original campaign assets were not resized, cropped, recolored, or format converted; the wide hero is a separate generated edit.
 
+## Brand library vectors (Why / USP panels)
+
+Selected SVGs from `outputs/brand-library-v1/` are copied under
+`assets/images/brand-library/` for the Why feature panels: `containers/`
+(source silhouettes), plus decorative shapes and illustrations used as accents.
+Live panels inline the container paths with `currentColor` fills. Edit the
+library source, then re-copy when updating website graphics.
+
+## Brand library vectors (testimonials and Koels)
+
+The November 14, 2026 application uses the library's Moon and stars, Little home,
+Rain cloud, Spinning top and Pebble pair in the testimonial card headers. These
+replace the earlier large background motifs so quote text has its own reading
+area. Rain cloud replaced Long wave on the quiet/screen-free card the same day
+after the wave read as unclear. The Open storybook replaces the small handmade
+book badge in the Koels introduction. Koels keeps its depth waves; the redundant
+spark overlay was removed.
+
+`illustrations/rain-cloud.svg` is copied unchanged from the library source. Other
+selected files were already present in this directory. Existing quote surfaces
+remain content-sized and pastel rather than stretching a fixed-aspect SVG behind
+long text. No product artwork, quote content or commerce controls are replaced.
+
 ## Testimonial content
 
 The five quotes and parent attributions are draft mock content. The original three were retained from the prior homepage section; two additional samples were added for the second row on November 7, 2026. They must be replaced with approved customer testimonials before launch.

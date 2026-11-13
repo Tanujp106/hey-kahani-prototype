@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1640" viewBox="0 0 1440 1640">
+<rect width="1440" height="1640" fill="#FFFFFF"/>
+<text x="44" y="54" font-family="Arial" font-size="28" fill="#05334A">Hey Kahani / freeform shapes</text>
+<text x="44" y="87" font-family="Arial" font-size="16" fill="#05334A">12 distinct accents / loops, blobs, bursts and ribbons / transparent individual files</text>
+<g transform="translate(107.000 120.000) scale(0.73000)"><path d="M52 273 C80 339 162 293 197 233 C233 174 242 70 194 60 C139 48 112 120 139 165 C185 244 274 191 321 119 C357 65 362 76 370 91" fill="none" stroke="#D3000A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="48" y="449" font-family="Arial" font-size="17" fill="#05334A">01 / Wandering loop</text>
+<g transform="translate(573.000 120.000) scale(0.73000)"><path d="M40 125 C28 105 50 86 74 97 L135 142 L127 89 C123 64 146 53 164 75 L215 153 L225 99 C229 75 255 76 267 99 L297 173 L316 137 C329 112 358 125 347 150 L309 242 C299 265 272 262 261 239 L240 185 L224 239 C217 262 193 270 178 246 L151 201 L148 245 C147 268 124 281 105 263 L41 201 C21 181 40 154 61 168 L93 189 Z" fill="#2B9863" /></g>
+<text x="514" y="449" font-family="Arial" font-size="17" fill="#05334A">02 / Spring zigzag</text>
+<g transform="translate(1039.000 120.000) scale(0.73000)"><path d="M200 40 Q213 24 220 52 L231 119 L293 65 Q313 48 307 77 L286 144 L360 139 Q390 140 366 162 L308 201 L363 241 Q388 263 358 263 L284 254 L302 330 Q307 357 285 338 L226 287 L208 363 Q202 390 190 362 L172 289 L108 339 Q86 355 96 327 L119 255 L44 259 Q15 258 40 237 L99 198 L39 156 Q15 137 44 138 L119 145 L94 73 Q84 46 106 64 L170 119 L183 52 Q186 28 200 40 Z" fill="none" stroke="#05334A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="980" y="449" font-family="Arial" font-size="17" fill="#05334A">03 / Open burst</text>
+<g transform="translate(107.000 498.000) scale(0.73000)"><path d="M59 139 C79 70 161 45 228 57 C303 71 342 121 331 188 C320 242 349 290 299 320 C248 350 187 316 135 333 C73 354 35 316 43 258 C50 214 40 183 59 139 Z" fill="#63C3FE" /></g>
+<text x="48" y="827" font-family="Arial" font-size="17" fill="#05334A">04 / Sky puddle</text>
+<g transform="translate(573.000 498.000) scale(0.73000)"><path d="M59 181 C58 102 116 47 192 39 C264 30 335 84 352 151 C373 224 350 305 290 343 C231 380 142 354 94 303 C69 276 59 228 59 181 Z M137 173 C133 206 151 260 183 275 C213 289 265 264 278 229 C295 188 267 131 232 117 C197 103 146 137 137 173 Z" fill="#FECB74" fill-rule="evenodd"/></g>
+<text x="514" y="827" font-family="Arial" font-size="17" fill="#05334A">05 / Crooked ring</text>
+<g transform="translate(1039.000 498.000) scale(0.73000)"><path d="M92 68 C118 43 143 64 151 103 C161 160 182 205 241 218 C291 229 307 266 281 294 C249 328 188 314 137 283 C77 246 47 178 57 122 C61 100 76 79 92 68 Z" fill="#FF5D27" /></g>
+<text x="980" y="827" font-family="Arial" font-size="17" fill="#05334A">06 / Orange bend</text>
+<g transform="translate(107.000 876.000) scale(0.73000)"><path d="M66 148 C75 91 149 67 199 101 C244 130 265 203 230 261 C196 316 112 335 72 294 C40 261 55 203 66 148 Z" fill="#D6C9E4" /><path d="M198 79 C234 49 291 67 316 108 C344 154 339 205 300 220 C263 234 202 210 184 171 C169 140 173 101 198 79 Z" fill="#63C3FE" /></g>
+<text x="48" y="1205" font-family="Arial" font-size="17" fill="#05334A">07 / Pebble pair</text>
+<g transform="translate(573.000 876.000) scale(0.73000)"><path d="M39 259 C49 208 75 151 115 141 C147 133 169 163 184 194 C206 154 229 139 257 153 C287 167 319 223 334 257 C344 283 315 299 297 279 L252 218 L212 276 C198 297 174 299 160 275 L122 213 L89 278 C73 309 32 296 39 259 Z" fill="#D3000A" /></g>
+<text x="514" y="1205" font-family="Arial" font-size="17" fill="#05334A">08 / Double dip</text>
+<g transform="translate(1039.000 876.000) scale(0.73000)"><path d="M19 209 C70 111 117 120 167 189 C202 239 228 250 267 180 C308 105 356 119 389 169 L389 242 C354 184 333 184 299 244 C249 333 187 310 140 245 C110 203 89 178 19 281 Z" fill="#FECB74" /></g>
+<text x="980" y="1205" font-family="Arial" font-size="17" fill="#05334A">09 / Long wave</text>
+<g transform="translate(107.000 1254.000) scale(0.73000)"><path d="M51 90 C84 57 154 43 199 72 C232 93 242 135 284 130 C323 126 345 154 332 190 C317 230 284 251 265 289 C246 327 216 339 187 312 C160 285 162 246 123 237 C79 226 26 239 22 197 C19 161 24 116 51 90 Z" fill="#63C3FE" /></g>
+<text x="48" y="1583" font-family="Arial" font-size="17" fill="#05334A">10 / Soft corner</text>
+<g transform="translate(573.000 1254.000) scale(0.73000)"><path d="M48 291 C47 196 62 87 152 60 C250 30 309 117 339 245 C346 277 316 294 298 265 C263 201 259 123 203 125 C139 126 138 218 129 288 C125 321 49 327 48 291 Z" fill="#2B9863" /></g>
+<text x="514" y="1583" font-family="Arial" font-size="17" fill="#05334A">11 / Tilted arch</text>
+<g transform="translate(1039.000 1254.000) scale(0.73000)"><path d="M123 195 C153 147 217 114 250 143 C279 172 244 223 197 247 C151 271 96 245 123 195 Z" fill="#EF2289" /></g>
+<text x="980" y="1583" font-family="Arial" font-size="17" fill="#05334A">12 / Pink flick</text>
+</svg>

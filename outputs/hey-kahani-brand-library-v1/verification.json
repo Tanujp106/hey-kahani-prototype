@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-13",
+  "counts": {
+    "containers": 12,
+    "decorative": 12,
+    "illustrations": 12
+  },
+  "checks": {
+    "individual_svg_xml_parse": true,
+    "unique_geometry_ignoring_colours": 36,
+    "only_named_palette_colours": true,
+    "no_raster_or_script_dependencies": true,
+    "transparent_pngs_at_exact_2x_dimensions": 36,
+    "transparent_edge_margins": 36,
+    "fully_opaque_container_content_safe_rectangles": 12,
+    "rendered_illustration_line_details_preserved": true,
+    "three_preview_sheets_visually_reviewed": true
+  },
+  "renderer": "sharp/libvips; Pillow contact sheets",
+  "scope": "Delivered graphic files only; no website integration or browser verification."
+}

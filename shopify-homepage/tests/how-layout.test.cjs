@@ -8,32 +8,55 @@ const html = readFileSync(join(root, 'index.html'), 'utf8');
 const css = readFileSync(join(root, 'assets/css/styles.css'), 'utf8');
 const js = readFileSync(join(root, 'assets/js/main.js'), 'utf8');
 
-test('How it works ships a static three-column bento, not an accordion', () => {
-  assert.match(html, /class="hk-how-bento"/);
-  assert.match(html, /hk-how-bento__card--choose/);
-  assert.match(html, /hk-how-bento__card--place/);
-  assert.match(html, /hk-how-bento__card--listen/);
-  assert.match(html, /hk-how-bento__card--player/);
-  assert.match(html, /hk-how-bento__arch/);
-  assert.match(html, /Choose a Koel/);
-  assert.match(html, /Place it on the Player/);
-  assert.match(html, /Listen together/);
-  assert.match(html, /hk-shot-05\.png/);
-  assert.match(html, /hk-shot-03\.png/);
-  assert.match(html, /hk-shot-07\.png/);
+test('Why section ships USP tabs with brand-library container shells', () => {
+  assert.match(html, /id="why"/);
+  assert.match(html, /Stories that feel like yours\./);
+  assert.match(html, /data-hk-how/);
+  assert.match(html, /role="tablist"/);
+  assert.match(html, /hk-how-panel__shell/);
+  assert.match(html, /hk-how-panel__body/);
+  assert.match(html, /Screen free by design/);
+  assert.match(html, /Made for little hands/);
+  assert.match(html, /Stories that feel like home/);
+  assert.match(html, /Tap a Koel\. Hear a Kahani\./);
+  assert.match(html, /hk-how-panel--screen/);
+  assert.match(html, /hk-how-panel--hands/);
+  assert.match(html, /hk-how-panel--home/);
+  assert.match(html, /hk-how-panel--simple/);
+  assert.match(html, /brand-library\/illustrations\/flying-kite\.svg/);
+  assert.match(html, /Why Hey Kahani/);
+  assert.match(html, /viewBox="0 0 640 400"/);
+  assert.match(html, /hk-how-panel__shell[^>]*preserveAspectRatio="none"/);
 
+  assert.doesNotMatch(html, /Koel on\. Story begins\./);
+  assert.doesNotMatch(html, /Choose a Koel/);
+  assert.doesNotMatch(html, /See how it works/);
   assert.doesNotMatch(html, /data-hk-how-step/);
-  assert.doesNotMatch(html, /data-hk-how-panel/);
-  assert.doesNotMatch(html, /role="tablist"/);
   assert.doesNotMatch(js, /data-hk-how-step/);
-  assert.doesNotMatch(js, /--hk-how-detail-height/);
+  assert.doesNotMatch(html, /viewBox="0 0 400 520"/);
+  assert.doesNotMatch(html, /hk-doodle/);
+  assert.doesNotMatch(html, /hk-how-pager/);
+  assert.doesNotMatch(html, /data-hk-how-dot/);
+  assert.doesNotMatch(js, /data-hk-how-dot/);
+  assert.doesNotMatch(css, /\.hk-doodle\b/);
+  assert.doesNotMatch(css, /\.hk-how-pager/);
+  assert.match(js, /data-hk-how-tab/);
 });
 
-test('How bento CSS keeps desktop three-column structure and arch mask', () => {
-  assert.match(css, /\.hk-how-bento\s*\{/);
-  assert.match(css, /grid-template-columns:\s*minmax\(0,\s*1\.05fr\)\s+minmax\(0,\s*1fr\)\s+minmax\(0,\s*1\.05fr\)/);
-  assert.match(css, /\.hk-how-bento__arch\s*\{[\s\S]*?border-radius:/);
-  assert.match(css, /\.hk-how-bento__caption\s*\{/);
+test('Why feature stage CSS uses tall landscape container shells and crossfade', () => {
+  assert.match(css, /\.hk-section--how\s*\{[\s\S]*?background:\s*var\(--hk-canvas\)/);
+  assert.match(css, /\.hk-how-panel__shell\s*\{/);
+  assert.match(css, /\.hk-how-panel__body\s*\{/);
+  assert.match(css, /min-height:\s*min\(68vh,\s*36rem\)/);
+  assert.match(css, /min-height:\s*min\(72vh,\s*40rem\)/);
+  assert.match(css, /\.hk-how-panel--screen\s*\{/);
+  assert.match(css, /\.hk-how-panel--hands\s*\{/);
+  assert.match(css, /\.hk-how-panel--home\s*\{/);
+  assert.match(css, /\.hk-how-panel--simple\s*\{/);
+  assert.match(css, /\.hk-how-panel\.is-active/);
+  assert.match(css, /--hk-how-panel-duration/);
+  assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.doesNotMatch(css, /aspect-ratio:\s*400\s*\/\s*520/);
+  assert.doesNotMatch(css, /\.hk-how-panel--choose\s*\{/);
   assert.doesNotMatch(css, /\.hk-how__step-reveal/);
-  assert.doesNotMatch(css, /\.hk-how__panel\.is-active/);
 });

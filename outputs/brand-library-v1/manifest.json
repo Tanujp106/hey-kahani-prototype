@@ -1,0 +1,633 @@
+{
+  "version": "1.0",
+  "date": "2026-11-13",
+  "colourSpace": "sRGB",
+  "styleApproval": "User selected abstract H and illustration A references on November 13, 2026.",
+  "authoring": "Original hand-authored SVG paths informed by the selected references; no raster tracing or embedded images.",
+  "palette": {
+    "red": "#D3000A",
+    "sand": "#FFF1D6",
+    "sky": "#63C3FE",
+    "yellow": "#FECB74",
+    "ink": "#05334A",
+    "green": "#2B9863",
+    "orange": "#FF5D27",
+    "lavender": "#D6C9E4",
+    "husk": "#E6CEAD",
+    "pink": "#EF2289"
+  },
+  "assets": [
+    {
+      "id": "hk-containers-soft-postcard",
+      "category": "containers",
+      "name": "Soft postcard",
+      "file": "svg/containers/soft-postcard.svg",
+      "png": "png/containers/soft-postcard.png",
+      "viewBox": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 72,
+        "y": 70,
+        "width": 490,
+        "height": 260
+      }
+    },
+    {
+      "id": "hk-containers-off-centre-arch",
+      "category": "containers",
+      "name": "Off-centre arch",
+      "file": "svg/containers/off-centre-arch.svg",
+      "png": "png/containers/off-centre-arch.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        520
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 70,
+        "y": 170,
+        "width": 260,
+        "height": 280
+      }
+    },
+    {
+      "id": "hk-containers-lopsided-pebble",
+      "category": "containers",
+      "name": "Lopsided pebble",
+      "file": "svg/containers/lopsided-pebble.svg",
+      "png": "png/containers/lopsided-pebble.png",
+      "viewBox": [
+        0,
+        0,
+        480,
+        480
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 85,
+        "y": 110,
+        "width": 310,
+        "height": 270
+      }
+    },
+    {
+      "id": "hk-containers-rolling-banner",
+      "category": "containers",
+      "name": "Rolling banner",
+      "file": "svg/containers/rolling-banner.svg",
+      "png": "png/containers/rolling-banner.png",
+      "viewBox": [
+        0,
+        0,
+        960,
+        280
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 100,
+        "y": 85,
+        "width": 760,
+        "height": 110
+      }
+    },
+    {
+      "id": "hk-containers-scooped-shoulder",
+      "category": "containers",
+      "name": "Scooped shoulder",
+      "file": "svg/containers/scooped-shoulder.svg",
+      "png": "png/containers/scooped-shoulder.png",
+      "viewBox": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 80,
+        "y": 120,
+        "width": 470,
+        "height": 225
+      }
+    },
+    {
+      "id": "hk-containers-plump-panel",
+      "category": "containers",
+      "name": "Plump panel",
+      "file": "svg/containers/plump-panel.svg",
+      "png": "png/containers/plump-panel.png",
+      "viewBox": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 85,
+        "y": 80,
+        "width": 470,
+        "height": 250
+      }
+    },
+    {
+      "id": "hk-containers-leaning-note",
+      "category": "containers",
+      "name": "Leaning note",
+      "file": "svg/containers/leaning-note.svg",
+      "png": "png/containers/leaning-note.png",
+      "viewBox": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 90,
+        "y": 95,
+        "width": 450,
+        "height": 220
+      }
+    },
+    {
+      "id": "hk-containers-double-hill",
+      "category": "containers",
+      "name": "Double hill",
+      "file": "svg/containers/double-hill.svg",
+      "png": "png/containers/double-hill.png",
+      "viewBox": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 80,
+        "y": 120,
+        "width": 480,
+        "height": 220
+      }
+    },
+    {
+      "id": "hk-containers-quiet-tide",
+      "category": "containers",
+      "name": "Quiet tide",
+      "file": "svg/containers/quiet-tide.svg",
+      "png": "png/containers/quiet-tide.png",
+      "viewBox": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 80,
+        "y": 100,
+        "width": 480,
+        "height": 220
+      }
+    },
+    {
+      "id": "hk-containers-round-window",
+      "category": "containers",
+      "name": "Round window",
+      "file": "svg/containers/round-window.svg",
+      "png": "png/containers/round-window.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        520
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 65,
+        "y": 170,
+        "width": 270,
+        "height": 275
+      }
+    },
+    {
+      "id": "hk-containers-story-pill",
+      "category": "containers",
+      "name": "Story pill",
+      "file": "svg/containers/story-pill.svg",
+      "png": "png/containers/story-pill.png",
+      "viewBox": [
+        0,
+        0,
+        960,
+        280
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 120,
+        "y": 75,
+        "width": 720,
+        "height": 130
+      }
+    },
+    {
+      "id": "hk-containers-gentle-trapezoid",
+      "category": "containers",
+      "name": "Gentle trapezoid",
+      "file": "svg/containers/gentle-trapezoid.svg",
+      "png": "png/containers/gentle-trapezoid.png",
+      "viewBox": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "suggestedUse": "Content panel or image mask; use the documented content-safe rectangle.",
+      "recommendedMinimumWidthPx": 240,
+      "contentSafeRect": {
+        "x": 100,
+        "y": 90,
+        "width": 420,
+        "height": 230
+      }
+    },
+    {
+      "id": "hk-decorative-wandering-loop",
+      "category": "decorative",
+      "name": "Wandering loop",
+      "file": "svg/decorative/wandering-loop.svg",
+      "png": "png/decorative/wandering-loop.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Wide heading accent or sparse background gesture.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-spring-zigzag",
+      "category": "decorative",
+      "name": "Spring zigzag",
+      "file": "svg/decorative/spring-zigzag.svg",
+      "png": "png/decorative/spring-zigzag.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Small energetic accent, kept away from text.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-open-burst",
+      "category": "decorative",
+      "name": "Open burst",
+      "file": "svg/decorative/open-burst.svg",
+      "png": "png/decorative/open-burst.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Outline accent; leave its centre empty.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-sky-puddle",
+      "category": "decorative",
+      "name": "Sky puddle",
+      "file": "svg/decorative/sky-puddle.svg",
+      "png": "png/decorative/sky-puddle.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Background colour patch or image companion.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-crooked-ring",
+      "category": "decorative",
+      "name": "Crooked ring",
+      "file": "svg/decorative/crooked-ring.svg",
+      "png": "png/decorative/crooked-ring.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Open framing accent, never a content panel.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-orange-bend",
+      "category": "decorative",
+      "name": "Orange bend",
+      "file": "svg/decorative/orange-bend.svg",
+      "png": "png/decorative/orange-bend.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Small curved punctuation mark.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-pebble-pair",
+      "category": "decorative",
+      "name": "Pebble pair",
+      "file": "svg/decorative/pebble-pair.svg",
+      "png": "png/decorative/pebble-pair.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Paired forms supporting shared or grouped content.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-double-dip",
+      "category": "decorative",
+      "name": "Double dip",
+      "file": "svg/decorative/double-dip.svg",
+      "png": "png/decorative/double-dip.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Compact accent beside a heading.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-long-wave",
+      "category": "decorative",
+      "name": "Long wave",
+      "file": "svg/decorative/long-wave.svg",
+      "png": "png/decorative/long-wave.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Edge-cropped section decoration; no content sits on the thin ribbon.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-soft-corner",
+      "category": "decorative",
+      "name": "Soft corner",
+      "file": "svg/decorative/soft-corner.svg",
+      "png": "png/decorative/soft-corner.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Corner crop or soft framing patch.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-tilted-arch",
+      "category": "decorative",
+      "name": "Tilted arch",
+      "file": "svg/decorative/tilted-arch.svg",
+      "png": "png/decorative/tilted-arch.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Playful arch accent; it is not a content container.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-decorative-pink-flick",
+      "category": "decorative",
+      "name": "Pink flick",
+      "file": "svg/decorative/pink-flick.svg",
+      "png": "png/decorative/pink-flick.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Small optional highlight, sparse within a composition.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-open-storybook",
+      "category": "illustrations",
+      "name": "Open storybook",
+      "file": "svg/illustrations/open-storybook.svg",
+      "png": "png/illustrations/open-storybook.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Storytelling, reading or listening introduction.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-flying-kite",
+      "category": "illustrations",
+      "name": "Flying kite",
+      "file": "svg/illustrations/flying-kite.svg",
+      "png": "png/illustrations/flying-kite.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Imagination, play or discovery.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-mango-sprig",
+      "category": "illustrations",
+      "name": "Mango sprig",
+      "file": "svg/illustrations/mango-sprig.svg",
+      "png": "png/illustrations/mango-sprig.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Everyday nature or growth; South Asian botanical cue.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-marigold",
+      "category": "illustrations",
+      "name": "Marigold",
+      "file": "svg/illustrations/marigold.svg",
+      "png": "png/illustrations/marigold.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Celebration or everyday beauty, without a festival claim.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-listening-headphones",
+      "category": "illustrations",
+      "name": "Listening headphones",
+      "file": "svg/illustrations/listening-headphones.svg",
+      "png": "png/illustrations/listening-headphones.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Listening-related editorial content; not a hardware product depiction.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-paper-boat",
+      "category": "illustrations",
+      "name": "Paper boat",
+      "file": "svg/illustrations/paper-boat.svg",
+      "png": "png/illustrations/paper-boat.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Adventure, imagination or exploration.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-spinning-top",
+      "category": "illustrations",
+      "name": "Spinning top",
+      "file": "svg/illustrations/spinning-top.svg",
+      "png": "png/illustrations/spinning-top.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Independent play or curiosity.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-little-home",
+      "category": "illustrations",
+      "name": "Little home",
+      "file": "svg/illustrations/little-home.svg",
+      "png": "png/illustrations/little-home.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Home, belonging or family routines.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-moon-and-stars",
+      "category": "illustrations",
+      "name": "Moon and stars",
+      "file": "svg/illustrations/moon-and-stars.svg",
+      "png": "png/illustrations/moon-and-stars.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Evening or bedtime-related editorial content.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-rain-cloud",
+      "category": "illustrations",
+      "name": "Rain cloud",
+      "file": "svg/illustrations/rain-cloud.svg",
+      "png": "png/illustrations/rain-cloud.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Weather, everyday wonder or a gentle pause.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-banyan-leaf",
+      "category": "illustrations",
+      "name": "Banyan leaf",
+      "file": "svg/illustrations/banyan-leaf.svg",
+      "png": "png/illustrations/banyan-leaf.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Nature-led supporting illustration; distinct from the three-leaf sprig.",
+      "recommendedMinimumWidthPx": 96
+    },
+    {
+      "id": "hk-illustrations-gentle-sun",
+      "category": "illustrations",
+      "name": "Gentle sun",
+      "file": "svg/illustrations/gentle-sun.svg",
+      "png": "png/illustrations/gentle-sun.png",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "suggestedUse": "Optional expressive motif; the library's only face-like detail.",
+      "recommendedMinimumWidthPx": 96
+    }
+  ]
+}
