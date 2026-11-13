@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-14",
+  "style": "H / Freeform rhythm; editable SVG-only website additions",
+  "assets": [
+    {
+      "id": "hk-benefit-story-trail",
+      "name": "Story trail",
+      "category": "decorative",
+      "file": "story-trail.svg",
+      "viewBox": [
+        0,
+        0,
+        240,
+        96
+      ],
+      "formats": [
+        "svg"
+      ],
+      "role": "Line leads into a grouped photo-edge illustration vignette; keep off words and controls."
+    },
+    {
+      "id": "hk-benefit-play-bounce",
+      "name": "Play bounce",
+      "category": "decorative",
+      "file": "play-bounce.svg",
+      "viewBox": [
+        0,
+        0,
+        240,
+        96
+      ],
+      "formats": [
+        "svg"
+      ],
+      "role": "Line leads into a grouped photo-edge illustration vignette; keep off words and controls."
+    },
+    {
+      "id": "hk-benefit-home-rhythm",
+      "name": "Home rhythm",
+      "category": "decorative",
+      "file": "home-rhythm.svg",
+      "viewBox": [
+        0,
+        0,
+        240,
+        96
+      ],
+      "formats": [
+        "svg"
+      ],
+      "role": "Line leads into a grouped photo-edge illustration vignette; keep off words and controls."
+    },
+    {
+      "id": "hk-benefit-listening-ripples",
+      "name": "Listening ripples",
+      "category": "decorative",
+      "file": "listening-ripples.svg",
+      "viewBox": [
+        0,
+        0,
+        240,
+        96
+      ],
+      "formats": [
+        "svg"
+      ],
+      "role": "Line leads into a grouped photo-edge illustration vignette; keep off words and controls."
+    }
+  ]
+}

@@ -8,12 +8,11 @@ const html = readFileSync(join(root, 'index.html'), 'utf8');
 const css = readFileSync(join(root, 'assets/css/styles.css'), 'utf8');
 const js = readFileSync(join(root, 'assets/js/main.js'), 'utf8');
 
-test('Why section ships USP tabs with brand-library container shells', () => {
+test('Why section keeps the four USP tabs and selected brand illustrations', () => {
   assert.match(html, /id="why"/);
   assert.match(html, /Stories that feel like yours\./);
   assert.match(html, /data-hk-how/);
   assert.match(html, /role="tablist"/);
-  assert.match(html, /hk-how-panel__shell/);
   assert.match(html, /hk-how-panel__body/);
   assert.match(html, /Screen free by design/);
   assert.match(html, /Made for little hands/);
@@ -25,8 +24,8 @@ test('Why section ships USP tabs with brand-library container shells', () => {
   assert.match(html, /hk-how-panel--simple/);
   assert.match(html, /brand-library\/illustrations\/flying-kite\.svg/);
   assert.match(html, /Why Hey Kahani/);
-  assert.match(html, /viewBox="0 0 640 400"/);
-  assert.match(html, /hk-how-panel__shell[^>]*preserveAspectRatio="none"/);
+  assert.doesNotMatch(html, /hk-how-panel__shell/);
+  assert.doesNotMatch(html, /hk-how-panel__art/);
 
   assert.doesNotMatch(html, /Koel on\. Story begins\./);
   assert.doesNotMatch(html, /Choose a Koel/);
@@ -43,12 +42,11 @@ test('Why section ships USP tabs with brand-library container shells', () => {
   assert.match(js, /data-hk-how-tab/);
 });
 
-test('Why feature stage CSS uses tall landscape container shells and crossfade', () => {
+test('Why feature stage is content-sized and retains its crossfade', () => {
   assert.match(css, /\.hk-section--how\s*\{[\s\S]*?background:\s*var\(--hk-canvas\)/);
-  assert.match(css, /\.hk-how-panel__shell\s*\{/);
   assert.match(css, /\.hk-how-panel__body\s*\{/);
-  assert.match(css, /min-height:\s*min\(68vh,\s*36rem\)/);
-  assert.match(css, /min-height:\s*min\(72vh,\s*40rem\)/);
+  assert.doesNotMatch(css, /min-height:\s*min\((?:68|72)vh/);
+  assert.doesNotMatch(css, /\.hk-how-panel__deco/);
   assert.match(css, /\.hk-how-panel--screen\s*\{/);
   assert.match(css, /\.hk-how-panel--hands\s*\{/);
   assert.match(css, /\.hk-how-panel--home\s*\{/);

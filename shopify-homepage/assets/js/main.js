@@ -167,6 +167,25 @@
     koelDialog.showModal();
   };
 
+  const announcementList = document.querySelector("[data-hk-announcement]");
+  const announcementItems = announcementList
+    ? Array.from(announcementList.querySelectorAll("li"))
+    : [];
+  if (announcementItems.length > 1) {
+    let announcementIndex = Math.max(
+      0,
+      announcementItems.findIndex((item) => item.classList.contains("is-active"))
+    );
+    announcementItems.forEach((item, index) => {
+      item.classList.toggle("is-active", index === announcementIndex);
+    });
+    window.setInterval(() => {
+      announcementItems[announcementIndex].classList.remove("is-active");
+      announcementIndex = (announcementIndex + 1) % announcementItems.length;
+      announcementItems[announcementIndex].classList.add("is-active");
+    }, 2500);
+  }
+
   const nav = document.querySelector(".hk-nav");
   const hero = document.querySelector(".hk-hero");
   if (nav && hero) {
@@ -176,6 +195,145 @@
     window.addEventListener("scroll", updateNavSurface, { passive: true });
     window.addEventListener("resize", updateNavSurface);
     updateNavSurface();
+  }
+
+  const navFloat = document.querySelector(".hk-nav__float");
+  const megaPanel = document.querySelector("[data-hk-mega-panel]");
+  const megaTriggers = Array.from(document.querySelectorAll("[data-hk-mega-trigger]"));
+  const megaSets = Array.from(document.querySelectorAll("[data-hk-mega-set]"));
+  const fineHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const desktopNav = window.matchMedia("(min-width: 900px)");
+  let activeMegaKey = "";
+  let megaCloseTimer = 0;
+
+  const syncMegaNavSurface = () => {
+    if (!nav) return;
+    nav.classList.toggle("is-mega-open", Boolean(megaPanel?.classList.contains("is-open")));
+  };
+
+  const setMegaFeature = (set, item) => {
+    if (!set || !item) return;
+    const image = item.getAttribute("data-image") || "";
+    const label = item.getAttribute("data-label") || item.textContent.trim();
+    const href = item.getAttribute("href") || "#";
+    const titleEl = set.querySelector("[data-hk-mega-title]");
+    const imageEl = set.querySelector("[data-hk-mega-image]");
+    const ctaEl = set.querySelector("[data-hk-mega-cta]");
+    if (titleEl) titleEl.textContent = label;
+    if (imageEl && image) {
+      imageEl.src = image;
+      imageEl.alt = label;
+    }
+    if (ctaEl) ctaEl.setAttribute("href", href);
+    set.querySelectorAll("[data-hk-mega-item]").forEach((link) => {
+      link.classList.toggle("is-active", link === item);
+    });
+  };
+
+  const showMegaSet = (key) => {
+    megaSets.forEach((set) => {
+      const isActive = set.getAttribute("data-hk-mega-set") === key;
+      set.classList.toggle("is-active", isActive);
+      if (isActive) {
+        const active =
+          set.querySelector("[data-hk-mega-item].is-active") ||
+          set.querySelector("[data-hk-mega-item]");
+        setMegaFeature(set, active);
+      }
+    });
+    megaTriggers.forEach((trigger) => {
+      const isActive = trigger.getAttribute("data-hk-mega-trigger") === key;
+      trigger.classList.toggle("is-active", isActive);
+      trigger.setAttribute("aria-expanded", isActive ? "true" : "false");
+    });
+    activeMegaKey = key;
+  };
+
+  const openMega = (key) => {
+    if (!megaPanel || !desktopNav.matches) return;
+    showMegaSet(key);
+    megaPanel.classList.add("is-open");
+    megaPanel.setAttribute("aria-hidden", "false");
+    syncMegaNavSurface();
+  };
+
+  const closeMega = () => {
+    if (!megaPanel) return;
+    megaPanel.classList.remove("is-open");
+    megaPanel.setAttribute("aria-hidden", "true");
+    megaTriggers.forEach((trigger) => {
+      trigger.classList.remove("is-active");
+      trigger.setAttribute("aria-expanded", "false");
+    });
+    activeMegaKey = "";
+    syncMegaNavSurface();
+  };
+
+  const cancelMegaClose = () => {
+    window.clearTimeout(megaCloseTimer);
+  };
+
+  const scheduleMegaClose = () => {
+    cancelMegaClose();
+    megaCloseTimer = window.setTimeout(() => closeMega(), 180);
+  };
+
+  if (fineHover && megaPanel && navFloat) {
+    megaTriggers.forEach((trigger) => {
+      const key = trigger.getAttribute("data-hk-mega-trigger");
+      trigger.addEventListener("mouseenter", () => {
+        if (!desktopNav.matches || !key) return;
+        cancelMegaClose();
+        openMega(key);
+      });
+      trigger.addEventListener("focus", () => {
+        if (!desktopNav.matches || !key) return;
+        cancelMegaClose();
+        openMega(key);
+      });
+    });
+
+    document.querySelectorAll("[data-hk-mega-dismiss]").forEach((link) => {
+      link.addEventListener("mouseenter", () => {
+        if (!desktopNav.matches) return;
+        cancelMegaClose();
+        closeMega();
+      });
+      link.addEventListener("focus", () => {
+        if (!desktopNav.matches) return;
+        cancelMegaClose();
+        closeMega();
+      });
+    });
+
+    megaPanel.addEventListener("mouseenter", cancelMegaClose);
+    navFloat.addEventListener("mouseleave", () => {
+      if (!desktopNav.matches) return;
+      scheduleMegaClose();
+    });
+
+    megaSets.forEach((set) => {
+      set.querySelectorAll("[data-hk-mega-item]").forEach((link) => {
+        link.addEventListener("mouseenter", () => setMegaFeature(set, link));
+        link.addEventListener("focus", () => setMegaFeature(set, link));
+      });
+    });
+
+    megaPanel.querySelector("[data-hk-mega-close]")?.addEventListener("click", () => {
+      const lastTrigger = megaTriggers.find(
+        (trigger) => trigger.getAttribute("data-hk-mega-trigger") === activeMegaKey
+      );
+      closeMega();
+      lastTrigger?.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMega();
+    });
+
+    desktopNav.addEventListener("change", () => {
+      if (!desktopNav.matches) closeMega();
+    });
   }
 
   menuBtn?.addEventListener("click", () => {
@@ -492,5 +650,214 @@
     document.querySelectorAll(".hk-reveal").forEach((el) => observer.observe(el));
   } else {
     document.querySelectorAll(".hk-reveal").forEach((el) => el.classList.add("is-in"));
+  }
+
+  const stripTicker = document.querySelector("[data-hk-strip-ticker]");
+  const stripList = stripTicker?.querySelector(".hk-strip__usps");
+  if (stripTicker && stripList) {
+    const stripEdge = stripTicker.parentElement?.querySelector(".hk-strip__edge");
+    stripList.querySelectorAll("p").forEach((phrase) => {
+      if (phrase.dataset.hkSplit === "true") return;
+      const chars = Array.from(phrase.textContent);
+      phrase.textContent = "";
+      chars.forEach((char) => {
+        const glyph = document.createElement("span");
+        glyph.className = "hk-strip__glyph";
+        glyph.textContent = char === " " ? "\u00a0" : char;
+        phrase.appendChild(glyph);
+      });
+      phrase.dataset.hkSplit = "true";
+    });
+    stripList.querySelectorAll(".hk-strip__icon").forEach((icon) => {
+      icon.classList.add("hk-strip__glyph");
+    });
+    const stripOriginals = Array.from(stripList.children);
+    // The strip edge path, sampled from its cubic curve. x runs left to right.
+    const stripCurve = (() => {
+      const cubics = [
+        [[1440, 19], [1253, 45], [1114, 45], [926, 28]],
+        [[926, 28], [691, 7], [587, 9], [395, 29]],
+        [[395, 29], [219, 47], [102, 45], [0, 27]],
+      ];
+      const points = [];
+      cubics.forEach(([p0, p1, p2, p3]) => {
+        for (let step = 0; step <= 48; step += 1) {
+          const t = step / 48;
+          const u = 1 - t;
+          const mix = (a, b, c, d) => u * u * u * a + 3 * u * u * t * b + 3 * u * t * t * c + t * t * t * d;
+          const dx = 3 * u * u * (p1[0] - p0[0]) + 6 * u * t * (p2[0] - p1[0]) + 3 * t * t * (p3[0] - p2[0]);
+          const dy = 3 * u * u * (p1[1] - p0[1]) + 6 * u * t * (p2[1] - p1[1]) + 3 * t * t * (p3[1] - p2[1]);
+          points.push({ x: mix(p0[0], p1[0], p2[0], p3[0]), y: mix(p0[1], p1[1], p2[1], p3[1]), dx, dy });
+        }
+      });
+      points.sort((a, b) => a.x - b.x);
+      return points;
+    })();
+    const stripCurveMean = stripCurve.reduce((sum, point) => sum + point.y, 0) / stripCurve.length;
+    const stripSpeed = 34;
+    let stripLoop = 0;
+    let stripFrame = 0;
+    let stripPlaying = false;
+    let stripPaused = false;
+    let stripSlots = [];
+    let stripOrigin = 0;
+    let stripWavePx = 48;
+    let stripWidth = 1;
+    let stripMotion = null;
+
+    const pointOnStrip = (norm) => {
+      const x = ((norm % 1) + 1) % 1 * 1440;
+      let lo = 0;
+      let hi = stripCurve.length - 1;
+      while (lo < hi) {
+        const mid = (lo + hi) >> 1;
+        if (stripCurve[mid].x < x) lo = mid + 1;
+        else hi = mid;
+      }
+      const next = stripCurve[Math.min(lo, stripCurve.length - 1)];
+      const prev = stripCurve[Math.max(lo - 1, 0)];
+      const span = next.x - prev.x || 1;
+      const t = Math.min(1, Math.max(0, (x - prev.x) / span));
+      return {
+        y: prev.y + (next.y - prev.y) * t,
+        dx: prev.dx + (next.dx - prev.dx) * t,
+        dy: prev.dy + (next.dy - prev.dy) * t,
+      };
+    };
+
+    const placeStripGlyph = (slot, shift) => {
+      const width = stripWidth || 1;
+      const center = stripOrigin + slot.left + slot.width / 2 - shift;
+      const norm = ((center % width) + width) % width / width;
+      const point = pointOnStrip(norm);
+      const yPx = ((point.y - stripCurveMean) / 48) * stripWavePx;
+      const slope = (point.dy / (point.dx || -1)) * (stripWavePx / 48) * (1440 / width);
+      const angle = Math.atan(slope) * (180 / Math.PI);
+      slot.el.style.transform = `translate3d(0, ${yPx}px, 0) rotate(${angle}deg)`;
+    };
+
+    const rideStrip = () => {
+      if (!stripPlaying) return;
+      stripFrame = requestAnimationFrame(rideStrip);
+      if (!stripMotion || stripPaused || document.hidden || reduceMotion || stripLoop <= 0) return;
+      const duration = Number(stripMotion.effect.getTiming().duration) || 1;
+      const time = Number(stripMotion.currentTime) || 0;
+      const shift = ((time % duration) / duration) * stripLoop;
+      stripSlots.forEach((slot) => placeStripGlyph(slot, shift));
+    };
+
+    const measureStrip = () => {
+      stripOrigin = stripList.offsetLeft;
+      stripWidth = stripTicker.clientWidth || 1;
+      stripWavePx = stripEdge?.getBoundingClientRect().height || 48;
+      stripSlots = Array.from(stripList.querySelectorAll(".hk-strip__glyph")).map((el) => ({
+        el,
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+      }));
+    };
+
+    const startStripMotion = () => {
+      stripMotion?.cancel();
+      stripMotion = null;
+      if (reduceMotion || stripLoop <= 0) return;
+      stripMotion = stripList.animate(
+        [
+          { transform: "translate3d(0, 0, 0)" },
+          { transform: `translate3d(${-stripLoop}px, 0, 0)` },
+        ],
+        {
+          duration: (stripLoop / stripSpeed) * 1000,
+          iterations: Infinity,
+          easing: "linear",
+        }
+      );
+      if (stripPaused || document.hidden || !stripPlaying) stripMotion.pause();
+    };
+
+    const buildStrip = () => {
+      stripMotion?.cancel();
+      stripMotion = null;
+      stripList.querySelectorAll("[data-hk-clone]").forEach((node) => node.remove());
+      stripList.style.transform = "";
+      if (!reduceMotion && stripOriginals.length) {
+        const viewport = stripTicker.clientWidth || 1;
+        const setWidth = Math.max(stripList.scrollWidth, 1);
+        const copies = Math.max(2, Math.ceil((viewport + setWidth) / setWidth));
+        for (let copy = 1; copy < copies; copy += 1) {
+          stripOriginals.forEach((item) => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute("data-hk-clone", "");
+            clone.setAttribute("aria-hidden", "true");
+            stripList.appendChild(clone);
+          });
+        }
+        const firstClone = stripList.querySelector("[data-hk-clone]");
+        const from = stripOriginals[0].getBoundingClientRect().left;
+        const to = firstClone ? firstClone.getBoundingClientRect().left : from + setWidth;
+        stripLoop = Math.max(1, to - from);
+      } else {
+        stripLoop = 0;
+      }
+      measureStrip();
+      startStripMotion();
+      stripSlots.forEach((slot) => placeStripGlyph(slot, 0));
+    };
+
+    const playStrip = () => {
+      if (reduceMotion || stripPlaying) return;
+      stripPlaying = true;
+      if (!stripPaused && !document.hidden) stripMotion?.play();
+      stripFrame = requestAnimationFrame(rideStrip);
+    };
+
+    const stopStrip = () => {
+      stripPlaying = false;
+      cancelAnimationFrame(stripFrame);
+      stripMotion?.pause();
+    };
+
+    stripTicker.addEventListener("pointerenter", () => {
+      stripPaused = true;
+      stripMotion?.pause();
+    });
+    stripTicker.addEventListener("pointerleave", () => {
+      stripPaused = false;
+      if (stripPlaying && !document.hidden) stripMotion?.play();
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (!stripPlaying || stripPaused) return;
+      if (document.hidden) stripMotion?.pause();
+      else stripMotion?.play();
+    });
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const stripObserver = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) playStrip();
+        else stopStrip();
+      });
+      stripObserver.observe(stripTicker);
+    } else if (!reduceMotion) {
+      playStrip();
+    }
+
+    let stripResize = 0;
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(stripResize);
+      stripResize = requestAnimationFrame(() => {
+        const wasPlaying = stripPlaying;
+        stopStrip();
+        buildStrip();
+        if (wasPlaying) playStrip();
+      });
+    });
+
+    buildStrip();
+    document.fonts?.ready?.then(() => {
+      const wasPlaying = stripPlaying;
+      stopStrip();
+      buildStrip();
+      if (wasPlaying) playStrip();
+    });
   }
 })();

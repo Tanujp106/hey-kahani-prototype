@@ -271,7 +271,39 @@ These are project decisions from this chat, not rules stated in the PDF:
 
 - Same day shape update (superseded): landscape Quiet tide / Double hill / Soft postcard / Plump panel read as empty banners when forced full-bleed.
 
-- Restored (Nov 14, 2026 user correction): Why USP panels keep the **agreed landscape brand-library containers** — Quiet tide, Double hill, Soft postcard, Plump panel — stretched onto tall filled cards (`preserveAspectRatio="none"`, ~68–72vh). Do **not** swap container silhouettes (e.g. to portrait arches) without asking. Accents stay secondary.
+- Earlier Nov 14 restoration (superseded by the screenshot correction below):
+  Why USP panels used Quiet tide / Double hill / Soft postcard / Plump panel
+  stretched onto tall cards. The later request explicitly authorizes changing
+  the container shapes, colours, elements and internal layout.
+
+- Latest November 14 screenshot correction (`#why`): the user described the
+  benefit cards as broken, empty and disharmonious and requested a full card
+  composition pass. Follow-up correction: the CSS rounded-card approximation
+  felt too plain. Use the actual created Quiet tide, Double hill, Soft postcard
+  and Plump panel container artwork. These are applied as filled SVG edge frames
+  with a flexible content centre, rather than a full SVG stretched to a tall
+  viewport-height shell. No viewport-height floor. Shared inset image/copy columns become a vertical stack
+  below 800px. The next reference-led refinement uses the supplied Headspace
+  cards for composition inspiration: a layered visual on the left and a clear,
+  vertically centred text/action column on the right. Photos keep a square crop,
+  a cream edge and a slight static tilt; standalone product media uses contain.
+  Follow-up user correction: a single asset still feels empty. Each desktop
+  card combines the main illustration, a related companion, one broad framing
+  shape and a short freehand line. A subsequent placement correction rejected
+  scattered corner assets and the detached motif row above the heading. Keep
+  the graphics together in one vignette along the photo's lower edge: the line
+  leads into the larger illustration and smaller companion on a shared baseline,
+  with the broad shape behind the group and photo. The text column begins at
+  the heading. Photo tilt is a consistent -1 degree. Mirror the whole home
+  vignette to the left, away from the Player. Below 800px, keep the grouped main
+  illustration and line; hide the broad shape and companion. Container shapes,
+  fills and asset choices are unchanged by this placement correction.
+  New editable, SVG-only line gestures extend H / Freeform rhythm under
+  `outputs/brand-library-v1/extensions/benefit-gestures/`.
+  Card grounds use exact Mango, Sky, Lavender and Kesar fills. Shared type
+  tokens, existing tabs, USP copy, Gulab CTAs and crossfade/reduced-motion behaviour
+  remain. The user explicitly superseded the earlier one-illustration treatment;
+  judge additions by composition and readability. No carousel pager dots.
 
 - Superseded earlier November 14, 2026: static 2×2 Yoto-style feature bento. Superseded November 12, 2026 three-column step bento. Both replaced by the tabbed one-card feature stage above.
 
@@ -288,6 +320,14 @@ These are project decisions from this chat, not rules stated in the PDF:
   and product-card controls remain. The redundant spark overlay was removed.
   This permits the header illustration, not floating graphics over the products.
 
+  Latest November 14 background correction: frame the Koels introduction with
+  Sky puddle and Mango Crooked ring in separate side columns outside the 40rem
+  reading column. The kite/boat arrangement and negative-offset crops were
+  rejected. Use CSS background assets so decorative media cannot create large
+  in-flow images if styling is unavailable. At 1100px and below keep one complete
+  96px ring beside the book mark, above the heading. Preserve the Sindoor waves,
+  clear product grid and static, non-interactive decorative treatment.
+
   Testimonials now place Moon and stars, Little home, Rain cloud, Spinning top
   and Pebble pair in a separate header area beside each quote mark, replacing
   the old large motifs behind the words. Long wave was removed from the
@@ -303,12 +343,16 @@ These are project decisions from this chat, not rules stated in the PDF:
 
   Latest colour correction: use slightly poppy pastel shades of the brand guide's named colours. Full-strength surfaces were too dark; the 28% colour wash was too light. The current balance uses Kesar Sand, Lavender tea, Mango Yellow, Coconut Husk and Sky Blue at 48% brand colour / 52% white, not unrelated pastel hexes. Shapes and quote marks use existing named brand shades; lower shape opacity keeps the background motifs quiet. Shape meanings, placement, black body text and layout remain unchanged.
 
-- User direction on November 8, 2026: add a slim Sindoor/Kesar announcement bar above the navbar for USP/delivery messaging. Use existing product USPs until approved delivery copy is supplied. Show one concise message on narrow screens; the announcement scrolls away while the existing navbar remains sticky. This explicitly supersedes the earlier preference to omit first-viewport announcement bars; preserve the navbar’s wordmark clearspace.
-- User direction on November 14, 2026 (`shopify-homepage/` navbar): solid **Sindoor Red** (`#B40023`, `--hk-sindoor`) — the **same token as the announcement strip** — with **no box-shadow**. Exact brand tokens only. Cream wordmark (`wordmark-cream.svg`), Kesar Sand links/icons/dividers, Temple Maroon hover/border, Kesar bag badge with Sindoor label. Mobile drawer matches the Sindoor ground.
+- User direction on November 8, 2026: add a slim announcement bar above the navbar for USP/delivery messaging. Use existing product USPs until approved delivery copy is supplied. The announcement scrolls away while the existing navbar remains sticky. This explicitly supersedes the earlier preference to omit first-viewport announcement bars; preserve the navbar’s wordmark clearspace.
+- User direction on November 14, 2026 (`shopify-homepage/` announcement strip): **Sindoor Red** (`#B40023`, `--hk-sindoor`) ground with **Kesar Sand** (`#FFF1D6`, `--hk-kesar`) text and icons. Content is **offers/promos** (e.g. % off, limited-time, free gift), not USPs. Show **one** offer at a time; rotate every **2.5 seconds** with blur-out / blur-in. Reduced motion drops blur and keeps opacity only. Exact brand tokens only; replace promo copy with approved offers when supplied.
+- User direction on November 14, 2026 (`shopify-homepage/` navbar): **floating** content-width bar — same max width as `.hk-wrap` / `--hk-content` (1120px), centered, rounded, white/`--hk-canvas` surface with soft shadow — not full-bleed. Sindoor wordmark (`wordmark.svg`), black links/icons, Gulab bag badge. Mobile drawer opens inside the same floating shell.
+- User direction on November 14, 2026 (`shopify-homepage/` desktop mega menus): one shared floating overlay matching the **navbar width**. Hover **Shop Player** / **Shop Koel** opens it with ease-out blur-in; close uses blur-out. Switching Player ↔ Koel keeps the same overlay and crossfades/blurs content sets inside. **Left** Kesar names, **right** Sindoor featured image on name hover. Close, Escape, mouseleave dismiss. Desktop/fine-pointer only; mobile keeps the drawer. Exact brand tokens only.
 
 - User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 - User direction on November 11, 2026: Koel Preview pill is a near-white frosted surface (`rgba(255, 252, 247, 0.92)` with light blur), not Coconut Husk. Category badges use a frosted white blur background over artwork.
 - User direction on November 12, 2026: match the Koels section ground to the footer's Sindoor Red (`#B40023`), not Gulab Red. Keep white heading/intro text and organic edges showing the white sections above and below. Reverse the Explore CTA to Kesar Sand with a Sindoor Red label for contrast. Keep the Koel cards on their Kesar Sand foundation with black card copy and existing brand-red bag controls; hide the organic edges on narrow screens as already configured.
+- User direction on November 14, 2026 (`shopify-homepage/` USP strip into Koels): the cream USP strip is the same wave as the Sindoor Koels edge, not a flat bar. A white wave cuts the strip’s top and the strip ground continues through the matching wave into the red. The bottom Koels wave stays white where it meets the app section. That lower edge still hides on narrow screens; the strip wave stays so the points can ride it.
+- User direction on November 14, 2026 (`shopify-homepage/` USP strip): each character and each icon sits on the strip wave path, rotated to that curve, and the line glides continuously. Phrases are not shifted as flat blocks. Icons are not held upright off the path. Hover pauses the scroll. Reduced motion keeps the points still, on the wave, with no looping movement. The cream band stays only as tall as the points plus the wave clearance (`--hk-wave` max 16px); do not pad it into a large banner.
 
 - User direction on November 7, 2026: section titles across the `shopify-homepage/` refresh must share one size (`--hk-text-section` / `hk-display--lg`). No per-section heading size overrides (e.g. How it works vs companion app). Body copy uses Open Sans medium (500). Keep the scale in `design.md` and `tokens.css` in sync.
 - User direction on November 14, 2026: increase all section header (`h2.hk-display--lg`) sizes — they felt too small. Raise `--hk-text-section` to clamp → **48px** max (was 40px). Keep one shared token for every section; do not add per-section size overrides. Hero (`--hk-text-hero`, 56px max) stays larger.

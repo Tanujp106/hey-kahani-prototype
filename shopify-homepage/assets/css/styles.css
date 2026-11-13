@@ -151,59 +151,90 @@ input {
 }
 
 .hk-announcement__messages {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px 24px;
+  display: grid;
+  place-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
+  min-height: 1.4em;
   font-size: var(--hk-text-eyebrow); /* 13px */
   font-weight: 600;
   line-height: 1.4;
 }
 
 .hk-announcement__messages li {
+  grid-area: 1 / 1;
   display: inline-flex;
   align-items: center;
-  gap: 24px;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  opacity: 0;
+  filter: blur(8px);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 480ms var(--hk-ease),
+    filter 480ms var(--hk-ease),
+    visibility 0s linear 480ms;
 }
 
-.hk-announcement__messages li + li::before {
-  content: "";
-  width: 3px;
-  height: 3px;
+.hk-announcement__icon {
+  display: inline-grid;
+  place-items: center;
   flex: 0 0 auto;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.6;
+  color: var(--hk-kesar);
 }
 
-@media (max-width: 640px) {
-  .hk-announcement__messages li:not(:first-child) {
-    display: none;
+.hk-announcement__icon svg {
+  display: block;
+}
+
+.hk-announcement__messages li.is-active {
+  opacity: 1;
+  filter: blur(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 480ms var(--hk-ease),
+    filter 480ms var(--hk-ease),
+    visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-announcement__messages li {
+    filter: none;
+    transition: opacity 280ms var(--hk-ease), visibility 0s linear 280ms;
+  }
+
+  .hk-announcement__messages li.is-active {
+    filter: none;
+    transition: opacity 280ms var(--hk-ease), visibility 0s;
   }
 }
 
-/* Nav — Sindoor bar (same red as announcement strip): logo | links | search · bag */
+/* Nav — floating content-width bar: logo | links | search · bag */
 .hk-nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  min-height: var(--hk-nav-h);
-  margin-bottom: calc(-1 * var(--hk-nav-h));
-  border-bottom: 1px solid transparent;
-  background: var(--hk-sindoor);
-  color: var(--hk-kesar);
-  transition:
-    background var(--hk-duration) var(--hk-ease),
-    border-color var(--hk-duration) var(--hk-ease);
+  padding-top: 12px;
+  margin-bottom: calc(-1 * (var(--hk-nav-h) + 12px));
+  background: transparent;
+  color: var(--hk-ink);
 }
 
-.hk-nav.is-scrolled {
-  border-bottom-color: var(--hk-temple);
-  background: var(--hk-sindoor);
+.hk-nav__float {
+  position: relative;
+  border: 1px solid var(--hk-hairline);
+  border-radius: 28px;
+  background: var(--hk-canvas);
+  box-shadow: var(--hk-shadow-soft);
+}
+
+.hk-nav.is-scrolled .hk-nav__float,
+.hk-nav.is-mega-open .hk-nav__float {
+  box-shadow: var(--hk-shadow-product);
 }
 
 .hk-nav__inner {
@@ -212,7 +243,8 @@ input {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   column-gap: clamp(20px, 3vw, 44px);
-  padding-block: 18px;
+  padding-block: 14px;
+  padding-inline: clamp(12px, 2vw, 20px);
 }
 
 .hk-wordmark {
@@ -259,7 +291,7 @@ input {
   padding: 8px 14px;
   margin-inline: -6px;
   border-radius: 9999px;
-  color: var(--hk-kesar);
+  color: var(--hk-ink);
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
   white-space: nowrap;
@@ -272,8 +304,8 @@ input {
 
 @media (hover: hover) and (pointer: fine) {
   .hk-nav__link:hover {
-    color: var(--hk-kesar);
-    background: var(--hk-temple);
+    color: var(--hk-action);
+    background: var(--hk-kesar);
     text-decoration: none;
   }
 }
@@ -303,10 +335,6 @@ input {
   place-items: center;
 }
 
-.hk-nav .hk-icon-btn {
-  color: var(--hk-kesar);
-}
-
 .hk-nav__actions [data-hk-open-search] {
   margin-left: 8px;
 }
@@ -317,16 +345,12 @@ input {
   left: -7px;
   width: 1px;
   height: 20px;
-  background: var(--hk-kesar);
+  background: var(--hk-hairline);
   content: "";
 }
 
 .hk-icon-btn:hover {
   background: rgba(0, 0, 0, 0.04);
-}
-
-.hk-nav .hk-icon-btn:hover {
-  background: var(--hk-temple);
 }
 
 .hk-nav__bag-count {
@@ -337,8 +361,8 @@ input {
   height: 16px;
   padding: 0 4px;
   border-radius: var(--hk-pill);
-  background: var(--hk-kesar);
-  color: var(--hk-sindoor);
+  background: var(--hk-action);
+  color: var(--hk-on-action);
   font-size: 10px;
   font-weight: 700;
   line-height: 16px;
@@ -361,9 +385,10 @@ input {
 
 .hk-nav__drawer {
   display: none;
-  border-bottom: 1px solid var(--hk-temple);
-  background: var(--hk-sindoor);
-  padding: 8px 0 20px;
+  border-top: 1px solid var(--hk-hairline);
+  background: var(--hk-canvas);
+  padding: 8px clamp(12px, 2vw, 20px) 20px;
+  border-radius: 0 0 28px 28px;
 }
 
 .hk-nav__drawer.is-open {
@@ -383,7 +408,255 @@ input {
   padding: 14px 0;
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
+  color: var(--hk-ink);
+}
+
+.hk-nav__link[data-hk-mega-trigger].is-active {
+  color: var(--hk-action);
+  background: var(--hk-kesar);
+}
+
+.hk-mega {
+  --hk-mega-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --hk-mega-duration: 420ms;
+  --hk-mega-h: 420px;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: grid;
+  width: 100%;
+  height: var(--hk-mega-h);
+  overflow: hidden;
+  border: 1px solid var(--hk-hairline);
+  border-radius: 28px;
+  background: var(--hk-canvas);
+  box-shadow: var(--hk-shadow-product);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  filter: blur(12px);
+  transform: translateY(-6px);
+  transition:
+    opacity var(--hk-mega-duration) var(--hk-mega-ease),
+    filter var(--hk-mega-duration) var(--hk-mega-ease),
+    transform var(--hk-mega-duration) var(--hk-mega-ease),
+    visibility 0s linear var(--hk-mega-duration);
+}
+
+.hk-mega::before {
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+  content: "";
+}
+
+.hk-mega.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  filter: blur(0);
+  transform: translateY(0);
+  transition:
+    opacity var(--hk-mega-duration) var(--hk-mega-ease),
+    filter var(--hk-mega-duration) var(--hk-mega-ease),
+    transform var(--hk-mega-duration) var(--hk-mega-ease),
+    visibility 0s;
+}
+
+.hk-mega__set {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  height: 100%;
+  min-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  filter: blur(10px);
+  transform: translateY(8px);
+  transition:
+    opacity 360ms var(--hk-mega-ease),
+    filter 360ms var(--hk-mega-ease),
+    transform 360ms var(--hk-mega-ease),
+    visibility 0s linear 360ms;
+}
+
+.hk-mega__set.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  filter: blur(0);
+  transform: translateY(0);
+  transition:
+    opacity 360ms var(--hk-mega-ease),
+    filter 360ms var(--hk-mega-ease),
+    transform 360ms var(--hk-mega-ease),
+    visibility 0s;
+}
+
+.hk-mega__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding: 28px 28px 24px;
+  background: var(--hk-kesar);
+  color: var(--hk-ink);
+  overflow: hidden;
+}
+
+.hk-mega__eyebrow,
+.hk-mega__feature-eyebrow {
+  margin: 0;
+  font-size: var(--hk-text-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hk-mega__names {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  flex: 1 1 auto;
+  align-content: start;
+  align-self: stretch;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hk-mega__set[data-hk-mega-set="koels"] .hk-mega__names {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 10px;
+  row-gap: 4px;
+}
+
+.hk-mega__name {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 12px;
+  color: var(--hk-ink);
+  font-family: var(--hk-font-body);
+  font-size: var(--hk-text-body-sm);
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition:
+    color var(--hk-duration) var(--hk-ease),
+    background var(--hk-duration) var(--hk-ease);
+}
+
+.hk-mega__name.is-active,
+.hk-mega__name:hover,
+.hk-mega__name:focus-visible {
+  color: var(--hk-sindoor);
+  background: var(--hk-canvas);
+  text-decoration: none;
+}
+
+.hk-mega__all {
+  margin-top: auto;
+  color: var(--hk-sindoor);
+  font-size: var(--hk-text-body-sm);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hk-mega__feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding: 28px 28px 24px;
+  background: var(--hk-sindoor);
   color: var(--hk-kesar);
+  overflow: hidden;
+}
+
+.hk-mega__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--hk-pill);
+  background: transparent;
+  color: var(--hk-kesar);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.hk-mega__close:hover {
+  background: var(--hk-temple);
+}
+
+.hk-mega__feature-title {
+  margin: 0;
+  max-width: 18ch;
+  font-family: var(--hk-font-display);
+  font-size: var(--hk-text-subhead);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--hk-kesar);
+}
+
+.hk-mega__media {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  padding: 4px 0;
+}
+
+.hk-mega__media img {
+  display: block;
+  width: min(100%, 220px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 18px;
+  background: var(--hk-canvas);
+}
+
+.hk-mega__cta {
+  align-self: stretch;
+  justify-content: center;
+}
+
+@media (hover: none), (max-width: 899px) {
+  .hk-mega {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-mega,
+  .hk-mega.is-open,
+  .hk-mega__set,
+  .hk-mega__set.is-active,
+  .hk-mega__name {
+    filter: none;
+    transform: none;
+    transition: opacity 200ms ease-out, visibility 0s;
+  }
 }
 
 /* Buttons — one system sitewide (hero primary + secondary) */
@@ -637,32 +910,59 @@ input {
   background: var(--hk-canvas); /* white */
 }
 
+.hk-strip,
+.hk-koels {
+  --hk-strip-ground: color-mix(in srgb, var(--hk-kesar) 55%, #ebe4d6 45%);
+  --hk-wave: clamp(12px, 1.25vw, 16px);
+}
+
 .hk-strip {
   position: relative;
-  padding-block: 14px;
-  background: color-mix(in srgb, var(--hk-kesar) 55%, #ebe4d6 45%);
+  z-index: 1;
+  margin-bottom: -1px;
+  padding: calc(var(--hk-wave) * 0.62 + 6px) 0 6px;
+  overflow-x: clip;
+  background: var(--hk-strip-ground);
   border: 0;
+}
+
+.hk-strip__edge {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: calc(var(--hk-wave) + 1px);
+  pointer-events: none;
+}
+
+.hk-strip__edge path {
+  fill: var(--hk-canvas);
+}
+
+.hk-strip__ticker {
+  position: relative;
+  z-index: 1;
 }
 
 .hk-strip__usps {
   list-style: none;
+  position: relative;
+  width: max-content;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   align-items: center;
-  gap: 12px 40px;
-}
-
-@media (min-width: 720px) {
-  .hk-strip__usps {
-    gap: 14px 56px;
-  }
+  gap: clamp(40px, 6vw, 88px);
+  will-change: transform;
 }
 
 .hk-strip__usps li {
   display: flex;
+  flex: none;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -690,11 +990,27 @@ input {
   font-weight: 600;
   line-height: 1.25;
   color: var(--hk-ink);
+  white-space: nowrap;
 }
 
-@media (min-width: 720px) {
-  .hk-strip__usps p {
-    white-space: nowrap;
+.hk-strip__usps p .hk-strip__glyph {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+.hk-strip__icon.hk-strip__glyph {
+  transform-origin: 50% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-strip__usps {
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
+    will-change: auto;
   }
 }
 
@@ -797,61 +1113,88 @@ input {
   overflow: visible;
 }
 
+/* Use the authored library edges as a filled, content-sized frame. The
+   nine-slice centre grows with live content; the contour stays outside it. */
 .hk-how-panel {
-  /* Content-sized organic panels: the silhouette follows the copy, not the viewport. */
-  --hk-benefit-surface: var(--hk-kesar);
-  --hk-benefit-contour: 42px 64px 46px 34px / 52px 40px 60px 44px;
+  --hk-benefit-frame: url("../images/brand-library/containers/benefit-quiet-tide.svg");
+  --hk-benefit-photo-tilt: -1deg;
   position: relative;
   width: 100%;
   padding: 0;
-  border-radius: var(--hk-benefit-contour);
-  background: var(--hk-benefit-surface);
+  border: 48px solid transparent;
+  border-image-source: var(--hk-benefit-frame);
+  border-image-slice: 110 fill;
+  border-image-width: 1;
+  border-image-repeat: stretch;
+  border-radius: 0;
+  background: transparent;
   color: var(--hk-ink);
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hk-how-panel--screen {
-  --hk-benefit-surface: var(--hk-kesar);
+  --hk-benefit-frame: url("../images/brand-library/containers/benefit-quiet-tide.svg");
 }
 
 .hk-how-panel--hands {
-  --hk-benefit-surface: color-mix(in srgb, var(--hk-sky) 64%, white);
-  --hk-benefit-contour: 64px 38px 58px 42px / 44px 62px 40px 56px;
+  --hk-benefit-frame: url("../images/brand-library/containers/benefit-double-hill.svg");
 }
 
 .hk-how-panel--home {
-  --hk-benefit-surface: color-mix(in srgb, var(--hk-lavender) 80%, white);
-  --hk-benefit-contour: 36px 62px 42px 58px / 54px 38px 60px 44px;
+  --hk-benefit-frame: url("../images/brand-library/containers/benefit-soft-postcard.svg");
 }
 
 .hk-how-panel--simple {
-  --hk-benefit-surface: color-mix(in srgb, var(--hk-mango) 72%, white);
-  --hk-benefit-contour: 58px 40px 64px 36px / 42px 58px 46px 60px;
+  --hk-benefit-frame: url("../images/brand-library/containers/benefit-plump-panel.svg");
 }
 
 .hk-how-panel__body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: 24px;
+  gap: 32px;
   box-sizing: border-box;
   width: 100%;
-  padding: clamp(24px, 5vw, 40px);
+  padding: 12px;
 }
 
 .hk-how-panel__visual {
-  width: min(100%, 22rem);
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 25rem);
+  padding: 8px 0 0;
+  box-sizing: border-box;
   margin-inline: auto;
   min-width: 0;
 }
 
-.hk-how-panel__media {
-  width: 100%;
+/* One anchored composition: photo, a lower-edge group, and a shape behind it.
+   All artwork shares the visual's baseline rather than separate card corners. */
+.hk-how-panel__backdrop {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: min(52%, 200px);
+  height: auto;
   aspect-ratio: 1;
+  pointer-events: none;
+}
+
+.hk-how-panel__media {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 24px);
+  max-width: 24rem;
+  margin-inline: auto;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  border: 5px solid var(--hk-kesar);
   border-radius: 28px 44px 32px 38px;
   overflow: hidden;
-  background: var(--hk-canvas);
+  background: var(--hk-kesar);
+  transform: rotate(var(--hk-benefit-photo-tilt));
 }
 
 .hk-how-panel__media img {
@@ -873,7 +1216,7 @@ input {
   display: grid;
   justify-items: start;
   align-content: center;
-  gap: 14px;
+  gap: 20px;
   width: 100%;
   max-width: 25rem;
   min-width: 0;
@@ -881,18 +1224,103 @@ input {
   text-align: left;
 }
 
+/* The line leads into a paired vignette; the larger illustration is the
+   anchor and the companion sits beside it on the same baseline. */
+.hk-how-panel__asset-group {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(96px, 10vw, 136px) clamp(72px, 7vw, 96px);
+  align-items: end;
+  width: calc(100% - 12px);
+  margin: -20px 0 0 auto;
+  pointer-events: none;
+}
+
 .hk-how-panel__mark {
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: contain;
-  margin-bottom: -4px;
-  pointer-events: none;
+}
+
+.hk-how-panel__gesture {
+  display: block;
+  align-self: center;
+  justify-self: end;
+  width: 100%;
+  max-width: 148px;
+  height: auto;
+  margin-top: 24px;
+  aspect-ratio: 5 / 2;
+  object-fit: contain;
+}
+
+.hk-how-panel__companion {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin-left: -8px;
+  object-fit: contain;
+}
+
+/* Mirror the whole home vignette so its overlap is beside the clothing. */
+.hk-how-panel--home .hk-how-panel__asset-group {
+  grid-template-columns: clamp(96px, 10vw, 136px) clamp(72px, 7vw, 96px) minmax(0, 1fr);
+  margin-inline: 0 auto;
+}
+
+.hk-how-panel--home .hk-how-panel__mark {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.hk-how-panel--home .hk-how-panel__companion {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hk-how-panel--home .hk-how-panel__gesture {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.hk-how-panel--home .hk-how-panel__backdrop {
+  left: 0;
+  right: auto;
+}
+
+@media (max-width: 799px) {
+  .hk-how-panel__backdrop,
+  .hk-how-panel__companion {
+    display: none;
+  }
+
+  .hk-how-panel__asset-group {
+    grid-template-columns: minmax(0, 1fr) 112px;
+    width: calc(100% - 24px);
+    margin-top: -16px;
+  }
+
+  .hk-how-panel--home .hk-how-panel__asset-group {
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+
+  .hk-how-panel--home .hk-how-panel__gesture {
+    grid-column: 2;
+  }
+
+  .hk-how-panel__gesture {
+    max-width: 132px;
+  }
 }
 
 .hk-how-panel__title {
   margin: 0;
-  max-width: 16ch;
+  max-width: 14ch;
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-md);
   font-weight: 700;
@@ -904,7 +1332,7 @@ input {
 
 .hk-how-panel__text {
   margin: 0;
-  max-width: 36ch;
+  max-width: 34ch;
   font-family: var(--hk-font-body);
   font-size: var(--hk-text-body);
   font-weight: var(--hk-font-weight-body);
@@ -917,14 +1345,18 @@ input {
 }
 
 @media (min-width: 800px) {
+  .hk-how-panel {
+    border-width: clamp(64px, 6vw, 80px);
+  }
+
   .hk-how-panel__body {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(32px, 4vw, 56px);
-    padding: clamp(36px, 4vw, 56px);
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: clamp(40px, 5vw, 64px);
+    padding: 0;
   }
 
   .hk-how-panel__visual {
-    width: min(100%, 24rem);
+    width: min(100%, 27rem);
   }
 
   .hk-how-panel__copy {
@@ -938,12 +1370,15 @@ input {
 
 @media (max-width: 479px) {
   .hk-how-panel {
-    --hk-benefit-contour: 28px 40px 30px 24px / 34px 28px 38px 30px;
+    border-width: 32px;
   }
 
-  .hk-how-panel__mark {
-    width: 64px;
-    height: 64px;
+  .hk-how-panel__asset-group {
+    grid-template-columns: minmax(0, 1fr) 96px;
+  }
+
+  .hk-how-panel--home .hk-how-panel__asset-group {
+    grid-template-columns: 96px minmax(0, 1fr);
   }
 }
 
@@ -1549,10 +1984,19 @@ input {
   inset: 0 0 auto;
   display: block;
   width: 100%;
-  height: clamp(24px, 3vw, 48px);
+  height: var(--hk-wave);
   fill: var(--hk-canvas);
   pointer-events: none;
   z-index: 1;
+}
+
+/* Top wave continues the USP strip, so cream and Sindoor share one contour. */
+.hk-koels__edge--strip {
+  fill: var(--hk-strip-ground);
+}
+
+.hk-koels__edge--strip path {
+  fill: var(--hk-strip-ground);
 }
 
 .hk-koels__edge--bottom {
@@ -1560,12 +2004,44 @@ input {
 }
 
 .hk-koels__head {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-bottom: 4px;
 }
 
+/* Give background shapes their own side columns; never place them over copy. */
+.hk-koels__graphics {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40rem) minmax(0, 1fr);
+  column-gap: 24px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hk-koels__graphic {
+  display: block;
+  min-width: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hk-koels__graphic--puddle {
+  grid-column: 1;
+  background-image: url("../images/brand-library/decorative/sky-puddle.svg");
+  background-position: center 70%;
+}
+
+.hk-koels__graphic--ring {
+  grid-column: 3;
+  background-image: url("../images/brand-library/decorative/crooked-ring.svg");
+  background-position: center 25%;
+}
+
 .hk-koels__intro {
+  position: relative;
   max-width: 40rem;
   text-align: center;
   display: flex;
@@ -1606,8 +2082,27 @@ input {
   margin-top: 28px;
 }
 
+@media (max-width: 1100px) {
+  .hk-koels__graphics {
+    display: block;
+    height: 96px;
+  }
+
+  .hk-koels__graphic--puddle {
+    display: none;
+  }
+
+  .hk-koels__graphic--ring {
+    position: absolute;
+    width: min(96px, calc(50% - 60px));
+    height: 96px;
+    right: 0;
+    top: 0;
+    background-position: center;
+  }
+}
+
 @media (max-width: 720px) {
-  .hk-koels__edge,
   .hk-koels__edge--bottom {
     display: none;
   }

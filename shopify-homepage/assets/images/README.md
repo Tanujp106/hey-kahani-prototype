@@ -38,10 +38,30 @@ All files remain generated concept art, with approximate hardware geometry and u
 ## Brand library vectors (Why / USP panels)
 
 Selected SVGs from `outputs/brand-library-v1/` are copied under
-`assets/images/brand-library/` for the Why feature panels: `containers/`
-(source silhouettes), plus decorative shapes and illustrations used as accents.
-Live panels inline the container paths with `currentColor` fills. Edit the
-library source, then re-copy when updating website graphics.
+`assets/images/brand-library/` for the Why feature panels. The actual Quiet tide,
+Double hill, Soft postcard and Plump panel paths supply the filled edge frames.
+The `benefit-*.svg` container variants retain those paths with exact Mango / Sky /
+Lavender / Kesar grounds. The frame centre adapts without a viewport-height floor.
+
+The user's multiple-asset correction replaces the previous single-art treatment.
+Each desktop card uses four graphics in addition to its photo and container:
+
+| Panel | Main illustration | Companion | Behind-photo shape | Line gesture |
+| --- | --- | --- | --- | --- |
+| Screen free | Flying kite | Paper boat | Wandering loop | Story trail |
+| Little hands | Spinning top | Banyan leaf | Open burst | Play bounce |
+| Feels like home | Little home | Mango sprig | Crooked ring | Home rhythm |
+| Tap to play | Open storybook | Gentle sun | Sky puddle | Listening ripples |
+
+Line gestures are original editable SVG-only additions following the selected
+H family, with sources and a manifest in
+`outputs/brand-library-v1/extensions/benefit-gestures/`. Website copies use the
+`benefit-` prefix. Existing library drawings are copied unchanged. Following
+the placement correction, all graphics share one vignette along the photo's
+lower edge: line, larger illustration and smaller companion, backed by the
+broad framing shape. The entire home group mirrors to the left. The heading,
+paragraph and button form a separate, uninterrupted column. Below 800px, the
+main illustration and line remain together. No assets are interactive.
 
 ## Brand library vectors (testimonials and Koels)
 

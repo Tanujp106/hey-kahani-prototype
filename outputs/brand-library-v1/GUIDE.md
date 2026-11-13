@@ -10,6 +10,16 @@ language; the brand identity guide remains the source of exact colour values.
 This library contains 36 individual, editable SVG drawings, matching transparent
 PNG exports and three numbered preview sheets. It does not change the website.
 
+### Website additions — November 14, 2026
+
+The Why cards also use four new **SVG-only line gestures** in
+[`extensions/benefit-gestures/`](extensions/benefit-gestures/README.md), with a
+separate [manifest](extensions/benefit-gestures/manifest.json). They follow H /
+Freeform rhythm and are not included in the original 36-asset preview sheets
+or PNG exports. Use them as small, proportionally scaled strokes in their own
+space, away from words and controls. Current card combinations and responsive
+rules are documented in `design.md` and the website image README.
+
 ## Start here: choose the graphic's job
 
 Practical usage guidance added November 14, 2026. The style is selected; the

@@ -8,31 +8,51 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=nav-sindoor-match-strip-20261114">
+  <link rel="stylesheet" href="assets/css/styles.css?v=mega-fixed-h-koels-layout-fix-20261114">
 </head>
 <body>
   <a class="hk-skip" href="#main">Skip to content</a>
 
-  <aside class="hk-announcement" aria-label="Store announcements">
-    <!-- Replace these existing USPs with approved delivery or promotional copy as needed. -->
-    <ul class="hk-announcement__messages">
-      <li>Screen free by design</li>
-      <li>Made for little hands</li>
-      <li>Stories that feel like home</li>
+  <aside class="hk-announcement" aria-label="Store offers">
+    <!-- Replace with approved promo/offer copy as needed. -->
+    <ul class="hk-announcement__messages" data-hk-announcement aria-live="polite">
+      <li class="is-active">
+        <span class="hk-announcement__icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 5 5 19M7.5 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>40% off selected Koels</span>
+      </li>
+      <li>
+        <span class="hk-announcement__icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8"/></svg>
+        </span>
+        <span>Limited-time Founder's Bundle offer</span>
+      </li>
+      <li>
+        <span class="hk-announcement__icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8M3.5 8h17l-1.2 4H4.7L3.5 8ZM12 3v5M9 5.5 12 3l3 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Free gift with every Player</span>
+      </li>
     </ul>
   </aside>
 
   <header class="hk-nav">
-    <div class="hk-wrap hk-nav__inner">
+    <div class="hk-wrap hk-nav__float">
+    <div class="hk-nav__inner">
       <a class="hk-wordmark" href="/" aria-label="Hey Kahani home">
-        <img src="assets/images/brand/wordmark-cream.svg" width="275" height="131" alt="Hey Kahani">
+        <img src="assets/images/brand/wordmark.svg" width="275" height="131" alt="Hey Kahani">
       </a>
       <nav aria-label="Primary">
         <ul class="hk-nav__links">
-          <li><a class="hk-nav__link" href="/kahani-player">Shop Player</a></li>
-          <li><a class="hk-nav__link" href="/koels-listing">Shop Koel</a></li>
-          <li><a class="hk-nav__link" href="/collections/bestsellers">Bestsellers</a></li>
-          <li><a class="hk-nav__link" href="/products/founders-bundle">Founder's Bundle</a></li>
+          <li>
+            <a class="hk-nav__link" href="/kahani-player" aria-expanded="false" aria-controls="hk-mega" data-hk-mega-trigger="player">Shop Player</a>
+          </li>
+          <li>
+            <a class="hk-nav__link" href="/koels-listing" aria-expanded="false" aria-controls="hk-mega" data-hk-mega-trigger="koels">Shop Koel</a>
+          </li>
+          <li><a class="hk-nav__link" href="/collections/bestsellers" data-hk-mega-dismiss>Bestsellers</a></li>
+          <li><a class="hk-nav__link" href="/products/founders-bundle" data-hk-mega-dismiss>Founder's Bundle</a></li>
         </ul>
       </nav>
       <div class="hk-nav__actions">
@@ -48,13 +68,76 @@
         </button>
       </div>
     </div>
-    <div class="hk-wrap hk-nav__drawer" id="mobile-nav" data-hk-drawer>
+    <div class="hk-nav__drawer" id="mobile-nav" data-hk-drawer>
       <ul>
         <li><a href="/kahani-player">Shop Player</a></li>
         <li><a href="/koels-listing">Shop Koel</a></li>
         <li><a href="/collections/bestsellers">Bestsellers</a></li>
         <li><a href="/products/founders-bundle">Founder's Bundle</a></li>
       </ul>
+    </div>
+
+    <div class="hk-mega" id="hk-mega" data-hk-mega-panel aria-hidden="true">
+      <div class="hk-mega__set is-active" data-hk-mega-set="player">
+        <div class="hk-mega__list">
+          <p class="hk-mega__eyebrow">Player</p>
+          <ul class="hk-mega__names">
+            <li>
+              <a class="hk-mega__name is-active" href="/kahani-player" data-hk-mega-item data-image="assets/images/product/player-hero.jpg" data-label="Kahani Player">Kahani Player</a>
+            </li>
+            <li>
+              <a class="hk-mega__name" href="/kahani-player" data-hk-mega-item data-image="assets/images/product/player-desktop.jpg" data-label="At home with the Player">At home with the Player</a>
+            </li>
+            <li>
+              <a class="hk-mega__name" href="/kahani-player" data-hk-mega-item data-image="assets/images/product/family.jpg" data-label="Made for family listening">Made for family listening</a>
+            </li>
+            <li>
+              <a class="hk-mega__name" href="/products/founders-bundle" data-hk-mega-item data-image="assets/images/product/hk-shot-07.png" data-label="Founder's Bundle">Founder's Bundle</a>
+            </li>
+          </ul>
+          <a class="hk-mega__all" href="/kahani-player">Shop all Player</a>
+        </div>
+        <div class="hk-mega__feature">
+          <p class="hk-mega__feature-eyebrow">Featured</p>
+          <p class="hk-mega__feature-title" data-hk-mega-title>Kahani Player</p>
+          <div class="hk-mega__media">
+            <img src="assets/images/product/player-hero.jpg" width="800" height="800" alt="" data-hk-mega-image>
+          </div>
+          <a class="hk-btn hk-btn--secondary hk-mega__cta" href="/kahani-player" data-hk-mega-cta>Shop now</a>
+        </div>
+      </div>
+
+      <div class="hk-mega__set" data-hk-mega-set="koels">
+        <div class="hk-mega__list">
+          <p class="hk-mega__eyebrow">Koels</p>
+          <ul class="hk-mega__names">
+            <li><a class="hk-mega__name is-active" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-shot-08-01-holi-kite.png" data-label="Holi Kite Play">Holi Kite Play</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-shot-08-02-kerala-houseboat.png" data-label="Kerala Houseboat">Kerala Houseboat</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-shot-08-03-festival-family.png" data-label="Festival Family">Festival Family</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-shot-08-04-park-mindfulness.png" data-label="Park Mindfulness">Park Mindfulness</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-shot-08-05-market-temple.png" data-label="Market &amp; Temple Travel">Market &amp; Temple Travel</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-koel-lotus.png" data-label="Lotus Pond">Lotus Pond</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-koel-peacock.png" data-label="Peacock Sky">Peacock Sky</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-koel-monsoon.png" data-label="Monsoon Songs">Monsoon Songs</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-koel-train.png" data-label="Night Train">Night Train</a></li>
+            <li><a class="hk-mega__name" href="#koels" data-hk-mega-item data-image="assets/images/koels/hk-koel-kitchen.png" data-label="Kitchen Stories">Kitchen Stories</a></li>
+          </ul>
+          <a class="hk-mega__all" href="/koels-listing">Shop all Koels</a>
+        </div>
+        <div class="hk-mega__feature">
+          <p class="hk-mega__feature-eyebrow">Featured</p>
+          <p class="hk-mega__feature-title" data-hk-mega-title>Holi Kite Play</p>
+          <div class="hk-mega__media">
+            <img src="assets/images/koels/hk-shot-08-01-holi-kite.png" width="1254" height="1254" alt="" data-hk-mega-image>
+          </div>
+          <a class="hk-btn hk-btn--secondary hk-mega__cta" href="#koels" data-hk-mega-cta>Shop now</a>
+        </div>
+      </div>
+
+      <button class="hk-mega__close" type="button" data-hk-mega-close aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
     </div>
   </header>
 
@@ -121,12 +204,17 @@
             <article class="hk-how-panel hk-how-panel--screen is-active" role="tabpanel" id="how-panel-0" aria-labelledby="how-tab-0" data-hk-how-panel="0" aria-hidden="false">
               <div class="hk-how-panel__body">
                 <div class="hk-how-panel__visual">
+                  <img class="hk-how-panel__backdrop" src="assets/images/brand-library/decorative/wandering-loop.svg" width="200" height="200" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <div class="hk-how-panel__media">
                     <img src="assets/images/editorial/hk-shot-02.png" width="1086" height="1448" alt="Child listening to a Kahani story in a quiet moment" loading="lazy">
                   </div>
+                  <div class="hk-how-panel__asset-group" aria-hidden="true">
+                    <img class="hk-how-panel__gesture" src="assets/images/brand-library/decorative/benefit-story-trail.svg" width="240" height="96" alt="" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/flying-kite.svg" width="136" height="136" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__companion" src="assets/images/brand-library/illustrations/paper-boat.svg" width="112" height="112" alt="" loading="lazy" decoding="async">
+                  </div>
                 </div>
                 <div class="hk-how-panel__copy">
-                  <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/flying-kite.svg" width="80" height="80" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <h3 class="hk-how-panel__title">Screen free by design</h3>
                   <p class="hk-how-panel__text">Kids listen on the Player. The story stays off a screen. Grown ups can use the companion app for setup when they need it.</p>
                   <a class="hk-btn hk-btn--primary hk-how-panel__cta" href="/kahani-player">Shop Player</a>
@@ -137,12 +225,17 @@
             <article class="hk-how-panel hk-how-panel--hands" role="tabpanel" id="how-panel-1" aria-labelledby="how-tab-1" data-hk-how-panel="1" aria-hidden="true">
               <div class="hk-how-panel__body">
                 <div class="hk-how-panel__visual">
+                  <img class="hk-how-panel__backdrop" src="assets/images/brand-library/decorative/open-burst.svg" width="200" height="200" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <div class="hk-how-panel__media">
                     <img src="assets/images/editorial/hk-shot-05.png" width="1254" height="1254" alt="Kids choosing illustrated Kahani Koels on a play table" loading="lazy">
                   </div>
+                  <div class="hk-how-panel__asset-group" aria-hidden="true">
+                    <img class="hk-how-panel__gesture" src="assets/images/brand-library/decorative/benefit-play-bounce.svg" width="240" height="96" alt="" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/spinning-top.svg" width="136" height="136" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__companion" src="assets/images/brand-library/illustrations/banyan-leaf.svg" width="112" height="112" alt="" loading="lazy" decoding="async">
+                  </div>
                 </div>
                 <div class="hk-how-panel__copy">
-                  <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/spinning-top.svg" width="80" height="80" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <h3 class="hk-how-panel__title">Made for little hands</h3>
                   <p class="hk-how-panel__text">Koels are easy to spot, hold, and pick. They choose the story. You get a quieter minute.</p>
                   <a class="hk-btn hk-btn--primary hk-how-panel__cta" href="#koels">Shop Koels</a>
@@ -153,12 +246,17 @@
             <article class="hk-how-panel hk-how-panel--home" role="tabpanel" id="how-panel-2" aria-labelledby="how-tab-2" data-hk-how-panel="2" aria-hidden="true">
               <div class="hk-how-panel__body">
                 <div class="hk-how-panel__visual">
+                  <img class="hk-how-panel__backdrop" src="assets/images/brand-library/decorative/crooked-ring.svg" width="200" height="200" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <div class="hk-how-panel__media">
                     <img src="assets/images/editorial/hk-shot-03.png" width="1122" height="1402" alt="Child holding the Kahani Player and listening with joy" loading="lazy">
                   </div>
+                  <div class="hk-how-panel__asset-group" aria-hidden="true">
+                    <img class="hk-how-panel__gesture" src="assets/images/brand-library/decorative/benefit-home-rhythm.svg" width="240" height="96" alt="" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/little-home.svg" width="136" height="136" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__companion" src="assets/images/brand-library/illustrations/mango-sprig.svg" width="112" height="112" alt="" loading="lazy" decoding="async">
+                  </div>
                 </div>
                 <div class="hk-how-panel__copy">
-                  <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/little-home.svg" width="80" height="80" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <h3 class="hk-how-panel__title">Stories that feel like home</h3>
                   <p class="hk-how-panel__text">South Asian stories full of festivals, everyday life, humour, and the values of home. The real thing, not a watered down version.</p>
                   <a class="hk-btn hk-btn--primary hk-how-panel__cta" href="/koels-listing">Explore stories</a>
@@ -169,12 +267,17 @@
             <article class="hk-how-panel hk-how-panel--simple" role="tabpanel" id="how-panel-3" aria-labelledby="how-tab-3" data-hk-how-panel="3" aria-hidden="true">
               <div class="hk-how-panel__body">
                 <div class="hk-how-panel__visual">
+                  <img class="hk-how-panel__backdrop" src="assets/images/brand-library/decorative/sky-puddle.svg" width="200" height="200" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <div class="hk-how-panel__media">
                     <img src="assets/images/product/hk-shot-07.png" width="1254" height="1254" alt="Kahani Player ready for a Koel on top" loading="lazy">
                   </div>
+                  <div class="hk-how-panel__asset-group" aria-hidden="true">
+                    <img class="hk-how-panel__gesture" src="assets/images/brand-library/decorative/benefit-listening-ripples.svg" width="240" height="96" alt="" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/open-storybook.svg" width="136" height="136" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    <img class="hk-how-panel__companion" src="assets/images/brand-library/illustrations/gentle-sun.svg" width="112" height="112" alt="" loading="lazy" decoding="async">
+                  </div>
                 </div>
                 <div class="hk-how-panel__copy">
-                  <img class="hk-how-panel__mark" src="assets/images/brand-library/illustrations/open-storybook.svg" width="80" height="80" alt="" aria-hidden="true" loading="lazy" decoding="async">
                   <h3 class="hk-how-panel__title">Tap a Koel. Hear a Kahani.</h3>
                   <p class="hk-how-panel__text">No menus. No passwords. Set the Koel on top and the story starts. That’s it.</p>
                   <a class="hk-btn hk-btn--primary hk-how-panel__cta" href="/kahani-player">Shop Player</a>
@@ -188,7 +291,10 @@
     </section>
 
     <aside class="hk-strip hk-pattern" aria-label="Why families choose Hey Kahani">
-      <div class="hk-wrap">
+      <svg class="hk-strip__edge" width="1440" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 0h1440v19c-187 26-326 26-514 9C691 7 587 9 395 29 219 47 102 45 0 27Z"/>
+      </svg>
+      <div class="hk-strip__ticker" data-hk-strip-ticker>
         <ul class="hk-strip__usps">
           <li>
             <span class="hk-strip__icon" aria-hidden="true">
@@ -230,8 +336,8 @@
     </aside>
 
     <section class="hk-section hk-section--warm hk-koels" id="koels" aria-labelledby="koels-title" data-preview-src="assets/audio/preview-sample.mp3" data-preview-demo="true">
-      <svg class="hk-koels__edge" width="1440" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path fill="var(--hk-canvas, #ffffff)" d="M0 0h1440v19c-187 26-326 26-514 9C691 7 587 9 395 29 219 47 102 45 0 27Z"/>
+      <svg class="hk-koels__edge hk-koels__edge--strip" width="1440" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 0h1440v19c-187 26-326 26-514 9C691 7 587 9 395 29 219 47 102 45 0 27Z"/>
       </svg>
       <div class="hk-koels__atmosphere" aria-hidden="true">
         <svg class="hk-koels__depth" viewBox="0 0 1440 980" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -242,6 +348,10 @@
       </div>
       <div class="hk-wrap">
         <div class="hk-koels__head hk-reveal">
+          <div class="hk-koels__graphics" aria-hidden="true">
+            <span class="hk-koels__graphic hk-koels__graphic--puddle"></span>
+            <span class="hk-koels__graphic hk-koels__graphic--ring"></span>
+          </div>
           <div class="hk-koels__intro">
             <img class="hk-koels__mark" src="assets/images/brand-library/illustrations/open-storybook.svg" width="96" height="96" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <h2 class="hk-display hk-display--lg" id="koels-title">Find their next favourite Koel.</h2>
@@ -968,6 +1078,6 @@
     document.getElementById("year").textContent = String(new Date().getFullYear());
   </script>
   <script src="assets/js/inline-preview.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=mega-dismiss-links-20261114" defer></script>
 </body>
 </html>
