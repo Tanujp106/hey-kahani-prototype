@@ -35,7 +35,7 @@
   --hk-text-section: clamp(1.85rem, 4vw, 2.5rem); /* 40px max — every section h2 */
   --hk-text-md: clamp(1.5rem, 2.8vw, 2rem); /* 32px max — secondary display */
   --hk-text-subhead: clamp(1.25rem, 2vw, 1.5rem); /* feature / card h3 */
-  --hk-text-step: clamp(1.425rem, 2.4vw, 1.875rem); /* how-it-works step titles */
+  --hk-text-step: clamp(1.425rem, 2.4vw, 1.875rem); /* how-it-works bento card titles */
   --hk-text-hero-lead: 1.0625rem; /* alias of body — Nov 7, 2026: all leads match body */
   --hk-text-lead: 1.0625rem; /* alias of body — section intros / hk-lead */
   --hk-text-body: 1.0625rem; /* 17px — all leads + running body paragraphs */

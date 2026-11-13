@@ -1,70 +1,39 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { readFileSync } = require('node:fs');
-const vm = require('node:vm');
 const { join } = require('node:path');
-const source = readFileSync(join(__dirname, '../assets/js/main.js'), 'utf8');
 
-function setup() {
-  const properties = new Map();
-  const list = { style: {} };
-  const heights = [80, 56, 56];
-  const steps = heights.map((_, index) => {
-    const active = new Set(index === 0 ? ['is-active'] : []);
-    const listeners = {};
-    const text = { get scrollHeight() { return heights[index]; } };
-    const reveal = { getBoundingClientRect() { return { height: active.has('is-active') ? 80 : 0 }; } };
-    return {
-      dataset: { hkHowStep: String(index + 1) },
-      classList: { toggle(name, enabled) { enabled ? active.add(name) : active.delete(name); } },
-      attributes: {},
-      setAttribute(name, value) { this.attributes[name] = value; },
-      addEventListener(name, listener) { listeners[name] = listener; },
-      querySelector(selector) { return selector.endsWith('step-text') ? text : reveal; },
-      getBoundingClientRect() { return { height: 72 + reveal.getBoundingClientRect().height }; },
-      click() { listeners.click(); },
-      focus() {},
-    };
-  });
-  const panels = steps.map((_, index) => ({
-    dataset: { hkHowPanel: String(index + 1) },
-    classList: { toggle() {} }, setAttribute() {},
-  }));
-  const copy = {};
-  const root = {
-    style: { setProperty(name, value) { properties.set(name, value); } },
-    querySelectorAll(selector) { return selector.includes('step]') ? steps : panels; },
-    querySelector(selector) { return selector.endsWith('__steps') ? list : copy; },
-  };
-  let resize;
-  vm.runInNewContext(source, {
-    document: {
-      querySelector(selector) { return selector === '[data-hk-how]' ? root : null; },
-      querySelectorAll() { return []; },
-    },
-    window: { matchMedia() { return { matches: true }; }, addEventListener() {} },
-    getComputedStyle() { return { rowGap: '2px' }; },
-    ResizeObserver: class { constructor(callback) { resize = callback; } observe() {} },
-  });
-  return { properties, list, steps, heights, resize };
-}
+const root = join(__dirname, '..');
+const html = readFileSync(join(root, 'index.html'), 'utf8');
+const css = readFileSync(join(root, 'assets/css/styles.css'), 'utf8');
+const js = readFileSync(join(root, 'assets/js/main.js'), 'utf8');
 
-test('reserves the tallest under-title description and stable list height', () => {
-  const ui = setup();
-  assert.equal(ui.properties.get('--hk-how-detail-height'), '80px');
-  assert.equal(ui.list.style.minHeight, '300px');
-  ui.steps[1].click();
-  ui.steps[2].click();
-  ui.steps[0].click();
-  assert.equal(ui.list.style.minHeight, '300px');
-  assert.deepEqual(ui.steps.map(step => step.attributes['aria-selected']), ['true', 'false', 'false']);
+test('How it works ships a static three-column bento, not an accordion', () => {
+  assert.match(html, /class="hk-how-bento"/);
+  assert.match(html, /hk-how-bento__card--choose/);
+  assert.match(html, /hk-how-bento__card--place/);
+  assert.match(html, /hk-how-bento__card--listen/);
+  assert.match(html, /hk-how-bento__card--player/);
+  assert.match(html, /hk-how-bento__arch/);
+  assert.match(html, /Choose a Koel/);
+  assert.match(html, /Place it on the Player/);
+  assert.match(html, /Listen together/);
+  assert.match(html, /hk-shot-05\.png/);
+  assert.match(html, /hk-shot-03\.png/);
+  assert.match(html, /hk-shot-07\.png/);
+
+  assert.doesNotMatch(html, /data-hk-how-step/);
+  assert.doesNotMatch(html, /data-hk-how-panel/);
+  assert.doesNotMatch(html, /role="tablist"/);
+  assert.doesNotMatch(js, /data-hk-how-step/);
+  assert.doesNotMatch(js, /--hk-how-detail-height/);
 });
 
-test('recalculates reserved space when text wraps at a narrower width', () => {
-  const ui = setup();
-  assert.equal(typeof ui.resize, 'function');
-  ui.heights[0] = 104;
-  ui.resize([{ contentRect: { width: 280 } }]);
-  assert.equal(ui.properties.get('--hk-how-detail-height'), '104px');
-  assert.equal(ui.list.style.minHeight, '324px');
+test('How bento CSS keeps desktop three-column structure and arch mask', () => {
+  assert.match(css, /\.hk-how-bento\s*\{/);
+  assert.match(css, /grid-template-columns:\s*minmax\(0,\s*1\.05fr\)\s+minmax\(0,\s*1fr\)\s+minmax\(0,\s*1\.05fr\)/);
+  assert.match(css, /\.hk-how-bento__arch\s*\{[\s\S]*?border-radius:/);
+  assert.match(css, /\.hk-how-bento__caption\s*\{/);
+  assert.doesNotMatch(css, /\.hk-how__step-reveal/);
+  assert.doesNotMatch(css, /\.hk-how__panel\.is-active/);
 });
