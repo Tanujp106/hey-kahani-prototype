@@ -910,59 +910,32 @@ input {
   background: var(--hk-canvas); /* white */
 }
 
-.hk-strip,
-.hk-koels {
-  --hk-strip-ground: color-mix(in srgb, var(--hk-kesar) 55%, #ebe4d6 45%);
-  --hk-wave: clamp(12px, 1.25vw, 16px);
-}
-
 .hk-strip {
   position: relative;
-  z-index: 1;
-  margin-bottom: -1px;
-  padding: calc(var(--hk-wave) * 0.62 + 6px) 0 6px;
-  overflow-x: clip;
-  background: var(--hk-strip-ground);
+  padding-block: 14px;
+  background: color-mix(in srgb, var(--hk-kesar) 55%, #ebe4d6 45%);
   border: 0;
-}
-
-.hk-strip__edge {
-  position: absolute;
-  top: -1px;
-  left: 0;
-  z-index: 0;
-  display: block;
-  width: 100%;
-  height: calc(var(--hk-wave) + 1px);
-  pointer-events: none;
-}
-
-.hk-strip__edge path {
-  fill: var(--hk-canvas);
-}
-
-.hk-strip__ticker {
-  position: relative;
-  z-index: 1;
 }
 
 .hk-strip__usps {
   list-style: none;
-  position: relative;
-  width: max-content;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: clamp(40px, 6vw, 88px);
-  will-change: transform;
+  gap: 12px 40px;
+}
+
+@media (min-width: 720px) {
+  .hk-strip__usps {
+    gap: 14px 56px;
+  }
 }
 
 .hk-strip__usps li {
   display: flex;
-  flex: none;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -990,27 +963,11 @@ input {
   font-weight: 600;
   line-height: 1.25;
   color: var(--hk-ink);
-  white-space: nowrap;
 }
 
-.hk-strip__usps p .hk-strip__glyph {
-  display: inline-block;
-  transform-origin: 50% 100%;
-}
-
-.hk-strip__icon.hk-strip__glyph {
-  transform-origin: 50% 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hk-strip__usps {
-    width: auto;
-    max-width: 100%;
-    margin-inline: auto;
-    justify-content: center;
-    flex-wrap: wrap;
-    row-gap: 12px;
-    will-change: auto;
+@media (min-width: 720px) {
+  .hk-strip__usps p {
+    white-space: nowrap;
   }
 }
 
@@ -1984,19 +1941,10 @@ input {
   inset: 0 0 auto;
   display: block;
   width: 100%;
-  height: var(--hk-wave);
+  height: clamp(24px, 3vw, 48px);
   fill: var(--hk-canvas);
   pointer-events: none;
   z-index: 1;
-}
-
-/* Top wave continues the USP strip, so cream and Sindoor share one contour. */
-.hk-koels__edge--strip {
-  fill: var(--hk-strip-ground);
-}
-
-.hk-koels__edge--strip path {
-  fill: var(--hk-strip-ground);
 }
 
 .hk-koels__edge--bottom {
@@ -2103,6 +2051,7 @@ input {
 }
 
 @media (max-width: 720px) {
+  .hk-koels__edge,
   .hk-koels__edge--bottom {
     display: none;
   }
