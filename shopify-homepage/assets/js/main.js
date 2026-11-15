@@ -700,3 +700,94 @@
   }
 
 })();
+
+/* Player try section: swap the Koel on the top plate and play the shared design sample. */
+(() => {
+  const root = document.querySelector("[data-hk-player]");
+  if (!root) return;
+  const choices = [...root.querySelectorAll("[data-hk-player-koel]")];
+  const disc = root.querySelector("[data-hk-player-disc]");
+  const caption = root.querySelector("[data-hk-player-caption]");
+  const play = root.querySelector("[data-hk-player-play]");
+  const playIcon = play?.querySelector("path");
+  const src = root.dataset.previewSrc || "";
+  let audio = null;
+  let current = choices.find((choice) => choice.getAttribute("aria-checked") === "true") || choices[0];
+
+  const titleOf = (choice) => choice?.dataset.title || "Koel";
+
+  const setPlaying = (playing) => {
+    if (!play) return;
+    const title = titleOf(current);
+    play.setAttribute("aria-pressed", String(playing));
+    play.setAttribute(
+      "aria-label",
+      playing
+        ? `Pause design preview for ${title}`
+        : `Play design preview for ${title}. Not approved story audio.`
+    );
+    playIcon?.setAttribute("d", playing ? "M6 5h4v14H6zm8 0h4v14h-4z" : "M8 5.14v13.72L19 12 8 5.14Z");
+  };
+
+  const select = (choice) => {
+    if (!choice) return;
+    current = choice;
+    choices.forEach((item) => {
+      const on = item === choice;
+      item.setAttribute("aria-checked", String(on));
+      item.classList.toggle("is-selected", on);
+      item.tabIndex = on ? 0 : -1;
+    });
+    if (disc && choice.dataset.image) disc.src = choice.dataset.image;
+    if (caption) caption.textContent = titleOf(choice);
+    setPlaying(Boolean(audio && !audio.paused));
+  };
+
+  choices.forEach((choice, index) => {
+    choice.addEventListener("click", () => select(choice));
+    choice.addEventListener("keydown", (event) => {
+      const forward = event.key === "ArrowRight" || event.key === "ArrowDown";
+      const back = event.key === "ArrowLeft" || event.key === "ArrowUp";
+      if (!forward && !back) return;
+      event.preventDefault();
+      const next = choices[(index + (forward ? 1 : -1) + choices.length) % choices.length];
+      select(next);
+      next.focus();
+    });
+  });
+
+  play?.addEventListener("click", () => {
+    if (!src) {
+      play.setAttribute("aria-label", "Audio preview unavailable");
+      return;
+    }
+    if (!audio) {
+      audio = new window.Audio(src);
+      audio.preload = "none";
+      audio.addEventListener("playing", () => setPlaying(true));
+      audio.addEventListener("pause", () => setPlaying(false));
+      audio.addEventListener("ended", () => {
+        audio.currentTime = 0;
+        setPlaying(false);
+      });
+    }
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+    if (typeof window.CustomEvent === "function" && typeof window.dispatchEvent === "function") {
+      window.dispatchEvent(new window.CustomEvent("hk:audio-exclusive", { detail: audio }));
+    }
+    Promise.resolve(audio.play()).catch(() => {
+      play.setAttribute("aria-label", `Retry design preview for ${titleOf(current)}`);
+    });
+  });
+
+  window.addEventListener("hk:audio-exclusive", (event) => {
+    if (!audio || event.detail === audio || audio.paused) return;
+    audio.pause();
+  });
+
+  window.addEventListener("pagehide", () => audio?.pause());
+  if (current) select(current);
+})();

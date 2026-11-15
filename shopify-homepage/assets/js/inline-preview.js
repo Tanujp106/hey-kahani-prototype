@@ -113,6 +113,9 @@
     if (changed) { audio.src = src; audio.currentTime = 0; audio.load(); }
     setState(entry, 'loading');
     prepareGraph();
+    if (typeof window.CustomEvent === 'function' && typeof window.dispatchEvent === 'function') {
+      window.dispatchEvent(new window.CustomEvent('hk:audio-exclusive', { detail: audio }));
+    }
     try { Promise.resolve(audio.play()).catch(() => fail(entry, token)); }
     catch { fail(entry, token); }
   };
@@ -134,6 +137,12 @@
   });
   motion.addEventListener?.('change', () => {
     if (active?.state === 'playing') { setState(active, 'playing'); startWave(); }
+  });
+  window.addEventListener('hk:audio-exclusive', (event) => {
+    if (!audio || event.detail === audio) return;
+    wanted = false;
+    audio.pause();
+    reset();
   });
   window.addEventListener('pagehide', () => {
     ++request; wanted = false; audio?.pause(); reset();

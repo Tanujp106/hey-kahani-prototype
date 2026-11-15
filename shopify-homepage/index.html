@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=tap-koel-parrot-20261116">
+  <link rel="stylesheet" href="assets/css/styles.css?v=player-try-20261116">
 </head>
 <body>
   <a class="hk-skip" href="#main">Skip to content</a>
@@ -610,7 +610,56 @@
       </div>
       </div>
       <svg class="hk-koels__edge hk-koels__edge--bottom" width="1440" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path fill="var(--hk-canvas, #ffffff)" d="M0 48h1440V29c-172-24-338-28-528-10C721 38 594 40 402 20 228 2 108 4 0 22Z"/>
+        <path fill="var(--hk-kesar, #fff1d6)" d="M0 48h1440V29c-172-24-338-28-528-10C721 38 594 40 402 20 228 2 108 4 0 22Z"/>
+      </svg>
+    </section>
+
+    <section class="hk-section hk-player" id="player" aria-labelledby="player-title" data-hk-player data-preview-src="assets/audio/preview-sample.mp3" data-preview-demo="true">
+      <div class="hk-wrap hk-player__layout">
+        <header class="hk-player__intro hk-reveal">
+          <img class="hk-player__mark" src="assets/images/brand-library/illustrations/spinning-top.svg" width="96" height="96" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <h2 class="hk-display hk-display--lg" id="player-title">Give it a listen.</h2>
+          <p class="hk-lead">Pick a Koel and set it on the Player. The story starts from the top.</p>
+        </header>
+
+        <div class="hk-player__stage hk-reveal">
+          <img class="hk-player__puddle" src="assets/images/brand-library/decorative/sky-puddle.svg" width="400" height="400" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <div class="hk-player__device">
+            <img class="hk-player__photo" src="assets/images/product/hk-shot-07.png" width="1254" height="1254" alt="Kahani Player, a cream speaker with a Gulab red band, wood base, and carrying handle" loading="lazy" decoding="async">
+            <img class="hk-player__disc" data-hk-player-disc src="assets/images/koels/hk-shot-08-01-holi-kite.png" width="1254" height="1254" alt="">
+            <button class="hk-player__play" type="button" data-hk-player-play aria-pressed="false" title="Design preview sample. Not approved story audio." aria-label="Play design preview for Holi Kite Play. Not approved story audio.">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12 8 5.14Z"/></svg>
+            </button>
+          </div>
+          <p class="hk-player__caption" data-hk-player-caption>Holi Kite Play</p>
+        </div>
+
+        <div class="hk-player__actions hk-reveal">
+          <div class="hk-player__picker" role="radiogroup" aria-label="Pick a Koel to set on the Player">
+            <button class="hk-player__choice is-selected" type="button" role="radio" aria-checked="true" tabindex="0" data-hk-player-koel data-title="Holi Kite Play" data-image="assets/images/koels/hk-shot-08-01-holi-kite.png">
+              <span class="hk-player__choice-art"><img src="assets/images/koels/hk-shot-08-01-holi-kite.png" width="1254" height="1254" alt=""></span>
+              <span class="hk-player__choice-name">Holi Kite Play</span>
+            </button>
+            <button class="hk-player__choice" type="button" role="radio" aria-checked="false" tabindex="-1" data-hk-player-koel data-title="Kerala Houseboat" data-image="assets/images/koels/hk-shot-08-02-kerala-houseboat.png">
+              <span class="hk-player__choice-art"><img src="assets/images/koels/hk-shot-08-02-kerala-houseboat.png" width="1254" height="1254" alt=""></span>
+              <span class="hk-player__choice-name">Kerala Houseboat</span>
+            </button>
+            <button class="hk-player__choice" type="button" role="radio" aria-checked="false" tabindex="-1" data-hk-player-koel data-title="Festival Family" data-image="assets/images/koels/hk-shot-08-03-festival-family.png">
+              <span class="hk-player__choice-art"><img src="assets/images/koels/hk-shot-08-03-festival-family.png" width="1254" height="1254" alt=""></span>
+              <span class="hk-player__choice-name">Festival Family</span>
+            </button>
+            <button class="hk-player__choice" type="button" role="radio" aria-checked="false" tabindex="-1" data-hk-player-koel data-title="Park Mindfulness" data-image="assets/images/koels/hk-shot-08-04-park-mindfulness.png">
+              <span class="hk-player__choice-art"><img src="assets/images/koels/hk-shot-08-04-park-mindfulness.png" width="1254" height="1254" alt=""></span>
+              <span class="hk-player__choice-name">Park Mindfulness</span>
+            </button>
+          </div>
+          <div class="hk-btn-row">
+            <a class="hk-btn hk-btn--primary" href="/kahani-player">Shop Player</a>
+          </div>
+        </div>
+      </div>
+      <svg class="hk-player__edge" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 48h1440V29c-172-24-338-28-528-10C721 38 594 40 402 20 228 2 108 4 0 22Z"/>
       </svg>
     </section>
 
@@ -956,6 +1005,7 @@
           <div class="hk-footer__col">
             <h3>Explore</h3>
             <a href="#koels">Shop Koels</a>
+            <a href="#player">The Player</a>
             <a href="#why">Why Hey Kahani</a>
             <a href="#app">The app</a>
           </div>
@@ -1062,6 +1112,6 @@
     document.getElementById("year").textContent = String(new Date().getFullYear());
   </script>
   <script src="assets/js/inline-preview.js" defer></script>
-  <script src="assets/js/main.js?v=mega-dismiss-links-20261114" defer></script>
+  <script src="assets/js/main.js?v=player-try-20261116" defer></script>
 </body>
 </html>

@@ -2679,6 +2679,236 @@ input {
   outline-offset: -4px;
 }
 
+/* Player — pick a Koel, set it on the top plate, preview from there. */
+.hk-player.hk-section {
+  --hk-player-edge: clamp(20px, 3vw, 48px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--hk-kesar);
+  padding-top: clamp(48px, 6vw, 72px);
+  padding-bottom: calc(clamp(56px, 7vw, 96px) + var(--hk-player-edge));
+}
+
+.hk-player__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-areas:
+    "intro"
+    "stage"
+    "actions";
+  gap: clamp(28px, 4vw, 40px);
+  align-items: center;
+}
+
+.hk-player__intro {
+  grid-area: intro;
+}
+
+.hk-player__mark {
+  display: block;
+  width: 96px;
+  height: auto;
+  margin: 0 0 12px;
+}
+
+.hk-player__intro .hk-display {
+  max-width: 14ch;
+  text-wrap: balance;
+}
+
+.hk-player__actions {
+  grid-area: actions;
+}
+
+.hk-player__picker {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 10px;
+  max-width: 440px;
+}
+
+.hk-player__choice {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--hk-ink);
+  cursor: pointer;
+  text-align: center;
+}
+
+.hk-player__choice-art {
+  display: grid;
+  width: min(100%, 88px);
+  aspect-ratio: 1;
+  padding: 3px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  background: var(--hk-canvas);
+  box-shadow: var(--hk-shadow-soft);
+}
+
+.hk-player__choice.is-selected .hk-player__choice-art,
+.hk-player__choice[aria-checked="true"] .hk-player__choice-art {
+  border-color: var(--hk-gulab);
+}
+
+.hk-player__choice-art img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hk-player__choice-name {
+  font-size: var(--hk-text-body-sm);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.hk-player__stage {
+  grid-area: stage;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+}
+
+.hk-player__puddle {
+  position: absolute;
+  z-index: 0;
+  top: 52%;
+  left: 50%;
+  width: min(116%, 540px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hk-player__device {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 460px);
+}
+
+.hk-player__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--hk-radius-xl);
+}
+
+.hk-player__disc {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 32.8%;
+  width: 28%;
+  aspect-ratio: 1;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: translate(-50%, -50%) scaleY(0.23);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.hk-player__choice-art,
+.hk-player__play {
+  transition: transform var(--hk-duration) var(--hk-ease),
+    background var(--hk-duration) var(--hk-ease),
+    box-shadow var(--hk-duration) var(--hk-ease);
+}
+
+.hk-player__play {
+  position: absolute;
+  z-index: 2;
+  left: 4%;
+  top: 46%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hk-gulab);
+  color: var(--hk-on-action);
+  box-shadow: 0 10px 28px rgba(211, 0, 10, 0.28);
+  cursor: pointer;
+}
+
+.hk-player__play[aria-pressed="true"] {
+  background: var(--hk-sindoor);
+}
+
+.hk-player__caption {
+  position: relative;
+  z-index: 1;
+  margin: 8px 0 0;
+  font-family: var(--hk-font-display);
+  font-size: var(--hk-text-subhead);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--hk-ink);
+  text-align: center;
+}
+
+.hk-player__edge {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  display: block;
+  width: 100%;
+  height: calc(var(--hk-player-edge) + 1px);
+  fill: var(--hk-canvas);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hk-player__choice:hover .hk-player__choice-art {
+    transform: translateY(-2px);
+  }
+
+  .hk-player__play:hover {
+    background: var(--hk-sindoor);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(211, 0, 10, 0.34);
+  }
+}
+
+@media (min-width: 900px) {
+  .hk-player__layout {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    grid-template-areas:
+      "intro stage"
+      "actions stage";
+    column-gap: clamp(40px, 5vw, 72px);
+    row-gap: 28px;
+  }
+
+  .hk-player__stage {
+    align-self: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-player__choice-art,
+  .hk-player__play,
+  .hk-player__choice:hover .hk-player__choice-art,
+  .hk-player__play:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Founder — a tactile postcard, with a live letter and framed portrait. */
 #founder.hk-section {
   padding-block: clamp(40px, 5vw, 64px);
