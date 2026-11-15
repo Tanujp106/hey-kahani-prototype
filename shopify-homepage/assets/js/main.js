@@ -652,4 +652,51 @@
     document.querySelectorAll(".hk-reveal").forEach((el) => el.classList.add("is-in"));
   }
 
+  const strip = document.querySelector(".hk-strip");
+  const stripItems = strip ? Array.from(strip.querySelectorAll(".hk-strip__usps > li")) : [];
+  if (strip && stripItems.length) {
+    const waveSegs = [
+      [[0, 27], [102, 45], [203, 49], [395, 29]],
+      [[395, 29], [587, 9], [691, 7], [926, 28]],
+      [[926, 28], [1114, 45], [1253, 45], [1440, 19]]
+    ];
+    const bez = (p0, p1, p2, p3, t) => {
+      const m = 1 - t;
+      return m * m * m * p0 + 3 * m * m * t * p1 + 3 * m * t * t * p2 + t * t * t * p3;
+    };
+    const waveY = (x) => {
+      const seg = waveSegs.find((points) => x <= points[3][0]) || waveSegs[waveSegs.length - 1];
+      const [p0, p1, p2, p3] = seg;
+      let lo = 0;
+      let hi = 1;
+      for (let i = 0; i < 24; i += 1) {
+        const mid = (lo + hi) / 2;
+        if (bez(p0[0], p1[0], p2[0], p3[0], mid) < x) lo = mid;
+        else hi = mid;
+      }
+      return bez(p0[1], p1[1], p2[1], p3[1], (lo + hi) / 2);
+    };
+    const placeStripItems = () => {
+      const narrow = window.matchMedia("(max-width: 720px)").matches;
+      stripItems.forEach((item) => {
+        item.style.transform = "none";
+      });
+      if (narrow) return;
+      const bounds = strip.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      const wave = parseFloat(getComputedStyle(strip).getPropertyValue("--hk-wave")) || 0;
+      const boxes = stripItems.map((item) => item.getBoundingClientRect());
+      stripItems.forEach((item, index) => {
+        const box = boxes[index];
+        const x = ((box.left + box.width / 2 - bounds.left) / bounds.width) * 1440;
+        const bandCenter = (waveY(x) / 48) * wave + (bounds.height - wave) / 2;
+        const itemCenter = box.top + box.height / 2 - bounds.top;
+        item.style.transform = `translateY(${(bandCenter - itemCenter).toFixed(2)}px)`;
+      });
+    };
+    placeStripItems();
+    window.addEventListener("resize", placeStripItems, { passive: true });
+    document.fonts?.ready?.then(placeStripItems);
+  }
+
 })();

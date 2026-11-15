@@ -265,6 +265,8 @@ These are project decisions from this chat, not rules stated in the PDF:
 
 - User direction on November 14, 2026 (`shopify-homepage/` second fold): one large feature card at a time with a **top pill tab switcher** (Calm-style reference). Soft brand pastel card grounds, squircle media, Averia titles, Gulab primary CTAs, directional crossfade; reduced motion keeps opacity/color only. Same-day refinements: tighten empty cards and add selected brand-library vectors; **rework copy from how-to steps into USPs**. Section id `#why`. Header belief line: “Stories that feel like yours.” (not the discarded “Why families choose it” slogan). Four panels use existing store messaging: Screen free by design; Made for little hands; Stories that feel like home; Tap a Koel. Hear a Kahani. Hero/footer CTAs say “Why Hey Kahani,” not “How it works.” Not a horizontal card carousel and not earlier how-to bentos.
 
+- November 16, 2026 tab-state refinement (`#why`): no dots on the pills. Selected is Gulab (`#D3000A`) with white labels; selected hover deepens to Sindoor. Unselected hover is Marigold (`#FF5D27`) with black text. Press scales the pill to 0.97. Keyboard focus keeps a separate Sindoor outline. Reduced motion drops the scale and the hover lift. Preserve tab semantics and pill sizes.
+
 - Same-day cleanup: remove pre-guideline hand-drawn `hk-doodle-*` sprites (kite, spark, sun, star, etc.), the `kids-objects.svg` sprite sheet, and Why bottom pager dots from markup/CSS/JS. Decorative graphics must come from `outputs/brand-library-v1` (or Lucide for UI icons), not the old doodle set.
 
 - Same day card polish: section ground **white**; larger squircle media and USP titles (`--hk-text-md` / desktop `--hk-text-section`). Card colours Sky / Mango / Lavender / Marigold-on-Kesar.
@@ -300,7 +302,8 @@ These are project decisions from this chat, not rules stated in the PDF:
   fills and asset choices are unchanged by this placement correction.
   New editable, SVG-only line gestures extend H / Freeform rhythm under
   `outputs/brand-library-v1/extensions/benefit-gestures/`.
-  Card grounds use exact Mango, Sky, Lavender and Kesar fills. Shared type
+  Card grounds use exact Mango, Sky, Lavender and Kesar fills.
+  November 15, 2026: the Tap a Koel card ground is Marigold (`#FF5D27`), not Kesar or Coconut Husk. The other three cards stay Mango, Sky and Lavender. The photo plate keeps its Kesar edge. Shared type
   tokens, existing tabs, USP copy, Gulab CTAs and crossfade/reduced-motion behaviour
   remain. The user explicitly superseded the earlier one-illustration treatment;
   judge additions by composition and readability. No carousel pager dots.
@@ -320,13 +323,7 @@ These are project decisions from this chat, not rules stated in the PDF:
   and product-card controls remain. The redundant spark overlay was removed.
   This permits the header illustration, not floating graphics over the products.
 
-  Latest November 14 background correction: frame the Koels introduction with
-  Sky puddle and Mango Crooked ring in separate side columns outside the 40rem
-  reading column. The kite/boat arrangement and negative-offset crops were
-  rejected. Use CSS background assets so decorative media cannot create large
-  in-flow images if styling is unavailable. At 1100px and below keep one complete
-  96px ring beside the book mark, above the heading. Preserve the Sindoor waves,
-  clear product grid and static, non-interactive decorative treatment.
+  November 15, 2026: remove the Sky puddle and Mango Crooked ring from the Koels introduction. Keep the open-storybook mark, Sindoor waves, clear product grid, and the centered heading. Those two shapes stay available in the Why benefit cards.
 
   Testimonials now place Moon and stars, Little home, Rain cloud, Spinning top
   and Pebble pair in a separate header area beside each quote mark, replacing
@@ -351,6 +348,7 @@ These are project decisions from this chat, not rules stated in the PDF:
 - User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 - User direction on November 11, 2026: Koel Preview pill is a near-white frosted surface (`rgba(255, 252, 247, 0.92)` with light blur), not Coconut Husk. Category badges use a frosted white blur background over artwork.
 - User direction on November 12, 2026: match the Koels section ground to the footer's Sindoor Red (`#B40023`), not Gulab Red. Keep white heading/intro text and organic edges showing the white sections above and below. Reverse the Explore CTA to Kesar Sand with a Sindoor Red label for contrast. Keep the Koel cards on their Kesar Sand foundation with black card copy and existing brand-red bag controls; hide the organic edges on narrow screens as already configured.
+- User direction on November 15, 2026 (`shopify-homepage/` USP strip): the cream strip uses the Koels top wave exactly — same path, same height (`clamp(24px, 3vw, 48px)`). White cuts the top of the strip and Sindoor cuts the bottom, so the band is that wave and meets the red section with no white gap. Each point — icon and line together — sits on the center of that wave so the row stays aligned with the band. No ticker and no per-letter rotation. This replaces the separate white Koels top edge. The lower Koels edge stays white. On narrow screens the strip wave hides with the other organic edges.
 - User direction on November 7, 2026: section titles across the `shopify-homepage/` refresh must share one size (`--hk-text-section` / `hk-display--lg`). No per-section heading size overrides (e.g. How it works vs companion app). Body copy uses Open Sans medium (500). Keep the scale in `design.md` and `tokens.css` in sync.
 - User direction on November 14, 2026: increase all section header (`h2.hk-display--lg`) sizes — they felt too small. Raise `--hk-text-section` to clamp → **48px** max (was 40px). Keep one shared token for every section; do not add per-section size overrides. Hero (`--hk-text-hero`, 56px max) stays larger.
 - User direction on November 7, 2026: page text (headings, leads, body, FAQ, founder, footer copy) uses **black `#000000`** via `--hk-ink` / `--hk-body`. Do not use Temple Maroon for running copy. Brand Story Ink `#05334A` remains available as `--hk-story-ink` for reference only. Remove unused section eyebrows when the user cuts them (App “For grown-ups”, Koels “Kahani Koels”).
