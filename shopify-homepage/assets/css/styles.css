@@ -1,4 +1,5 @@
 @import url("./tokens.css");
+@import url("./benefit-frame-masks.css?v=20261116");
 
 *,
 *::before,
@@ -1102,14 +1103,56 @@ input {
 .hk-how-panel {
   --hk-benefit-frame: url("../images/brand-library/containers/benefit-quiet-tide.svg");
   --hk-benefit-photo-tilt: -1deg;
+  --hk-benefit-inset: 48px;
+  --hk-benefit-surface: var(--hk-mango);
+  --hk-benefit-backdrop-shape: url("../images/brand-library/decorative/sky-puddle.svg");
+  --hk-benefit-backdrop-fill: color-mix(in srgb, var(--hk-benefit-surface) 94%, black 6%);
+  --hk-benefit-corner-shape: url("../images/brand-library/decorative/crooked-ring.svg");
+  --hk-benefit-corner-fill: color-mix(in srgb, var(--hk-benefit-surface) 90%, white 10%);
   position: relative;
+  isolation: isolate;
   width: 100%;
   padding: 0;
-  border: 48px solid transparent;
+  border: var(--hk-benefit-inset) solid transparent;
   border-image-source: var(--hk-benefit-frame);
   border-image-slice: 110 fill;
   border-image-width: 1;
   border-image-repeat: stretch;
+  /* Match the painted nine-slice contour, including the responsive edge widths.
+     Clipping the whole card also contains both decorative background layers. */
+  --hk-benefit-clip-middle: calc(100% - var(--hk-benefit-inset) - var(--hk-benefit-inset));
+  -webkit-mask-image: var(--hk-benefit-clip);
+  mask-image: var(--hk-benefit-clip);
+  -webkit-mask-origin: border-box;
+  mask-origin: border-box;
+  -webkit-mask-clip: border-box;
+  mask-clip: border-box;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size:
+    var(--hk-benefit-inset) var(--hk-benefit-inset),
+    var(--hk-benefit-clip-middle) var(--hk-benefit-inset),
+    var(--hk-benefit-inset) var(--hk-benefit-inset),
+    var(--hk-benefit-inset) var(--hk-benefit-clip-middle),
+    var(--hk-benefit-clip-middle) var(--hk-benefit-clip-middle),
+    var(--hk-benefit-inset) var(--hk-benefit-clip-middle),
+    var(--hk-benefit-inset) var(--hk-benefit-inset),
+    var(--hk-benefit-clip-middle) var(--hk-benefit-inset),
+    var(--hk-benefit-inset) var(--hk-benefit-inset);
+  mask-size:
+    var(--hk-benefit-inset) var(--hk-benefit-inset),
+    var(--hk-benefit-clip-middle) var(--hk-benefit-inset),
+    var(--hk-benefit-inset) var(--hk-benefit-inset),
+    var(--hk-benefit-inset) var(--hk-benefit-clip-middle),
+    var(--hk-benefit-clip-middle) var(--hk-benefit-clip-middle),
+    var(--hk-benefit-inset) var(--hk-benefit-clip-middle),
+    var(--hk-benefit-inset) var(--hk-benefit-inset),
+    var(--hk-benefit-clip-middle) var(--hk-benefit-inset),
+    var(--hk-benefit-inset) var(--hk-benefit-inset);
+  -webkit-mask-position: left top, center top, right top, left center, center center, right center, left bottom, center bottom, right bottom;
+  mask-position: left top, center top, right top, left center, center center, right center, left bottom, center bottom, right bottom;
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
   border-radius: 0;
   background: transparent;
   color: var(--hk-ink);
@@ -1122,54 +1165,92 @@ input {
 }
 
 .hk-how-panel--hands {
+  --hk-benefit-surface: var(--hk-sky);
   --hk-benefit-frame: url("../images/brand-library/containers/benefit-double-hill.svg");
+  --hk-benefit-backdrop-shape: url("../images/brand-library/decorative/crooked-ring.svg");
+  --hk-benefit-corner-shape: url("../images/brand-library/decorative/soft-corner.svg");
 }
 
 .hk-how-panel--home {
+  --hk-benefit-surface: var(--hk-lavender);
   --hk-benefit-frame: url("../images/brand-library/containers/benefit-soft-postcard.svg");
+  --hk-benefit-backdrop-shape: url("../images/brand-library/decorative/soft-corner.svg");
+  --hk-benefit-corner-shape: url("../images/brand-library/decorative/sky-puddle.svg");
 }
 
 .hk-how-panel--simple {
-  --hk-benefit-frame: url("../images/brand-library/containers/benefit-plump-panel-marigold.svg");
+  --hk-benefit-surface: var(--hk-parrot);
+  --hk-benefit-frame: url("../images/brand-library/containers/benefit-plump-panel-parrot.svg");
+  --hk-benefit-backdrop-shape: url("../images/brand-library/decorative/tilted-arch.svg");
+  --hk-benefit-corner-shape: url("../images/brand-library/decorative/double-dip.svg");
 }
 
 .hk-how-panel__body {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 32px;
   box-sizing: border-box;
   width: 100%;
-  padding: 12px;
+  padding: 0;
 }
 
 .hk-how-panel__visual {
   position: relative;
   isolation: isolate;
   width: min(100%, 25rem);
-  padding: 8px 0 0;
+  padding: 32px 12px 48px;
   box-sizing: border-box;
   margin-inline: auto;
   min-width: 0;
 }
 
-/* One anchored composition: photo, a lower-edge group, and a shape behind it.
-   All artwork shares the visual's baseline rather than separate card corners. */
-.hk-how-panel__backdrop {
+/* Large library silhouettes fill the background, with photo and illustration
+   layers above them. SVG masks preserve the authored contours and brand fills. */
+.hk-how-panel__visual::before {
+  content: "";
   position: absolute;
   z-index: 0;
-  right: 0;
-  bottom: 0;
-  width: min(52%, 200px);
-  height: auto;
+  left: -16%;
+  top: -16px;
+  width: 128%;
   aspect-ratio: 1;
+  background: var(--hk-benefit-backdrop-fill);
+  -webkit-mask: var(--hk-benefit-backdrop-shape) center / contain no-repeat;
+  mask: var(--hk-benefit-backdrop-shape) center / contain no-repeat;
   pointer-events: none;
+}
+
+/* Full, uncropped artwork crosses the upper-right frame edge. The card's
+   matching contour mask performs the crop, not the asset's square viewport. */
+.hk-how-panel::before {
+  content: "";
+  display: none;
+  position: absolute;
+  z-index: 0;
+  --hk-benefit-corner-size: clamp(256px, 31vw, 352px);
+  top: calc(-0.26 * var(--hk-benefit-corner-size) - var(--hk-benefit-inset));
+  right: calc(-0.2 * var(--hk-benefit-corner-size) - var(--hk-benefit-inset));
+  width: var(--hk-benefit-corner-size);
+  aspect-ratio: 1;
+  background: var(--hk-benefit-corner-fill);
+  -webkit-mask: var(--hk-benefit-corner-shape) center / contain no-repeat;
+  mask: var(--hk-benefit-corner-shape) center / contain no-repeat;
+  pointer-events: none;
+}
+
+@media (min-width: 800px) {
+  .hk-how-panel::before {
+    display: block;
+  }
 }
 
 .hk-how-panel__media {
   position: relative;
   z-index: 1;
-  width: calc(100% - 24px);
+  width: 100%;
   max-width: 24rem;
   margin-inline: auto;
   aspect-ratio: 1;
@@ -1208,97 +1289,127 @@ input {
   text-align: left;
 }
 
-/* The line leads into a paired vignette; the larger illustration is the
-   anchor and the companion sits beside it on the same baseline. */
-.hk-how-panel__asset-group {
-  position: relative;
+/* Photo-led composition, inspired by Wilf & Friends / Leader Bag:
+   frame the subject with two different-scale illustrations on opposite edges.
+   The artwork belongs to the photo, so it never drifts into the reading column. */
+.hk-how-panel__accents {
+  position: absolute;
   z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(96px, 10vw, 136px) clamp(72px, 7vw, 96px);
-  align-items: end;
-  width: calc(100% - 12px);
-  margin: -20px 0 0 auto;
+  inset: 0;
   pointer-events: none;
 }
 
-.hk-how-panel__mark {
+.hk-how-panel__mark,
+.hk-how-panel__companion {
+  position: absolute;
   display: block;
-  width: 100%;
   height: auto;
   aspect-ratio: 1;
   object-fit: contain;
 }
 
-.hk-how-panel__gesture {
-  display: block;
-  align-self: center;
-  justify-self: end;
-  width: 100%;
-  max-width: 148px;
-  height: auto;
-  margin-top: 24px;
-  aspect-ratio: 5 / 2;
-  object-fit: contain;
+.hk-how-panel__mark {
+  width: 96px;
 }
 
 .hk-how-panel__companion {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  margin-left: -8px;
-  object-fit: contain;
+  display: none;
 }
 
-/* Mirror the whole home vignette so its overlap is beside the clothing. */
-.hk-how-panel--home .hk-how-panel__asset-group {
-  grid-template-columns: clamp(96px, 10vw, 136px) clamp(72px, 7vw, 96px) minmax(0, 1fr);
-  margin-inline: 0 auto;
+/* Kite follows the child's gaze; the separate ear illustration reinforces
+   the listening message below the opposite photo edge. */
+.hk-how-panel--screen .hk-how-panel__mark {
+  top: -20px;
+  right: 0;
+  width: 96px;
 }
 
+.hk-how-panel--screen .hk-how-panel__companion {
+  bottom: -24px;
+  left: -20px;
+}
+
+/* A little hand supports tactile choice; the separate top supports play. */
+.hk-how-panel--hands .hk-how-panel__mark {
+  right: 0;
+  bottom: -16px;
+}
+
+.hk-how-panel--hands .hk-how-panel__companion {
+  top: -36px;
+  left: 0;
+}
+
+/* Home grounds belonging; a separate marigold connects to the festival copy. */
 .hk-how-panel--home .hk-how-panel__mark {
-  grid-column: 1;
-  grid-row: 1;
+  left: 0;
+  bottom: -16px;
 }
 
 .hk-how-panel--home .hk-how-panel__companion {
-  grid-column: 2;
-  grid-row: 1;
+  top: -28px;
+  right: 0;
 }
 
-.hk-how-panel--home .hk-how-panel__gesture {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: start;
+/* Book and story disc reinforce the story/listening and tap-to-play message.
+   The backdrop and illustrations are larger inside the shared card shell. */
+.hk-how-panel--simple .hk-how-panel__visual::before {
+  left: -64%;
+  top: -22%;
+  width: 198%;
 }
 
-.hk-how-panel--home .hk-how-panel__backdrop {
-  left: 0;
-  right: auto;
+.hk-how-panel--simple::before {
+  /* About 45% above the shared 256px / 31vw / 352px corner. */
+  --hk-benefit-corner-size: clamp(372px, 45vw, 510px);
 }
 
-@media (max-width: 799px) {
-  .hk-how-panel__backdrop,
+.hk-how-panel--simple .hk-how-panel__mark {
+  right: -6px;
+  bottom: -22px;
+  width: 128px;
+}
+
+.hk-how-panel--simple .hk-how-panel__companion {
+  top: -48px;
+  left: -8px;
+}
+
+@media (min-width: 800px) {
+  .hk-how-panel__mark {
+    width: clamp(109px, 11.2vw, 134px);
+  }
+
   .hk-how-panel__companion {
-    display: none;
+    display: block;
+    width: 104px;
   }
 
-  .hk-how-panel__asset-group {
-    grid-template-columns: minmax(0, 1fr) 112px;
-    width: calc(100% - 24px);
-    margin-top: -16px;
+  .hk-how-panel--screen .hk-how-panel__mark {
+    top: -44px;
+    width: clamp(109px, 11.2vw, 134px);
   }
 
-  .hk-how-panel--home .hk-how-panel__asset-group {
-    grid-template-columns: 112px minmax(0, 1fr);
+  .hk-how-panel--screen .hk-how-panel__companion {
+    width: 112px;
   }
 
-  .hk-how-panel--home .hk-how-panel__gesture {
-    grid-column: 2;
+  .hk-how-panel--hands .hk-how-panel__mark,
+  .hk-how-panel--home .hk-how-panel__mark,
+  .hk-how-panel--simple .hk-how-panel__mark {
+    bottom: -24px;
   }
 
-  .hk-how-panel__gesture {
-    max-width: 132px;
+  .hk-how-panel--simple .hk-how-panel__mark {
+    width: clamp(152px, 15.6vw, 184px);
+    right: -12px;
+    bottom: -36px;
+  }
+
+  .hk-how-panel--simple .hk-how-panel__companion {
+    width: 146px;
+    top: -58px;
+    left: -16px;
   }
 }
 
@@ -1330,7 +1441,7 @@ input {
 
 @media (min-width: 800px) {
   .hk-how-panel {
-    border-width: clamp(64px, 6vw, 80px);
+    --hk-benefit-inset: clamp(64px, 6vw, 80px);
   }
 
   .hk-how-panel__body {
@@ -1341,6 +1452,7 @@ input {
 
   .hk-how-panel__visual {
     width: min(100%, 27rem);
+    padding: 48px 28px 80px 20px;
   }
 
   .hk-how-panel__copy {
@@ -1354,15 +1466,7 @@ input {
 
 @media (max-width: 479px) {
   .hk-how-panel {
-    border-width: 32px;
-  }
-
-  .hk-how-panel__asset-group {
-    grid-template-columns: minmax(0, 1fr) 96px;
-  }
-
-  .hk-how-panel--home .hk-how-panel__asset-group {
-    grid-template-columns: 96px minmax(0, 1fr);
+    --hk-benefit-inset: 32px;
   }
 }
 

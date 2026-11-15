@@ -265,9 +265,14 @@ These are project decisions from this chat, not rules stated in the PDF:
 
 - User direction on November 14, 2026 (`shopify-homepage/` second fold): one large feature card at a time with a **top pill tab switcher** (Calm-style reference). Soft brand pastel card grounds, squircle media, Averia titles, Gulab primary CTAs, directional crossfade; reduced motion keeps opacity/color only. Same-day refinements: tighten empty cards and add selected brand-library vectors; **rework copy from how-to steps into USPs**. Section id `#why`. Header belief line: “Stories that feel like yours.” (not the discarded “Why families choose it” slogan). Four panels use existing store messaging: Screen free by design; Made for little hands; Stories that feel like home; Tap a Koel. Hear a Kahani. Hero/footer CTAs say “Why Hey Kahani,” not “How it works.” Not a horizontal card carousel and not earlier how-to bentos.
 
-- November 16, 2026 tab-state refinement (`#why`): no dots on the pills. Selected is Gulab (`#D3000A`) with white labels; selected hover deepens to Sindoor. Unselected hover is Marigold (`#FF5D27`) with black text. Press scales the pill to 0.97. Keyboard focus keeps a separate Sindoor outline. Reduced motion drops the scale and the hover lift. Preserve tab semantics and pill sizes.
-
 - Same-day cleanup: remove pre-guideline hand-drawn `hk-doodle-*` sprites (kite, spark, sun, star, etc.), the `kids-objects.svg` sprite sheet, and Why bottom pager dots from markup/CSS/JS. Decorative graphics must come from `outputs/brand-library-v1` (or Lucide for UI icons), not the old doodle set.
+
+- November 16, 2026 tab-state refinement (`#why`): no dots on the pills.
+  Selected is Gulab (`#D3000A`) with white labels; selected hover deepens to
+  Sindoor. Unselected hover is Marigold (`#FF5D27`) with black text. Press
+  scales the pill to 0.97. Keyboard focus keeps the separate Sindoor outline.
+  Reduced motion drops the scale and the hover lift. Preserve tab semantics
+  and pill sizes.
 
 - Same day card polish: section ground **white**; larger squircle media and USP titles (`--hk-text-md` / desktop `--hk-text-section`). Card colours Sky / Mango / Lavender / Marigold-on-Kesar.
 
@@ -289,24 +294,85 @@ These are project decisions from this chat, not rules stated in the PDF:
   cards for composition inspiration: a layered visual on the left and a clear,
   vertically centred text/action column on the right. Photos keep a square crop,
   a cream edge and a slight static tilt; standalone product media uses contain.
-  Follow-up user correction: a single asset still feels empty. Each desktop
-  card combines the main illustration, a related companion, one broad framing
-  shape and a short freehand line. A subsequent placement correction rejected
-  scattered corner assets and the detached motif row above the heading. Keep
-  the graphics together in one vignette along the photo's lower edge: the line
-  leads into the larger illustration and smaller companion on a shared baseline,
-  with the broad shape behind the group and photo. The text column begins at
-  the heading. Photo tilt is a consistent -1 degree. Mirror the whole home
-  vignette to the left, away from the Player. Below 800px, keep the grouped main
-  illustration and line; hide the broad shape and companion. Container shapes,
-  fills and asset choices are unchanged by this placement correction.
-  New editable, SVG-only line gestures extend H / Freeform rhythm under
+  Reference-led placement — November 15, 2026: after rejecting the uniform
+  card-corner placement, the user approved applying lessons from Wilf & Friends
+  (Hey Girl Studio / Finding Design), Leader Bag Co and Headspace / MetaLab.
+  Use two illustrations at different scales, anchored to opposite photo edges
+  and chosen positions that relate to the subject. Current November 16 pairs:
+  Screen free — kite along the child's upward gaze and a separate listening ear;
+  Little hands — a new little-hand illustration at table level and a separate
+  spinning top; Home — little house for belonging and the library marigold for
+  festival stories; Tap to play — open storybook for Kahani and a new abstract
+  circular story disc for placing a Koel. These are composition choices,
+  not new product claims. Keep the copy/CTA column clear, remove the separate
+  line gestures, and retain only the main illustration below 800px. Keep the
+  existing container artwork, fills and -1 degree photo tilt. This supersedes
+  both the grouped lower-edge vignette and uniform card-level corner anchors.
+  Follow-up — November 15, 2026: the user approved the illustration placement
+  and requested large background shapes behind the image and in upper-right
+  card corners. Add oversized existing library silhouettes as separate, static
+  background layers using Sky puddle, Crooked ring and Soft corner. Latest
+  colour correction: each background shape must use a darker/lighter shade of
+  its own card colour, not a contrasting brand hue. Derive the photo backdrop
+  from 86% card fill / 14% black, and the corner from 72% card fill / 28% white.
+  Card sources are Mango, Sky, Lavender and Kesar respectively. Preserve the
+  proportional SVG masks, existing illustration colours and layer positions.
+  On mobile keep the behind-photo shape and hide the corner layer. This
+  supersedes the prior background-shape removal, while the separate line
+  gestures remain removed.
+  Screen free refinement — November 16, 2026: keep the new listening ear.
+  Reduce the desktop kite roughly 20%, retain a readable 96px phone version,
+  move it up/inward for a gap above the photo, and change its Mango facet to
+  Kesar. Keep the photo/copy layout unchanged. Lighten only this card's backdrop
+  to 94% Mango / 6% black and reduce its exposed contour to a 128%-wide layer
+  at left -16% / top -16px. Use a top/right-cropped library ring variant with
+  the existing pale Mango tint. Sources are in
+  `outputs/brand-library-v1/extensions/screen-free-refinement/`. These local
+  adjustments supersede the shared backdrop ratio for Screen free only.
+  Latest all-card refinement — November 16, 2026: extend the lighter, closer
+  photo backdrops to every card (94% card fill / 6% black; width 128%, left -16%,
+  top -16px). Make the corner shapes larger (clamp 256px / 31vw / 352px) but
+  quieter (90% card fill / 10% white), using cropped library silhouettes rather
+  than small complete badges. This supersedes the prior 272px corner size and
+  28% white tint. The user wants the shape to add fullness without registering
+  at first glance. Foreground vectors remain distinct and moderately sized
+  (96px mobile, clamp 109px / 11.2vw / 134px desktop main assets; smaller
+  companions). Keep four supporting assets maximum per desktop card: two
+  illustrations and two background shapes. On mobile keep the main illustration
+  and photo backdrop. New vector/contour sources and manifest are under
+  `outputs/brand-library-v1/extensions/benefit-asset-refinement-v2/`.
+  November 16 containment fix: clip each whole card to an alpha mask generated
+  from the same container path and nine-slice mapping as its border-image
+  (110 source slices, shared responsive inset). Full original decorative SVGs
+  now extend beyond the edge; the card contour performs the crop. Do not fake
+  container clipping with a pre-cropped asset viewport or a generic rounded box.
+  The generated stylesheet and build/verification helpers live under
+  `assets/css/benefit-frame-masks.css` and
+  `outputs/brand-library-v1/extensions/benefit-frame-clipping/`. Card 4 uses
+  Tilted arch behind the photo and Double dip at the corner, replacing its
+  duplicated Sky puddle/ring pair. Preserve the quiet tonal fills and four-asset
+  cap. The mobile kite sits slightly inward to remain inside its card contour.
+  The unused SVG-only line gestures remain available in
   `outputs/brand-library-v1/extensions/benefit-gestures/`.
   Card grounds use exact Mango, Sky, Lavender and Kesar fills.
-  November 15, 2026: the Tap a Koel card ground is Marigold (`#FF5D27`), not Kesar or Coconut Husk. The other three cards stay Mango, Sky and Lavender. The photo plate keeps its Kesar edge. Shared type
+  November 15, 2026: the Tap a Koel card ground is Marigold (`#FF5D27`), not
+  Kesar or Coconut Husk. The other three cards stay Mango, Sky and Lavender.
+  The photo plate keeps its Kesar edge. Black text stays; contrast on Marigold
+  is about 6.7:1. Shared type
   tokens, existing tabs, USP copy, Gulab CTAs and crossfade/reduced-motion behaviour
   remain. The user explicitly superseded the earlier one-illustration treatment;
   judge additions by composition and readability. No carousel pager dots.
+  November 16, 2026 (`#why`, Tap a Koel card only): the card felt empty. Its
+  ground is now Parrot Green (`#2B9863`, `--hk-parrot`), a saturated secondary
+  from the brand guide. Mango, Sky and Lavender stay on the other cards. Gulab
+  and Sindoor are too dark for this card's black text; Hibiscus stays an accent
+  because it sits against the Player's red band. Black body text on Parrot is
+  about 5.8:1. The card shell, Kesar plate size, shared visual padding, black
+  text, Gulab CTA and tonal shape fills stay. This card's tilted-arch backdrop
+  is 198% of the photo column and shifted up and left. The open storybook and
+  story disc are larger. The upper-right Double dip is about 45% above the
+  shared corner size (`clamp(372px, 45vw, 510px)`), past the requested 30%
+  increase. The other three cards keep the shared sizes.
 
 - Superseded earlier November 14, 2026: static 2×2 Yoto-style feature bento. Superseded November 12, 2026 three-column step bento. Both replaced by the tabbed one-card feature stage above.
 

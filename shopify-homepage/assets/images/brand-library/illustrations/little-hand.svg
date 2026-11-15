@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-labelledby="hk-little-hand-title">
+<title id="hk-little-hand-title">Little hand for independent play</title>
+<path d="M135 338 L100 272 C89 251 87 226 90 200 L96 112 C97 100 108 97 115 104 C120 109 119 118 119 128 L119 184 L133 79 C135 65 145 58 154 66 C161 71 158 83 157 94 L149 181 L171 65 C174 51 185 45 194 53 C202 60 197 72 195 83 L184 184 L213 96 C217 82 228 78 236 86 C244 94 237 107 234 117 L210 210 L255 171 C267 160 280 158 289 169 C298 180 288 192 280 202 L244 246 C229 266 221 288 216 337 L191 357 L157 354 Z" fill="#FFF1D6"/>
+<path d="M128 324 Q172 310 220 326 L221 357 Q175 374 132 357 Z" fill="#2578B7"/>
+<g fill="none" stroke="#05334A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M129 227 Q163 210 195 226"/>
+<path d="M203 231 Q175 246 174 280"/>
+<path d="M133 274 Q145 281 153 279"/>
+</g></svg>

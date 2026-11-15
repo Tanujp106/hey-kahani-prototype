@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-labelledby="hk-listening-ear-title">
+  <title id="hk-listening-ear-title">Listening ear with sound curves</title>
+  <path d="M210 46 C149 35 94 76 83 132 C72 185 105 216 114 247 C122 274 106 302 132 326 C156 349 192 336 205 311 C217 287 204 267 224 244 C252 213 278 190 280 146 C283 91 257 54 210 46 Z" fill="#63C3FE"/>
+  <path d="M202 82 C156 73 120 109 119 148 C118 181 148 199 156 225 C164 250 147 269 158 287 C169 304 189 291 190 273 C192 248 183 229 205 207 C231 181 247 167 244 139 C241 109 227 87 202 82 Z" fill="#FFF1D6"/>
+  <g fill="none" stroke="#05334A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M201 114 C172 104 149 126 153 151 C157 173 182 175 186 195 C190 213 173 222 172 239"/>
+    <path d="M219 157 C203 149 188 158 187 172"/>
+    <path d="M143 298 Q158 314 175 300"/>
+  </g>
+  <g fill="none" stroke="#2578B7" stroke-width="11" stroke-linecap="round">
+    <path d="M300 113 Q327 144 309 178"/>
+    <path d="M329 89 Q373 142 343 204"/>
+  </g>
+</svg>

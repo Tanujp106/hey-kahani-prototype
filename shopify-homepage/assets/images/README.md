@@ -43,25 +43,86 @@ Double hill, Soft postcard and Plump panel paths supply the filled edge frames.
 The `benefit-*.svg` container variants retain those paths with exact Mango / Sky /
 Lavender / Kesar grounds. The frame centre adapts without a viewport-height floor.
 
-The user's multiple-asset correction replaces the previous single-art treatment.
-Each desktop card uses four graphics in addition to its photo and container:
+The November 15, 2026 reference-led composition uses two differently scaled
+illustrations on opposite photo edges. Artwork is anchored to the photo wrapper,
+with its own space around the image, rather than the entire card. The reading
+and CTA column remains clear. Wilf & Friends (Hey Girl Studio / Finding Design),
+Leader Bag Co and Headspace / MetaLab informed this composition approach; only
+Hey Kahani library artwork is used.
 
-| Panel | Main illustration | Companion | Behind-photo shape | Line gesture |
-| --- | --- | --- | --- | --- |
-| Screen free | Flying kite | Paper boat | Wandering loop | Story trail |
-| Little hands | Spinning top | Banyan leaf | Open burst | Play bounce |
-| Feels like home | Little home | Mango sprig | Crooked ring | Home rhythm |
-| Tap to play | Open storybook | Gentle sun | Sky puddle | Listening ripples |
+| Panel | Main illustration and placement | Companion and placement |
+| --- | --- | --- |
+| Screen free | Flying kite, upper right along the child's gaze | Listening ear, opposite lower edge, supporting the listening message |
+| Little hands | Little hand, lower right beside the play table | Spinning top, separate upper-left play cue |
+| Feels like home | Little home, lower left grounding the family photo | Marigold, upper right supporting festival stories |
+| Tap to play | Open storybook, lower right supporting the Kahani | Story disc, upper left supporting tap-to-play |
 
-Line gestures are original editable SVG-only additions following the selected
-H family, with sources and a manifest in
-`outputs/brand-library-v1/extensions/benefit-gestures/`. Website copies use the
-`benefit-` prefix. Existing library drawings are copied unchanged. Following
-the placement correction, all graphics share one vignette along the photo's
-lower edge: line, larger illustration and smaller companion, backed by the
-broad framing shape. The entire home group mirrors to the left. The heading,
-paragraph and button form a separate, uninterrupted column. Below 800px, the
-main illustration and line remain together. No assets are interactive.
+On November 16, 2026, the Screen free card's paper boat was replaced with a new
+editable `illustrations/listening-ear.svg`: Sky ear, Kesar inner shape, selective
+Story Ink detail and Monsoon sound curves. This supports the listening copy
+without implying a screen or a required accessory. Source and manifest are in
+`outputs/brand-library-v1/extensions/listening-ear/`. It retains the secondary
+illustration slot and existing mobile visibility; the kite and backgrounds are
+unchanged.
+
+A further Screen free refinement on November 16 makes the kite about 20%
+smaller on desktop and 96px on phones, with a clearer gap above the photo. Its
+Mango facet becomes Kesar. The shipped `flying-kite.svg` is now this local
+colour variant; the original library drawing is preserved. The backdrop is
+closer to the photo and lighter (94% Mango / 6% black), while a viewport-cropped
+`decorative/corner-ring-crop.svg` replaces the complete corner ring. The listening
+ear remains. Variant sources and manifest are in
+`outputs/brand-library-v1/extensions/screen-free-refinement/`.
+
+The follow-up on November 15, 2026 adds large background silhouettes while
+preserving the accepted illustration placements:
+
+| Panel | Behind the photo | Upper-right card background |
+| --- | --- | --- |
+| Screen free | Sky puddle in quiet darker Mango | Crooked ring, clipped by card, in faint lighter Mango |
+| Little hands | Crooked ring in quiet darker Sky | Soft corner, clipped by card, in faint lighter Sky |
+| Feels like home | Soft corner in quiet darker Lavender | Sky puddle, clipped by card, in faint lighter Lavender |
+| Tap to play | Tilted arch in quiet darker Marigold | Double dip, clipped by card, in faint lighter Marigold |
+
+CSS masks reuse the existing library contours. The latest colour correction
+derives shapes from each card fill: 94% fill / 6% black behind the photo,
+90% fill / 10% white in the corner. Existing illustration colours stay intact. Layers
+scale proportionally, remain behind the photo/live content, and cannot intercept
+clicks. Below 800px only the behind-photo background remains. Separate line
+gestures remain removed; their sources are available under
+`outputs/brand-library-v1/extensions/benefit-gestures/`; no asset files are deleted
+or redrawn. Below 800px, only the main illustration remains. Decorative layers
+are assistive-hidden and cannot intercept clicks.
+
+The all-card refinement on November 16, 2026 increases corner masks from a
+272px maximum to 352px while lowering their contrast. Coverage and visual weight
+are adjusted separately: these should read as atmosphere after the primary
+content. All photo backdrops now use the closer 128%-wide framing and all main
+illustrations use the smaller scale. Each desktop card retains two foreground
+illustrations plus two background shapes (four assets); mobile retains one
+illustration and the photo backdrop. Copy, images/crops and controls are unchanged.
+
+New editable `little-hand.svg`, `story-disc.svg` and two cropped corner contours
+have source/manifest in `outputs/brand-library-v1/extensions/benefit-asset-refinement-v2/`.
+The story disc is an abstract illustration, not published Koel artwork or a
+merchandise render. The existing `marigold.svg` is copied unchanged from the
+original library and connects directly to the Home card's festival copy.
+
+The November 16 containment correction supersedes the pre-cropped corner
+variants above. All four cards now use the full original decorative SVGs. Their
+actual container contour clips the result through a matching nine-slice alpha
+mask. The paint and clip share their source SVG path, slice size and responsive
+inset, avoiding square cuts or a rounded-rectangle approximation. Generated
+mask CSS is in `assets/css/benefit-frame-masks.css`; regeneration and native
+render checks are in `outputs/brand-library-v1/extensions/benefit-frame-clipping/`.
+Tilted arch and Double dip are copied unchanged from the library for card 4.
+No card silhouette, copy, product media or interaction was replaced.
+
+November 16, 2026, Tap a Koel only: the plump-panel frame fill is Parrot Green
+(`benefit-plump-panel-parrot.svg`, same contour). That card's tilted arch,
+storybook, story disc and upper-right Double dip are larger than the shared
+scale. The card shell and photo plate keep the shared size. The other three
+cards are unchanged.
 
 ## Brand library vectors (testimonials and Koels)
 
