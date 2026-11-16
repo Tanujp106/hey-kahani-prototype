@@ -905,9 +905,10 @@ input {
   }
 }
 
-/* Why Hey Kahani — USP feature stage */
+/* Why Hey Kahani — USP feature stage.
+   The bottom stays short so the card meets How it works. */
 .hk-section--how {
-  padding-block: clamp(72px, 9vw, 112px) clamp(48px, 6vw, 72px);
+  padding-block: clamp(72px, 9vw, 112px) var(--hk-space-sm);
   background: var(--hk-canvas); /* white */
 }
 
