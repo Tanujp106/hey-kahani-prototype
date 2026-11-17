@@ -275,6 +275,14 @@ These are project decisions from this chat, not rules stated in the PDF:
 
 ### Homepage structure — November 17, 2026
 
+**Order correction — November 18, 2026:** Shop is the second section,
+immediately after the hero. Give the Player and Koels equal-width shopping
+cards side by side on desktop, stacking on narrow screens. The user then asked
+for the full Shop section to target roughly 500–700px on desktop: compact
+180px image areas, shorter copy, tighter padding and no repeated benefit pills.
+Koel discovery now follows Shop directly, ahead of the introductory strip and
+feature stories. Narrow screens remain content-sized rather than height-clipped.
+
 The user explicitly requested a homepage rebuild around Yoto's current section
 roles and navigation, while preserving the Hey Kahani visual style already
 created. This supersedes older section-order, single-card-tab, and fixed-grid
@@ -294,6 +302,10 @@ the asset drawing system, product facts or content approvals.
   white page: a stroke icon, a bold title, and a short supporting line. The cards
   are Kesar cream, with a slightly deeper cream on hover. The four existing journeys and destinations stay;
   shipping, payment, return, and warranty claims are not added.
+  November 18, 2026: the How it works rail is not clipped at the content column.
+  It keeps the heading’s left edge and runs through the right margin to the
+  viewport, so the next card stays visible. The cards themselves do not clip
+  their contents.
 - The Player is offered before the Koel catalogue. The approved $129 USD price
   remains bound to its existing product snapshot. Koels explicitly require the
   Player; no first-purchase bundle contents, bundle price, additional device
@@ -322,10 +334,14 @@ a transparent Player with three smaller Koels on the right. This
 supersedes the lifestyle-photo hero and its overlay layout. Averia/Open Sans,
 brand colours and the rest of the visual system remain. November 18 follow-up:
 the local 42–88px headline is retired. The hero uses the shared Hero token
-(34–56px), Body for the lead, and UI for the label, button, and return link.
+(34–56px), Body for the lead, and UI for the label and button. The
+“Already have a Player?” link is removed. The copy block sits low in the fold, raised enough that the Shop the Player
+button clears the bottom edge. The lead breaks after the first sentence so it reads as two lines.
 The copy’s left edge and the Player’s right edge sit on the 1120px content
-column, the same width as the nav. The Player is smaller than the first
-campaign pass. On narrow screens the product composition
+column, the same width as the nav. The Player is 15% larger than the reduced
+campaign size. The three Koels are larger, sit a little closer to the Player, and clear the navbar. The landing fold is 100vh.
+Under the hero, a compact Kesar strip lists three existing points with a small
+stroke icon: One Player, Little Koels, and Ages 3–6. On narrow screens the product composition
 sits above the copy. The screenshot's sale terms, Trustpilot marks and Yoto
 hardware are reference content, not approved Hey Kahani claims or assets.
 
@@ -576,7 +592,7 @@ hardware are reference content, not approved Hey Kahani claims or assets.
 - User authorization on November 4, 2026: fictional parent names and sample quotes may populate the testimonial mockup when every card clearly labels them “Fictional sample”. They are not actual customer reviews and must be replaced with approved attribution before launch.
 
 - User direction on November 4, 2026: use **white `#FFFFFF`** for `--hk-paper` / the principal page background. Keep **Kesar Sand `#FFF1D6`** (`--hk-sand` / `--hk-canvas-warm`) for the footer for now, not as the site-wide ground. The PDF does not mandate a particular web background. The active vector logos are transparent and must not have white background plates.
-- Footer colour (active November 7, 2026 shopify-homepage): **Sindoor Red** ground, **Kesar cream** wordmark (`wordmark-cream.svg`), cream body/link text, soft cream dividers, November 17, 2026: the newsletter email and Join share one Kesar capsule. Join is a Sindoor pill with a Kesar label. This replaces the separate translucent field and the earlier Kesar button with a Sindoor label. No blue. This restores the inverse footer treatment over the brief cream-ground trial.
+- Footer colour (active November 7, 2026 shopify-homepage): **Sindoor Red** ground, **Kesar cream** wordmark (`wordmark-cream.svg`), cream body/link text, soft cream dividers, November 17, 2026: the newsletter email and Join share one Kesar capsule. Join is a Sindoor pill with a Kesar label. This replaces the separate translucent field and the earlier Kesar button with a Sindoor label. November 18, 2026: that capsule replaces the “Little stories. Lasting roots.” line in the brand row. The separate “A little Kahani in your inbox” block is removed. No blue. This restores the inverse footer treatment over the brief cream-ground trial.
 - Footer layout (November 7, 2026): VanMoof three-tier on Sindoor Red — (1) compact brand row with cream wordmark + community line, (2) newsletter column beside Explore/About/Help, (3) copyright + Privacy/Terms. Keep the top row content-height only (no empty red band). Newsletter pitch uses `hk-display--md`.
 - Superseded November 11, 2026: the homepage About / “Stories that feel like them” belief + three lifestyle moments section is removed. Origin story stays in Founder. Footer “Our story” points to `#founder`.
 - Latest user direction on November 4, 2026: retain the testimonial ticker's Kesar Sand background and black heading block, with no section preview line or visible pause control. Images must remain clearly visible, card text must be black rather than red/maroon, and card type must be smaller. Blend clear lifestyle photos continuously into the text using a linear white fade and progressively masked blur, with white card backgrounds; do not create a separate text panel or abrupt image/text edge. Retain the looping layout and image provenance documentation; do not introduce blue surfaces.
