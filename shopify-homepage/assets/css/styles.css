@@ -2007,6 +2007,7 @@ input {
 .hk-koels.hk-section--warm {
   background: var(--hk-sindoor);
   color: var(--hk-canvas);
+  padding-top: var(--hk-space-xxl);
 }
 
 .hk-koels .hk-display,
@@ -3008,21 +3009,18 @@ input {
   margin: 0;
   color: var(--hk-ink);
   font-family: var(--hk-font-display);
-  font-size: var(--hk-text-body);
+  font-size: var(--hk-text-body-sm);
   font-weight: var(--hk-font-weight-body);
   line-height: 1.5;
 }
 
-.hk-founder__sign {
+.hk-founder__copy > .hk-founder__sign {
   margin-top: 4px;
   font-family: var(--hk-font-display);
-  font-size: var(--hk-text-subhead);
+  font-size: var(--hk-text-body);
+  font-weight: 700;
   line-height: 1.35;
   color: var(--hk-ink);
-}
-
-.hk-founder__copy .hk-btn-row {
-  margin-top: 4px;
 }
 
 .hk-founder__photo {
