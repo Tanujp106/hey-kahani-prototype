@@ -1022,7 +1022,7 @@ input {
 
 .hk-how__lead {
   margin: 14px auto 0;
-  max-width: 42ch;
+  max-width: 76ch;
   text-align: center;
 }
 
@@ -1075,7 +1075,7 @@ input {
 
 @media (hover: hover) and (pointer: fine) {
   .hk-how-tabs__btn:not(.is-active):hover {
-    background: var(--hk-marigold);
+    background: color-mix(in srgb, var(--hk-husk) 58%, var(--hk-kesar));
     color: var(--hk-ink);
     transform: translateY(-1px);
   }
@@ -2268,7 +2268,7 @@ input {
 .hk-koel__title {
   margin: 0;
   font-family: var(--hk-font-body);
-  font-size: 1.125rem; /* ~18px — a step above body for card titles */
+  font-size: var(--hk-text-body);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -3023,6 +3023,16 @@ input {
   color: var(--hk-ink);
 }
 
+.hk-founder__signature {
+  display: block;
+  width: 168px;
+  height: auto;
+  margin-top: 2px;
+  color: var(--hk-ink);
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+
 .hk-founder__photo {
   display: block;
   width: 100%;
@@ -3352,7 +3362,7 @@ input {
   align-items: center;
   gap: 20px;
   font-weight: 600;
-  font-size: var(--hk-text-subhead);
+  font-size: var(--hk-text-body);
   line-height: 1.35;
 }
 
@@ -3364,7 +3374,7 @@ input {
   content: "+";
   flex: 0 0 auto;
   font-weight: 400;
-  font-size: 1.55rem;
+  font-size: var(--hk-text-body);
   line-height: 1;
   color: var(--hk-muted);
   transition: transform var(--hk-duration) var(--hk-ease);
@@ -3530,29 +3540,61 @@ input {
 
 .hk-newsletter__row {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 4px 4px 18px;
+  border-radius: 999px;
+  background: var(--hk-kesar);
+}
+
+.hk-newsletter__row:focus-within {
+  outline: 2px solid var(--hk-kesar);
+  outline-offset: 3px;
 }
 
 .hk-footer .hk-newsletter input {
-  flex: 1 1 160px;
-  min-height: 48px;
-  border: 1px solid var(--hk-footer-line);
-  border-radius: var(--hk-radius-md);
-  padding: 0 14px;
-  background: rgba(255, 241, 214, 0.12);
-  color: var(--hk-footer-fg);
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  color: var(--hk-sindoor);
   font: inherit;
 }
 
 .hk-footer .hk-newsletter input::placeholder {
-  color: var(--hk-footer-fg-soft);
+  color: color-mix(in srgb, var(--hk-sindoor) 85%, var(--hk-kesar));
 }
 
 .hk-footer .hk-newsletter input:focus {
-  outline: 2px solid var(--hk-footer-fg);
-  outline-offset: 2px;
-  background: rgba(255, 241, 214, 0.18);
+  outline: none;
+}
+
+.hk-footer .hk-newsletter .hk-btn--primary {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 10px 20px;
+  background: var(--hk-sindoor);
+  color: var(--hk-kesar);
+  box-shadow: none;
+}
+
+.hk-footer .hk-newsletter .hk-btn--primary:hover {
+  background: var(--hk-temple);
+  color: var(--hk-kesar);
+  transform: none;
+  box-shadow: none;
+}
+
+.hk-footer .hk-newsletter .hk-btn--primary:active {
+  background: var(--hk-gulab);
+  color: var(--hk-kesar);
+  transform: none;
+  box-shadow: none;
 }
 
 .hk-footer .hk-btn--primary {
