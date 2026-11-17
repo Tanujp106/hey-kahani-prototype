@@ -352,7 +352,7 @@ stays white and the Koels card is a lighter Mango. The featured Koel row
 shows five cards, with 40px of space above and below that section.
 The One Player strip is a Sindoor bar with a Sindoor wave on the top and bottom. The three labels use Open Sans at UI size, with a wide gap, centered in the bar. They are not links. No colour-wave stack sits above or below it. How it works
 stays inside the content column so the first card is not cut off on the left.
-Its heading has no eyebrow, the first card has no step list, and each card link
+The heading and lead are removed. The first card has no step list, and each card link
 is a primary button.
 The Player section’s bottom edge uses the colour wave. The top edge is a Kesar wave,
 with 40px of padding inside the Player content. The red Koel catalogue wraps in rows and
@@ -571,14 +571,11 @@ hardware are reference content, not approved Hey Kahani claims or assets.
   overall scale and positioning, the price/button row, and the overpowering
   floating badges, and requested Mobbin references followed by implementation.
   Use a large product view on the left and a separate copy/purchase column on
-  the right. The price sits above Shop Player. The four existing USP titles
-  are 15px Averia Bold pills below the action, with no rotation, shadow, or
-  description. November 17, 2026: each pill has a small stroke icon and a
-  brand fill so the row is not white on cream. Screen free is Sky with a
-  Monsoon icon, little hands is Mango with a Gulab icon, tap is a light Gulab
-  wash with a Gulab icon, and home is Lavender with a Gulab icon. Labels stay
-  black. They wrap as a group. This replaces the earlier unboxed text and the
-  same-day white pills. The cutout is 290px wide at its desktop
+  the right. The price sits above Shop Player. The four existing lines sit below Shop Player as a plain vertical list:
+  a black stroke icon beside Open Sans body text, with no pill, fill, shadow,
+  or description. November 18, 2026: this replaces the coloured Averia pills.
+  The lines stay Screen free by design, Made for little hands, A tap is all
+  it takes, and Stories that feel like home. The cutout is 290px wide at its desktop
   maximum following the user's request to make the revised image a little smaller.
   Preserve its intrinsic 573/1134 proportion and the whole handle,
   five controls, Gulab speaker band and wood base. The heading uses the shared
