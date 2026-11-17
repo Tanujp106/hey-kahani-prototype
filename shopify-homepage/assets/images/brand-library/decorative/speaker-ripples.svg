@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="320" viewBox="0 0 640 320" fill="none">
+  <title>Speaker ripples</title>
+  <desc>Three gently uneven, open sound arcs on either side of a clear central space for the Kahani Player.</desc>
+  <!-- Original H / Freeform rhythm linework. Centre the open space on the speaker band. -->
+  <g stroke="#FECB74" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M201 103C157 130 154 184 198 218"/>
+    <path d="M155 69C103 113 101 204 153 257"/>
+    <path d="M111 35C54 98 57 226 112 289"/>
+    <path d="M440 103C480 133 483 185 442 220"/>
+    <path d="M484 70C535 118 539 204 487 257"/>
+    <path d="M528 36C584 101 583 227 530 288"/>
+  </g>
+</svg>

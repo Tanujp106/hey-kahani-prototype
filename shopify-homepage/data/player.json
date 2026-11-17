@@ -1,0 +1,13 @@
+{
+  "handle": "kahani-player",
+  "title": "Kahani Player",
+  "priceMinor": 12900,
+  "currency": "USD",
+  "priceApproval": {
+    "source": "User supplied 129 USD in this chat",
+    "date": "2026-11-16"
+  },
+  "available": null,
+  "shopifyProductId": null,
+  "shopifyVariantId": null
+}

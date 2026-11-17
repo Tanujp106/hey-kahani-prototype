@@ -6,8 +6,8 @@ All 12 generated PNGs are saved in this website's asset tree. Paths below are re
 
 | Intended use | Website path | Native pixels |
 | --- | --- | --- |
-| Hero with text space on the left (narrow screens) | `assets/images/hero/hk-shot-01.png` | 1122 × 1402 |
-| Extended wide hero for desktop | `assets/images/hero/hk-shot-01-wide.png` | 1672 × 941 |
+| Original portrait hero campaign concept | `assets/images/hero/hk-shot-01.png` | 1122 × 1402 |
+| Original wide hero campaign concept | `assets/images/hero/hk-shot-01-wide.png` | 1672 × 941 |
 | Bliss listening | `assets/images/editorial/hk-shot-02.png` | 1086 × 1448 |
 | Holding / show-and-tell | `assets/images/editorial/hk-shot-03.png` | 1122 × 1402 |
 | Parent companion app concept | `assets/images/app/hk-shot-04.png` | 1254 × 1254 |
@@ -20,20 +20,20 @@ All 12 generated PNGs are saved in this website's asset tree. Paths below are re
 | Park mindfulness picnic | `assets/images/koels/hk-shot-08-04-park-mindfulness.png` | 1254 × 1254 |
 | Market and temple travel | `assets/images/koels/hk-shot-08-05-market-temple.png` | 1254 × 1254 |
 
-The hero uses the extended wide image above 720px and keeps the original portrait image for narrower screens. The wide image is an edited concept variation of the original hero, with more room around the child and Player.
+The original generated hero concepts remain available above. The portrait campaign image is still used by a How it works card. The active landing-page hero now uses the user-supplied image below at both breakpoints.
 
 Example from `shopify-homepage/index.html`:
 
 ```html
 <picture>
-  <source media="(min-width: 721px)" srcset="assets/images/hero/hk-shot-01-wide.png">
-  <img src="assets/images/hero/hk-shot-01.png" alt="A child smiling beside the Kahani Player and illustrated Koel discs on a cream rug">
+  <source media="(min-width: 721px)" srcset="assets/images/hero/landing-hero-child-player-koels.png" width="1672" height="941">
+  <img src="assets/images/hero/landing-hero-child-player-koels.png" width="1672" height="941" alt="A child reaches for an illustrated Koel disc beside the Kahani Player.">
 </picture>
 ```
 
-`generated-campaign.json` provides the paths, dimensions, and provenance. Homepage sections reference these campaign assets directly; the hero uses the extended wide variant on desktop and the original portrait image on narrow screens.
+The active landing-page hero uses `assets/images/hero/landing-hero-child-player-koels.png` (1672 × 941), regenerated from the user-supplied image on November 17, 2026. The three Koel disc diameters were reduced to roughly 55% of their previous size; this remains generated concept imagery, not verified production photography. Desktop and mobile use the same file, with the existing mobile `object-position: 78% 30%`. `generated-campaign.json` continues to document the original generated campaign assets; other homepage sections keep their existing image references.
 
-All files remain generated concept art, with approximate hardware geometry and unapproved story illustrations. The parent phone interface is a fictional app concept. Native files are below the brief's 2400px long-edge target and have no verified embedded sRGB ICC profile. The original campaign assets were not resized, cropped, recolored, or format converted; the wide hero is a separate generated edit.
+The generated campaign assets above remain concept art, with approximate hardware geometry and unapproved story illustrations. The parent phone interface is a fictional app concept. Native campaign files are below the brief's 2400px long-edge target and have no verified embedded sRGB ICC profile. The original campaign assets were not resized, cropped, recolored, or format converted; the wide campaign hero is a separate generated edit.
 
 ## Brand library vectors (Why / USP panels)
 
@@ -118,8 +118,9 @@ render checks are in `outputs/brand-library-v1/extensions/benefit-frame-clipping
 Tilted arch and Double dip are copied unchanged from the library for card 4.
 No card silhouette, copy, product media or interaction was replaced.
 
-November 16, 2026, Tap a Koel only: the plump-panel frame fill is Parrot Green
-(`benefit-plump-panel-parrot.svg`, same contour). That card's tilted arch,
+November 16, 2026, Tap a Koel only: the plump-panel frame fill is a lighter
+Parrot Green, 48% `#2B9863` / 52% white (`#99CEB4` in
+`benefit-plump-panel-parrot.svg`, same contour). Full Parrot was too dark. That card's tilted arch,
 storybook, story disc and upper-right Double dip are larger than the shared
 scale. The card shell and photo plate keep the shared size. The other three
 cards are unchanged.
@@ -134,10 +135,59 @@ after the wave read as unclear. The Open storybook replaces the small handmade
 book badge in the Koels introduction. Koels keeps its depth waves; the redundant
 spark overlay was removed.
 
+On November 15, 2026, the Koels introduction book was replaced with a newly
+hand-authored `illustrations/open-storybook-sky.svg`: Sky cover, Monsoon binding,
+Kesar pages and Mango sound marks/bookmark. The old red cover blended into the
+Sindoor ground. This is a new editable book drawing in the selected loose-cut
+style, with source and manifest in
+`outputs/brand-library-v1/extensions/storybook-sky/`. The Tap to play / Why card also uses this blue-cover book following the
+user's subsequent screenshot request.
+
 `illustrations/rain-cloud.svg` is copied unchanged from the library source. Other
 selected files were already present in this directory. Existing quote surfaces
 remain content-sized and pastel rather than stretching a fixed-aspect SVG behind
 long text. No product artwork, quote content or commerce controls are replaced.
+
+## How it works media
+
+The November 16, 2026 follow-up replaces the vector scenes with existing images:
+`hero/hk-shot-01.png` for the loose Koels, `editorial/hk-shot-05.png` for placing a
+Koel, and `product/player-desktop.jpg` for listening. CSS sets a 160–190px media
+height with subject-specific crop positions; original files are unchanged.
+The `hk-shot` files retain their generated-concept provenance documented above.
+The existing JPG is reused as supplied, without a new photography-authenticity
+claim. The previous SVG treatment is preserved below for provenance.
+
+Added November 16, 2026: `illustrations/choose-a-koel.svg`,
+`illustrations/place-on-player.svg`, and `illustrations/story-begins.svg` under
+`brand-library/` are three new original editable scenes for the separate
+How it works section. Their source drawings and manifest live in
+`outputs/brand-library-v1/extensions/how-it-works/`. They use the selected flat
+loose-cut language, exact brand fills and selective curved details. Each shows
+the actual circular-disc sequence rather than a generic app/download metaphor.
+
+The Player is a simplified instructional interpretation of `product/hk-shot-07.png`
+with cream housing, arch handle, Gulab band, five controls and a wood-toned base.
+It is not approved merchandise imagery. New abstract disc art does not represent
+published Koel titles. Keep each 520 × 400 scene proportional and fully visible.
+
+## Player section composition
+
+The November 17, 2026 Mobbin-informed layout uses a larger product view beside
+copy and purchase details. `product/player-cutout.png` is shown at up to 290px
+wide on desktop, retaining its full 573 × 1134 proportions, handle, five controls,
+red band and wood base. On narrow screens its maximum width is 280px.
+
+`brand-library/decorative/speaker-ripples.svg` remains the only background asset:
+Mango sound arcs anchored to the speaker band. Its source and manifest are in
+`outputs/brand-library-v1/extensions/player-sound-field/`. The two detached
+Listening ripples / Play bounce corner scribbles are removed from the section;
+their files remain available. The previous Pebble pair blobs remain unused here.
+
+The four benefit titles are now unboxed text in the purchase column below the
+button. They retain the compact 15px Averia Bold treatment. The $129 USD price
+was provided by the user on November 16, 2026 and is recorded in
+`shopify-homepage/data/player.json`; it is not derived from the image.
 
 ## Testimonial content
 

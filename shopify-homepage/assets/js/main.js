@@ -218,13 +218,13 @@
     const href = item.getAttribute("href") || "#";
     const titleEl = set.querySelector("[data-hk-mega-title]");
     const imageEl = set.querySelector("[data-hk-mega-image]");
-    const ctaEl = set.querySelector("[data-hk-mega-cta]");
+    const heroEl = set.querySelector("[data-hk-mega-hero]");
     if (titleEl) titleEl.textContent = label;
     if (imageEl && image) {
       imageEl.src = image;
       imageEl.alt = label;
     }
-    if (ctaEl) ctaEl.setAttribute("href", href);
+    if (heroEl) heroEl.setAttribute("href", href);
     set.querySelectorAll("[data-hk-mega-item]").forEach((link) => {
       link.classList.toggle("is-active", link === item);
     });
@@ -317,14 +317,6 @@
         link.addEventListener("mouseenter", () => setMegaFeature(set, link));
         link.addEventListener("focus", () => setMegaFeature(set, link));
       });
-    });
-
-    megaPanel.querySelector("[data-hk-mega-close]")?.addEventListener("click", () => {
-      const lastTrigger = megaTriggers.find(
-        (trigger) => trigger.getAttribute("data-hk-mega-trigger") === activeMegaKey
-      );
-      closeMega();
-      lastTrigger?.focus();
     });
 
     document.addEventListener("keydown", (event) => {
@@ -652,142 +644,4 @@
     document.querySelectorAll(".hk-reveal").forEach((el) => el.classList.add("is-in"));
   }
 
-  const strip = document.querySelector(".hk-strip");
-  const stripItems = strip ? Array.from(strip.querySelectorAll(".hk-strip__usps > li")) : [];
-  if (strip && stripItems.length) {
-    const waveSegs = [
-      [[0, 27], [102, 45], [203, 49], [395, 29]],
-      [[395, 29], [587, 9], [691, 7], [926, 28]],
-      [[926, 28], [1114, 45], [1253, 45], [1440, 19]]
-    ];
-    const bez = (p0, p1, p2, p3, t) => {
-      const m = 1 - t;
-      return m * m * m * p0 + 3 * m * m * t * p1 + 3 * m * t * t * p2 + t * t * t * p3;
-    };
-    const waveY = (x) => {
-      const seg = waveSegs.find((points) => x <= points[3][0]) || waveSegs[waveSegs.length - 1];
-      const [p0, p1, p2, p3] = seg;
-      let lo = 0;
-      let hi = 1;
-      for (let i = 0; i < 24; i += 1) {
-        const mid = (lo + hi) / 2;
-        if (bez(p0[0], p1[0], p2[0], p3[0], mid) < x) lo = mid;
-        else hi = mid;
-      }
-      return bez(p0[1], p1[1], p2[1], p3[1], (lo + hi) / 2);
-    };
-    const placeStripItems = () => {
-      const narrow = window.matchMedia("(max-width: 720px)").matches;
-      stripItems.forEach((item) => {
-        item.style.transform = "none";
-      });
-      if (narrow) return;
-      const bounds = strip.getBoundingClientRect();
-      if (!bounds.width || !bounds.height) return;
-      const wave = parseFloat(getComputedStyle(strip).getPropertyValue("--hk-wave")) || 0;
-      const boxes = stripItems.map((item) => item.getBoundingClientRect());
-      stripItems.forEach((item, index) => {
-        const box = boxes[index];
-        const x = ((box.left + box.width / 2 - bounds.left) / bounds.width) * 1440;
-        const bandCenter = (waveY(x) / 48) * wave + (bounds.height - wave) / 2;
-        const itemCenter = box.top + box.height / 2 - bounds.top;
-        item.style.transform = `translateY(${(bandCenter - itemCenter).toFixed(2)}px)`;
-      });
-    };
-    placeStripItems();
-    window.addEventListener("resize", placeStripItems, { passive: true });
-    document.fonts?.ready?.then(placeStripItems);
-  }
-
-})();
-
-/* Player try section: swap the Koel on the top plate and play the shared design sample. */
-(() => {
-  const root = document.querySelector("[data-hk-player]");
-  if (!root) return;
-  const choices = [...root.querySelectorAll("[data-hk-player-koel]")];
-  const disc = root.querySelector("[data-hk-player-disc]");
-  const caption = root.querySelector("[data-hk-player-caption]");
-  const play = root.querySelector("[data-hk-player-play]");
-  const playIcon = play?.querySelector("path");
-  const src = root.dataset.previewSrc || "";
-  let audio = null;
-  let current = choices.find((choice) => choice.getAttribute("aria-checked") === "true") || choices[0];
-
-  const titleOf = (choice) => choice?.dataset.title || "Koel";
-
-  const setPlaying = (playing) => {
-    if (!play) return;
-    const title = titleOf(current);
-    play.setAttribute("aria-pressed", String(playing));
-    play.setAttribute(
-      "aria-label",
-      playing
-        ? `Pause design preview for ${title}`
-        : `Play design preview for ${title}. Not approved story audio.`
-    );
-    playIcon?.setAttribute("d", playing ? "M6 5h4v14H6zm8 0h4v14h-4z" : "M8 5.14v13.72L19 12 8 5.14Z");
-  };
-
-  const select = (choice) => {
-    if (!choice) return;
-    current = choice;
-    choices.forEach((item) => {
-      const on = item === choice;
-      item.setAttribute("aria-checked", String(on));
-      item.classList.toggle("is-selected", on);
-      item.tabIndex = on ? 0 : -1;
-    });
-    if (disc && choice.dataset.image) disc.src = choice.dataset.image;
-    if (caption) caption.textContent = titleOf(choice);
-    setPlaying(Boolean(audio && !audio.paused));
-  };
-
-  choices.forEach((choice, index) => {
-    choice.addEventListener("click", () => select(choice));
-    choice.addEventListener("keydown", (event) => {
-      const forward = event.key === "ArrowRight" || event.key === "ArrowDown";
-      const back = event.key === "ArrowLeft" || event.key === "ArrowUp";
-      if (!forward && !back) return;
-      event.preventDefault();
-      const next = choices[(index + (forward ? 1 : -1) + choices.length) % choices.length];
-      select(next);
-      next.focus();
-    });
-  });
-
-  play?.addEventListener("click", () => {
-    if (!src) {
-      play.setAttribute("aria-label", "Audio preview unavailable");
-      return;
-    }
-    if (!audio) {
-      audio = new window.Audio(src);
-      audio.preload = "none";
-      audio.addEventListener("playing", () => setPlaying(true));
-      audio.addEventListener("pause", () => setPlaying(false));
-      audio.addEventListener("ended", () => {
-        audio.currentTime = 0;
-        setPlaying(false);
-      });
-    }
-    if (!audio.paused) {
-      audio.pause();
-      return;
-    }
-    if (typeof window.CustomEvent === "function" && typeof window.dispatchEvent === "function") {
-      window.dispatchEvent(new window.CustomEvent("hk:audio-exclusive", { detail: audio }));
-    }
-    Promise.resolve(audio.play()).catch(() => {
-      play.setAttribute("aria-label", `Retry design preview for ${titleOf(current)}`);
-    });
-  });
-
-  window.addEventListener("hk:audio-exclusive", (event) => {
-    if (!audio || event.detail === audio || audio.paused) return;
-    audio.pause();
-  });
-
-  window.addEventListener("pagehide", () => audio?.pause());
-  if (current) select(current);
 })();
