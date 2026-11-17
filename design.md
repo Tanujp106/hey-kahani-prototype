@@ -178,26 +178,36 @@ Guide pages 9 and 23:
 
 Use the actual font families, not a visually similar display serif or a substitute rounded font. Fallbacks may keep the site usable while fonts load; they are not an alternative brand direction.
 
-The guide does not prescribe a website type scale. The **active storefront type scale** below is a project decision (November 7, 2026) for `shopify-homepage/` and must stay consistent. Do not invent one-off `font-size` overrides per section.
+The guide does not prescribe a website type scale. The scale below is the project rule for `shopify-homepage/` (set November 7, 2026; section titles raised November 14; use-when guide tightened November 16). Pick a row. Do not add a size between the rows.
 
-### Active type scale (`shopify-homepage/assets/css/tokens.css`)
+Display sizes ease down on a phone. Body, UI, eyebrow, and fine print stay the same size everywhere, so sentences do not shrink.
 
-| Role | Token | Size | Class / use |
+### What to use when
+
+| When the text is… | Role | Token | Size |
 | --- | --- | --- | --- |
-| Hero title | `--hk-text-hero` | clamp → **56px** max | `h1.hk-display--hero` only |
-| Section title | `--hk-text-section` | clamp → **48px** max | **Every** section `h2.hk-display--lg` (Why, Koels, Player, App, Founder, Community, FAQ). Same size always. Raised from 40px on November 14, 2026. |
-| Secondary display | `--hk-text-md` | clamp → **32px** max | `hk-display--md` |
-| Subhead / feature h3 | `--hk-text-subhead` | clamp → **24px** max | Strip lines, newsletter h3, founder sign-off. FAQ questions moved to Body on November 17, 2026. |
-| Step title | `--hk-text-step` | clamp → **30px** max | Legacy step titles only |
-| USP card title | `--hk-text-md` → `--hk-text-section` on desktop | **32px** → **48px** | Why Hey Kahani feature panel `h3` titles (tracks section title token) |
-| Lead + body | `--hk-text-body` | **17px** | **All** leads (`hk-lead`, hero, How, App, section intros) and running body paragraphs. Open Sans **medium 500**. `--hk-text-lead` / `--hk-text-hero-lead` alias this size. |
-| Body small | `--hk-text-body-sm` | **15px** | Dense UI / meta / nav / quote attribution only |
-| Fine print | `--hk-text-fine` | **12px** | Legal and newsletter disclaimer only |
-| Eyebrow | `--hk-text-eyebrow` | **13px** | Uppercase section labels |
+| The single headline at the top of the page | Hero | `--hk-text-hero` | 34–56px |
+| A section heading (`h2.hk-display--lg`) | Section | `--hk-text-section` | 34–48px |
+| A large title inside a card or module: Why card on a phone, newsletter, empty bag | Title | `--hk-text-md` | 24–32px |
+| Any other title: quote, founder sign-off, product name, app feature, dialog, drawer, menu image label | Subhead | `--hk-text-subhead` | 20–24px |
+| A sentence or a lead, including feature descriptions and FAQ questions and answers | Body | `--hk-text-body` | 17px |
+| A control, nav item, tab, promo bar, footer link, or short meta line (quote name, snackbar) | UI | `--hk-text-body-sm` | 15px |
+| A small uppercase label, including footer column labels | Eyebrow | `--hk-text-eyebrow` | 13px |
+| Legal, a disclaimer, a tiny badge, or a bag count | Fine | `--hk-text-fine` | 12px |
+
+**One step-up.** Why card titles use Title on small screens and Section from 800px. On a wide screen that title is the statement of the card, so it matches the section heading. Nothing else steps up.
+
+**Store badges** are a fixed lockup. The small line (“Download on the”) is Fine. The name (“App Store”) is Body. They do not get their own sizes.
+
+**The phone picture** is not page type. It uses only `--hk-text-picture-title` (20px), `--hk-text-picture` (12px), and `--hk-text-picture-sm` (10px).
+
+**The quotation mark** uses `--hk-mark` (5rem). It is an ornament, not a word.
+
+`--hk-text-lead` and `--hk-text-hero-lead` are aliases of Body. The old 30px step size is retired.
 
 **Hard rule:** If two section titles look different, a local override snuck in. Delete it and use `--hk-text-section` / `hk-display--lg`.
 
-**Hard rule:** Leads and running body copy must use `--hk-text-body` only (same size everywhere). Do not set one-off `font-size` (px/rem) on paragraphs, leads, feature descriptions, or FAQ answers. Dense UI stays on `--hk-text-body-sm`; legal on `--hk-text-fine`.
+**Hard rule:** Leads and running copy use Body only. Do not set a raw `font-size` on paragraphs, leads, feature descriptions, or FAQ answers. Controls stay on UI. Legal stays on Fine. FAQ questions moved to Body on November 17, 2026, when Subhead read too large. Answers stay on Body.
 
 ## Logo and brand marks
 
@@ -263,7 +273,99 @@ A generated transparent cutout based on these renders is still a **concept recre
 
 These are project decisions from this chat, not rules stated in the PDF:
 
-- User direction on November 14, 2026 (`shopify-homepage/` second fold): one large feature card at a time with a **top pill tab switcher** (Calm-style reference). Soft brand pastel card grounds, squircle media, Averia titles, Gulab primary CTAs, directional crossfade; reduced motion keeps opacity/color only. Same-day refinements: tighten empty cards and add selected brand-library vectors; **rework copy from how-to steps into USPs**. Section id `#why`. Header belief line: “Stories that feel like yours.” (not the discarded “Why families choose it” slogan). Four panels use existing store messaging: Screen free by design; Made for little hands; Stories that feel like home; Tap a Koel. Hear a Kahani. Hero keeps Shop Koels only as of November 17, 2026; the secondary “Why Hey Kahani” button is removed. The footer Explore link to `#why` still says “Why Hey Kahani.” The belief lead breaks after the first sentence so it reads as two lines at Body size. Not a horizontal card carousel and not earlier how-to bentos.
+### Homepage structure — November 17, 2026
+
+The user explicitly requested a homepage rebuild around Yoto's current section
+roles and navigation, while preserving the Hey Kahani visual style already
+created. This supersedes older section-order, single-card-tab, and fixed-grid
+layout decisions below. It does not change brand colours, fonts, type tokens,
+the asset drawing system, product facts or content approvals.
+
+- Navigation: Start here, Shop Koel, How it works, Our story, plus the existing
+  search and bag utilities in the frosted Kesar floating shell.
+- Sequence: product/lifestyle hero → compact system introduction → four feature
+  stories in a native horizontal rail → Player-first purchase choices → Koel
+  discovery → family moments and retained sample quotes → compact founder/app
+  editorial cards → practical help links → split FAQ → newsletter and sitemap.
+  November 17, 2026: the FAQ intro heading and lead are center aligned. The
+  heading breaks after “Small questions.” so “Straight answers.” stays on one
+  line. The “Explore all FAQs” link under that intro is removed. The practical-help link
+  to the FAQ page stays. The practical help row is four left-aligned cards on the
+  white page: a stroke icon, a bold title, and a short supporting line. The cards
+  are Kesar cream, with a slightly deeper cream on hover. The four existing journeys and destinations stay;
+  shipping, payment, return, and warranty claims are not added.
+- The Player is offered before the Koel catalogue. The approved $129 USD price
+  remains bound to its existing product snapshot. Koels explicitly require the
+  Player; no first-purchase bundle contents, bundle price, additional device
+  models, shipping terms, warranties or reviews are invented.
+- Adapt Yoto's device selection to the one real Player and its story ecosystem.
+  Adapt content discovery to existing story collections, since per-title age
+  metadata is not available. All ten existing cards keep their artwork, prices,
+  audio-preview and bag hooks; the layout becomes a filtered horizontal rail.
+- Keep the selected hero image with the smaller Koels and use existing project
+  photos/illustrations for this layout pass. Concept photos and sample quotes
+  remain placeholders for approved assets; no new photography was generated.
+- Rail controls support keyboard use, native touch scrolling and reduced
+  motion. Collection filters announce results and stop hidden preview audio.
+  Browser visual review requires explicit permission in the current message.
+
+The layout is in `shopify-homepage/assets/css/homepage-layout.css`, with small
+DOM enhancements in `assets/js/homepage-layout.js`. Base visual tokens and
+existing commerce/prototype boundaries remain in their original sources.
+
+### Earlier section decisions
+
+**First-fold correction — November 18, 2026:** the user supplied a Yoto campaign
+hero screenshot and asked for the same composition very closely. The current
+hero uses a warm plain canvas, lower-left copy, a Mango label, one Gulab CTA and
+a transparent Player with three smaller Koels on the right. This
+supersedes the lifestyle-photo hero and its overlay layout. Averia/Open Sans,
+brand colours and the rest of the visual system remain. November 18 follow-up:
+the local 42–88px headline is retired. The hero uses the shared Hero token
+(34–56px), Body for the lead, and UI for the label, button, and return link.
+The copy’s left edge and the Player’s right edge sit on the 1120px content
+column, the same width as the nav. The Player is smaller than the first
+campaign pass. On narrow screens the product composition
+sits above the copy. The screenshot's sale terms, Trustpilot marks and Yoto
+hardware are reference content, not approved Hey Kahani claims or assets.
+
+- User direction on November 14, 2026 (`shopify-homepage/` second fold): one large feature card at a time with a **top pill tab switcher** (Calm-style reference). Soft brand pastel card grounds, squircle media, Averia titles, Gulab primary CTAs, directional crossfade; reduced motion keeps opacity/color only. Same-day refinements: tighten empty cards and add selected brand-library vectors; **rework copy from how-to steps into USPs**. Section id `#why`. Header belief line: “Stories that feel like yours.” (not the discarded “Why families choose it” slogan). Four panels use existing store messaging: Screen free by design; Made for little hands; Stories that feel like home; Tap a Koel. Hear a Kahani. November 17, 2026: the hero secondary button is removed, so the hero keeps Shop Koels only. The footer Explore link to `#why` still says “Why Hey Kahani.” The belief lead under “Stories that feel like yours.” breaks after the first sentence so it reads as two lines at Body size. Not a horizontal card carousel and not earlier how-to bentos.
+
+- User direction on November 16, 2026 (`shopify-homepage/` How it works): add a
+  separate `#how-it-works` section between the USP section and Koels. Use the
+  supplied reference for layout only: left-aligned section heading and lead,
+  then three equal rounded cards with a numbered copy area above the artwork.
+  Stack the cards on narrow screens. Keep the shared Averia/Open Sans type roles,
+  black copy, and brand-derived light surfaces. Explain Pick a Koel → Place it
+  on top → Let the story begin. Create new original vectors in the selected
+  A / Loose cut shapes and H / Freeform rhythm system rather than reusing the
+  repeated library motifs. The three source scenes and manifest are in
+  `outputs/brand-library-v1/extensions/how-it-works/`; they depict circular Koels
+  and the referenced cream Player with Gulab band, carry handle, five controls
+  and wood-toned base. These are instructional illustrations, not published
+  Koel art or merchandise renders. This addition preserves the existing USP tabs.
+
+  Same-day correction: the user asked for real images and a shorter section.
+  The live cards now use existing photographic-style assets in place of the SVG
+  scenes: `hero/hk-shot-01.png` (loose Koels), `editorial/hk-shot-05.png`
+  (placing a Koel), and `product/player-desktop.jpg` (listening). The `hk-shot`
+  files remain generated concepts, not verified photography. Use compact copy,
+  a number beside each Subhead-sized title, 20px card padding, 160–190px photo
+  panels and less section/intro spacing. Keep Body copy at 17px. This supersedes
+  the live vector treatment; the editable SVG sources remain available.
+  Later the same day: each step is a short title and one line. Pick a Koel /
+  Let them choose the story. Place it on top / Set it on the Player. Let the
+  story begin / No phone or tablet needed. The number sits above the title in
+  a fine ink ring, not a filled Gulab badge.
+  Same-day follow-up: each photo fills its card. A Kesar Sand (`#FFF1D6`)
+  linear gradient and a masked linear blur start at the top so the black copy
+  stays readable, and ease off so the lower photo stays sharp. This replaces
+  the separate photo panel.
+  November 17, 2026: the ring is removed. Each number is Averia with a period
+  (`1.` `2.` `3.`) above the title. A later pass the same day makes those
+  numbers Subhead and Gulab, because Body black felt too small. The cards are a little taller
+  (`clamp(340px, 32vw, 400px)`), and the section has 80px of padding
+  below the cards.
 
 - Same-day cleanup: remove pre-guideline hand-drawn `hk-doodle-*` sprites (kite, spark, sun, star, etc.), the `kids-objects.svg` sprite sheet, and Why bottom pager dots from markup/CSS/JS. Decorative graphics must come from `outputs/brand-library-v1` (or Lucide for UI icons), not the old doodle set.
 
@@ -364,11 +466,11 @@ These are project decisions from this chat, not rules stated in the PDF:
   remain. The user explicitly superseded the earlier one-illustration treatment;
   judge additions by composition and readability. No carousel pager dots.
   November 16, 2026 (`#why`, Tap a Koel card only): the card felt empty. Its
-  ground is now Parrot Green (`#2B9863`, `--hk-parrot`), a saturated secondary
-  from the brand guide. Mango, Sky and Lavender stay on the other cards. Gulab
-  and Sindoor are too dark for this card's black text; Hibiscus stays an accent
-  because it sits against the Player's red band. Black body text on Parrot is
-  about 5.8:1. The card shell, Kesar plate size, shared visual padding, black
+  ground is a lighter shade of Parrot Green: 48% `#2B9863` / 52% white
+  (`#99CEB4`). Full Parrot read too dark on this card. Mango, Sky and Lavender
+  stay on the other cards. Gulab and Sindoor are too dark for this card's black
+  text; Hibiscus stays an accent because it sits against the Player's red band.
+  Black body text on the lighter Parrot is about 11.8:1. The card shell, Kesar plate size, shared visual padding, black
   text, Gulab CTA and tonal shape fills stay. This card's tilted-arch backdrop
   is 198% of the photo column and shifted up and left. The open storybook and
   story disc are larger. The upper-right Double dip is about 45% above the
@@ -379,7 +481,10 @@ These are project decisions from this chat, not rules stated in the PDF:
 
 - User direction on November 14, 2026 (`shopify-homepage/` FAQ): question summaries use `--hk-text-subhead` (not body); give the section more vertical padding, roomier row padding, and a clear gap between accordion items so the list does not feel squished. Answers stay `--hk-text-body`; keep accordion height measurement via `.hk-faq__content` padding (no vertical margin on answer `p`). November 17, 2026: question summaries also use Body, because Subhead felt too big. The plus mark uses the same size.
 
-- User direction on November 14, 2026 (`shopify-homepage/` section order): place Koels (`#koels`) immediately after Why (`#why`). The same-day note put the companion app directly below Koels. That adjacency is superseded by the November 16, 2026 Player section: Hero → Why → Koels → Player → App → Founder → Community → FAQs.
+- Current section order, November 16, 2026: Hero → Why / USPs → How it works →
+  Koels → Player → App → Founder → Community → FAQs. The separate How it works
+  section supersedes the earlier Why → Koels adjacency. The Player remains
+  between Koels and the app.
 
 - User direction on November 13, 2026 (`shopify-homepage/` Koels section): add Yoto-like atmosphere of soft layered depth waves and faint spark accents on the Sindoor ground — patterns and colour only. No floating doodle/illustration assets in this section. Keep organic edges, white intro type, and Kesar Explore CTA.
 
@@ -389,8 +494,17 @@ These are project decisions from this chat, not rules stated in the PDF:
   in the existing header-mark position; its Sindoor ground, depth waves, edges
   and product-card controls remain. The redundant spark overlay was removed.
   This permits the header illustration, not floating graphics over the products.
+  November 15 book correction: replace only this header's red book with the
+  new `open-storybook-sky.svg` drawing (Sky cover, Monsoon binding, Kesar pages,
+  Mango bookmark/sound marks). Keep the subject an open book. Its editable
+  source/manifest are in the library's `extensions/storybook-sky/`. A subsequent
+  screenshot request applies the same blue-cover book to the Tap to play / Why
+  card as well.
 
-  November 15, 2026: remove the Sky puddle and Mango Crooked ring from the Koels introduction. Keep the open-storybook mark, Sindoor waves, clear product grid, and the centered heading. Those two shapes stay available in the Why benefit cards.
+  November 15, 2026: remove the Sky puddle and Mango Crooked ring from the
+  Koels introduction. Keep the open-storybook mark, Sindoor waves, clear product
+  grid, and the centered heading. Those two shapes stay available in the Why
+  benefit cards.
 
   Testimonials now place Moon and stars, Little home, Rain cloud, Spinning top
   and Pebble pair in a separate header area beside each quote mark, replacing
@@ -409,14 +523,50 @@ These are project decisions from this chat, not rules stated in the PDF:
 
 - User direction on November 8, 2026: add a slim announcement bar above the navbar for USP/delivery messaging. Use existing product USPs until approved delivery copy is supplied. The announcement scrolls away while the existing navbar remains sticky. This explicitly supersedes the earlier preference to omit first-viewport announcement bars; preserve the navbar’s wordmark clearspace.
 - User direction on November 14, 2026 (`shopify-homepage/` announcement strip): **Sindoor Red** (`#B40023`, `--hk-sindoor`) ground with **Kesar Sand** (`#FFF1D6`, `--hk-kesar`) text and icons. Content is **offers/promos** (e.g. % off, limited-time, free gift), not USPs. Show **one** offer at a time; rotate every **2.5 seconds** with blur-out / blur-in. Reduced motion drops blur and keeps opacity only. Exact brand tokens only; replace promo copy with approved offers when supplied.
-- User direction on November 14, 2026 (`shopify-homepage/` navbar): **floating** content-width bar — same max width as `.hk-wrap` / `--hk-content` (1120px), centered, rounded, white/`--hk-canvas` surface with soft shadow — not full-bleed. Sindoor wordmark (`wordmark.svg`), black links/icons, Gulab bag badge. Mobile drawer opens inside the same floating shell.
-- User direction on November 14, 2026 (`shopify-homepage/` desktop mega menus): one shared floating overlay matching the **navbar width**. Hover **Shop Player** / **Shop Koel** opens it with ease-out blur-in; close uses blur-out. Switching Player ↔ Koel keeps the same overlay and crossfades/blurs content sets inside. **Left** Kesar names, **right** Sindoor featured image on name hover. Close, Escape, mouseleave dismiss. Desktop/fine-pointer only; mobile keeps the drawer. Exact brand tokens only.
+- User direction on November 14, 2026 (`shopify-homepage/` navbar): **floating** content-width bar — same max width as `.hk-wrap` / `--hk-content` (1120px), centered, rounded, with a soft shadow — not full-bleed. Sindoor wordmark (`wordmark.svg`), black links/icons, Gulab bag badge. Mobile drawer opens inside the same floating shell. The solid white/`--hk-canvas` surface from this note is superseded by the November 16, 2026 frosted Kesar treatment below.
+- User direction on November 16, 2026 (`shopify-homepage/` navbar): the floating bar is frosted **Kesar Sand** at 82% opacity (`rgba(255, 241, 214, 0.82)`) with a 16px background blur, not solid white. Shop Player, Shop Koel, Bestsellers, and Founder's Bundle share one hover and one open state: white pill, Gulab label, no underline. Search and bag sit in one light capsule with one shared hover; the hairline before search is removed. November 17, 2026: that capsule is a little wider and uses a warm Kesar/Husk cream, not white.
+- User direction on November 14, 2026 (`shopify-homepage/` desktop mega menus): one shared floating overlay matching the **navbar width**, **clean/minimal** (Oura-like). Fixed height. **Left** large rounded hero image with title + circular go control; **right** compact thumbnail rows + Shop all. Hover Player/Koel opens with ease-out blur-in; close uses blur-out. Switching Player ↔ Koel keeps the same overlay and swaps content inside. Row hover updates the hero. Bestsellers/Bundle hover, Escape, and mouseleave dismiss. No close button, no heavy split red/cream panels. Desktop/fine-pointer only; mobile keeps the drawer. Exact brand tokens only.
 
-- User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. November 17, 2026: poster titles use Body (17px) instead of the 18px card size. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
+- User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 - User direction on November 11, 2026: Koel Preview pill is a near-white frosted surface (`rgba(255, 252, 247, 0.92)` with light blur), not Coconut Husk. Category badges use a frosted white blur background over artwork.
-- User direction on November 12, 2026: match the Koels section ground to the footer's Sindoor Red (`#B40023`), not Gulab Red. Keep white heading/intro text and organic edges showing the white sections above and below. Reverse the Explore CTA to Kesar Sand with a Sindoor Red label for contrast. Keep the Koel cards on their Kesar Sand foundation with black card copy and existing brand-red bag controls; hide the organic edges on narrow screens as already configured.
-- User direction on November 15, 2026 (`shopify-homepage/` USP strip): the cream strip uses the Koels top wave exactly — same path, same height (`clamp(24px, 3vw, 48px)`). White cuts the top of the strip and Sindoor cuts the bottom, so the band is that wave and meets the red section with no white gap. Each point — icon and line together — sits on the center of that wave so the row stays aligned with the band. No ticker and no per-letter rotation. This replaces the separate white Koels top edge. The lower Koels edge stays white. On narrow screens the strip wave hides with the other organic edges.
-- User direction on November 16, 2026 (`shopify-homepage/` Player try section): place `#player` directly below Koels and above the app. Order: Hero → Why → Koels → Player → App → Founder → Community → FAQs. Kesar ground, shared section title and body lead, Gulab Shop Player pill, and a white organic edge into the app. The Koels bottom edge is Kesar so it meets this section. Pick one of four existing Koels; its artwork sits on the studio Player’s top plate. Preview uses the existing design sample and does not autoplay. Spinning top marks the intro; a Sky puddle frames the Player. No second catalog toggle.
+- User direction on November 12, 2026: match the Koels section ground to the footer's Sindoor Red (`#B40023`), not Gulab Red. Keep white heading/intro text and organic edges showing the white sections above and below. Reverse the Explore CTA to Kesar Sand with a Sindoor Red label for contrast. Keep the Koel cards on their Kesar Sand foundation with black card copy and existing brand-red bag controls; hide the organic edges on narrow screens as already configured. November 17, 2026: poster titles use Body (17px) instead of Subhead.
+- User direction on November 16, 2026 (`shopify-homepage/` section waves): remove the USP lines from the strip. Use three tall waves in Sky, Mango, and Marigold (`clamp(84px, 11vw, 148px)`, not a thin ribbon), with Sindoor continuing into the Koels section. Repeat that stack at the end of Koels, reversed, so Marigold meets the red and Sky meets the section below. The three Temple depth waves inside the section use that same curve and the same height, so their crests line up with the color bands. The bottom color stack sits clear of the Koel cards: the section’s bottom padding is the stack height plus a gap. The red above that stack is continuous — no straight clip and no flat red cap above the Marigold wave.
+- Current Player section direction, November 17, 2026: the user rejected the
+  overall scale and positioning, the price/button row, and the overpowering
+  floating badges, and requested Mobbin references followed by implementation.
+  Use a large product view on the left and a separate copy/purchase column on
+  the right. The price sits above Shop Player. The four existing USP titles
+  are 15px Averia Bold pills below the action, with no rotation, shadow, or
+  description. November 17, 2026: each pill has a small stroke icon and a
+  brand fill so the row is not white on cream. Screen free is Sky with a
+  Monsoon icon, little hands is Mango with a Gulab icon, tap is a light Gulab
+  wash with a Gulab icon, and home is Lavender with a Gulab icon. Labels stay
+  black. They wrap as a group. This replaces the earlier unboxed text and the
+  same-day white pills. The cutout is 290px wide at its desktop
+  maximum following the user's request to make the revised image a little smaller.
+  Preserve its intrinsic 573/1134 proportion and the whole handle,
+  five controls, Gulab speaker band and wood base. The heading uses the shared
+  Section token and wraps naturally; the local narrow-screen size exception is
+  removed. Keep Kesar ground, black copy, the shared Gulab button, the white exit
+  wave, and this section between Koels and the app.
+  On narrow screens use heading/lead → product → price/button → benefits.
+  Keep only the Mango speaker-ripples backdrop, anchored to the speaker band.
+  November 17, 2026: the user first asked for a larger backdrop, then said it
+  was too big. It is now 360px on desktop and 320px below 800px, still
+  proportional and anchored to the speaker band, behind the Player.
+  Remove the two detached corner scribbles from this section. Existing SVG
+  source files remain available for other uses.
+  The user-confirmed price remains **$129 USD**, owned by
+  `shopify-homepage/data/player.json`. HTML is a static snapshot of that record;
+  Shopify must supply its native product price when integrated.
+  Structure references inspected on Mobbin: [Daylight product purchase](https://mobbin.com/sites/sections/89ed61e7-de0b-49f4-ab94-b5a54d43cc7a)
+  for a large product view beside the purchase details and quiet feature text,
+  and [Norma purchase](https://mobbin.com/sites/sections/857a4823-e36c-4392-b388-5012f2c0a2b6)
+  for a separate product/purchase arrangement and price above the action.
+  Their styling, controls and product claims are not part of this direction.
+  This supersedes the earlier centered composition, reduced speaker size,
+  price/button row, floating USP cards and corner-scribble placements.
+
 - User direction on November 7, 2026: section titles across the `shopify-homepage/` refresh must share one size (`--hk-text-section` / `hk-display--lg`). No per-section heading size overrides (e.g. How it works vs companion app). Body copy uses Open Sans medium (500). Keep the scale in `design.md` and `tokens.css` in sync.
 - User direction on November 14, 2026: increase all section header (`h2.hk-display--lg`) sizes — they felt too small. Raise `--hk-text-section` to clamp → **48px** max (was 40px). Keep one shared token for every section; do not add per-section size overrides. Hero (`--hk-text-hero`, 56px max) stays larger.
 - User direction on November 7, 2026: page text (headings, leads, body, FAQ, founder, footer copy) uses **black `#000000`** via `--hk-ink` / `--hk-body`. Do not use Temple Maroon for running copy. Brand Story Ink `#05334A` remains available as `--hk-story-ink` for reference only. Remove unused section eyebrows when the user cuts them (App “For grown-ups”, Koels “Kahani Koels”).
@@ -426,7 +576,7 @@ These are project decisions from this chat, not rules stated in the PDF:
 - User authorization on November 4, 2026: fictional parent names and sample quotes may populate the testimonial mockup when every card clearly labels them “Fictional sample”. They are not actual customer reviews and must be replaced with approved attribution before launch.
 
 - User direction on November 4, 2026: use **white `#FFFFFF`** for `--hk-paper` / the principal page background. Keep **Kesar Sand `#FFF1D6`** (`--hk-sand` / `--hk-canvas-warm`) for the footer for now, not as the site-wide ground. The PDF does not mandate a particular web background. The active vector logos are transparent and must not have white background plates.
-- Footer colour (active November 7, 2026 shopify-homepage): **Sindoor Red** ground, **Kesar cream** wordmark (`wordmark-cream.svg`), cream body/link text, soft cream dividers, Kesar Join CTA with Sindoor label. November 17, 2026: the newsletter email and Join share one Kesar capsule. Join is a Sindoor pill with a Kesar label. This replaces the separate translucent field. No blue. This restores the inverse footer treatment over the brief cream-ground trial.
+- Footer colour (active November 7, 2026 shopify-homepage): **Sindoor Red** ground, **Kesar cream** wordmark (`wordmark-cream.svg`), cream body/link text, soft cream dividers, November 17, 2026: the newsletter email and Join share one Kesar capsule. Join is a Sindoor pill with a Kesar label. This replaces the separate translucent field and the earlier Kesar button with a Sindoor label. No blue. This restores the inverse footer treatment over the brief cream-ground trial.
 - Footer layout (November 7, 2026): VanMoof three-tier on Sindoor Red — (1) compact brand row with cream wordmark + community line, (2) newsletter column beside Explore/About/Help, (3) copyright + Privacy/Terms. Keep the top row content-height only (no empty red band). Newsletter pitch uses `hk-display--md`.
 - Superseded November 11, 2026: the homepage About / “Stories that feel like them” belief + three lifestyle moments section is removed. Origin story stays in Founder. Footer “Our story” points to `#founder`.
 - Latest user direction on November 4, 2026: retain the testimonial ticker's Kesar Sand background and black heading block, with no section preview line or visible pause control. Images must remain clearly visible, card text must be black rather than red/maroon, and card type must be smaller. Blend clear lifestyle photos continuously into the text using a linear white fade and progressively masked blur, with white card backgrounds; do not create a separate text panel or abrupt image/text edge. Retain the looping layout and image provenance documentation; do not introduce blue surfaces.
@@ -436,7 +586,7 @@ These are project decisions from this chat, not rules stated in the PDF:
 3. One Koel “vinyl shop” section: circular coin Koels on CSS pedestals (desktop 6/5/4 for 15 items, mobile 3×5), tap opens a play-first overlay with secondary shop preview. No Daily Life / Festivals split in this section.
    User correction on November 4, 2026: keep the collection on the continuous page ground (now white), without a grey studio backdrop or framed panel. Pedestals still use Kesar Sand and Coconut Husk with tonal shading for depth.
    User direction on November 4, 2026 (updated later same day): Koel preview is a centered vertical overlay — title, circular Koel art, circular play control, live continuous sound wavelength (Web Audio analyser; collapses to a single line when paused), then Add to bag. Keep the existing open motion. A design-preview sample may drive the wavelength until approved excerpts exist.
-4. Founder story (homepage section replaced the earlier Founder’s Bundle slot on November 4, 2026; latest user direction November 7, 2026): wrap the compact founder letter and portrait in one tactile postcard container. Use warm Kesar paper with visible raster fiber/grain texture, fine inset edging, a subtle postal mark and framed landscape photo; no blue surfaces. Keep the heading above the left-hand letter, black text, shared type tokens, generic founder attribution and Gulab shop CTA. The portrait stays replaceable at `assets/images/founders/founder-portrait.jpg`, using a balanced 5:4 landscape crop. Stack the content on mobile. This supersedes the earlier open/no-container layout. The separate About belief/moments section was removed November 11, 2026. November 17, 2026: the founder letter paragraphs use the 15px UI size, the sign-off uses Body, and the Shop now button is removed. A decorative ink signature sits under that sign-off. It is not a real person’s name and does not introduce a founder name. The Koels introduction has 48px of space above the storybook.
+4. Founder story (latest user direction November 16, 2026): remove the postcard effect and align the section with the current homepage. Use an open text/photo split on a full-width Kesar Sand section background (same-day follow-up: the white section felt empty), shared Averia section heading, Open Sans body copy, black text and the existing Gulab shop CTA. No paper texture, inset borders, postal marks, address lines, photo tilt or printed-photo frame. A proportionally scaled library Sky puddle silhouette in Mango supports the rounded portrait. Same-day asset refinement: enlarge the backdrop from 120% to 154% of the media width and let it extend beyond the media box; keep section-level overflow contained. Add Little home at the lower-left image edge for belonging and a smaller Banyan leaf at the opposite upper-right edge for rootedness. Keep both clear of the face, Player and copy; below 980px retain only the home illustration. These are static supporting assets, not new content or product claims. Preserve the founder story and generic attribution. The portrait stays replaceable at `assets/images/founders/founder-portrait.jpg`, with a taller crop: on desktop the portrait stretches alongside the complete text column with 24px insets; on narrow screens it uses a square crop and stacks heading → portrait → letter/action. White wave cutouts at both section edges reuse the existing homepage curves, stay visible on mobile, and have dedicated content clearance. This supersedes the November 7 tactile-postcard treatment. November 17, 2026: the letter body uses the 15px UI size, the sign-off uses Body (17px), and the Shop now button is removed. A decorative ink signature sits under that sign-off. It is not a real person’s name and does not introduce a founder name. The separate About belief/moments section was removed November 11, 2026.
 5. Customer stories.
 6. FAQs.
 7. Footer.
