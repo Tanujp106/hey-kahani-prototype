@@ -347,13 +347,12 @@ the local 42–88px headline is retired. The hero uses the shared Hero token
 “Already have a Player?” link is removed. The copy block sits low in the fold, raised enough that the Shop the Player
 button clears the bottom edge, then another 32px. The hero ground is white.
 The nav bar is a little shorter. The shop heading is centered, without the
-eyebrow, with 40px more space above and below the section. The Player card
-stays white and the Koels card is a lighter Mango. The featured Koel row
+eyebrow, with 40px more space above and below the section. November 18, 2026: the Player shop tile is light Sky and the Koels tile is light Mango. A fine pointer lifts the tile and deepens its colour; reduced motion keeps the colour change only. The price, description, and button are off these tiles, and there is no offer badge. The Player tile links to the Player page. The Koels tile links to the Koel row. The $129 price stays in the Player section. The featured Koel row
 shows five cards, with 40px of space above and below that section.
 The One Player strip is a Sindoor bar with a Sindoor wave on the top and bottom. The three labels use Open Sans at UI size, with a wide gap, centered in the bar. They are not links. No colour-wave stack sits above or below it. How it works
 stays inside the content column so the first card is not cut off on the left.
 The heading and lead are removed. The first card has no step list, and each card link
-is a primary button.
+is a primary button. November 18, 2026: each story card is 58% of the viewport wide, up to 1040px, at a 1.7 ratio. The photos fill the left side of each card.
 The Player section’s bottom edge uses the colour wave. The top edge is a Kesar wave,
 with 40px of padding inside the Player content. The red Koel catalogue wraps in rows and
 has no eyebrow above the heading. A wave that meets a white section ends in white. The lead breaks after the first sentence so it reads as two lines.
