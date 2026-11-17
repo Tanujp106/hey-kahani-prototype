@@ -275,6 +275,14 @@ These are project decisions from this chat, not rules stated in the PDF:
 
 ### Homepage structure — November 17, 2026
 
+**Final fold plan — November 18, 2026:** Hero (one viewport, with header-aware
+offsets and mobile dynamic viewport support) → concise two-card Shop → light
+six-Koel series row with “Explore more” → unchanged How-to/USP → original
+standalone Player section → existing red Koel catalogue → unchanged remaining
+page. The former Shop `#player` anchor becomes `#shop`; `#player` again refers
+to the standalone product section. The six featured cards reuse the existing
+catalogue records and shared playback/bag behaviour. The About section stays hidden.
+
 **Order correction — November 18, 2026:** Shop is the second section,
 immediately after the hero. Give the Player and Koels equal-width shopping
 cards side by side on desktop, stacking on narrow screens. The user then asked
@@ -298,13 +306,14 @@ the asset drawing system, product facts or content approvals.
   November 17, 2026: the FAQ intro heading and lead are center aligned. The
   heading breaks after “Small questions.” so “Straight answers.” stays on one
   line. The “Explore all FAQs” link under that intro is removed. The practical-help link
-  to the FAQ page stays. The practical help row is four left-aligned cards on the
-  white page: a stroke icon, a bold title, and a short supporting line. The cards
-  are Kesar cream, with a slightly deeper cream on hover. The four existing journeys and destinations stay;
+  to the FAQ page stays. The practical help row is four left-aligned white cards on a Kesar band,
+  with a Kesar wave along the top and bottom. Each card has a stroke icon,
+  a bold title, and a short supporting line. Hover is a slightly warm white. The four existing journeys and destinations stay;
   shipping, payment, return, and warranty claims are not added.
   November 18, 2026: the How it works rail is not clipped at the content column.
   It keeps the heading’s left edge and runs through the right margin to the
-  viewport, so the next card stays visible. The cards themselves do not clip
+  viewport, so the next card stays visible. The rail scrolls inside the section.
+  The page itself does not scroll sideways. The cards themselves do not clip
   their contents.
 - The Player is offered before the Koel catalogue. The approved $129 USD price
   remains bound to its existing product snapshot. Koels explicitly require the
@@ -336,7 +345,18 @@ brand colours and the rest of the visual system remain. November 18 follow-up:
 the local 42–88px headline is retired. The hero uses the shared Hero token
 (34–56px), Body for the lead, and UI for the label and button. The
 “Already have a Player?” link is removed. The copy block sits low in the fold, raised enough that the Shop the Player
-button clears the bottom edge. The lead breaks after the first sentence so it reads as two lines.
+button clears the bottom edge, then another 32px. The hero ground is white.
+The nav bar is a little shorter. The shop heading is centered, without the
+eyebrow, with 40px more space above and below the section. The Player card
+stays white and the Koels card is a lighter Mango. The featured Koel row
+shows five cards, with 40px of space above and below that section.
+The One Player strip is a Sindoor bar with a Sindoor wave on the top and bottom. The three labels use Open Sans at UI size, with a wide gap, centered in the bar. They are not links. No colour-wave stack sits above or below it. How it works
+stays inside the content column so the first card is not cut off on the left.
+Its heading has no eyebrow, the first card has no step list, and each card link
+is a primary button.
+The Player section’s bottom edge uses the colour wave. The top edge is a Kesar wave,
+with 40px of padding inside the Player content. The red Koel catalogue wraps in rows and
+has no eyebrow above the heading. A wave that meets a white section ends in white. The lead breaks after the first sentence so it reads as two lines.
 The copy’s left edge and the Player’s right edge sit on the 1120px content
 column, the same width as the nav. The Player is 15% larger than the reduced
 campaign size. The three Koels are larger, sit a little closer to the Player, and clear the navbar. The landing fold is 100vh.
@@ -546,7 +566,7 @@ hardware are reference content, not approved Hey Kahani claims or assets.
 - User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 - User direction on November 11, 2026: Koel Preview pill is a near-white frosted surface (`rgba(255, 252, 247, 0.92)` with light blur), not Coconut Husk. Category badges use a frosted white blur background over artwork.
 - User direction on November 12, 2026: match the Koels section ground to the footer's Sindoor Red (`#B40023`), not Gulab Red. Keep white heading/intro text and organic edges showing the white sections above and below. Reverse the Explore CTA to Kesar Sand with a Sindoor Red label for contrast. Keep the Koel cards on their Kesar Sand foundation with black card copy and existing brand-red bag controls; hide the organic edges on narrow screens as already configured. November 17, 2026: poster titles use Body (17px) instead of Subhead.
-- User direction on November 16, 2026 (`shopify-homepage/` section waves): remove the USP lines from the strip. Use three tall waves in Sky, Mango, and Marigold (`clamp(84px, 11vw, 148px)`, not a thin ribbon), with Sindoor continuing into the Koels section. Repeat that stack at the end of Koels, reversed, so Marigold meets the red and Sky meets the section below. The three Temple depth waves inside the section use that same curve and the same height, so their crests line up with the color bands. The bottom color stack sits clear of the Koel cards: the section’s bottom padding is the stack height plus a gap. The red above that stack is continuous — no straight clip and no flat red cap above the Marigold wave.
+- User direction on November 16, 2026 (`shopify-homepage/` section waves): remove the USP lines from the strip. Use three tall waves in Sky, Mango, and Marigold (`clamp(84px, 11vw, 148px)`, not a thin ribbon), with Sindoor continuing into the Koels section. Repeat that stack at the end of Koels, reversed, so Marigold meets the red and Sky meets the section below. The three Temple depth waves inside the section use that same curve and the same height, so their crests line up with the color bands. The bottom color stack sits clear of the Koel cards: the section’s bottom padding is the stack height plus a gap. The red above that stack is continuous — no straight clip and no flat red cap above the Marigold wave. November 18, 2026: that same Sky, Mango, and Marigold stack breaks every homepage section. The cap above the stack matches the section it leaves, and the cap below matches the section it enters. The help row is Kesar, with a cream wave on its top and bottom edges and white cards. The colour stack above the Player is removed. Its top edge is a single Kesar wave. The colour wave above Shop the Player & Koels is removed, and so is the one above A little story for every day. The One Player strip is the other: no wave stack above or below it.
 - Current Player section direction, November 17, 2026: the user rejected the
   overall scale and positioning, the price/button row, and the overpowering
   floating badges, and requested Mobbin references followed by implementation.
@@ -566,10 +586,10 @@ hardware are reference content, not approved Hey Kahani claims or assets.
   removed. Keep Kesar ground, black copy, the shared Gulab button, the white exit
   wave, and this section between Koels and the app.
   On narrow screens use heading/lead → product → price/button → benefits.
-  Keep only the Mango speaker-ripples backdrop, anchored to the speaker band.
+  Keep only the Mango speaker-ripples backdrop. November 18, 2026: it sits behind the Player, centred on the speaker band, so the arcs show on either side of the body.
   November 17, 2026: the user first asked for a larger backdrop, then said it
-  was too big. It is now 360px on desktop and 320px below 800px, still
-  proportional and anchored to the speaker band, behind the Player.
+  was too big. November 18, 2026: it is 560px on desktop and 440px below 800px,
+  proportional and behind the Player, centred on the speaker band.
   Remove the two detached corner scribbles from this section. Existing SVG
   source files remain available for other uses.
   The user-confirmed price remains **$129 USD**, owned by

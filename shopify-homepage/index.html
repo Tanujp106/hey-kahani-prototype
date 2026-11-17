@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css?v=pills-color-20261117">
-  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=footer-signup-20261118">
+<link rel="stylesheet" href="assets/css/homepage-layout.css?v=ripples-behind-20261118">
 </head>
 <body>
   <a class="hk-skip" href="#main">Skip to content</a>
@@ -57,9 +57,15 @@
         </ul>
       </nav>
       <div class="hk-nav__actions">
-        <button class="hk-icon-btn" type="button" data-hk-open-search aria-label="Search">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="M16.2 16.2 20 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </button>
+        <div class="hk-nav__search" data-hk-nav-search>
+          <button class="hk-icon-btn" type="button" data-hk-open-search aria-expanded="false" aria-controls="nav-search-input" aria-label="Search">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="M16.2 16.2 20 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </button>
+          <label class="hk-nav__search-field">
+            <span class="visually-hidden">Search the store</span>
+            <input id="nav-search-input" type="search" name="q" placeholder="Search stories…" autocomplete="off" enterkeyhint="search">
+          </label>
+        </div>
         <button class="hk-icon-btn hk-nav__bag" type="button" data-hk-open-bag aria-label="Open bag, 0 items">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8zm3-3a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span class="hk-nav__bag-count" aria-hidden="true">0</span>
@@ -182,6 +188,10 @@
 
     <section class="hk-hero hk-home-hero" id="top" aria-labelledby="hero-title">
       <div class="hk-campaign__art" role="img" aria-label="The cream and red Kahani Player with three illustrated Koel story discs.">
+        <div class="hk-campaign__decor" aria-hidden="true">
+          <span class="hk-campaign__mark hk-campaign__mark--sky"></span>
+          <span class="hk-campaign__mark hk-campaign__mark--sand"></span>
+        </div>
         <div class="hk-campaign__shadow" aria-hidden="true"></div>
         <div class="hk-campaign__koel hk-campaign__koel--one"><img src="assets/images/koels/hk-shot-08-01-holi-kite.png" width="1254" height="1254" alt="" decoding="async"></div>
         <div class="hk-campaign__koel hk-campaign__koel--two"><img src="assets/images/koels/hk-shot-08-02-kerala-houseboat.png" width="1254" height="1254" alt="" decoding="async"></div>
@@ -202,7 +212,7 @@
 
     <section class="hk-section hk-home-start hk-home-shop" id="shop" aria-labelledby="shop-title">
   <div class="hk-wrap">
-    <header class="hk-home-heading"><div><p class="hk-home-eyebrow">Shop Hey Kahani</p><h2 class="hk-display hk-display--lg" id="shop-title">Shop the Player &amp; Koels.</h2><p class="hk-lead">Begin with the Player. Grow their collection one Koel at a time.</p></div></header>
+    <header class="hk-home-heading"><div><h2 class="hk-display hk-display--lg" id="shop-title">Shop the Player &amp; Koels.</h2><p class="hk-lead">Begin with the Player. Grow their collection one Koel at a time.</p></div></header>
     <div class="hk-home-start__options">
       <article class="hk-start-player">
         <div class="hk-start-player__visual"><img class="hk-start-player__ripples" src="assets/images/brand-library/decorative/speaker-ripples.svg" width="640" height="320" alt="" aria-hidden="true" loading="lazy"><img class="hk-start-player__photo" src="assets/images/product/player-cutout.png" width="573" height="1134" alt="The Kahani Player with a cream body, red speaker band and carrying handle" loading="lazy" decoding="async"></div>
@@ -387,53 +397,55 @@
   </div>
 </section>
 
+    <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-sindoor)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14V48H0Z"/></svg>
     <div class="hk-home-orientation" aria-label="Hey Kahani at a glance">
   <ul class="hk-wrap">
-    <li><a href="#player"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-disc"/></svg>One Player</a></li>
-    <li><a href="#koels"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-book-open"/></svg>Little Koels</a></li>
-    <li><a href="#faqs"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 19.5c1.1-2.8 3.3-4.2 6.5-4.2s5.4 1.4 6.5 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ages 3–6</a></li>
+    <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-disc"/></svg>One Player</span></li>
+    <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-book-open"/></svg>Little Koels</span></li>
+    <li><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 19.5c1.1-2.8 3.3-4.2 6.5-4.2s5.4 1.4 6.5 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ages 3–6</span></li>
   </ul>
 </div>
+    <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-sindoor)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/></svg>
 
-    <section class="hk-section hk-home-features" id="why" aria-labelledby="why-title" data-hk-rail>
+<section class="hk-section hk-home-features" id="why" aria-labelledby="why-title" data-hk-rail>
   <div class="hk-wrap">
     <header class="hk-home-heading" id="how-it-works">
-      <div><p class="hk-home-eyebrow">How it works</p><h2 class="hk-display hk-display--lg" id="why-title">Little hands. Big imaginations.</h2>
+      <div><h2 class="hk-display hk-display--lg" id="why-title">Little hands. Big imaginations.</h2>
       <p class="hk-lead">One Player, a world of Koels, and stories that fit right into family life.</p></div>
       <div class="hk-rail-controls" aria-label="Story features">
   <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="family-feature-rail" aria-label="Previous story features" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="family-feature-rail" aria-label="Next story features" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </div>
     </header>
-    <div class="hk-feature-rail hk-home-scroll" id="family-feature-rail" data-hk-rail-track tabindex="0" role="region" aria-label="How Hey Kahani fits into family life">
+  </div>
+  <div class="hk-feature-rail hk-home-scroll" id="family-feature-rail" data-hk-rail-track tabindex="0" role="region" aria-label="How Hey Kahani fits into family life">
       <article class="hk-feature hk-feature--mango">
         <div class="hk-feature__visual"><img class="hk-feature__photo" src="assets/images/editorial/hk-shot-05.png" width="1254" height="1254" alt="A child choosing Koels on a play table" loading="lazy" decoding="async"><img class="hk-feature__graphic" src="assets/images/brand-library/illustrations/open-storybook-sky.svg" width="96" height="96" alt="" aria-hidden="true" loading="lazy"></div>
         <div class="hk-feature__copy"><h3 class="hk-display">Tap a Koel. Hear a Kahani.</h3><p>Pick a story disc, place it on the Kahani Player, and listen. The Player brings every Koel to life.</p>
-        <ol class="hk-feature__steps" aria-label="Three steps to listening"><li>Pick a Koel</li><li>Place it on the Player</li><li>Listen</li></ol>
-        <a class="hk-home-text-link" href="#player">Meet the Player <span aria-hidden="true">→</span></a></div>
+        <a class="hk-btn hk-btn--primary" href="#player">Meet the Player</a></div>
       </article>
       <article class="hk-feature hk-feature--sky">
         <div class="hk-feature__visual"><img class="hk-feature__photo" src="assets/images/editorial/hk-shot-03.png" width="1122" height="1402" alt="A child enjoying a story with the Kahani Player" loading="lazy" decoding="async"><img class="hk-feature__graphic" src="assets/images/brand-library/illustrations/little-home.svg" width="96" height="96" alt="" aria-hidden="true" loading="lazy"></div>
         <div class="hk-feature__copy"><h3 class="hk-display">Stories that feel like home</h3><p>Festivals, familiar names, everyday adventures. South Asian stories with a little of their world inside.</p>
 
-        <a class="hk-home-text-link" href="#koels">Discover the stories <span aria-hidden="true">→</span></a></div>
+        <a class="hk-btn hk-btn--primary" href="#koels">Discover the stories</a></div>
       </article>
       <article class="hk-feature hk-feature--kesar">
         <div class="hk-feature__visual"><img class="hk-feature__photo" src="assets/images/editorial/hk-shot-02.png" width="1086" height="1448" alt="A child listening in a quiet corner" loading="lazy" decoding="async"><img class="hk-feature__graphic" src="assets/images/brand-library/illustrations/spinning-top.svg" width="96" height="96" alt="" aria-hidden="true" loading="lazy"></div>
         <div class="hk-feature__copy"><h3 class="hk-display">Made for little hands</h3><p>They spot the artwork, pick their Koel, and choose what comes next. A little independence, one story at a time.</p>
 
-        <a class="hk-home-text-link" href="/kahani-player">Explore the Player <span aria-hidden="true">→</span></a></div>
+        <a class="hk-btn hk-btn--primary" href="/kahani-player">Explore the Player</a></div>
       </article>
       <article class="hk-feature hk-feature--lavender">
         <div class="hk-feature__visual"><img class="hk-feature__photo" src="assets/images/editorial/hk-shot-06.png" width="1672" height="941" alt="A warm bedtime story moment" loading="lazy" decoding="async"><img class="hk-feature__graphic" src="assets/images/brand-library/illustrations/moon-and-stars.svg" width="96" height="96" alt="" aria-hidden="true" loading="lazy"></div>
         <div class="hk-feature__copy"><h3 class="hk-display">A story for the quieter moments</h3><p>Bedtime, a quiet corner, a little pause in the day. Make room for listening in the routines you already love.</p>
 
-        <a class="hk-home-text-link" href="#community">Find their everyday moments <span aria-hidden="true">→</span></a></div>
+        <a class="hk-btn hk-btn--primary" href="#community">Find their everyday moments</a></div>
       </article>
-    </div>
   </div>
 </section>
 
+    <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14V48H0Z"/></svg>
     <section class="hk-section hk-player" id="player" aria-labelledby="player-title">
       <div class="hk-wrap">
         <div class="hk-player__copy">
@@ -514,7 +526,7 @@
         </div>
       </div>
       <div class="hk-wrap">
-        <header class="hk-home-heading"><div><p class="hk-home-eyebrow">Their next favourite story</p><h2 class="hk-display hk-display--lg" id="koels-title">Discover a world of Koels.</h2><p class="hk-lead">Explore South Asian stories for little listeners. Every Koel needs a Kahani Player.</p></div><a class="hk-btn hk-btn--secondary" href="/koels-listing">Explore all Koels</a></header>
+        <header class="hk-home-heading"><div><h2 class="hk-display hk-display--lg" id="koels-title">Discover a world of Koels.</h2><p class="hk-lead">Explore South Asian stories for little listeners. Every Koel needs a Kahani Player.</p></div><a class="hk-btn hk-btn--secondary" href="/koels-listing">Explore all Koels</a></header>
     <div class="hk-discovery-toolbar"><div class="hk-discovery-filters" role="group" aria-label="Filter Koels by collection">
       <button class="hk-how-tabs__btn is-active" type="button" aria-pressed="true" data-hk-koel-filter="all">All stories</button>
       <button class="hk-how-tabs__btn" type="button" aria-pressed="false" data-hk-koel-filter="Kahani Original">Kahani Originals</button>
@@ -804,7 +816,7 @@
         <path fill="var(--hk-marigold, #ff5d27)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14L1440 28C1253 54 1114 54 926 37C691 16 587 18 395 38C203 58 102 54 0 36Z"/>
         <path fill="var(--hk-mango, #fecb74)" d="M0 36C102 54 203 58 395 38C587 18 691 16 926 37C1114 54 1253 54 1440 28L1440 42C1253 68 1114 68 926 51C691 30 587 32 395 52C203 72 102 68 0 50Z"/>
         <path fill="var(--hk-sky, #63c3fe)" d="M0 50C102 68 203 72 395 52C587 32 691 30 926 51C1114 68 1253 68 1440 42L1440 56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/>
-        <path fill="var(--hk-kesar, #fff1d6)" d="M0 90H1440V56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/>
+        <path fill="#ffffff" d="M0 90H1440V56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/>
       </svg>
     </section>
 
@@ -935,12 +947,14 @@
       </svg>
     </section>
 
+    <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14V48H0Z"/></svg>
     <aside class="hk-home-help" aria-label="Help with your Hey Kahani journey"><div class="hk-wrap">
-  <a href="#player"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-disc"/></svg><strong>New to Hey Kahani?</strong><span>Find your first Player.</span></a>
-  <a href="#koels"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-book-open"/></svg><strong>Already listening?</strong><span>Grow their story collection.</span></a>
-  <a href="/kahani-app"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3m-15.4-6.4 2.1 2.1m8.6 8.6 2.1 2.1M5.6 18.4l2.1-2.1m8.6-8.6 2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg><strong>A hand with setup?</strong><span>Meet the companion app.</span></a>
-  <a href="/faqs-mobile"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 9a2.5 2.5 0 0 1 5 .5c0 1.8-2.5 1.8-2.5 3.5m0 3h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><strong>Little questions?</strong><span>We're here to help.</span></a>
+  <a class="hk-help-card" href="#player"><span class="hk-help-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-disc"/></svg></span><strong>New to Hey Kahani?</strong><span class="hk-help-action">Shop the Player <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  <a class="hk-help-card" href="#koels"><span class="hk-help-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#hk-lucide-book-open"/></svg></span><strong>Already listening?</strong><span class="hk-help-action">Explore Koels <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  <a class="hk-help-card" href="/kahani-app"><span class="hk-help-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3m-15.4-6.4 2.1 2.1m8.6 8.6 2.1 2.1M5.6 18.4l2.1-2.1m8.6-8.6 2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg></span><strong>A hand with setup?</strong><span class="hk-help-action">Explore the app <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  <a class="hk-help-card" href="/faqs-mobile"><span class="hk-help-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 9a2.5 2.5 0 0 1 5 .5c0 1.8-2.5 1.8-2.5 3.5m0 3h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><strong>Little questions?</strong><span class="hk-help-action">View FAQs <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 </div></aside>
+    <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/></svg>
 
     <section class="hk-section hk-home-faq" id="faqs" aria-labelledby="faq-title">
       <div class="hk-wrap hk-home-faq__grid">
@@ -993,6 +1007,8 @@
       </div>
     </section>
   </main>
+
+  <svg class="hk-waves hk-break" style="--hk-wave-from: var(--hk-canvas); --hk-wave-to: var(--hk-sindoor)" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-wave-from)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/><path fill="var(--hk-sky)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14L1440 28C1253 54 1114 54 926 37C691 16 587 18 395 38C203 58 102 54 0 36Z"/><path fill="var(--hk-mango)" d="M0 36C102 54 203 58 395 38C587 18 691 16 926 37C1114 54 1253 54 1440 28L1440 42C1253 68 1114 68 926 51C691 30 587 32 395 52C203 72 102 68 0 50Z"/><path fill="var(--hk-marigold)" d="M0 50C102 68 203 72 395 52C587 32 691 30 926 51C1114 68 1253 68 1440 42L1440 56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/><path fill="var(--hk-wave-to)" d="M0 90H1440V56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/></svg>
 
   <footer class="hk-footer" id="footer">
     <div class="hk-wrap">
@@ -1126,7 +1142,7 @@
     document.getElementById("year").textContent = String(new Date().getFullYear());
   </script>
   <script src="assets/js/inline-preview.js" defer></script>
-  <script src="assets/js/main.js?v=player-center-20261116" defer></script>
+  <script src="assets/js/main.js?v=nav-search-20261118" defer></script>
   <script src="assets/js/homepage-layout.js?v=20261117" defer></script>
 </body>
 </html>

@@ -4,11 +4,9 @@
   const bagBtn = document.querySelectorAll("[data-hk-open-bag]");
   const searchBtn = document.querySelectorAll("[data-hk-open-search]");
   const bagDialog = document.querySelector("#bag-dialog");
-  const searchDialog = document.querySelector("#search-dialog");
   const koelDialog = document.querySelector("#koel-dialog");
   const koelCards = document.querySelectorAll("[data-hk-koel]");
   const closeButtons = document.querySelectorAll("[data-hk-close-dialog]");
-  const searchInput = document.querySelector("[data-hk-search-input]");
   const bagCountEls = document.querySelectorAll(".hk-nav__bag-count");
   const bagEmpty = bagDialog?.querySelector("[data-hk-bag-empty]");
   const bagList = bagDialog?.querySelector("[data-hk-bag-list]");
@@ -344,11 +342,25 @@
     btn.addEventListener("click", () => bagDialog?.showModal());
   });
 
+  const navSearch = document.querySelector("[data-hk-nav-search]");
+  const navSearchInput = navSearch?.querySelector("input");
+  const setNavSearch = (open) => {
+    navSearch?.classList.toggle("is-open", open);
+    searchBtn.forEach((btn) => btn.setAttribute("aria-expanded", open ? "true" : "false"));
+    if (open) window.requestAnimationFrame(() => navSearchInput?.focus());
+  };
   searchBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      searchDialog?.showModal();
-      window.requestAnimationFrame(() => searchInput?.focus());
+      setNavSearch(!navSearch?.classList.contains("is-open"));
     });
+  });
+  document.addEventListener("click", (event) => {
+    if (!navSearch?.classList.contains("is-open")) return;
+    if (navSearch.contains(event.target)) return;
+    setNavSearch(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navSearch?.classList.contains("is-open")) setNavSearch(false);
   });
 
   koelCards.forEach((card) => {
