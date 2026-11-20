@@ -313,7 +313,9 @@ structure are unchanged.
 
 On the Kahani Player page, the purchase bar is fixed to the bottom of the
 viewport. Section jumps clear the navbar only. The page keeps bottom padding
-so the footer stays above the bar.
+so the footer stays above the bar. November 21, 2026: the purchase title uses
+Section size. The tagline, the two description lines, and the four feature
+labels use UI size.
 
 ### Homepage structure — November 17, 2026
 
@@ -365,6 +367,9 @@ the asset drawing system, product facts or content approvals.
   Same day: the story rail is a carousel. Previous and next use the existing
   circular ink buttons and Lucide chevrons. Four dots sit between them: Husk
   for the others, Gulab for the current card. No new control style.
+  On a narrow screen the story cards stack and stick under the navbar, and the
+  pager is hidden. The featured Koels wrap into two columns instead of a
+  sideways row. The How it works band keeps a short top and bottom padding.
 - The Player is offered before the Koel catalogue. The approved $129 USD price
   remains bound to its existing product snapshot. Koels explicitly require the
   Player; no first-purchase bundle contents, bundle price, additional device
@@ -406,8 +411,9 @@ is a primary button. November 18, 2026: each story card was 58% of the viewport 
 The Player section’s bottom edge uses the colour wave. The top edge is a Kesar wave,
 with 40px of padding inside the Player content. The red Koel catalogue wraps in rows and
 has no eyebrow above the heading. November 21, 2026: four compact cards a row
-down to 800px, then two, then one. The three-across step is retired because
-those cards read too large. A wave that meets a white section ends in white. The lead breaks after the first sentence so it reads as two lines.
+down to 800px, then two. The one-across phone step is retired because those
+cards read too large. The practical help row stays two by two on a phone, with
+a smaller icon and smaller title and supporting line. A wave that meets a white section ends in white. The lead breaks after the first sentence so it reads as two lines.
 The copy’s left edge and the Player’s right edge sit on the 1120px content
 column, the same width as the nav. The Player is 15% larger than the reduced
 campaign size. The three Koels are larger, sit a little closer to the Player, and clear the navbar. The landing fold is 100vh.

@@ -82,11 +82,11 @@
 .hk-campaign__label {
   display: table;
   max-width: 100%;
-  padding: 8px 12px;
-  margin: 0 0 24px;
+  padding: 6px 10px;
+  margin: 0 0 20px;
   border-radius: var(--hk-radius-sm);
   background: var(--hk-mango);
-  font-size: var(--hk-text-body-sm);
+  font-size: var(--hk-text-eyebrow);
   font-weight: 700;
   line-height: 1.35;
 }
@@ -171,7 +171,7 @@
 
 html { overflow-x: clip; }
 .hk-waves { max-width: 100%; min-width: 0; }
-.hk-home-features { padding-top: calc(var(--hk-nav-h) + 48px); padding-bottom: clamp(64px, 8vw, 100px); overflow: visible; }
+.hk-home-features { padding-top: clamp(16px, 3vw, 28px); padding-bottom: clamp(24px, 4vw, 40px); overflow: visible; }
 .hk-home-scroll { min-width: 0; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--hk-husk) transparent; }
 .hk-home-scroll:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: 5px; }
 .hk-rail-controls { display: flex; flex-shrink: 0; gap: 10px; }
@@ -426,7 +426,7 @@ html { overflow-x: clip; }
 .hk-player > .hk-wrap { padding-block: 40px; }
 .hk-player__backdrop { top: 70%; bottom: auto; width: min(170%, 560px); transform: translate(-50%, -50%); }
 @media (max-width: 799px) {
-  .hk-player__backdrop { width: min(160%, 440px); }
+  .hk-player__backdrop { width: min(120%, 280px); }
 }
 .hk-player__edge { display: none; }
 .hk-break:has(+ .hk-player):not(.hk-waves--edge) { position: relative; z-index: 2; margin-bottom: calc(clamp(84px, 11vw, 148px) * -0.46); }
@@ -464,7 +464,7 @@ html { overflow-x: clip; }
   .hk-rail-controls { margin-left: auto; }
   .hk-feature-rail { gap: 16px; }
   .hk-home-shop__cards { grid-template-columns: 1fr; }
-  .hk-shop-card { --hk-shop-media-height: clamp(260px, 52vw, 336px); }
+  .hk-shop-card { --hk-shop-media-height: clamp(200px, 44vw, 260px); }
   .hk-discovery-toolbar { align-items: flex-end; flex-wrap: wrap; }
   .hk-discovery-filters { flex-wrap: nowrap; width: 100%; overflow-x: auto; padding-bottom: 10px; }
   .hk-discovery-filters .hk-how-tabs__btn { flex-shrink: 0; }
@@ -488,14 +488,12 @@ html { overflow-x: clip; }
 }
 
 @media (max-width: 520px) {
-  .hk-home-help > .hk-wrap { grid-template-columns: 1fr; }
-  .hk-help-card { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px 16px; padding: 20px; }
-  .hk-help-icon { grid-row: 1 / 3; }
-  .hk-help-card h3, .hk-help-card p { grid-column: 2; }
-}
-
-@media (width < 460px) {
-  .hk-home-discovery .hk-koel-grid { grid-template-columns: minmax(0, 1fr); }
+  .hk-home-help > .hk-wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .hk-help-card { gap: 8px; padding: 14px; }
+  .hk-help-icon { width: 36px; height: 36px; }
+  .hk-help-icon svg { width: 18px; height: 18px; }
+  .hk-help-card h3 { font-size: var(--hk-text-body); }
+  .hk-help-card p { font-size: var(--hk-text-body-sm); line-height: 1.4; }
 }
 
 @media (max-width: 420px) {
@@ -592,3 +590,31 @@ html { overflow-x: clip; }
 .hk-series-rail .hk-koel__badge { max-width: calc(100% - 20px); left: 10px; right: auto; overflow-wrap: anywhere; }
 .hk-series-rail .hk-koel__actions { left: 10px; right: 10px; bottom: 12px; gap: 6px; }
 .hk-series-rail .hk-koel__preview { padding-inline: 8px; }
+
+/* Phone: the featured Koels wrap as two columns, and the story cards stack and stick. */
+@media (max-width: 760px) {
+  .hk-series-rail.hk-home-scroll {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-columns: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .hk-koel-series .hk-rail-controls { display: none; }
+  .hk-feature-rail.hk-home-scroll {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    scroll-snap-type: none;
+    gap: 16px;
+    padding-bottom: 0;
+  }
+  .hk-feature {
+    position: sticky;
+    top: calc(var(--hk-navigation-height, var(--hk-nav-h)) + 8px);
+    justify-items: center;
+  }
+  .hk-feature__copy { align-items: center; text-align: center; }
+  .hk-feature-nav { display: none; }
+}

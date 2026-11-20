@@ -2930,11 +2930,11 @@ input {
   }
 
   .hk-player__photo {
-    width: min(64vw, 280px);
+    width: min(50vw, 220px);
   }
 
   .hk-player__backdrop {
-    width: min(100%, 320px);
+    width: min(86%, 250px);
   }
 
   .hk-player__purchase {
