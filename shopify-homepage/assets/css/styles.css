@@ -2246,14 +2246,7 @@ input {
     box-shadow 180ms var(--hk-ease);
 }
 
-@media (max-width: 1100px) {
-  .hk-koel-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px 16px;
-  }
-}
-
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .hk-koel-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 12px;
@@ -2819,6 +2812,27 @@ input {
 
 .hk-player__purchase .hk-btn {
   min-width: 200px;
+}
+
+.hk-player__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hk-player__actions .hk-btn {
+  flex: 1 0 auto;
+  min-width: 0;
+}
+
+.hk-player__actions .hk-btn--secondary {
+  background: transparent;
+  border-color: var(--hk-muted);
+  box-shadow: none;
+}
+
+.hk-player__actions .hk-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .hk-player__stage {
@@ -3395,6 +3409,8 @@ input {
 }
 
 .hk-faq {
+  --hk-faq-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5v14'/%3E%3C/svg%3E");
+  --hk-faq-mark-open: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
   width: 100%;
   max-width: 46rem;
   margin-inline: auto;
@@ -3425,17 +3441,18 @@ input {
 }
 
 .hk-faq summary::after {
-  content: "+";
+  content: "";
   flex: 0 0 auto;
-  font-weight: 400;
-  font-size: var(--hk-text-body);
-  line-height: 1;
-  color: var(--hk-muted);
-  transition: transform var(--hk-duration) var(--hk-ease);
+  width: 22px;
+  height: 22px;
+  background-color: var(--hk-ink);
+  -webkit-mask: var(--hk-faq-mark) center / contain no-repeat;
+  mask: var(--hk-faq-mark) center / contain no-repeat;
 }
 
 .hk-faq details[open] summary::after {
-  content: "–";
+  -webkit-mask-image: var(--hk-faq-mark-open);
+  mask-image: var(--hk-faq-mark-open);
 }
 
 .hk-faq__panel {

@@ -1,11 +1,37 @@
 /* Scrollable sections use native overflow; controls and filtering are progressive enhancements. */
 (() => {
+  // Measure the live header so the hero clears it even when controls or copy wrap.
+  const announcement = document.querySelector?.('.hk-announcement');
+  const navigation = document.querySelector?.('.hk-nav');
+  if (announcement && navigation && document.documentElement) {
+    const syncHeaderSize = () => {
+      document.documentElement.style.setProperty('--hk-announcement-height', `${announcement.getBoundingClientRect().height}px`);
+      document.documentElement.style.setProperty('--hk-navigation-height', `${navigation.getBoundingClientRect().height}px`);
+    };
+    syncHeaderSize();
+    window.addEventListener('resize', syncHeaderSize);
+    if ('ResizeObserver' in window) {
+      const observer = new window.ResizeObserver(syncHeaderSize);
+      observer.observe(announcement);
+      observer.observe(navigation);
+    }
+  }
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('[data-hk-rail]').forEach((section) => {
     const track = section.querySelector('[data-hk-rail-track]');
     if (!track) return;
     const previous = section.querySelector('[data-hk-rail-prev]');
     const next = section.querySelector('[data-hk-rail-next]');
+    const dotList = section.querySelector('[data-hk-rail-dots]');
+    const dots = dotList ? Array.from(dotList.querySelectorAll('[data-hk-rail-dot]')) : [];
+    const featureCards = dots.length ? Array.from(track.children).filter((card) => card.classList.contains('hk-feature')) : [];
+    const motion = () => (reducedMotion.matches ? 'auto' : 'smooth');
+    const stepSize = () => {
+      const card = featureCards[0];
+      if (!card) return track.clientWidth * 0.85;
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card.offsetWidth + gap;
+    };
     const syncControls = () => {
       const maximum = Math.max(0, track.scrollWidth - track.clientWidth);
       if (previous) {
@@ -16,12 +42,27 @@
         next.hidden = maximum < 2;
         next.disabled = track.scrollLeft >= maximum - 2;
       }
+      if (!dots.length) return;
+      const size = stepSize();
+      const index = size > 0 ? Math.min(dots.length - 1, Math.max(0, Math.round(track.scrollLeft / size))) : 0;
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+        dot.classList.toggle('is-active', active);
+        if (active) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
     };
     const scroll = (direction) => {
-      track.scrollBy({ left: direction * track.clientWidth * .85, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+      track.scrollBy({ left: direction * stepSize(), behavior: motion() });
     };
     previous?.addEventListener('click', () => scroll(-1));
     next?.addEventListener('click', () => scroll(1));
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        track.scrollTo({ left: index * stepSize(), behavior: motion() });
+      });
+    });
+    if (dotList && featureCards.length) dotList.hidden = false;
     track.addEventListener('scroll', syncControls, { passive: true });
     track.addEventListener('keydown', (event) => {
       if (event.target !== track) return;

@@ -18,8 +18,24 @@
   const dialogImage = koelDialog?.querySelector("[data-hk-koel-image]");
   const dialogAdd = koelDialog?.querySelector("[data-hk-koel-dialog-add]");
 
+  // Keep the prototype bag while moving between storefront pages in this tab.
+  const bagStorageKey = "hk-prototype-bag-v1";
+  const readSavedBag = () => {
+    try {
+      const saved = JSON.parse(window.sessionStorage?.getItem(bagStorageKey) || "[]");
+      if (!Array.isArray(saved)) return [];
+      return saved.filter((item) => item &&
+        typeof item.key === "string" && item.key.length > 0 &&
+        typeof item.title === "string" && typeof item.meta === "string" &&
+        typeof item.image === "string" &&
+        Number.isFinite(item.price) && item.price >= 0 &&
+        Number.isSafeInteger(item.qty) && item.qty > 0);
+    } catch {
+      return [];
+    }
+  };
   /** @type {{ key: string, title: string, meta: string, image: string, price: number, qty: number }[]} */
-  const bagItems = [];
+  const bagItems = readSavedBag();
   let activeKoel = null;
 
   const parsePrice = (value) => {
@@ -29,11 +45,15 @@
 
   const formatPrice = (amount) => `$${amount.toFixed(2)}`;
 
+  const resolveProductImage = (source) => {
+    try { return new URL(source, document.baseURI).href; } catch { return source; }
+  };
+
   const readKoel = (card) => {
     const priceEl = card?.querySelector?.("[data-hk-koel-price]");
     const priceLabel = priceEl?.textContent?.trim() || "$0.00";
     const title = card?.dataset?.title || "Koel";
-    const image = card?.dataset?.image || "";
+    const image = resolveProductImage(card?.dataset?.image || "");
     return {
       key: `${title}::${image}`,
       title,
@@ -50,6 +70,11 @@
 
   const updateBagChrome = () => {
     const count = bagUnitCount();
+    try {
+      window.sessionStorage?.setItem(bagStorageKey, JSON.stringify(bagItems));
+    } catch {
+      // Private browsing or blocked storage still allows the current page's bag.
+    }
     bagCountEls.forEach((el) => {
       el.textContent = String(count);
     });
@@ -136,13 +161,20 @@
     }, 3500);
   };
 
+  const addItemToBag = (product) => {
+    const existing = bagItems.find((item) => item.key === product.key);
+    if (existing) existing.qty += 1;
+    else {
+      const image = resolveProductImage(product.image);
+      bagItems.push({ ...product, image, qty: 1 });
+    }
+    updateBagChrome();
+    showBagConfirmation(product.title);
+  };
+
   const addKoelToBag = (koel, trigger) => {
     if (!koel?.title) return;
-    const existing = bagItems.find((item) => item.key === koel.key);
-    if (existing) existing.qty += 1;
-    else bagItems.push({ ...koel, qty: 1 });
-    updateBagChrome();
-    showBagConfirmation(koel.title);
+    addItemToBag(koel);
     if (trigger) {
       trigger.classList.add("is-added");
       trigger.setAttribute("aria-label", "Added to bag");
@@ -289,6 +321,14 @@
         cancelMegaClose();
         openMega(key);
       });
+      trigger.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowDown" || !desktopNav.matches || !key) return;
+        event.preventDefault();
+        cancelMegaClose();
+        openMega(key);
+        const set = megaSets.find((panel) => panel.getAttribute("data-hk-mega-set") === key);
+        set?.querySelector("[data-hk-mega-hero]")?.focus();
+      });
     });
 
     document.querySelectorAll("[data-hk-mega-dismiss]").forEach((link) => {
@@ -318,7 +358,12 @@
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeMega();
+      if (event.key !== "Escape" || !activeMegaKey) return;
+      if (megaPanel.contains(document.activeElement)) {
+        const trigger = megaTriggers.find((link) => link.getAttribute("data-hk-mega-trigger") === activeMegaKey);
+        trigger?.focus();
+      }
+      closeMega();
     });
 
     desktopNav.addEventListener("change", () => {
@@ -326,31 +371,41 @@
     });
   }
 
-  menuBtn?.addEventListener("click", () => {
-    const open = drawer?.classList.toggle("is-open");
-    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  drawer?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      drawer.classList.remove("is-open");
-      menuBtn?.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  bagBtn.forEach((btn) => {
-    btn.addEventListener("click", () => bagDialog?.showModal());
-  });
-
   const navSearch = document.querySelector("[data-hk-nav-search]");
   const navSearchInput = navSearch?.querySelector("input");
   const setNavSearch = (open) => {
     navSearch?.classList.toggle("is-open", open);
     searchBtn.forEach((btn) => btn.setAttribute("aria-expanded", open ? "true" : "false"));
-    if (open) window.requestAnimationFrame(() => navSearchInput?.focus());
+    if (open) navSearchInput?.focus();
   };
+  const setDrawer = (open) => {
+    drawer?.classList.toggle("is-open", open);
+    menuBtn?.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+
+  menuBtn?.addEventListener("click", () => {
+    if (desktopNav.matches) return;
+    setNavSearch(false);
+    setDrawer(!drawer?.classList.contains("is-open"));
+  });
+  drawer?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setDrawer(false));
+  });
+  desktopNav.addEventListener?.("change", () => setDrawer(false));
+
+  bagBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setDrawer(false);
+      setNavSearch(false);
+      closeMega();
+      bagDialog?.showModal();
+    });
+  });
+
   searchBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
+      setDrawer(false);
+      closeMega();
       setNavSearch(!navSearch?.classList.contains("is-open"));
     });
   });
@@ -360,7 +415,14 @@
     setNavSearch(false);
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && navSearch?.classList.contains("is-open")) setNavSearch(false);
+    if (event.key !== "Escape") return;
+    if (navSearch?.classList.contains("is-open")) {
+      setNavSearch(false);
+      searchBtn[0]?.focus();
+    } else if (drawer?.classList.contains("is-open")) {
+      setDrawer(false);
+      menuBtn?.focus();
+    }
   });
 
   koelCards.forEach((card) => {
@@ -372,6 +434,21 @@
   dialogAdd?.addEventListener("click", () => {
     addKoelToBag(activeKoel || readKoel(koelCards[0]), dialogAdd);
     koelDialog?.close();
+  });
+
+  const playerSection = document.querySelector("#player");
+  playerSection?.querySelector("[data-hk-player-add]")?.addEventListener("click", (event) => {
+    const price = playerSection.querySelector("[data-hk-player-price]");
+    const priceMinor = Number(price?.dataset.priceMinor);
+    if (!price?.dataset.productHandle || !Number.isInteger(priceMinor)) return;
+
+    addItemToBag({
+      key: price.dataset.productHandle,
+      title: event.currentTarget.dataset.hkPlayerAdd,
+      meta: "",
+      image: playerSection.querySelector(".hk-player__photo").src,
+      price: priceMinor / 100,
+    });
   });
 
   updateBagChrome();

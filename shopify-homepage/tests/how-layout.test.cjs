@@ -1,60 +1,252 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { readFileSync } = require('node:fs');
+const { readFileSync, existsSync } = require('node:fs');
 const { join } = require('node:path');
-
+const vm = require('node:vm');
 const root = join(__dirname, '..');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
-const css = readFileSync(join(root, 'assets/css/styles.css'), 'utf8');
-const js = readFileSync(join(root, 'assets/js/main.js'), 'utf8');
+const source = readFileSync(join(root, 'assets/js/homepage-layout.js'), 'utf8');
 
-test('Why section keeps the four USP tabs and selected brand illustrations', () => {
-  assert.match(html, /id="why"/);
-  assert.match(html, /Stories that feel like yours\./);
-  assert.match(html, /data-hk-how/);
-  assert.match(html, /role="tablist"/);
-  assert.match(html, /hk-how-panel__body/);
-  assert.match(html, /Screen free by design/);
-  assert.match(html, /Made for little hands/);
-  assert.match(html, /Stories that feel like home/);
-  assert.match(html, /Tap a Koel\. Hear a Kahani\./);
-  assert.match(html, /hk-how-panel--screen/);
-  assert.match(html, /hk-how-panel--hands/);
-  assert.match(html, /hk-how-panel--home/);
-  assert.match(html, /hk-how-panel--simple/);
-  assert.match(html, /brand-library\/illustrations\/flying-kite\.svg/);
-  assert.match(html, /Why Hey Kahani/);
-  assert.doesNotMatch(html, /hk-how-panel__shell/);
-  assert.doesNotMatch(html, /hk-how-panel__art/);
-
-  assert.doesNotMatch(html, /Koel on\. Story begins\./);
-  assert.doesNotMatch(html, /Choose a Koel/);
-  assert.doesNotMatch(html, /See how it works/);
-  assert.doesNotMatch(html, /data-hk-how-step/);
-  assert.doesNotMatch(js, /data-hk-how-step/);
-  assert.doesNotMatch(html, /viewBox="0 0 400 520"/);
-  assert.doesNotMatch(html, /hk-doodle/);
-  assert.doesNotMatch(html, /hk-how-pager/);
-  assert.doesNotMatch(html, /data-hk-how-dot/);
-  assert.doesNotMatch(js, /data-hk-how-dot/);
-  assert.doesNotMatch(css, /\.hk-doodle\b/);
-  assert.doesNotMatch(css, /\.hk-how-pager/);
-  assert.match(js, /data-hk-how-tab/);
+test('the first-purchase path precedes content shopping and local navigation/assets resolve', () => {
+  const folds = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(folds.slice(0, 6), ['top', 'shop', 'koel-series', 'why', 'player', 'koels']);
+  const hero = html.match(/<section[^>]+id="top"[\s\S]*?<\/section>/)[0];
+  assert.match(hero, /href="#shop"/);
+  assert.match(html, /Every Koel needs a Kahani Player/);
+  const series = html.match(/<section[^>]*\bid="koel-series"[\s\S]*?<\/section>/)[0];
+  const library = html.match(/<section[^>]*\bid="koels"[\s\S]*?<\/section>/)[0];
+  assert.equal((series.match(/\bdata-hk-koel\s/g) || []).length, 6);
+  assert.equal((library.match(/\bdata-hk-koel\s/g) || []).length, 10);
+  assert.match(series, />Explore more<\/a>/);
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(new Set(ids).size, ids.length, 'IDs must remain unique after section moves');
+  for (const [, target] of html.matchAll(/\bhref="#([^"]+)"/g)) {
+    assert.ok(ids.includes(target), `Missing in-page destination: ${target}`);
+  }
+  for (const [, asset] of html.matchAll(/(?:src|href)="(assets\/[^"?#]+)[^"]*"/g)) {
+    assert.ok(existsSync(join(root, asset)), `Missing asset: ${asset}`);
+  }
+  const collections = [...html.matchAll(/data-collection="([^"]+)"/g)].map(m => m[1]);
+  for (const [, filter] of html.matchAll(/data-hk-koel-filter="([^"]+)"/g)) {
+    assert.ok(filter === 'all' || collections.includes(filter), `Filter has no matching products: ${filter}`);
+  }
 });
 
-test('Why feature stage is content-sized and retains its crossfade', () => {
-  assert.match(css, /\.hk-section--how\s*\{[\s\S]*?background:\s*var\(--hk-canvas\)/);
-  assert.match(css, /\.hk-how-panel__body\s*\{/);
-  assert.doesNotMatch(css, /min-height:\s*min\((?:68|72)vh/);
-  assert.doesNotMatch(css, /\.hk-how-panel__deco/);
-  assert.match(css, /\.hk-how-panel--screen\s*\{/);
-  assert.match(css, /\.hk-how-panel--hands\s*\{/);
-  assert.match(css, /\.hk-how-panel--home\s*\{/);
-  assert.match(css, /\.hk-how-panel--simple\s*\{/);
-  assert.match(css, /\.hk-how-panel\.is-active/);
-  assert.match(css, /--hk-how-panel-duration/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /aspect-ratio:\s*400\s*\/\s*520/);
-  assert.doesNotMatch(css, /\.hk-how-panel--choose\s*\{/);
-  assert.doesNotMatch(css, /\.hk-how__step-reveal/);
+function fixture(reduced = false) {
+  const element = () => ({
+    hidden: false, disabled: false, attrs: {}, events: {},
+    addEventListener(name, callback) { this.events[name] = callback; },
+    setAttribute(name, value) { this.attrs[name] = value; },
+    classList: { toggle() {} },
+  });
+  const previous = element(), next = element(), track = element(), status = element();
+  Object.assign(track, { scrollWidth: 1200, clientWidth: 400, scrollLeft: 0,
+    scrollBy(options) { this.lastScroll = options; },
+    scrollTo(options) { this.scrollLeft = options.left; this.lastScroll = options; },
+  });
+  const filters = ['all', 'Celebrations'].map(value => Object.assign(element(), {
+    dataset: { hkKoelFilter: value }, textContent: value,
+  }));
+  const cards = ['Kahani Original', 'Celebrations', 'Kahani Original'].map((collection, i) => Object.assign(element(), {
+    dataset: { collection }, paused: false,
+    querySelector() { return i === 0 ? { click: () => { this.paused = true; } } : null; },
+  }));
+  track.querySelectorAll = () => cards;
+  const section = {
+    querySelector(selector) { return {
+      '[data-hk-rail-track]': track, '[data-hk-rail-prev]': previous,
+      '[data-hk-rail-next]': next, '[data-hk-filter-status]': status,
+    }[selector] || null; },
+    querySelectorAll: () => filters,
+  };
+  vm.runInNewContext(source, {
+    document: { querySelectorAll: selector => selector === '[data-hk-rail]' ? [section] : [] },
+    window: { matchMedia: () => ({ matches: reduced }), addEventListener() {} },
+  });
+  return { previous, next, track, filters, cards, status };
+}
+
+test('hero header offsets update when the announcement or navigation size changes', () => {
+  const sizes = { announcement: 37, navigation: 110 };
+  const values = {};
+  const announcement = { getBoundingClientRect: () => ({ height: sizes.announcement }) };
+  const navigation = { getBoundingClientRect: () => ({ height: sizes.navigation }) };
+  const observed = [];
+  let resize;
+  vm.runInNewContext(source, {
+    document: {
+      querySelector: selector => ({ '.hk-announcement': announcement, '.hk-nav': navigation })[selector],
+      querySelectorAll: () => [],
+      documentElement: { style: { setProperty: (name, value) => { values[name] = value; } } },
+    },
+    window: {
+      matchMedia: () => ({ matches: false }), addEventListener() {},
+      ResizeObserver: class { constructor(callback) { resize = callback; } observe(node) { observed.push(node); } },
+    },
+  });
+  assert.equal(values['--hk-announcement-height'], '37px');
+  assert.equal(values['--hk-navigation-height'], '110px');
+  assert.equal(observed.length, 2);
+  sizes.announcement = 58;
+  sizes.navigation = 114;
+  resize();
+  assert.equal(values['--hk-announcement-height'], '58px');
+  assert.equal(values['--hk-navigation-height'], '114px');
+});
+
+test('collection filters preserve products, pause hidden audio, announce results and reset scroll', () => {
+  const { filters, cards, track, status } = fixture();
+  track.scrollLeft = 300;
+  filters[1].events.click();
+  assert.deepEqual(cards.map(card => card.hidden), [true, false, true]);
+  assert.equal(cards[0].paused, true);
+  assert.equal(filters[1].attrs['aria-pressed'], 'true');
+  assert.equal(filters[0].attrs['aria-pressed'], 'false');
+  assert.equal(status.textContent, '1 Koel shown in Celebrations.');
+  assert.equal(track.scrollLeft, 0);
+  filters[0].events.click();
+  assert.ok(cards.every(card => !card.hidden));
+  assert.equal(status.textContent, '3 Koels shown.');
+});
+
+test('the story rail exposes brand carousel arrows and one dot per card', () => {
+  const feature = html.match(/<section[^>]*\bid="why"[\s\S]*?<\/section>/)[0];
+  assert.match(feature, /data-hk-rail-prev[^>]*aria-controls="how-it-works"/);
+  assert.match(feature, /data-hk-rail-next[^>]*aria-controls="how-it-works"/);
+  assert.equal((feature.match(/data-hk-rail-dot(?!s)/g) || []).length, 4);
+  assert.match(source, /data-hk-rail-dot/);
+});
+
+test('rails respect boundaries, reduced motion and nested keyboard controls', () => {
+  for (const reduced of [false, true]) {
+    const { previous, next, track } = fixture(reduced);
+    assert.equal(previous.disabled, true);
+    assert.equal(next.disabled, false);
+    next.events.click();
+    assert.equal(track.lastScroll.behavior, reduced ? 'auto' : 'smooth');
+    assert.ok(track.lastScroll.left > 0);
+    track.scrollLeft = 800;
+    track.events.scroll();
+    assert.equal(next.disabled, true);
+    assert.equal(previous.disabled, false);
+    track.lastScroll = null;
+    track.events.keydown({ target: {}, key: 'ArrowRight' });
+    assert.equal(track.lastScroll, null, 'nested controls retain their own keyboard behavior');
+    track.events.keydown({ target: track, key: 'Home', preventDefault() {} });
+    assert.equal(track.lastScroll.left, 0);
+    track.scrollWidth = track.clientWidth;
+    track.events.scroll();
+    assert.equal(next.hidden, true);
+    assert.equal(previous.hidden, true);
+  }
+});
+
+test('navigation overlays close and restore focus across viewport and keyboard changes', () => {
+  let focused;
+  const element = () => {
+    const classes = new Set();
+    return {
+      attrs: {}, events: {},
+      classList: {
+        add: name => classes.add(name),
+        remove: name => classes.delete(name),
+        contains: name => classes.has(name),
+        toggle(name, active) { if (active) classes.add(name); else classes.delete(name); },
+      },
+      addEventListener(name, callback) {
+        const previous = this.events[name];
+        this.events[name] = event => { previous?.(event); callback(event); };
+      },
+      setAttribute(name, value) { this.attrs[name] = value; },
+      focus() { focused = this; this.events.focus?.(); },
+    };
+  };
+  const menu = element();
+  const drawer = element();
+  const drawerLink = element();
+  const search = element();
+  const searchButton = element();
+  const input = element();
+  const bagButton = element();
+  const bag = { querySelector: () => null, showModal() { this.open = true; } };
+  const documentEvents = {};
+  const desktop = element();
+  const mega = element();
+  const megaSet = element();
+  const megaLink = element();
+  const megaTrigger = element();
+  const navFloat = element();
+  desktop.matches = false;
+  drawer.querySelectorAll = () => [drawerLink];
+  search.querySelector = () => input;
+  search.contains = node => node === input || node === searchButton;
+  mega.contains = node => node === megaLink;
+  megaSet.getAttribute = () => 'player';
+  megaSet.querySelector = selector => selector === '[data-hk-mega-hero]' ? megaLink : null;
+  megaSet.querySelectorAll = () => [];
+  megaTrigger.getAttribute = () => 'player';
+
+  const elements = {
+    '[data-hk-menu]': menu, '[data-hk-drawer]': drawer, '[data-hk-nav-search]': search, '#bag-dialog': bag,
+    '.hk-nav__float': navFloat, '[data-hk-mega-panel]': mega,
+  };
+  const groups = {
+    '[data-hk-open-search]': [searchButton], '[data-hk-open-bag]': [bagButton],
+    '[data-hk-mega-trigger]': [megaTrigger], '[data-hk-mega-set]': [megaSet],
+  };
+  vm.runInNewContext(readFileSync(join(root, 'assets/js/main.js'), 'utf8'), {
+    document: {
+      get activeElement() { return focused; },
+      querySelector: selector => elements[selector] ?? null,
+      querySelectorAll: selector => groups[selector] ?? [],
+      addEventListener(name, callback) { (documentEvents[name] ??= []).push(callback); },
+    },
+    window: {
+      matchMedia: query => query === '(min-width: 900px)' ? desktop : { matches: query.startsWith('(hover: hover)') },
+      clearTimeout() {},
+    },
+  });
+
+  const dispatch = (name, event) => documentEvents[name].forEach(listener => listener(event));
+  const escape = () => dispatch('keydown', { key: 'Escape' });
+  menu.events.click();
+  assert.equal(menu.attrs['aria-expanded'], 'true');
+  searchButton.events.click();
+  assert.equal(menu.attrs['aria-expanded'], 'false');
+  assert.equal(searchButton.attrs['aria-expanded'], 'true');
+  assert.equal(focused, input);
+  dispatch('click', { target: input });
+  assert.equal(searchButton.attrs['aria-expanded'], 'true');
+  escape();
+  assert.equal(searchButton.attrs['aria-expanded'], 'false');
+  assert.equal(focused, searchButton);
+
+  menu.events.click();
+  desktop.matches = true;
+  desktop.events.change();
+  assert.equal(drawer.classList.contains('is-open'), false);
+  assert.equal(menu.attrs['aria-expanded'], 'false');
+  menu.events.click();
+  assert.equal(drawer.classList.contains('is-open'), false);
+  megaTrigger.events.keydown({ key: 'ArrowDown', preventDefault() {} });
+  assert.equal(mega.attrs['aria-hidden'], 'false');
+  assert.equal(focused, megaLink);
+  escape();
+  assert.equal(mega.attrs['aria-hidden'], 'true');
+  assert.equal(focused, megaTrigger);
+
+  megaTrigger.events.keydown({ key: 'ArrowDown', preventDefault() {} });
+  desktop.matches = false;
+  desktop.events.change();
+  assert.equal(mega.attrs['aria-hidden'], 'true');
+  menu.events.click();
+  drawerLink.events.click();
+  assert.equal(menu.attrs['aria-expanded'], 'false');
+  menu.events.click();
+  escape();
+  assert.equal(focused, menu);
+  searchButton.events.click();
+  bagButton.events.click();
+  assert.equal(searchButton.attrs['aria-expanded'], 'false');
+  assert.equal(bag.open, true);
 });

@@ -1,5 +1,92 @@
 # Website image assets
 
+## Homepage photography — November 20, 2026
+
+The active homepage lifestyle images now follow the approved
+[photography style guide](../../../docs/photography-style-guide.md): Indian
+children, candid everyday moments, warm light and playful colours. Four
+approved direction samples are reused, and one new independent-choice scene
+fills the Made for little hands card. All five masters are generated concepts;
+the Player is a recreation and the disc illustrations are not approved SKU art.
+
+The new web assets are in `editorial/photography-2026-11-20/`. Each is a
+1254 × 1254 WebP export at quality 85, with no crop or upscaling; together they
+weigh 986,376 bytes. Original PNG masters and exact generation prompts remain
+in the two source bundles linked below.
+
+| Homepage placement | New web asset | Replaces |
+| --- | --- | --- |
+| Tap a Koel. Hear a Kahani. | `01-choosing-a-story.webp` | `editorial/hk-shot-05.png` |
+| Stories that feel like home | `03-breakfast-giggles.webp` | `editorial/hk-shot-03.png` |
+| Made for little hands | `05-independent-choice.webp` | `editorial/hk-shot-02.png` |
+| A story for the quieter moments | `04-bedtime-wind-down.webp` | `editorial/hk-shot-06.png` |
+| Player menu default and Player row | `02-stories-on-the-floor.webp` | `product/player-hero.jpg` |
+| Player menu See how it works row | `01-choosing-a-story.webp` | `product/player-desktop.jpg` |
+
+Card images keep the existing layout and masks, with descriptive alt text and
+correct square intrinsic dimensions. Both menu thumbnails and their hover
+image sources use the new set. Product cutouts, the studio product view, Koel
+catalogue art, vector assets and the hidden founder section retain their media.
+Old files remain available for other pages and historical reference.
+
+The [homepage replacement manifest](../../../output/imagegen/hk-homepage-photos-2026-11-20/manifest.json)
+records the full mapping, native dimensions, master hashes and export sizes.
+The [new scene prompt](../../../output/imagegen/hk-homepage-photos-2026-11-20/prompts.json)
+and [four direction samples](../../../output/imagegen/hk-photo-style-approval-2026-11-20/manifest.json)
+preserve provenance. Browser review on November 20, 2026 covered all four
+feature photos at 1440 × 1000 desktop and 390 × 844 mobile, plus both lifestyle
+images in the desktop Player menu. That review used landscape SVG masks
+overfilling the square photo frames proportionally, keeping faces and Player
+bases visible. Menu photos use contain, and the first card's book sits at the
+upper left, clear of the Player. The stylesheet version was refreshed so the
+saved crop correction loads after navigation. The
+[browser review record and screenshots](../../../output/qa/homepage-photo-crops-2026-11-20/review.json)
+document the checked placements; all four existing homepage layout tests passed.
+
+### More playful feature-photo shapes — November 21, 2026
+
+The four feature photos now use Cloud cut, Wandering pebble, Double wave and
+Soft arch masks. Their square viewBoxes and proportional cover sizing make
+the side contours visible without stretching the old landscape masks. Source
+drawings, safe-area guidance and placements are in the
+[mask manifest](../../../outputs/brand-library-v1/extensions/feature-photo-masks/manifest.json);
+deployment copies live in `brand-library/masks/`. Photos, crops, copy, card
+layout, supporting illustrations, tilt, shadows and hover effects are unchanged.
+
+A [static photo/mask preview](../../../output/qa/feature-photo-masks-2026-11-21/static-mask-preview.png)
+was rendered and inspected to check the new silhouettes against the four
+photos. It shows the photo assets, not a browser render of the cards. The four
+existing homepage layout tests and source checks passed; browser verification
+of these new masks was not performed. The stylesheet version was refreshed.
+
+## Active hero — November 18, 2026
+
+The current first fold follows the supplied campaign composition: warm plain
+background, lower-left live copy, one CTA, and large product imagery on the
+right. It uses `hero/player-hero-transparent.png` (891 × 1764) and the existing
+Holi, Kerala and Festival Koel artworks. The Player cutout was edited with the
+built-in image generation tool from `product/player-cutout.png` to remove the
+background, including inside the handle. It remains generated concept media.
+The earlier child-and-Player lifestyle image is retained as an available asset.
+
+Exact cutout prompt:
+
+> Use case: background-extraction. Edit the supplied Kahani Player product image into a clean transparent-background cutout for a website hero. Remove only the beige background, including the area inside the carrying handle, and remove the floor shadow. Preserve the same cream cylindrical body, exact front controls and their arrangement, arch handle, cyan top ring, Gulab red woven speaker band and wood base, keeping the product shape and camera angle as close to the source as possible. Keep the entire product visible with a small transparent margin. Do not redesign, add or remove hardware, alter product colors, add a story disc, add text, or add any new object. Output an actual transparent alpha background.
+
+## Earlier homepage composition — November 17, 2026
+
+The Yoto-structured layout reuses these assets without generating replacements.
+That pass used the smaller-Koel lifestyle hero and a family-moment triptych;
+the active product hero above now replaces the lifestyle hero, and the original
+testimonial collage has been restored. Existing editorial photos support
+the horizontal feature rail; the original Player
+cutout supports the Player-first purchase section. The app and founder photos
+now sit in compact editorial cards. Photo frames use the existing Soft postcard
+and Plump panel container alpha shapes; story cards keep their original poster
+treatment. Earlier section-specific integration notes below describe prior
+layouts unless retained by the current source. Concept-image provenance and
+product/content approval limits remain in force.
+
 ## Generated campaign — November 7, 2026
 
 All 12 generated PNGs are saved in this website's asset tree. Paths below are relative to `shopify-homepage/` and can be used directly from its `index.html`. The originals, full prompts, and delivery notes remain in [`output/imagegen/hk-campaign-2026-11-07/`](../../../../output/imagegen/hk-campaign-2026-11-07/).
@@ -20,9 +107,9 @@ All 12 generated PNGs are saved in this website's asset tree. Paths below are re
 | Park mindfulness picnic | `assets/images/koels/hk-shot-08-04-park-mindfulness.png` | 1254 × 1254 |
 | Market and temple travel | `assets/images/koels/hk-shot-08-05-market-temple.png` | 1254 × 1254 |
 
-The original generated hero concepts remain available above. The portrait campaign image is still used by a How it works card. The active landing-page hero now uses the user-supplied image below at both breakpoints.
+The original generated hero concepts remain available above. The user-supplied lifestyle image below was used by the previous hero at both breakpoints; the current product composition is documented at the top of this file.
 
-Example from `shopify-homepage/index.html`:
+Earlier lifestyle-hero markup:
 
 ```html
 <picture>
@@ -31,7 +118,7 @@ Example from `shopify-homepage/index.html`:
 </picture>
 ```
 
-The active landing-page hero uses `assets/images/hero/landing-hero-child-player-koels.png` (1672 × 941), regenerated from the user-supplied image on November 17, 2026. The three Koel disc diameters were reduced to roughly 55% of their previous size; this remains generated concept imagery, not verified production photography. Desktop and mobile use the same file, with the existing mobile `object-position: 78% 30%`. `generated-campaign.json` continues to document the original generated campaign assets; other homepage sections keep their existing image references.
+The previous lifestyle hero used `assets/images/hero/landing-hero-child-player-koels.png` (1672 × 941), regenerated from the user-supplied image on November 17, 2026. The three Koel discs were made smaller in two edit passes; this remains generated concept imagery, not verified production photography. Both breakpoints used that file, with mobile `object-position: 78% 30%`. `generated-campaign.json` continues to document the original generated campaign assets.
 
 The generated campaign assets above remain concept art, with approximate hardware geometry and unapproved story illustrations. The parent phone interface is a fictional app concept. Native campaign files are below the brief's 2400px long-edge target and have no verified embedded sRGB ICC profile. The original campaign assets were not resized, cropped, recolored, or format converted; the wide campaign hero is a separate generated edit.
 

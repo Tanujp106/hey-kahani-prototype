@@ -249,6 +249,25 @@ Guide pages 25–28:
 
 ## Photography and product imagery
 
+### Approved photography direction — November 20, 2026
+
+The user approved the four November 20 photography samples as the direction
+and requested a consistent style guide: **Indian children, candid everyday
+moments, warm light and playful colours**. Use
+[`docs/photography-style-guide.md`](docs/photography-style-guide.md) for new
+photography briefs, image generation and selection. Contemporary clothes,
+individual faces, natural skin texture and tactile domestic settings keep the
+work grounded. Colour comes through clothes, textiles and ordinary objects
+within the brand palette; warmth must preserve believable whites and skin tones.
+Expressions range from absorbed attention and laughter to quiet bedtime.
+
+The generated sample set is a visual direction reference, not final merchandise
+photography or approved Koel artwork. Keep the Player's verified geometry,
+Gulab speaker band and circular-disc interaction. This documentation update
+does not replace website images or change the homepage layout.
+
+### Brand photography reference
+
 Guide page 30:
 
 - Warm, natural, modern, and homely-yet-aspirational.
@@ -272,6 +291,29 @@ A generated transparent cutout based on these renders is still a **concept recre
 ## Current homepage and interaction decisions
 
 These are project decisions from this chat, not rules stated in the PDF:
+
+### Responsive hero correction — November 21, 2026
+
+The user requested a hero that works across screen widths and heights. The
+Player, Koels and backdrop now share one bounded, proportional stage; they
+scale together instead of spreading across a viewport-sized absolute layer.
+Wide layouts use copy/art columns, narrower portrait layouts stack the art
+above the copy, and wide landscape devices can retain columns. The artwork
+also scales down with short viewport heights. Tilt, shadows and hover effects
+are retained.
+
+The hero has a one-viewport minimum, with header-aware top clearance. Its
+height grows with its contents on small screens or with larger text, so the
+headline, description and CTA remain in normal page flow. This supersedes the
+earlier fixed one-viewport maximum and internally scrolling copy treatment.
+The current photography, playful feature-photo masks and remaining page
+structure are unchanged.
+
+### Player purchase bar — November 21, 2026
+
+On the Kahani Player page, the purchase bar is fixed to the bottom of the
+viewport. Section jumps clear the navbar only. The page keeps bottom padding
+so the footer stays above the bar.
 
 ### Homepage structure — November 17, 2026
 
@@ -303,7 +345,7 @@ the asset drawing system, product facts or content approvals.
   stories in a native horizontal rail → Player-first purchase choices → Koel
   discovery → family moments and retained sample quotes → compact founder/app
   editorial cards → practical help links → split FAQ → newsletter and sitemap.
-  November 17, 2026: the FAQ intro heading and lead are center aligned. The
+  November 17, 2026: the FAQ intro heading and lead are center aligned. November 21, 2026: that intro is vertically centered beside the question list. The
   heading breaks after “Small questions.” so “Straight answers.” stays on one
   line. The “Explore all FAQs” link under that intro is removed. The practical-help link
   to the FAQ page stays. The practical help row is four left-aligned white cards on a Kesar band,
@@ -311,10 +353,18 @@ the asset drawing system, product facts or content approvals.
   a bold title, and a short supporting line. Hover is a slightly warm white. The four existing journeys and destinations stay;
   shipping, payment, return, and warranty claims are not added.
   November 18, 2026: the How it works rail is not clipped at the content column.
-  It keeps the heading’s left edge and runs through the right margin to the
-  viewport, so the next card stays visible. The rail scrolls inside the section.
-  The page itself does not scroll sideways. The cards themselves do not clip
-  their contents.
+  It runs through the right margin to the viewport, so the next card stays
+  visible. The rail scrolls inside the section. The page itself does not scroll
+  sideways. The cards themselves do not clip their contents.
+  November 21, 2026: the first card’s left edge lines up with the left edge of the
+  floating navbar, the 1120px content column. Later cards still continue past
+  that column so the next card stays visible. Each card fills that column up to
+  1040px, with a square photo beside the copy. Below a 760px rail the photo
+  stacks above the copy, and below 520px it uses the full card width. The old
+  58vw width and 1.7 ratio are retired because they squeezed the cards.
+  Same day: the story rail is a carousel. Previous and next use the existing
+  circular ink buttons and Lucide chevrons. Four dots sit between them: Husk
+  for the others, Gulab for the current card. No new control style.
 - The Player is offered before the Koel catalogue. The approved $129 USD price
   remains bound to its existing product snapshot. Koels explicitly require the
   Player; no first-purchase bundle contents, bundle price, additional device
@@ -352,10 +402,12 @@ shows five cards, with 40px of space above and below that section.
 The One Player strip is a Sindoor bar with a Sindoor wave on the top and bottom. The three labels use Open Sans at UI size, with a wide gap, centered in the bar. They are not links. No colour-wave stack sits above or below it. How it works
 stays inside the content column so the first card is not cut off on the left.
 The heading and lead are removed. The first card has no step list, and each card link
-is a primary button. November 18, 2026: each story card is 58% of the viewport wide, up to 1040px, at a 1.7 ratio. The photos fill the left side of each card.
+is a primary button. November 18, 2026: each story card was 58% of the viewport wide, up to 1040px, at a 1.7 ratio. November 21, 2026 supersedes that ratio: the fixed short card squeezed the copy. Photos still fill a square on the left while the rail is wide.
 The Player section’s bottom edge uses the colour wave. The top edge is a Kesar wave,
 with 40px of padding inside the Player content. The red Koel catalogue wraps in rows and
-has no eyebrow above the heading. A wave that meets a white section ends in white. The lead breaks after the first sentence so it reads as two lines.
+has no eyebrow above the heading. November 21, 2026: four compact cards a row
+down to 800px, then two, then one. The three-across step is retired because
+those cards read too large. A wave that meets a white section ends in white. The lead breaks after the first sentence so it reads as two lines.
 The copy’s left edge and the Player’s right edge sit on the 1120px content
 column, the same width as the nav. The Player is 15% larger than the reduced
 campaign size. The three Koels are larger, sit a little closer to the Player, and clear the navbar. The landing fold is 100vh.
@@ -514,7 +566,7 @@ hardware are reference content, not approved Hey Kahani claims or assets.
 
 - Superseded earlier November 14, 2026: static 2×2 Yoto-style feature bento. Superseded November 12, 2026 three-column step bento. Both replaced by the tabbed one-card feature stage above.
 
-- User direction on November 14, 2026 (`shopify-homepage/` FAQ): question summaries use `--hk-text-subhead` (not body); give the section more vertical padding, roomier row padding, and a clear gap between accordion items so the list does not feel squished. Answers stay `--hk-text-body`; keep accordion height measurement via `.hk-faq__content` padding (no vertical margin on answer `p`). November 17, 2026: question summaries also use Body, because Subhead felt too big. The plus mark uses the same size.
+- User direction on November 14, 2026 (`shopify-homepage/` FAQ): question summaries use `--hk-text-subhead` (not body); give the section more vertical padding, roomier row padding, and a clear gap between accordion items so the list does not feel squished. Answers stay `--hk-text-body`; keep accordion height measurement via `.hk-faq__content` padding (no vertical margin on answer `p`). November 17, 2026: question summaries also use Body, because Subhead felt too big. November 21, 2026: the disclosure mark is a Lucide plus, and a Lucide minus when open — 22px, 1.7 stroke, round caps, ink — the same drawing as the other interface icons. It is no longer a type glyph.
 
 - Current section order, November 16, 2026: Hero → Why / USPs → How it works →
   Koels → Player → App → Founder → Community → FAQs. The separate How it works
@@ -565,7 +617,7 @@ hardware are reference content, not approved Hey Kahani claims or assets.
 - User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 - User direction on November 11, 2026: Koel Preview pill is a near-white frosted surface (`rgba(255, 252, 247, 0.92)` with light blur), not Coconut Husk. Category badges use a frosted white blur background over artwork.
 - User direction on November 12, 2026: match the Koels section ground to the footer's Sindoor Red (`#B40023`), not Gulab Red. Keep white heading/intro text and organic edges showing the white sections above and below. Reverse the Explore CTA to Kesar Sand with a Sindoor Red label for contrast. Keep the Koel cards on their Kesar Sand foundation with black card copy and existing brand-red bag controls; hide the organic edges on narrow screens as already configured. November 17, 2026: poster titles use Body (17px) instead of Subhead.
-- User direction on November 16, 2026 (`shopify-homepage/` section waves): remove the USP lines from the strip. Use three tall waves in Sky, Mango, and Marigold (`clamp(84px, 11vw, 148px)`, not a thin ribbon), with Sindoor continuing into the Koels section. Repeat that stack at the end of Koels, reversed, so Marigold meets the red and Sky meets the section below. The three Temple depth waves inside the section use that same curve and the same height, so their crests line up with the color bands. The bottom color stack sits clear of the Koel cards: the section’s bottom padding is the stack height plus a gap. The red above that stack is continuous — no straight clip and no flat red cap above the Marigold wave. November 18, 2026: that same Sky, Mango, and Marigold stack breaks every homepage section. The cap above the stack matches the section it leaves, and the cap below matches the section it enters. The help row is Kesar, with a cream wave on its top and bottom edges and white cards. The colour stack above the Player is removed. Its top edge is a single Kesar wave. The colour wave above Shop the Player & Koels is removed, and so is the one above A little story for every day. The One Player strip is the other: no wave stack above or below it.
+- User direction on November 16, 2026 (`shopify-homepage/` section waves): remove the USP lines from the strip. Use three tall waves in Sky, Mango, and Marigold (`clamp(84px, 11vw, 148px)`, not a thin ribbon), with Sindoor continuing into the Koels section. Repeat that stack at the end of Koels, reversed, so Marigold meets the red and Sky meets the section below. The three Temple depth waves inside the section use that same curve and the same height, so their crests line up with the color bands. The bottom color stack sits clear of the Koel cards: the section’s bottom padding is the stack height plus a gap. The red above that stack is continuous — no straight clip and no flat red cap above the Marigold wave. November 18, 2026: that same Sky, Mango, and Marigold stack breaks every homepage section. The cap above the stack matches the section it leaves, and the cap below matches the section it enters. The help row is Kesar, with a cream wave on its top and bottom edges and white cards. The colour stack above the Player is removed. Its top edge is a single Kesar wave. The colour stack above Shop the Player & Koels is removed. That section now has a very subtle Kesar wave on the top and bottom. The colour wave above A little story for every day is removed. The One Player strip is the other: no wave stack above or below it.
 - Current Player section direction, November 17, 2026: the user rejected the
   overall scale and positioning, the price/button row, and the overpowering
   floating badges, and requested Mobbin references followed by implementation.

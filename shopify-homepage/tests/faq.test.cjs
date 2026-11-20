@@ -59,6 +59,7 @@ function setup(reducedMotion = false) {
   });
   vm.runInNewContext(source, {
     document: {
+      addEventListener() {},
       querySelector(selector) { return selector === '[data-hk-faq]' ? { querySelectorAll: () => items.map(item => item.details) } : null; },
       querySelectorAll() { return []; },
     },

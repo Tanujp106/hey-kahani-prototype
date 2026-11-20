@@ -56,6 +56,7 @@ function setup({ reduced = false, src = 'assets/audio/preview-sample.mp3', graph
   const environment = {
     window, Uint8Array, Math,
     document: {
+      addEventListener() {},
       querySelector(selector) { return selector === '#koel-dialog' ? dialog : null; },
       querySelectorAll(selector) { return selector === '[data-hk-koel]' ? cards : []; },
       createElement: tag => new Element(tag), createElementNS: (_, tag) => new Element(tag),

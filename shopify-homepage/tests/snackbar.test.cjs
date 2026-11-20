@@ -24,6 +24,7 @@ function setup() {
   });
   const environment = {
     document: {
+      addEventListener() {},
       querySelector: selector => selector === '[data-hk-snackbar]' ? snackbar : null,
       querySelectorAll: selector => selector === '[data-hk-koel]' ? cards : [],
     },
