@@ -344,6 +344,9 @@ for the full Shop section to target roughly 500–700px on desktop: compact
 180px image areas, shorter copy, tighter padding and no repeated benefit pills.
 Koel discovery now follows Shop directly, ahead of the introductory strip and
 feature stories. Narrow screens remain content-sized rather than height-clipped.
+November 21, 2026: both Shop cards have an “Explore now” CTA and their titles
+have no trailing period. The featured Koel arrows sit together below the rail,
+centered. The featured rail scrolls horizontally on wider screens.
 
 The user explicitly requested a homepage rebuild around Yoto's current section
 roles and navigation, while preserving the Hey Kahani visual style already
@@ -372,10 +375,12 @@ the asset drawing system, product facts or content approvals.
   1040px, with a square photo beside the copy. Below a 760px rail the photo
   stacks above the copy, and below 520px it uses the full card width. The old
   58vw width and 1.7 ratio are retired because they squeezed the cards.
-  Same day: the story rail is a carousel. Previous and next use the existing
-  circular ink buttons and Lucide chevrons, centered on the left and right of
-  the card row. The four dots sit below in a small Husk-outlined group: Husk
-  for the others, Gulab for the current card. No new control style.
+  Same day: the four corner illustrations on the story cards are 160px, up
+  from 96px, so the drawings read on the photo. They sit a little outside
+  the photo, on the card colour. The story rail is a carousel.
+  The circular Previous and Next buttons sit together below the cards,
+  centered. Four unframed indicators sit above them, with a Gulab pill marking
+  the current card.
   On a narrow screen the story cards stack and stick under the navbar, and the
   pager is hidden. The featured Koels wrap into two columns instead of a
   sideways row. The How it works band keeps a short top and bottom padding.
