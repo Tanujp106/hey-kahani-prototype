@@ -312,20 +312,29 @@ structure are unchanged.
 ### Player purchase bar — November 21, 2026
 
 On the Kahani Player page, the purchase bar is fixed to the bottom of the
-viewport. Section jumps clear the navbar only. The page keeps bottom padding
+viewport. It is a little taller. The detail links are removed. The approved
+$129 sits beside the name, without the USD label. No struck original price
+or percent-off badge is shown, because no compare-at price is confirmed. Section jumps clear the navbar only. The page keeps bottom padding
 so the footer stays above the bar. The first fold keeps the gallery beside the
 purchase on wide screens and stacks it above the purchase on phones. The
-purchase uses a Section-size title and a short description. The gallery has
-no caption, and the finish line is not shown. Features, box contents, and
-Koels are three quiet cards, each with a short line under the label. The
+purchase leads with the Section-size title and Gulab price, then a short
+description and four unboxed icon highlights. Add to cart follows the
+highlights. Features, In the box and Explore Koels sit underneath as text
+links. The gallery has no caption, and the finish line is not shown. The
 benefits heading, “Made for the way kids listen.”, uses Title size. One
-four-card grid below the fold explains the Player's benefits. The “Meet
+four-card grid below the fold explains the Player's benefits. Each photo
+fills its card. A linear colour fade and a progressive blur rise from the
+bottom, so the copy does not sit on a solid block. The “Meet
 their new story companion.” band and the navigation that points at it
 are hidden for now. In What’s included, Explore the story discs is a
 secondary button. The companion app card links to the App Store and
 Google Play. The specifications band is a full-width Kesar section with
 the homepage wave on both edges, and the unconfirmed-hardware note is
-removed.
+removed. The “Their first favourite is waiting.” rail hides its scrollbar.
+Previous and next sit together below the cards, as on the homepage. The
+sample-content note under that rail is removed. The Player FAQ uses the
+homepage list and the same centered title. It has no card. The Player footer uses the homepage
+wave, signup, and links.
 
 ### Homepage structure — November 17, 2026
 
@@ -360,7 +369,7 @@ the asset drawing system, product facts or content approvals.
   stories in a native horizontal rail → Player-first purchase choices → Koel
   discovery → family moments and retained sample quotes → compact founder/app
   editorial cards → practical help links → split FAQ → newsletter and sitemap.
-  November 21, 2026: the homepage FAQ heading and lead are removed. The question list stays. The “Explore all FAQs” link is removed. The practical-help link
+  November 21, 2026: the homepage FAQ lead stays removed. The title “Small questions. Straight answers.” is centered above the list, on the homepage and the Player page. The question list stays. The “Explore all FAQs” link is removed. The practical-help link
   to the FAQ page stays. The practical help row is four left-aligned white cards on a Kesar band,
   with a Kesar wave along the top and bottom. Each card has a stroke icon,
   a bold title, and a short supporting line. Hover is a slightly warm white. The four existing journeys and destinations stay;
@@ -379,8 +388,8 @@ the asset drawing system, product facts or content approvals.
   from 96px, so the drawings read on the photo. They sit a little outside
   the photo, on the card colour. The story rail is a carousel.
   The circular Previous and Next buttons sit together below the cards,
-  centered. Four unframed indicators sit above them, with a Gulab pill marking
-  the current card.
+  centered. Four indicators sit together in a small Husk pill above the
+  arrows. A Gulab mark follows the card as it scrolls.
   On a narrow screen the story cards stack and stick under the navbar, and the
   pager is hidden. The featured Koels wrap into two columns instead of a
   sideways row. The How it works band keeps a short top and bottom padding.
@@ -681,7 +690,7 @@ hardware are reference content, not approved Hey Kahani claims or assets.
 - User authorization on November 4, 2026: fictional parent names and sample quotes may populate the testimonial mockup when every card clearly labels them “Fictional sample”. They are not actual customer reviews and must be replaced with approved attribution before launch.
 
 - User direction on November 4, 2026: use **white `#FFFFFF`** for `--hk-paper` / the principal page background. Keep **Kesar Sand `#FFF1D6`** (`--hk-sand` / `--hk-canvas-warm`) for the footer for now, not as the site-wide ground. The PDF does not mandate a particular web background. The active vector logos are transparent and must not have white background plates.
-- Footer colour (active November 7, 2026 shopify-homepage): **Sindoor Red** ground, **Kesar cream** wordmark (`wordmark-cream.svg`), cream body/link text, soft cream dividers, November 17, 2026: the newsletter email and Join share one Kesar capsule. Join is a Sindoor pill with a Kesar label. This replaces the separate translucent field and the earlier Kesar button with a Sindoor label. November 18, 2026: that capsule replaces the “Little stories. Lasting roots.” line in the brand row. The separate “A little Kahani in your inbox” block is removed. No blue. This restores the inverse footer treatment over the brief cream-ground trial.
+- Footer colour (active November 7, 2026 shopify-homepage): **Sindoor Red** ground, **Kesar cream** wordmark (`wordmark-cream.svg`), cream body/link text, soft cream dividers, November 17, 2026: the newsletter email and Join share one Kesar capsule. Join is a Sindoor pill with a Kesar label. November 21, 2026: that capsule rests a little below full opacity and returns to full opacity when the field is selected. This replaces the separate translucent field and the earlier Kesar button with a Sindoor label. November 18, 2026: that capsule replaces the “Little stories. Lasting roots.” line in the brand row. The separate “A little Kahani in your inbox” block is removed. No blue. This restores the inverse footer treatment over the brief cream-ground trial.
 - Footer layout (November 7, 2026): VanMoof three-tier on Sindoor Red — (1) compact brand row with cream wordmark + community line, (2) newsletter column beside Explore/About/Help, (3) copyright + Privacy/Terms. Keep the top row content-height only (no empty red band). Newsletter pitch uses `hk-display--md`.
 - Superseded November 11, 2026: the homepage About / “Stories that feel like them” belief + three lifestyle moments section is removed. Origin story stays in Founder. Footer “Our story” points to `#founder`.
 - Latest user direction on November 4, 2026: retain the testimonial ticker's Kesar Sand background and black heading block, with no section preview line or visible pause control. Images must remain clearly visible, card text must be black rather than red/maroon, and card type must be smaller. Blend clear lifestyle photos continuously into the text using a linear white fade and progressively masked blur, with white card backgrounds; do not create a separate text panel or abrupt image/text edge. Retain the looping layout and image provenance documentation; do not introduce blue surfaces.

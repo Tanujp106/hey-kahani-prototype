@@ -44,13 +44,21 @@
       }
       if (!dots.length) return;
       const size = stepSize();
-      const index = size > 0 ? Math.min(dots.length - 1, Math.max(0, Math.round(track.scrollLeft / size))) : 0;
+      const maxIndex = dots.length - 1;
+      const position = size > 0 ? Math.min(maxIndex, Math.max(0, track.scrollLeft / size)) : 0;
+      const index = Math.min(maxIndex, Math.max(0, Math.round(position)));
       dots.forEach((dot, dotIndex) => {
         const active = dotIndex === index;
         dot.classList.toggle('is-active', active);
         if (active) dot.setAttribute('aria-current', 'true');
         else dot.removeAttribute('aria-current');
       });
+      const first = dots[0];
+      if (dotList?.style && first && typeof first.offsetLeft === 'number') {
+        const stride = dots[1] ? dots[1].offsetLeft - first.offsetLeft : 0;
+        const center = first.offsetLeft + first.offsetWidth / 2 + position * stride;
+        dotList.style.setProperty('--hk-feature-dot-x', `${center - 9}px`);
+      }
     };
     const scroll = (direction) => {
       track.scrollBy({ left: direction * stepSize(), behavior: motion() });

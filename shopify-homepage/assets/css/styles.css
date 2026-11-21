@@ -3620,9 +3620,20 @@ input {
   background: var(--hk-kesar);
 }
 
-.hk-newsletter__row:focus-within {
+.hk-footer .hk-newsletter__row {
+  opacity: 0.82;
+  transition: opacity var(--hk-duration) var(--hk-ease);
+}
+
+.hk-newsletter__row:focus-within,
+.hk-footer .hk-newsletter__row:focus-within {
+  opacity: 1;
   outline: 2px solid var(--hk-kesar);
   outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-footer .hk-newsletter__row { transition: none; }
 }
 
 .hk-footer .hk-newsletter input {
