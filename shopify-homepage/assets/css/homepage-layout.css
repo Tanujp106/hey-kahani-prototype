@@ -262,7 +262,6 @@ html { overflow-x: clip; }
 .hk-feature__photo { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 0; -webkit-mask: var(--hk-feature-photo-mask) center / cover no-repeat; mask: var(--hk-feature-photo-mask) center / cover no-repeat; }
 .hk-feature__graphic { position: absolute; left: -36px; bottom: -28px; z-index: 1; width: 160px; height: 160px; object-fit: contain; pointer-events: none; }
 .hk-feature--tap-to-play .hk-feature__graphic { top: -28px; bottom: auto; }
-[data-hk-mega-set="player"] .hk-mega__hero img { object-fit: contain; }
 .hk-feature__copy { display: flex; flex-direction: column; align-items: flex-start; align-self: center; min-width: 0; min-height: 0; padding: 0; }
 .hk-feature__copy h3 { max-width: 16em; margin: 0 0 var(--hk-space-sm); font-size: var(--hk-text-md); line-height: 1.15; }
 .hk-feature__copy p { margin: 0 0 20px; font-size: var(--hk-text-body); line-height: 1.6; }

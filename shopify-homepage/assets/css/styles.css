@@ -511,6 +511,12 @@ input {
     visibility 0s linear 360ms;
 }
 
+.hk-mega__set--shop {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  gap: var(--hk-space-md);
+}
+
 .hk-mega.is-open .hk-mega__set.is-active {
   opacity: 1;
   visibility: visible;
@@ -542,6 +548,9 @@ input {
   height: 100%;
   object-fit: cover;
 }
+
+.hk-mega__set--shop .hk-mega__hero img { object-position: center 36%; }
+.hk-mega__set--shop > .hk-mega__hero:first-child img { object-position: center 66%; }
 
 .hk-mega__hero::after {
   position: absolute;

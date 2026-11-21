@@ -276,7 +276,7 @@ What this means in practice:
   gutter back as padding — so the next card peeks in and the swipe is
   discoverable. It carries `scroll-snap-type: x mandatory`, hides its scrollbar,
   and sets `overflow-y: hidden` so a tilted or shadowed card is not clipped.
-- **Every rail gets the shared pager.** Put `data-hk-rail` on the section,
+- **Product and feature rails get the shared pager.** Put `data-hk-rail` on the section,
   `data-hk-rail-track` on the track, and an empty `.hk-carousel-dots
   [data-hk-rail-dots] hidden` after it. `assets/js/homepage-layout.js` builds one
   dot per reachable position and leaves the list hidden when the cards already
@@ -290,9 +290,8 @@ What this means in practice:
   the heading and sentence need the width — but give back the height they were
   holding for a two-up desktop row.
 
-The testimonials rail lives in `styles.css`, so both the homepage and the Player
-page get it. That is deliberate: it is one component and it should not read
-differently depending on the page.
+The testimonials use the same swipe and keyboard scrolling on both pages,
+with no visible dots or arrows.
 
 ### Chips
 
@@ -798,6 +797,7 @@ hardware are reference content, not approved Hey Kahani claims or assets.
 - User direction on November 14, 2026 (`shopify-homepage/` navbar): **floating** content-width bar — same max width as `.hk-wrap` / `--hk-content` (1120px), centered, rounded, with a soft shadow — not full-bleed. Sindoor wordmark (`wordmark.svg`), black links/icons, Gulab bag badge. Mobile drawer opens inside the same floating shell. The solid white/`--hk-canvas` surface from this note is superseded by the November 16, 2026 frosted Kesar treatment below.
 - User direction on November 16, 2026 (`shopify-homepage/` navbar): the floating bar is frosted **Kesar Sand** at 82% opacity (`rgba(255, 241, 214, 0.82)`) with a 16px background blur, not solid white. Shop Player, Shop Koel, Bestsellers, and Founder's Bundle share one hover and one open state: white pill, Gulab label, no underline. Search and bag sit in one light capsule with one shared hover; the hairline before search is removed. November 17, 2026: that capsule is a little wider and uses a warm Kesar/Husk cream, not white.
 - User direction on November 14, 2026 (`shopify-homepage/` desktop mega menus): one shared floating overlay matching the **navbar width**, **clean/minimal** (Oura-like). Fixed height. **Left** large rounded hero image with title + circular go control; **right** compact thumbnail rows + Shop all. Hover Player/Koel opens with ease-out blur-in; close uses blur-out. Switching Player ↔ Koel keeps the same overlay and swaps content inside. Row hover updates the hero. Bestsellers/Bundle hover, Escape, and mouseleave dismiss. No close button, no heavy split red/cream panels. Desktop/fine-pointer only; mobile keeps the drawer. Exact brand tokens only.
+- November 22, 2026: Start here has two equal image links, **Shop Player** on the left and **Shop Koels** on the right. The photos fill their tiles edge to edge. The separate Shop Koel menu retains its thumbnail list and featured image.
 
 - User direction on November 8, 2026: `shopify-homepage/` Koel product cards use full-card rectangular artwork, with the circular disc silhouette/rim cropped out. Use taller 2:3 card proportions, a top category badge, and a Kesar Sand (`#FFF1D6`) linear fade with masked progressive blur toward the bottom, sharp black title and existing price above Preview and Add to bag. Place Preview beside a 44px circular icon-only bag button; tapping the bag shows the existing tick confirmation. Keep the accessible Add to bag/Added to bag labels and narrow two-column mobile grid. Preserve the current grid, inline audio/waveform behavior, data and shared CTA styling. This supersedes the earlier circular-disc/contained-art card presentation.
 - User direction on November 11, 2026: Koel Preview pill is a near-white frosted surface (`rgba(255, 252, 247, 0.92)` with light blur), not Coconut Husk. Category badges use a frosted white blur background over artwork.

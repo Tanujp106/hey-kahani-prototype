@@ -21,9 +21,7 @@
       "slots": {
         "nav-start-href": "#shop",
         "nav-koels-href": "/koels-listing",
-        "nav-how-hidden": "",
-        "mega-player-row3-href": "/products/founders-bundle",
-        "mega-player-row3-label": "Founder's Bundle"
+        "nav-how-hidden": ""
       }
     },
     {
@@ -33,9 +31,7 @@
       "slots": {
         "nav-start-href": "#player",
         "nav-koels-href": "/#koels",
-        "nav-how-hidden": " hidden",
-        "mega-player-row3-href": "#included",
-        "mega-player-row3-label": "What’s included"
+        "nav-how-hidden": " hidden"
       }
     }
   ]
