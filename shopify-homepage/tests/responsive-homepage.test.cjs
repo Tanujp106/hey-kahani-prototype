@@ -346,35 +346,27 @@ test('the feature rail contains overflow and leaves room for text at both contai
   });
 });
 
-const featureNav = probe('.hk-feature-nav');
-const featureDots = probe('.hk-carousel-dots:not([hidden])', '.hk-feature-dots:not([hidden])');
-const featureDot = probe('.hk-carousel-dot', '.hk-feature-dot');
-const featureArrow = probe('.hk-icon-btn', '.hk-rail-control', '.hk-home-features .hk-rail-control');
+const railPagination = probe('.hk-rail-pagination');
+const railArrows = probe('.hk-rail-controls');
+const railArrow = probe('.hk-rail-control');
+const carouselDot = probe('.hk-carousel-dot');
 
-test('the feature pager fits all four dots and both arrows with full-size targets', () => {
+test('card rail dots and right-aligned arrow targets fit at every viewport', () => {
   forEachWidth(viewport => {
-    const nav = featureNav(viewport);
-    const dots = featureDots(viewport);
-    const dotCount = dots.display === 'grid' ? Number(dots['grid-template-columns'].match(/repeat\((\d+)/)?.[1]) : 4;
-    const navWidth = length(nav.width, viewport, viewport.pageWidth);
-    const dotWidth = length(featureDot(viewport).width, viewport, navWidth);
-    const arrowWidth = length(featureArrow(viewport).width, viewport, navWidth);
-    // The dot strip wraps, so overflow is handled by flowing onto a second
-    // line rather than by shrinking the targets.
-    if (dots['flex-wrap'] === 'wrap') {
-      if (Math.min(arrowWidth, dotWidth) < 44) return 'a feature pager target is narrower than 44px';
-      return;
-    }
-    // The pager stacks the dots above the arrows, so the two rows do not share
-    // a line; the wider row is what has to fit.
-    const stacked = nav['flex-direction'] === 'column';
-    const dotsRow = dotCount * dotWidth + (dotCount - 1) * columnGap(dots, viewport, navWidth);
-    const arrowsRow = 2 * arrowWidth + columnGap(nav, viewport, navWidth);
-    const required = stacked
-      ? Math.max(dotsRow, arrowsRow)
-      : arrowsRow + dotsRow + 2 * columnGap(nav, viewport, navWidth);
-    if (required > navWidth) return `feature pager requires ${Math.ceil(required)}px of ${Math.floor(navWidth)}px`;
-    if (Math.min(arrowWidth, dotWidth) < 44) return 'a feature pager target is narrower than 44px';
+    const nav = railPagination(viewport);
+    const arrows = railArrows(viewport);
+    const width = length(wrap(viewport).width, viewport, viewport.pageWidth);
+    const columns = splitValues(nav['grid-template-columns'] || '');
+    const arrowWidth = length(railArrow(viewport).width, viewport, width);
+    const arrowsWidth = 2 * arrowWidth + columnGap(arrows, viewport, width);
+    // The two Koel rails have up to eight dots. Leave room for the dot pill's padding and border.
+    const dotsWidth = 8 * length(carouselDot(viewport).width, viewport, width) + 6;
+
+    if (arrows['justify-self'] !== 'end') return 'the arrow group does not align to the right';
+    if (arrowWidth < 44) return 'a rail arrow target is narrower than 44px';
+    if (columns.length === 1 && Math.max(arrowsWidth, dotsWidth) <= width) return;
+    const needed = dotsWidth + 2 * (arrowsWidth + columnGap(nav, viewport, width));
+    if (columns.length !== 3 || needed > width) return `carousel controls require ${Math.ceil(needed)}px of ${Math.floor(width)}px`;
   });
 });
 
@@ -389,10 +381,19 @@ const subscribeButton = probe('.hk-btn', '.hk-footer .hk-newsletter .hk-btn--pri
 test('testimonials and the footer signup retain space for their content', () => {
   forEachWidth((viewport, content) => {
     const grid = quoteGrid(viewport);
-    const quoteWidth = Math.min(content, length(grid['max-width'], viewport, content));
+    // On a phone the quotes are a swipe rail that bleeds to the viewport edges,
+    // so a card is one rail track rather than a share of the row.
+    const rail = grid['grid-auto-flow'] === 'column';
+    const quoteWidth = rail ? viewport.pageWidth : Math.min(content, length(grid['max-width'], viewport, content));
     const quoteInner = quoteWidth - inlinePadding(grid, viewport, quoteWidth);
-    const slots = fractionalTracks(grid, viewport, quoteInner);
-    const cardWidth = slots.length === 1 ? slots[0] : slots[0] + slots[1] + columnGap(grid, viewport, quoteInner);
+    let cardWidth;
+    if (rail) {
+      cardWidth = length(grid['grid-auto-columns'], viewport, quoteInner);
+      if (cardWidth > quoteInner + 0.01) return `a quote card is ${Math.ceil(cardWidth)}px in a ${Math.floor(quoteInner)}px rail`;
+    } else {
+      const slots = fractionalTracks(grid, viewport, quoteInner);
+      cardWidth = slots.length === 1 ? slots[0] : slots[0] + slots[1] + columnGap(grid, viewport, quoteInner);
+    }
     const cardTextWidth = cardWidth - inlinePadding(quoteBody(viewport), viewport, cardWidth) - 2;
     const graphic = length(quoteGraphic(viewport).width, viewport, cardTextWidth);
     if (graphic + columnGap(quoteHeader(viewport), viewport, cardTextWidth) + 28 > cardTextWidth) return 'testimonial ornament cannot fit beside its quotation mark';

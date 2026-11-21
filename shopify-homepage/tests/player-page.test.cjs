@@ -57,7 +57,7 @@ function fixture({ reduced = false, decode = () => Promise.resolve() } = {}) {
       '[data-hk-gallery]': gallery, '[data-hk-player-add]': primary,
       '#player-zoom': zoom, '[data-hk-gallery-zoom]': zoomButton,
     }[selector] || null; },
-    querySelectorAll(selector) { return selector === '[data-hk-player-buy]' ? [sticky] : []; },
+    querySelectorAll(selector) { return selector === '[data-hk-player-add-sticky]' ? [sticky] : []; },
   };
   if (existsSync(scriptPath)) vm.runInNewContext(readFileSync(scriptPath, 'utf8'), {
     document,
@@ -194,7 +194,7 @@ test('story rails provide playable demo audio that resolves from the nested Play
 });
 
 test('Player purchase and sticky purchase both reach the shared bag with the approved price', () => {
-  const listeners = {}, values = {};
+  const listeners = {};
   const product = JSON.parse(readFileSync(join(__dirname, '../data/player.json'), 'utf8'));
   const button = {
     dataset: { hkPlayerAdd: 'Kahani Player' },
@@ -202,6 +202,10 @@ test('Player purchase and sticky purchase both reach the shared bag with the app
     click() { listeners.primary({ currentTarget: button }); },
   };
   const sticky = { addEventListener(type, callback) { listeners.sticky = callback; } };
+  const buyNow = ['main', 'sticky'].map((location) => ({
+    hidden: true,
+    addEventListener(type, callback) { listeners[`buy-now-${location}`] = callback; },
+  }));
   const count = { textContent: '' };
   const total = { textContent: '' };
   const price = { dataset: { productHandle: product.handle, priceMinor: String(product.priceMinor), currency: product.currency } };
@@ -211,7 +215,11 @@ test('Player purchase and sticky purchase both reach the shared bag with the app
   }[selector] || null; } };
   const message = { textContent: '' };
   const snackbar = { querySelector: () => message, classList: { add() {}, remove() {} } };
-  const bag = { querySelector: selector => selector === '[data-hk-bag-total]' ? total : null };
+  const bag = {
+    open: false,
+    showModal() { this.open = true; },
+    querySelector: selector => selector === '[data-hk-bag-total]' ? total : null,
+  };
   const environment = {
     document: {
       addEventListener() {},
@@ -220,7 +228,8 @@ test('Player purchase and sticky purchase both reach the shared bag with the app
         '[data-hk-player-add]': button, '[data-hk-snackbar]': snackbar,
       }[selector] || null; },
       querySelectorAll(selector) { return {
-        '.hk-nav__bag-count': [count], '[data-hk-player-buy]': [sticky],
+        '.hk-nav__bag-count': [count], '[data-hk-player-add-sticky]': [sticky],
+        '[data-hk-player-buy-now]': buyNow,
       }[selector] || []; },
     },
     window: { matchMedia: () => ({ matches: true }), addEventListener() {}, setTimeout() {}, clearTimeout() {} },
@@ -232,8 +241,33 @@ test('Player purchase and sticky purchase both reach the shared bag with the app
   assert.equal(count.textContent, '1');
   listeners.sticky();
   assert.equal(count.textContent, '2');
-  // The same product is added twice, with no second price or product identity owned by page JS.
+  assert.equal(bag.open, false);
+  assert.ok(buyNow.every((button) => !button.hidden));
+  listeners['buy-now-main']();
+  assert.equal(count.textContent, '3');
+  assert.equal(bag.open, true);
+  listeners['buy-now-main']();
+  assert.equal(count.textContent, '3', 'do not add again while the bag is open');
+  bag.open = false;
+  listeners['buy-now-sticky']();
+  assert.equal(count.textContent, '4');
+  assert.equal(bag.open, true);
   assert.equal(price.dataset.priceMinor, '12900');
+});
+
+test('both Player offer snapshots match the approved prices and derived discount', () => {
+  const product = JSON.parse(readFileSync(join(__dirname, '../data/player.json'), 'utf8'));
+  const html = readFileSync(join(__dirname, '../kahani-player/index.html'), 'utf8');
+  const prices = [...html.matchAll(/<p\b[^>]*\bdata-hk-player-price(?:-snapshot)?\b[^>]*>[\s\S]*?<\/p>/g)];
+  const percent = Math.round((1 - product.priceMinor / product.compareAtPriceMinor) * 100);
+  assert.equal(prices.length, 2);
+  for (const [price] of prices) {
+    assert.ok(price.includes(`data-price-minor="${product.priceMinor}"`));
+    assert.ok(price.includes(`data-compare-at-price-minor="${product.compareAtPriceMinor}"`));
+    assert.ok(price.includes(`$${product.priceMinor / 100}</span>`));
+    assert.ok(price.includes(`$${product.compareAtPriceMinor / 100}</s>`));
+    assert.ok(price.includes(`>${percent}% off<`));
+  }
 });
 
 function bagPage(storage, baseURI = 'https://shop.example/', koelImage = 'assets/images/koels/holi.png') {

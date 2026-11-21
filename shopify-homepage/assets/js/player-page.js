@@ -1,10 +1,22 @@
 /* Player gallery and purchase controls. Product identity and price stay in the shared markup. */
 (() => {
-  const primaryBuy = document.querySelector('[data-hk-player-add]');
-  document.querySelectorAll('[data-hk-player-buy]').forEach((button) => {
-    button.addEventListener('click', () => primaryBuy?.click());
+  const addPlayer = document.querySelector('[data-hk-player-add]');
+  document.querySelectorAll('[data-hk-player-add-sticky]').forEach((button) => {
+    button.addEventListener('click', () => addPlayer?.click());
     button.hidden = false;
   });
+
+  const bag = document.querySelector('#bag-dialog');
+  if (addPlayer && bag) {
+    document.querySelectorAll('[data-hk-player-buy-now]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (bag.open) return;
+        addPlayer.click();
+        bag.showModal();
+      });
+      button.hidden = false;
+    });
+  }
 
   const buybar = document.querySelector('.hk-pdp-buybar');
   const footer = document.querySelector('#footer');

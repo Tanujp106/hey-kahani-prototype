@@ -3244,6 +3244,10 @@ input {
   min-width: 0;
 }
 
+/* The quote track is focusable so the phone rail can be scrolled from a
+   keyboard; give it the same ring the other rails use. */
+.hk-quotes:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: 5px; }
+
 .hk-quote-slot:nth-child(2) {
   margin-top: -44px;
 }
@@ -3405,20 +3409,38 @@ input {
     padding-inline: var(--hk-space-lg);
   }
 
+  /* Five stacked cards made the section taller than the rest of the page put
+     together. On a phone the quotes swipe instead — user direction, November 21, 2026. */
   .hk-quotes {
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 28rem;
-    gap: var(--hk-space-lg);
-    margin: 64px auto 0;
-    padding-inline: var(--hk-space-sm);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: min(78vw, 320px);
+    align-items: stretch;
+    max-width: none;
+    gap: var(--hk-space-md);
+    margin: 48px 0 0;
+    margin-inline: calc(-1 * var(--hk-gutter));
+    padding: 12px var(--hk-gutter) 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--hk-gutter);
+    scrollbar-width: none;
   }
+
+  .hk-quotes::-webkit-scrollbar { display: none; }
+
+  /* Equal-height cards so the snap does not land on a ragged edge. */
+  .hk-quote-slot { height: 100%; scroll-snap-align: start; }
+  .hk-quotes .hk-quote { height: 100%; }
 
   .hk-quote {
     --hk-quote-tilt: -1.5deg;
   }
 
   .hk-quote-slot:nth-child(n) {
-    grid-column: 1 / -1;
+    grid-column: auto;
     margin-top: 0;
   }
 
@@ -3432,6 +3454,7 @@ input {
 
   .hk-quote__body {
     min-height: 0;
+    height: 100%;
     padding: var(--hk-space-lg);
   }
 

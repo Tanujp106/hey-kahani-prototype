@@ -172,11 +172,63 @@ html { overflow-x: clip; }
 .hk-home-features { padding-block: var(--hk-section); overflow: visible; }
 .hk-home-scroll { min-width: 0; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--hk-husk) transparent; }
 .hk-home-scroll:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: 5px; }
-.hk-rail-controls { display: flex; flex-shrink: 0; gap: 10px; }
-.hk-rail-controls--below { justify-content: center; }
-.hk-rail-control { width: 46px; height: 46px; border: 1px solid currentColor; border-radius: 50%; background: transparent; color: inherit; }
+.hk-rail-pagination {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--hk-space-xs);
+  margin-block-start: var(--hk-space-md);
+}
+.hk-rail-pagination:not(:has(.hk-rail-control:not([hidden]), .hk-carousel-dots:not([hidden]))),
+.hk-rail-controls:not(:has(.hk-rail-control:not([hidden]))) { display: none; }
+.hk-rail-controls {
+  display: flex;
+  grid-column: 3;
+  justify-self: end;
+  gap: var(--hk-space-xs);
+}
+.hk-rail-control {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--hk-husk);
+  border-radius: var(--hk-pill);
+  background: var(--hk-canvas);
+  color: var(--hk-story-ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: 150ms var(--hk-ease);
+  transition-property: background-color, border-color, color;
+}
 .hk-rail-control[hidden] { display: none; }
-.hk-rail-control:disabled { opacity: .3; cursor: default; }
+.hk-rail-control:disabled { opacity: .42; cursor: default; }
+.hk-rail-control:focus-visible {
+  outline: 2px solid var(--hk-focus);
+  outline-offset: 3px;
+}
+.hk-home-discovery .hk-rail-control:focus-visible { outline-color: var(--hk-kesar); }
+
+@media (hover: hover) and (pointer: fine) {
+  .hk-rail-control:enabled:hover {
+    background-color: var(--hk-kesar);
+    border-color: var(--hk-sindoor);
+    color: var(--hk-sindoor);
+  }
+}
+.hk-rail-control:enabled:active {
+  background-color: var(--hk-husk);
+  border-color: var(--hk-sindoor);
+  color: var(--hk-sindoor);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hk-rail-control { transition-property: background-color, border-color, color, transform; }
+  .hk-rail-control:enabled:active:not(:focus-visible) {
+    transform: scale(.94);
+    transition-duration: 80ms;
+  }
+}
 .hk-feature-rail { margin-block: 24px;
   /* Same left edge as the floating navbar (.hk-wrap / --hk-content). */
   --hk-feature-inset: max(var(--hk-gutter), calc((100% - var(--hk-content)) / 2));
@@ -216,21 +268,6 @@ html { overflow-x: clip; }
 .hk-feature__copy p { margin: 0 0 20px; font-size: var(--hk-text-body); line-height: 1.6; }
 .hk-feature__copy > a { max-width: 100%; margin-top: var(--hk-space-xs); white-space: normal; text-align: center; }
 .hk-feature-rail.hk-home-scroll { scroll-snap-type: x mandatory; }
-.hk-feature-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  width: min(100% - (var(--hk-gutter) * 2), var(--hk-content));
-  margin: 0 auto;
-  padding-top: 20px;
-}
-.hk-home-features .hk-rail-control,
-.hk-koel-series .hk-rail-control {
-  color: var(--hk-ink);
-  background: var(--hk-canvas);
-  border-color: var(--hk-husk);
-}
 .hk-carousel-dots:not([hidden]) {
   display: flex;
   align-items: center;
@@ -244,7 +281,16 @@ html { overflow-x: clip; }
   border-radius: var(--hk-pill);
   background: var(--hk-canvas);
 }
-.hk-feature-nav > .hk-carousel-dots:not([hidden]) { margin-top: 0; }
+.hk-rail-pagination > .hk-carousel-dots:not([hidden]) {
+  grid-column: 2;
+  justify-self: center;
+  margin: 0;
+}
+@media (max-width: 519px) {
+  .hk-rail-pagination { grid-template-columns: minmax(0, 1fr); }
+  .hk-rail-pagination > .hk-carousel-dots:not([hidden]),
+  .hk-rail-controls { grid-column: 1; }
+}
 .hk-carousel-dot {
   display: grid;
   place-items: center;
@@ -452,7 +498,6 @@ html { overflow-x: clip; }
 .hk-footer__cols { width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 @media (hover: hover) and (pointer: fine) {
-  .hk-rail-control:not(:disabled):hover { background: var(--hk-kesar); color: var(--hk-sindoor); }
   .hk-home-discovery .hk-how-tabs__btn:not(.is-active):hover { background: var(--hk-kesar); color: var(--hk-sindoor); transform: none; }
   .hk-shop-card--player:hover { background: var(--hk-tint-sky-hover); }
   .hk-shop-card--koels:hover { background: var(--hk-tint-mango-hover); }
@@ -471,7 +516,6 @@ html { overflow-x: clip; }
   .hk-home-orientation > .hk-wrap { gap: var(--hk-space-xs) 28px; padding-block: var(--hk-space-xs); }
   .hk-home-heading { flex-wrap: wrap; gap: 20px; margin-bottom: var(--hk-space-lg); }
   .hk-home-heading > div { flex: 1 1 100%; }
-  .hk-rail-controls { margin-left: auto; }
   .hk-feature-rail { gap: var(--hk-space-md); }
   .hk-home-shop__cards { grid-template-columns: 1fr; }
   .hk-shop-card { --hk-shop-media-height: clamp(200px, 44vw, 260px); }
@@ -597,7 +641,6 @@ html { overflow-x: clip; }
 .hk-koel-series + .hk-waves--edge { background: var(--hk-canvas); }
 .hk-koel-series .hk-home-heading { margin-bottom: 28px; }
 .hk-series-rail { --hk-rail-columns: 5; --hk-rail-gap: var(--hk-space-md); --hk-rail-min: 190px; }
-.hk-koel-series .hk-rail-controls { margin-top: var(--hk-space-xs); padding-top: 8px; }
 .hk-series-rail .hk-koel__copy { grid-template-columns: minmax(0, 1fr); left: 12px; right: 12px; bottom: 68px; gap: var(--hk-space-2xs); }
 .hk-series-rail .hk-koel__title { overflow-wrap: anywhere; }
 .hk-series-rail .hk-koel__badge { max-width: calc(100% - 20px); left: 10px; right: auto; overflow-wrap: anywhere; }
@@ -615,7 +658,6 @@ html { overflow-x: clip; }
     overflow: visible;
     scroll-snap-type: none;
   }
-  .hk-koel-series .hk-rail-controls { display: none; }
   .hk-feature-rail.hk-home-scroll {
     display: flex;
     flex-direction: column;
@@ -630,5 +672,4 @@ html { overflow-x: clip; }
     justify-items: center;
   }
   .hk-feature__copy { align-items: center; text-align: center; }
-  .hk-feature-nav { display: none; }
 }

@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261121">
-  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=carousel-dots-half-20261121">
+  <link rel="stylesheet" href="assets/css/styles.css?v=mobile-rails-20261121">
+  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=rail-controls-20261122">
   <noscript><style>
     /* The FAQ panel is collapsed by script; keep open answers readable without it. */
     .hk-faq details[open] .hk-faq__panel { height: auto; }
@@ -406,10 +406,12 @@
             </button>
           </div>
         </article></div>
-    <div class="hk-carousel-dots" role="group" aria-label="Featured Koel carousel positions" data-hk-rail-dots hidden></div>
-    <div class="hk-rail-controls hk-rail-controls--below" role="group" aria-label="Featured Koel controls">
-      <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="series-rail" aria-label="Previous featured Koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="series-rail" aria-label="Next featured Koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="hk-rail-pagination">
+      <div class="hk-carousel-dots" role="group" aria-label="Featured Koel carousel positions" data-hk-rail-dots hidden></div>
+      <div class="hk-rail-controls" role="group" aria-label="Featured Koel controls">
+        <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="series-rail" aria-label="Previous featured Koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+        <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="series-rail" aria-label="Next featured Koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+      </div>
     </div>
   </div>
 </section>
@@ -450,11 +452,11 @@
         <a class="hk-btn hk-btn--primary" href="#community">Find their everyday moments</a></div>
       </article>
   </div>
-  <div class="hk-feature-nav" role="group" aria-label="How it works controls">
+  <div class="hk-rail-pagination hk-wrap">
     <div class="hk-carousel-dots" role="group" aria-label="Family life carousel positions" data-hk-rail-dots hidden></div>
-    <div class="hk-rail-controls hk-rail-controls--below">
-      <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="how-it-works" aria-label="Previous story" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="how-it-works" aria-label="Next story" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="hk-rail-controls" role="group" aria-label="How it works controls">
+      <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="how-it-works" aria-label="Previous story" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+      <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="how-it-works" aria-label="Next story" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
     </div>
   </div>
 </section>
@@ -543,10 +545,7 @@
       <button class="hk-how-tabs__btn" type="button" aria-pressed="false" data-hk-koel-filter="Celebrate the year">Celebrations</button>
       <button class="hk-how-tabs__btn" type="button" aria-pressed="false" data-hk-koel-filter="Wander with wonder">Adventures</button>
       <button class="hk-how-tabs__btn" type="button" aria-pressed="false" data-hk-koel-filter="Everyday wonder">Everyday wonder</button>
-    </div><div class="hk-rail-controls" aria-label="Koels">
-  <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="koel-rail" aria-label="Previous koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="koel-rail" aria-label="Next koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-</div></div>
+    </div></div>
     <p class="visually-hidden" role="status" aria-live="polite" data-hk-filter-status></p>
       <!-- Design-only placeholder USD prices; replace with Shopify product prices before launch. -->
       <div class="hk-koel-grid hk-home-scroll" id="koel-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Featured Koels for the Kahani Player">
@@ -821,6 +820,13 @@
           </div>
         </article>
       </div>
+      <div class="hk-rail-pagination">
+        <div class="hk-carousel-dots" role="group" aria-label="Koel catalogue carousel positions" data-hk-rail-dots hidden></div>
+        <div class="hk-rail-controls" role="group" aria-label="Koel catalogue controls">
+          <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="koel-rail" aria-label="Previous Koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+          <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="koel-rail" aria-label="Next Koels" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+        </div>
+      </div>
       </div>
       <svg class="hk-waves hk-waves--end" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path fill="var(--hk-marigold, #ff5d27)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14L1440 28C1253 54 1114 54 926 37C691 16 587 18 395 38C203 58 102 54 0 36Z"/>
@@ -830,13 +836,13 @@
       </svg>
     </section>
 
-    <section class="hk-section hk-community" id="community" aria-labelledby="community-title">
+    <section class="hk-section hk-community" id="community" aria-labelledby="community-title" data-hk-rail>
       <div class="hk-wrap hk-community__content">
         <div class="hk-section__intro hk-community__intro hk-reveal">
           <h2 class="hk-display hk-display--lg" id="community-title">Stories worth sharing.</h2>
           <p class="hk-lead">Parents tell us bedtime got softer, car rides got calmer, and culture finally felt close enough to hold.</p>
         </div>
-        <div class="hk-quotes hk-reveal">
+        <div class="hk-quotes hk-reveal" id="community-quotes" data-hk-rail-track tabindex="0" role="region" aria-label="Stories worth sharing">
           <div class="hk-quote-slot">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
@@ -911,6 +917,13 @@
                 </footer>
               </blockquote>
             </article>
+          </div>
+        </div>
+        <div class="hk-rail-pagination">
+          <div class="hk-carousel-dots" role="group" aria-label="Family story carousel positions" data-hk-rail-dots hidden></div>
+          <div class="hk-rail-controls" role="group" aria-label="Family story controls">
+            <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="community-quotes" aria-label="Previous family stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+            <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="community-quotes" aria-label="Next family stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
           </div>
         </div>
       </div>

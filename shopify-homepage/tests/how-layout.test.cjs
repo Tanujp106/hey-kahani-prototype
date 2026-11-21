@@ -124,18 +124,26 @@ test('collection filters preserve products, pause hidden audio, announce results
   assert.equal(status.textContent, '3 Koels shown.');
 });
 
-test('the storefront carousels expose shared pagination and arrows', () => {
+test('every storefront card rail has its arrow group below the track in the shared pagination row', () => {
   const player = readFileSync(join(root, 'kahani-player/index.html'), 'utf8');
   for (const [page, id, trackId] of [
     [html, 'why', 'how-it-works'],
     [html, 'koel-series', 'series-rail'],
+    [html, 'koels', 'koel-rail'],
+    [html, 'community', 'community-quotes'],
+    [player, 'closer-look', 'closer-look-rail'],
+    [player, 'how-it-works', 'player-feature-rail'],
+    [player, 'family-stories', 'family-quotes'],
     [player, 'koels', 'koels-rail'],
     [player, 'more-koels', 'more-koels-rail'],
   ]) {
     const section = page.match(new RegExp(`<section[^>]*\\bid="${id}"[^>]*>[\\s\\S]*?<\\/section>`))[0];
-    assert.match(section, new RegExp(`data-hk-rail-prev[^>]*aria-controls="${trackId}"`));
-    assert.match(section, new RegExp(`data-hk-rail-next[^>]*aria-controls="${trackId}"`));
-    assert.match(section, /class="hk-carousel-dots"[^>]*\bdata-hk-rail-dots hidden/);
+    const footer = section.match(/<div class="hk-rail-pagination(?: hk-wrap)?"[^>]*>\s*<div class="hk-carousel-dots"[^>]*><\/div>\s*<div class="hk-rail-controls"[^>]*>[\s\S]*?<\/div>\s*<\/div>/);
+    assert.ok(footer, `Missing the shared controls for ${trackId}`);
+    assert.ok(footer.index > section.indexOf(`id="${trackId}"`), `Controls must follow ${trackId}`);
+    assert.match(footer[0], new RegExp(`data-hk-rail-prev[^>]*aria-controls="${trackId}"`));
+    assert.match(footer[0], new RegExp(`data-hk-rail-next[^>]*aria-controls="${trackId}"`));
+    assert.match(footer[0], /class="hk-carousel-dots"[^>]*\bdata-hk-rail-dots hidden/);
   }
   assert.equal((player.match(/class="hk-carousel-dot"[^>]*\bdata-hk-gallery-dot/g) || []).length, 5);
 });

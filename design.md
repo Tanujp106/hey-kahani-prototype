@@ -261,6 +261,39 @@ icon so the label keeps its room.
 widths and that the preview control keeps at least 44px beside the add button —
 not a fixed card width, which is what previously pushed toward one column.
 
+### Phone layout: swipe before stack — user direction, November 21, 2026
+
+A set of cards stacked one per row is the default a phone falls into, and it is
+what makes a page feel endless. The direction is to **lay things out across the
+screen wherever the content allows**, and never to change the desktop layout to
+get there.
+
+What this means in practice:
+
+- **A set of peer cards becomes a rail, not a stack.** The Player's "Take a
+  closer look" windows and the testimonials both swipe on a phone. A rail bleeds
+  to the viewport edges — `margin-inline: calc(-1 * var(--hk-gutter))` with the
+  gutter back as padding — so the next card peeks in and the swipe is
+  discoverable. It carries `scroll-snap-type: x mandatory`, hides its scrollbar,
+  and sets `overflow-y: hidden` so a tilted or shadowed card is not clipped.
+- **Every rail gets the shared pager.** Put `data-hk-rail` on the section,
+  `data-hk-rail-track` on the track, and an empty `.hk-carousel-dots
+  [data-hk-rail-dots] hidden` after it. `assets/js/homepage-layout.js` builds one
+  dot per reachable position and leaves the list hidden when the cards already
+  fit — which is why the same markup shows nothing on desktop.
+- **A picture-plus-copy row goes side by side.** "What's included" puts a
+  `clamp(84px, 26vw, 112px)` thumbnail beside the copy instead of a full-width
+  square above it. That section was the tallest on the Player page.
+- **A list of short facts goes two to a row.** The specifications grid is two
+  columns on a phone with the icon above its label, not six full-width bars.
+- **An image-led card keeps its column.** The Player benefits stay one per row —
+  the heading and sentence need the width — but give back the height they were
+  holding for a two-up desktop row.
+
+The testimonials rail lives in `styles.css`, so both the homepage and the Player
+page get it. That is deliberate: it is one component and it should not read
+differently depending on the page.
+
 ### Chips
 
 A small standing label — the hero's "A world of stories" line, the Koel card
@@ -296,9 +329,17 @@ visible rise and fall rather than a near-level line; see the path in
 
 Carousels on both storefront pages use round dots in a white pill with a
 Coconut Husk border. Gulab marks the current position and a muted Husk shade
-marks the other positions. Dots and arrows have 44px minimum targets. Each
-product gallery image has a dot. Horizontal card rails use one dot per
-reachable scroll position and hide pagination when the cards fit.
+marks the other positions. Each product gallery image has a dot. Horizontal
+card rails use one dot per reachable scroll position and hide pagination when
+the cards fit.
+
+November 22, 2026: every horizontal card rail places its previous and next
+arrows together at the bottom right, aligned with the card area. Center the
+dot pager in the same row on wider screens and above the right-aligned arrows
+on narrow screens. Arrow targets are 44px. Use round canvas buttons with a
+Husk outline and Story Ink chevrons, a Kesar hover state and a Husk press
+state with a slight scale-down. Only fine pointers get hover. Under reduced
+motion, retain the colour states and drop the scale change.
 
 ### Type
 
@@ -416,15 +457,16 @@ structure are unchanged.
 ### Player purchase bar — November 21, 2026
 
 On the Kahani Player page, the purchase bar is fixed to the bottom of the
-viewport. It is a little taller. The detail links are removed. The approved
-$129 sits beside the name, without the USD label. No struck original price
-or percent-off badge is shown, because no compare-at price is confirmed.
+viewport with a translucent, blurred background. The purchase column and
+bar show $129, the struck $150 original price and a 14% off badge. Both
+offer primary Buy now and secondary Add to cart actions. Buy now adds the
+Player and opens the prototype bag with checkout disabled.
 Section jumps clear the navbar only. The purchase bar hides when the footer
 or its leading wave enters view and returns when both leave. The footer ends
 the page. The first fold keeps the gallery beside the
 purchase on wide screens and stacks it above the purchase on phones. The
 purchase leads with the title and Gulab price, then a short description and
-four unboxed icon highlights. Add to cart follows the highlights. The product
+four unboxed icon highlights followed by the purchase buttons. The product
 title and all section headings on this page use 40px at every viewport.
 The gallery crossfades to the next decoded image. The zoom opens from the
 selected image into the dialog and uses opacity only with reduced motion.
@@ -434,16 +476,16 @@ captions. A four-card grid below the fold explains the Player's benefits. Each p
 fills its card. A linear colour fade and a progressive blur rise from the
 bottom, so the copy does not sit on a solid block. The “Meet
 their new story companion.” band and the navigation that points at it
-are hidden for now. What’s included uses three equal square images with
-left-aligned captions beneath them. The tiles stack on narrow screens. Explore
-Koels uses the secondary button style. The companion app uses App Store and
+are hidden for now. What’s included has a light Sky background and three
+equal square images with left-aligned captions beneath them on wide screens.
+Explore Koels uses the secondary button style. The companion app uses App Store and
 Google Play badges.
 The testimonials use the homepage cards and copy. The specifications band
 is a full-width Kesar section with the homepage wave on both edges, a
-centered heading and light Sky icon containers. The icons settle once
+centered heading and Gulab icons on Kesar tiles. The icons settle once
 as they enter view and lift slightly on hover with motion enabled.
 Both Koel carousels have hidden scrollbars,
-centered arrows below the cards, and a primary Explore all Koels button.
+bottom-right arrows below the cards, and a primary Explore all Koels button.
 The Player FAQ uses the
 homepage list and the same centered title. It has no card. The Player footer uses the homepage
 wave, signup, and links.
@@ -466,8 +508,8 @@ for the full Shop section to target roughly 500–700px on desktop: compact
 Koel discovery now follows Shop directly, ahead of the introductory strip and
 feature stories. Narrow screens remain content-sized rather than height-clipped.
 November 21, 2026: both Shop cards have an “Explore now” CTA and their titles
-have no trailing period. The featured Koel arrows sit together below the rail,
-centered. The featured rail scrolls horizontally on wider screens.
+have no trailing period. The featured rail scrolls horizontally on wider
+screens and uses the shared bottom-right arrows.
 
 The user explicitly requested a homepage rebuild around Yoto's current section
 roles and navigation, while preserving the Hey Kahani visual style already
@@ -499,9 +541,8 @@ the asset drawing system, product facts or content approvals.
   Same day: the four corner illustrations on the story cards are 160px, up
   from 96px, so the drawings read on the photo. They sit a little outside
   the photo, on the card colour. The story rail is a carousel.
-  The circular Previous and Next buttons sit together below the cards,
-  centered. The shared dot pager sits above the arrows and marks the current
-  scroll position in Gulab. Same day: that pager is half the size it was drawn
+  The story rail uses the shared bottom-right arrows. The dot pager marks
+  the current scroll position in Gulab. Same day: that pager is half the size it was drawn
   at, on the homepage and the Player page. Each target is 22px and each mark
   is 6px, inside the same Husk pill.
   On a narrow screen the story cards stack and stick under the navbar, and the

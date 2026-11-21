@@ -17,13 +17,12 @@
 .hk-pdp-gallery .hk-carousel-dots:not([hidden]) { margin-top: 20px; }
 
 /* Fixed purchase control, shown while the footer is out of view. */
-.hk-pdp-buybar { position: fixed; right: 0; bottom: 0; left: 0; z-index: 35; padding-block: var(--hk-space-md); background: rgba(255, 255, 255, .97); border-top: 1px solid var(--hk-divider); }
+.hk-pdp-buybar { position: fixed; right: 0; bottom: 0; left: 0; z-index: 35; padding-block: var(--hk-space-md); background: rgba(255, 255, 255, .84); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--hk-divider); }
 .hk-pdp-buybar__inner { display: flex; gap: var(--hk-space-lg); align-items: center; justify-content: space-between; }
-.hk-pdp-buybar__offer { display: flex; align-items: baseline; gap: var(--hk-space-md); min-width: 0; }
+.hk-pdp-buybar__offer { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--hk-space-2xs) var(--hk-space-md); min-width: 0; }
 .hk-pdp-buybar__name { font-family: var(--hk-font-display); font-size: var(--hk-text-subhead); font-weight: 700; }
-.hk-pdp-buybar__price { margin: 0; white-space: nowrap; font-family: var(--hk-font-display); font-size: var(--hk-text-subhead); font-weight: 700; line-height: 1.1; color: var(--hk-gulab); }
-.hk-pdp-buybar__purchase { display: flex; align-items: center; gap: 20px; margin-left: auto; }
-.hk-pdp-buybar .hk-btn { min-height: 48px; padding: var(--hk-space-sm) 28px; }
+.hk-pdp-buybar__purchase { display: flex; flex-shrink: 0; align-items: center; gap: var(--hk-space-sm); margin-inline-start: auto; }
+.hk-pdp-buybar .hk-btn { min-height: 48px; padding: var(--hk-space-sm) var(--hk-space-lg); white-space: nowrap; }
 
 .hk-pdp-hero {
   --hk-pdp-fold-space: calc(100svh - var(--hk-announcement-height, 37px) - var(--hk-pdp-sticky-clearance) - var(--hk-pdp-buybar-space));
@@ -53,8 +52,11 @@
 .hk-pdp-gallery figcaption { padding: 6px 2px 0; font-size: var(--hk-text-body-sm); color: var(--hk-muted); }
 .hk-pdp-purchase { min-width: 0; }
 .hk-pdp-purchase__heading { display: grid; gap: var(--hk-space-2xs); }
-.hk-pdp-price { display: flex; align-items: baseline; gap: var(--hk-space-xs); margin: 0; font-family: var(--hk-font-display); font-size: var(--hk-text-md); font-weight: 700; line-height: 1.2; color: var(--hk-gulab); }
-.hk-pdp-price span { font-family: var(--hk-font-body); font-size: var(--hk-text-body-sm); font-weight: 500; color: var(--hk-ink); }
+.hk-pdp-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--hk-space-xs); margin: 0; line-height: 1.2; }
+.hk-pdp-price__current { font-family: var(--hk-font-display); font-size: var(--hk-text-md); font-weight: 700; color: var(--hk-gulab); }
+.hk-pdp-buybar__price .hk-pdp-price__current { font-size: var(--hk-text-subhead); }
+.hk-pdp-price__original { font-size: var(--hk-text-body-sm); color: var(--hk-muted); }
+.hk-pdp-price__discount { padding: var(--hk-space-xs) var(--hk-space-md); border-radius: var(--hk-pill); background: var(--hk-kesar); color: var(--hk-sindoor); font-size: var(--hk-text-fine); font-weight: 700; white-space: nowrap; }
 .hk-pdp-purchase__intro { display: grid; gap: var(--hk-space-xs); max-width: 50ch; margin-top: clamp(16px, 1.6vw, 22px); }
 .hk-pdp-purchase__intro p { margin: 0; font-size: var(--hk-text-body); }
 .hk-pdp-purchase__highlights {
@@ -70,8 +72,9 @@
 }
 .hk-pdp-purchase__highlights li { display: flex; align-items: flex-start; gap: var(--hk-space-xs); }
 .hk-pdp-purchase__highlights svg { width: 20px; height: 20px; flex: none; }
-.hk-pdp-purchase__action { margin-top: var(--hk-space-xl); }
-.hk-pdp-purchase__action .hk-btn { width: 100%; }
+.hk-pdp-purchase__action { display: flex; flex-wrap: wrap; gap: var(--hk-space-sm); margin-top: var(--hk-space-xl); }
+.hk-pdp-purchase__action .hk-btn { flex: 1 0 8rem; }
+.hk-pdp-purchase__action noscript { flex-basis: 100%; }
 
 .hk-pdp-benefits {
   display: grid;
@@ -104,18 +107,20 @@
   position: absolute;
   inset: auto 0 0;
   z-index: 1;
-  height: 68%;
-  background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--hk-benefit-fade) 62%, transparent) 46%, var(--hk-benefit-fade) 100%);
+  height: 72%;
+  background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--hk-benefit-fade) 76%, transparent) 40%, var(--hk-benefit-fade) 92%);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 70%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 70%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 60%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 60%);
   pointer-events: none;
 }
 .hk-pdp-benefit__copy { position: relative; z-index: 2; padding: clamp(18px, 2.5vw, 28px); }
 .hk-pdp-benefit p { max-width: 44ch; margin: var(--hk-space-xs) 0 0; }
 
 .hk-pdp-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+/* Focusable so the phone rail can be scrolled from a keyboard. */
+.hk-pdp-details:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: 5px; }
 .hk-pdp-detail {
   position: relative;
   isolation: isolate;
@@ -171,6 +176,23 @@
 .hk-pdp-feature p { margin: 16px 0 22px; }
 .hk-pdp-feature .hk-btn { min-width: 0; }
 
+#included.hk-pdp-included-band {
+  --hk-included-wave: clamp(28px, 4vw, 56px);
+  position: relative;
+  padding-bottom: max(44px, calc(var(--hk-included-wave) + var(--hk-space-md)));
+  background: linear-gradient(var(--hk-tint-sky), var(--hk-tint-sky))
+    center / 100% calc(100% - 2 * var(--hk-included-wave)) no-repeat;
+}
+.hk-pdp-included-edge {
+  position: absolute;
+  inset-inline: 0;
+  width: 100%;
+  height: calc(var(--hk-included-wave) + 1px);
+  fill: var(--hk-tint-sky);
+  pointer-events: none;
+}
+.hk-pdp-included-edge--top { top: 0; }
+.hk-pdp-included-edge--bottom { bottom: 0; }
 .hk-pdp-included {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -201,12 +223,12 @@
 .hk-pdp-specs dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; max-width: 1040px; margin: 0 auto; }
 .hk-pdp-specs dl > div { position: relative; display: grid; align-content: center; gap: 4px; min-block-size: 96px; padding: 20px 24px 20px 100px; background: var(--hk-canvas); border-radius: var(--hk-radius-md); box-shadow: var(--hk-shadow-soft); }
 .hk-pdp-specs dt { margin: 0; font-size: var(--hk-text-body); font-weight: 700; line-height: 1.3; }
-.hk-pdp-specs__icon { position: absolute; inset-block-start: 50%; inset-inline-start: 24px; translate: 0 -50%; display: grid; place-items: center; inline-size: 56px; block-size: 56px; border-radius: var(--hk-radius-sm); background: var(--hk-tone-sky); color: var(--hk-story-ink); }
+.hk-pdp-specs__icon { position: absolute; inset-block-start: 50%; inset-inline-start: 24px; translate: 0 -50%; display: grid; place-items: center; inline-size: 56px; block-size: 56px; border-radius: var(--hk-radius-sm); background: var(--hk-kesar); color: var(--hk-gulab); }
 .hk-pdp-specs__icon .hk-reveal { display: block; opacity: 1; transform: none; transition: none; }
 .hk-pdp-specs dd { margin: 0; font-size: var(--hk-text-body-sm); line-height: 1.45; color: var(--hk-muted); }
 .hk-pdp-koel-rail { --hk-rail-columns: 4; --hk-rail-gap: var(--hk-space-lg); scrollbar-width: none; }
+#koels.hk-pdp-stories { margin-block-start: var(--hk-space-lg); }
 .hk-pdp-stories .hk-home-heading > form { flex: none; }
-.hk-pdp-stories > .hk-rail-controls--below { justify-content: center; margin-top: var(--hk-space-xs); }
 .hk-pdp-zoom {
   width: max-content;
   max-width: calc(100% - 2 * var(--hk-space-md));
@@ -258,47 +280,83 @@
   .hk-pdp-stories .hk-home-heading > header { flex-basis: 100%; }
 }
 @media (max-width: 699px) {
-  .hk-pdp { --hk-pdp-buybar-space: 96px; }
+  .hk-pdp { --hk-pdp-buybar-space: 112px; }
   .hk-pdp-section { padding-block: 32px; }
   #player-benefits.hk-pdp-section,
   #closer-look.hk-pdp-section,
   #included.hk-pdp-section { padding-top: 56px; }
-  .hk-pdp-buybar__inner { gap: var(--hk-space-sm); }
-  .hk-pdp-buybar__offer { gap: 10px; }
-  .hk-pdp-buybar__name { max-width: 10ch; line-height: 1.3; }
-  .hk-pdp-buybar__purchase { gap: 10px; }
-  .hk-pdp-buybar .hk-btn { padding-inline: var(--hk-space-md); white-space: nowrap; }
+  .hk-pdp-buybar { padding-block: var(--hk-space-sm); }
+  .hk-pdp-buybar__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--hk-space-xs); }
+  .hk-pdp-buybar__offer { justify-content: space-between; }
+  .hk-pdp-buybar__name { font-size: var(--hk-text-body); }
+  .hk-pdp-buybar__purchase { flex-wrap: wrap; margin-inline-start: 0; }
+  .hk-pdp-buybar .hk-btn { flex: 1; padding-inline: var(--hk-space-sm); }
   .hk-pdp-hero { padding-bottom: var(--hk-space-md); }
   .hk-pdp-breadcrumbs { display: none; }
   .hk-pdp-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .hk-pdp-gallery__stage { max-block-size: 440px; }
   .hk-pdp-purchase__action .hk-btn { min-height: 44px; padding-block: 10px; }
-  .hk-pdp-details { grid-template-columns: minmax(0, 1fr); gap: var(--hk-space-md); }
-  .hk-pdp-detail { min-height: clamp(300px, 78vw, 375px); }
+  /* The three windows swipe rather than stack — user direction, November 21, 2026.
+     Bleeds to the viewport edges so a card peeks in from the side. */
+  .hk-pdp-details {
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: min(72vw, 300px);
+    gap: var(--hk-space-md);
+    margin-inline: calc(-1 * var(--hk-gutter));
+    padding: 2px var(--hk-gutter) 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--hk-gutter);
+    scrollbar-width: none;
+  }
+  .hk-pdp-details::-webkit-scrollbar { display: none; }
+  .hk-pdp-detail { min-height: clamp(300px, 78vw, 375px); scroll-snap-align: start; }
   .hk-pdp-detail--speaker img { top: 34%; }
   .hk-pdp-feature-rail { grid-auto-columns: calc(100% - 64px); gap: var(--hk-space-md); }
   .hk-pdp-feature { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: var(--hk-space-lg); align-content: start; }
   .hk-pdp-feature > img { max-width: 280px; justify-self: center; }
   .hk-pdp-meet .hk-home-heading { align-items: flex-start; }
-  .hk-pdp-meet .hk-rail-controls { display: none; }
+  /* Full-width squares stacked above their copy made this the tallest section on
+     the page. On a phone the thumbnail sits beside the copy instead. */
   .hk-pdp-included {
     grid-template-columns: minmax(0, 1fr);
-    max-width: 24rem;
-    gap: var(--hk-space-xl);
-    margin-inline: auto;
+    max-width: none;
+    gap: var(--hk-space-lg);
+    margin-inline: 0;
   }
-  .hk-pdp-specs dl { grid-template-columns: minmax(0, 1fr); row-gap: 12px; }
-  .hk-pdp-specs dl > div { min-block-size: 84px; padding: 16px 18px 16px 88px; }
-  .hk-pdp-specs__icon { inset-inline-start: 18px; }
+  .hk-pdp-included > article {
+    display: grid;
+    grid-template-columns: clamp(84px, 26vw, 112px) minmax(0, 1fr);
+    gap: var(--hk-space-md);
+    align-items: start;
+  }
+  .hk-pdp-included > article > img { margin-bottom: 0; }
+  .hk-pdp-included p { max-width: none; }
+  /* Six full-width bars read as one long list. Two to a row, icon above its
+     label, so the section scans across as well as down. */
+  .hk-pdp-specs dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .hk-pdp-specs dl > div { align-content: start; min-block-size: 0; padding: 16px; }
+  .hk-pdp-specs__icon {
+    position: static;
+    translate: none;
+    inline-size: 40px;
+    block-size: 40px;
+    margin-bottom: 10px;
+  }
   .hk-pdp-koel-rail { --hk-rail-columns: 2; --hk-rail-gap: var(--hk-space-md); }
 }
 @media (max-width: 559px) {
+  /* One column: the copy needs the width. The card gives back the height it was
+     holding for a two-up row. */
   .hk-pdp-benefits { grid-template-columns: minmax(0, 1fr); }
+  .hk-pdp-benefit { min-height: clamp(260px, 72vw, 320px); }
 }
 @media (max-width: 379px) {
   .hk-pdp-purchase__highlights { grid-template-columns: minmax(0, 1fr); }
   .hk-pdp-buybar__name { display: none; }
-  .hk-pdp-buybar__purchase { flex: 1; justify-content: space-between; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hk-pdp { scroll-behavior: auto; }
