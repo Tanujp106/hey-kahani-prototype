@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-20",
+  "tool": "agent-browser CLI 0.39.1, Chromium",
+  "url": "http://127.0.0.1:5175/",
+  "viewports": {
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ]
+  },
+  "coverage": "All four feature photos at both widths, plus both lifestyle photographs in the desktop Player menu.",
+  "root_causes": [
+    "Landscape SVG masks were letterboxing inside square photo elements, hiding top and bottom image content.",
+    "The wide desktop menu hero used cover on square photographs, cropping faces and Player bases.",
+    "The first card book illustration overlapped the newly visible Player base."
+  ],
+  "changes": [
+    "Preserved mask proportions and changed their fit to auto 110% to reveal the square photographs.",
+    "Used contain for images in the Player menu.",
+    "Moved the first card book to the upper-left background area, clear of the hand and Player.",
+    "Updated the homepage-layout stylesheet version to load the saved CSS instead of its cached predecessor."
+  ],
+  "result": "Visually inspected the saved source after reload; children's faces and the complete Players remain visible in the checked placements. No temporary browser style remained.",
+  "checks": {
+    "homepage_layout_tests": {
+      "passed": 4,
+      "failed": 0
+    },
+    "diff_check": "passed"
+  },
+  "screenshots": [
+    "desktop-before.png",
+    "mobile-before.png",
+    "menu-before.png",
+    "desktop-card-1.png",
+    "mobile-card-1.png",
+    "desktop-card-2.png",
+    "mobile-card-2.png",
+    "desktop-card-3.png",
+    "mobile-card-3.png",
+    "desktop-card-4.png",
+    "mobile-card-4.png",
+    "desktop-menu-1.png",
+    "desktop-menu-2.png"
+  ]
+}

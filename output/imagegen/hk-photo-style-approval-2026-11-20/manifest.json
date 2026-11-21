@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-20",
+  "status": "Visual direction approved by the user on November 20, 2026. Generated style references; not verified merchandise photography.",
+  "tool": "Built-in image_gen",
+  "review": "All four outputs inspected inline for casting, composition, light, product silhouette and circular Koels. Product depictions are generated approximations.",
+  "images": [
+    {
+      "file": "01-choosing-a-story.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2475597,
+      "sha256": "67c23be0d01078c73953129cd9a5a522c212ddaf32a7ed416a9c6778465c5fe7",
+      "source": "/Users/tanuj/.codex/generated_images/01a1f531-b744-7391-8710-c7bcdec4f84b/exec-09bc2ff6-30b0-4ab3-a943-ecd1098cc887.png"
+    },
+    {
+      "file": "02-stories-on-the-floor.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2775079,
+      "sha256": "6bd32f960fb9728131e9c7d051d55b93eadd8f7027b8a1fd6faa4a2b62b3e842",
+      "source": "/Users/tanuj/.codex/generated_images/01a1f531-b744-7391-8710-c7bcdec4f84b/exec-bca39cd9-1e2f-4336-99f2-a2f1271b2d8e.png"
+    },
+    {
+      "file": "03-breakfast-giggles.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2522057,
+      "sha256": "103739932559314c78f8ff1b9a2d3b423701ade150e2137f66fc06364316257a",
+      "source": "/Users/tanuj/.codex/generated_images/01a1f531-b744-7391-8710-c7bcdec4f84b/exec-36db8acb-6387-480b-aa90-fd7dc21dc2b3.png"
+    },
+    {
+      "file": "04-bedtime-wind-down.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2223805,
+      "sha256": "ff88421788bc111a977abc6f298ad6445892aa3e4e229eb687b999d70ef56411",
+      "source": "/Users/tanuj/.codex/generated_images/01a1f531-b744-7391-8710-c7bcdec4f84b/exec-5257ae66-00ac-483b-b6e2-ebd112c5f060.png"
+    }
+  ],
+  "prompts": "prompts.json",
+  "style_guide": "../../../docs/photography-style-guide.md"
+}

@@ -8,56 +8,134 @@
 
   const gallery = document.querySelector('[data-hk-gallery]');
   if (!gallery) return;
-  const image = gallery.querySelector('[data-hk-gallery-image]');
+  let image = gallery.querySelector('[data-hk-gallery-image]');
   const caption = gallery.querySelector('[data-hk-gallery-caption]');
   const status = gallery.querySelector('[data-hk-gallery-status]');
-  const thumbs = Array.from(gallery.querySelectorAll('[data-hk-gallery-thumb]'));
-  if (!image || !thumbs.length) return;
+  const dots = Array.from(gallery.querySelectorAll('[data-hk-gallery-dot]'));
+  if (!image || !dots.length) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const easing = 'cubic-bezier(0.22, 1, 0.36, 1)';
   let selected = 0;
+  let requested = 0;
+  let request = 0;
 
-  const selectImage = (index, focus = false) => {
-    selected = (index + thumbs.length) % thumbs.length;
-    const media = thumbs[selected].dataset;
-    image.src = media.src;
-    image.alt = media.alt;
-    image.dataset.kind = media.kind;
-    if (caption) caption.textContent = media.caption;
-    if (status) status.textContent = `Image ${selected + 1} of ${thumbs.length}: ${media.caption}`;
-    thumbs.forEach((thumb, at) => {
-      thumb.setAttribute('aria-pressed', String(at === selected));
-      thumb.tabIndex = at === selected ? 0 : -1;
+  const updateSelection = () => {
+    const { caption: description } = dots[selected].dataset;
+    if (caption) caption.textContent = description;
+    if (status) status.textContent = `Image ${selected + 1} of ${dots.length}: ${description}`;
+    dots.forEach((dot, at) => {
+      dot.setAttribute('aria-pressed', String(at === selected));
     });
-    if (focus) thumbs[selected].focus();
   };
 
-  thumbs.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => selectImage(index));
-    thumb.addEventListener('keydown', (event) => {
+  const selectImage = async (index, focus = false) => {
+    const next = (index + dots.length) % dots.length;
+    const forward = index > requested;
+    const repeated = next === requested;
+    if (!repeated) request++;
+    requested = next;
+    const currentRequest = request;
+    dots.forEach((dot, at) => { dot.tabIndex = at === next ? 0 : -1; });
+    if (focus) dots[next].focus();
+    if (next === selected || repeated) return;
+
+    const media = dots[next].dataset;
+    const incoming = image.cloneNode(false);
+    incoming.removeAttribute('fetchpriority');
+    incoming.src = media.src;
+    incoming.alt = media.alt;
+    incoming.dataset.kind = media.kind;
+    try {
+      if (incoming.decode) await incoming.decode();
+    } catch {
+      if (currentRequest === request) selectImage(selected, document.activeElement === dots[next]);
+      return;
+    }
+    if (currentRequest !== request || next === selected) return;
+
+    const outgoing = image;
+    outgoing.after(incoming);
+    outgoing.removeAttribute('data-hk-gallery-image');
+    outgoing.setAttribute('aria-hidden', 'true');
+    image = incoming;
+    selected = next;
+    updateSelection();
+
+    if (!outgoing.animate) {
+      outgoing.remove();
+      return;
+    }
+    // Slide: the new photo enters from the side you are moving toward; the old one leaves the other way.
+    const duration = reducedMotion.matches ? 160 : 520;
+    if (reducedMotion.matches) {
+      const opacity = getComputedStyle(outgoing).opacity;
+      outgoing.animate([{ opacity }, { opacity: 0 }], { duration, easing, fill: 'forwards' })
+        .addEventListener('finish', () => outgoing.remove(), { once: true });
+      incoming.animate([{ opacity: 0 }, { opacity: 1 }], { duration, easing, fill: 'backwards' });
+      return;
+    }
+    const stageWidth = outgoing.parentElement?.clientWidth;
+    const distance = stageWidth ? `${stageWidth}px` : '110%';
+    const sign = forward ? '-' : '';
+    const opposite = forward ? '' : '-';
+    outgoing.animate([{ transform: 'none' }, { transform: `translateX(${sign}${distance})` }], { duration, easing, fill: 'forwards' })
+      .addEventListener('finish', () => outgoing.remove(), { once: true });
+    incoming.animate([{ transform: `translateX(${opposite}${distance})` }, { transform: 'none' }], { duration, easing, fill: 'backwards' });
+  };
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => selectImage(index));
+    dot.addEventListener('keydown', (event) => {
       let next;
-      if (event.key === 'ArrowRight') next = selected + 1;
-      if (event.key === 'ArrowLeft') next = selected - 1;
+      if (event.key === 'ArrowRight') next = requested + 1;
+      if (event.key === 'ArrowLeft') next = requested - 1;
       if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = thumbs.length - 1;
+      if (event.key === 'End') next = dots.length - 1;
       if (next === undefined) return;
       event.preventDefault();
-      selectImage(next, true);
+      return selectImage(next, true);
     });
   });
   gallery.querySelectorAll('[data-hk-gallery-step]').forEach((button) => {
-    button.addEventListener('click', () => selectImage(selected + Number(button.dataset.hkGalleryStep)));
+    button.addEventListener('click', () => selectImage(requested + Number(button.dataset.hkGalleryStep)));
   });
   gallery.querySelectorAll('[data-hk-gallery-controls]').forEach((controls) => { controls.hidden = false; });
 
   const zoom = document.querySelector('#player-zoom');
   const zoomButton = document.querySelector('[data-hk-gallery-zoom]');
-  if (zoom && zoomButton) {
+  const zoomImage = zoom?.querySelector('img');
+  if (zoomImage && zoomButton) {
+    let zoomAnimation;
     zoomButton.hidden = false;
     zoomButton.addEventListener('click', () => {
-      const zoomImage = zoom.querySelector('img');
-      zoomImage.src = image.src;
+      if (zoom.open) return;
+      zoomAnimation?.cancel();
+      const origin = image.getBoundingClientRect();
+      zoomImage.src = image.currentSrc || image.src;
       zoomImage.alt = image.alt;
+      zoomImage.width = image.naturalWidth || 800;
+      zoomImage.height = image.naturalHeight || 800;
       zoom.showModal();
+
+      if (!zoomImage.animate) return;
+      const target = zoomImage.getBoundingClientRect();
+      if (reducedMotion.matches || !origin.width || !origin.height || !target.width || !target.height) {
+        zoomAnimation = zoomImage.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 140, easing: 'ease-out', fill: 'backwards' });
+        return;
+      }
+      const widthRatio = origin.width / target.width;
+      const heightRatio = origin.height / target.height;
+      const scale = image.dataset.kind === 'product'
+        ? Math.min(widthRatio, heightRatio)
+        : Math.max(widthRatio, heightRatio);
+      const x = origin.left + origin.width / 2 - target.left - target.width / 2;
+      const y = origin.top + origin.height / 2 - target.top - target.height / 2;
+      zoomAnimation = zoomImage.animate([
+        { transform: `translate(${x}px, ${y}px) scale(${scale})` },
+        { transform: 'none' },
+      ], { duration: 440, easing, fill: 'backwards' });
     });
   }
-  selectImage(0);
+  dots[0].tabIndex = 0;
+  updateSelection();
 })();

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="400" viewBox="0 0 520 400" fill="none">
+  <title>Choose a Koel</title>
+  <desc>Three round story discs with original leaf, sunrise and river artwork. A little hand chooses the leaf disc.</desc>
+  <!-- Original loose-cut scene. The disc designs are illustrative, not published Koel artwork. -->
+  <g transform="translate(39 68) rotate(-13 83 83)">
+    <path d="M83 1C131-2 167 35 167 82C169 130 132 167 84 168C37 169 0 133 1 85C-1 38 36 3 83 1Z" fill="#2578B7"/>
+    <path d="M81 10C125 7 157 40 157 82C159 125 125 156 84 158C41 160 10 126 11 85C9 43 40 13 81 10Z" fill="#63C3FE"/>
+    <path d="M13 107C45 72 74 119 109 95C126 83 140 78 156 83C156 125 125 156 84 158C53 160 21 140 13 107Z" fill="#FFF1D6"/>
+    <path d="M16 126C51 100 78 140 113 116C133 103 146 106 152 109C141 140 113 158 84 158C55 159 30 147 16 126Z" fill="#2B9863"/>
+    <path d="M39 61C48 47 60 47 68 61M105 45C113 32 125 33 133 45" stroke="#05334A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M90 24C103 24 108 35 105 44C96 49 84 43 83 34C83 28 85 25 90 24Z" fill="#FECB74"/>
+  </g>
+  <g transform="translate(303 117) rotate(15 81 81)">
+    <path d="M79 0C125-2 163 34 164 81C165 129 129 163 83 165C36 166 0 131 0 84C-2 37 33 2 79 0Z" fill="#FF5D27"/>
+    <path d="M80 10C122 9 153 40 154 82C155 124 122 153 82 155C40 157 10 125 10 84C8 42 39 12 80 10Z" fill="#FECB74"/>
+    <path d="M43 81C43 57 61 39 84 40C108 40 126 59 126 82L43 81Z" fill="#D3000A"/>
+    <path d="M14 105C45 83 71 116 99 100C124 86 141 91 153 99L149 115C119 102 94 130 67 119C42 109 30 112 20 120Z" fill="#FFF1D6"/>
+    <path d="M31 134C54 125 75 141 97 133C114 126 126 126 137 130" stroke="#05334A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M84 22V14M44 39L38 32M124 39L130 32" stroke="#D3000A" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(153 85) rotate(6 104 104)">
+    <path d="M103 0C163-3 207 43 208 101C211 162 163 208 105 210C45 213-1 166 0 108C-2 48 43 2 103 0Z" fill="#2B9863"/>
+    <path d="M104 12C157 9 195 49 196 102C198 155 158 195 105 198C52 200 11 160 12 108C10 55 51 15 104 12Z" fill="#FFF1D6"/>
+    <path d="M103 162C68 143 45 117 48 82C83 77 106 102 105 130C106 99 128 73 162 75C166 113 142 143 103 162Z" fill="#2B9863"/>
+    <path d="M103 162C104 130 103 91 107 53" stroke="#05334A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M105 130C86 118 74 103 66 94M105 138C126 124 138 108 146 92" stroke="#05334A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M107 91C88 76 78 57 82 39C104 40 116 62 107 91Z" fill="#FECB74"/>
+  </g>
+  <!-- A choosing hand enters from the lower edge, without hiding the disc artwork. -->
+  <path d="M329 378L300 344C291 333 288 319 290 304L296 263C297 256 303 251 309 253C316 255 318 261 317 269L315 292L334 259C338 252 345 251 350 255C356 258 356 264 353 270L344 286L357 268C361 262 368 262 372 266C377 270 376 276 372 282L363 295L373 284C378 279 384 280 388 284C392 288 390 294 386 299L378 309C390 305 399 310 398 318C397 328 387 348 373 360L359 378Z" fill="#FECB74"/>
+  <path d="M315 292C313 304 318 315 329 320M344 286L336 299M363 295L353 307M378 309L369 318" stroke="#05334A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M66 287C82 280 96 284 103 293M419 70C423 59 432 53 443 52" stroke="#2578B7" stroke-width="6" stroke-linecap="round"/>
+</svg>

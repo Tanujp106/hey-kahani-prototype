@@ -56,6 +56,11 @@
   --hk-radius-card: 24px;
   --hk-radius-xl: 28px;
   --hk-pill: 9999px;
+  /* Card corners. 24px is the house card radius; 32px is the larger option.
+     User direction, November 21, 2026. */
+  --hk-radius-card: 24px;
+  --hk-radius-card-lg: 32px;
+  --hk-radius-chip: 8px;
 
   /* Loose cut — the soft-postcard contour. Three named cuts so a group of
      cards varies as a family instead of each one being hand-tuned, plus the
@@ -64,6 +69,7 @@
   --hk-cut-b: 34px 24px 30px 28px / 26px 34px 24px 32px;
   --hk-cut-c: 32px 26px 34px 24px / 28px 32px 24px 34px;
   --hk-cut-blob: 43% 38% 42% 36%;
+  --hk-cut-d: 28px 44px 32px 38px;
 
   --hk-space-2xs: 4px;
   --hk-space-xs: 8px;

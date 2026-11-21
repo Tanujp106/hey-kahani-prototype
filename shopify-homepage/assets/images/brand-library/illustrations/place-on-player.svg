@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="400" viewBox="0 0 520 400" fill="none">
+  <title>Place the Koel on the Player</title>
+  <desc>A hand lowers a circular Koel onto a cream Kahani Player with an arch handle, five controls, a red speaker band and a wood-toned base.</desc>
+  <!-- Flat editorial interpretation of the supplied hardware reference, not merchandise imagery. -->
+  <path d="M184 222C182 190 183 161 192 143C203 121 227 112 257 113C289 113 314 125 325 147C335 168 335 196 333 224" stroke="#E6CEAD" stroke-width="17" stroke-linecap="round"/>
+  <path d="M185 219C183 187 185 161 194 144C205 124 228 115 257 116C287 116 312 127 322 148C332 168 332 194 330 222" stroke="#FFF1D6" stroke-width="11" stroke-linecap="round"/>
+  <!-- Housing, speaker and base share the same gently irregular cylinder silhouette. -->
+  <path d="M153 212L155 327C155 355 197 371 255 371C313 372 358 354 359 327L362 212Z" fill="#E6CEAD"/>
+  <path d="M154 258L155 323C156 348 198 360 256 361C314 361 358 347 359 323L361 259Z" fill="#D3000A"/>
+  <path d="M153 211L154 265C155 288 198 303 256 303C314 304 359 288 361 265L362 211Z" fill="#FFF1D6"/>
+  <path d="M362 211C361 186 318 170 258 170C199 169 155 185 153 209C152 234 197 249 256 249C314 250 360 235 362 211Z" fill="#E6CEAD"/>
+  <path d="M357 207C355 186 314 174 258 174C203 173 161 187 159 207C158 228 200 242 256 242C311 243 355 229 357 207Z" fill="#FFF1D6"/>
+  <path d="M333 206C333 191 301 182 258 182C215 181 182 190 182 204C181 220 214 230 257 230C299 231 332 221 333 206Z" stroke="#E6CEAD" stroke-width="3"/>
+  <path d="M237 218C250 222 271 222 284 218" stroke="#63C3FE" stroke-width="4" stroke-linecap="round"/>
+  <g stroke="#05334A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256 254V265M251 259H261M252 291H261"/>
+    <path d="M229 271L224 276L230 280M282 272L287 277L281 281"/>
+    <path d="M250 271L255 276L250 281ZM262 272V281"/>
+  </g>
+  <!-- The Koel remains separate and visibly aligned with the top plate. -->
+  <path d="M195 132C194 117 220 108 257 108C295 108 322 119 322 133L322 141C321 155 293 164 257 163C221 163 195 154 195 140Z" fill="#2B9863"/>
+  <path d="M322 131C321 116 294 106 257 106C220 105 194 116 195 130C195 145 222 155 258 154C294 155 321 146 322 131Z" fill="#FFF1D6"/>
+  <path d="M252 144C233 137 223 128 223 118C242 117 255 128 254 137C257 124 268 116 289 118C288 130 275 140 252 144Z" fill="#2B9863"/>
+  <path d="M254 141L260 116" stroke="#05334A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M259 122C248 116 244 111 245 105C257 105 264 113 259 122Z" fill="#FECB74"/>
+  <!-- Small hand approaching from the upper right. -->
+  <path d="M381 19L343 48C332 56 324 61 314 65L276 77C269 79 265 85 268 91C271 97 278 98 285 96L306 91L298 105C294 112 298 119 305 120C312 122 318 116 323 109L339 88C347 79 357 75 367 68L404 42Z" fill="#FECB74"/>
+  <path d="M306 91L319 86M314 65L307 72" stroke="#05334A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M193 154L186 170M319 158L327 174" stroke="#2578B7" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 9"/>
+  <path d="M119 160C106 165 98 175 96 188M393 195C406 194 416 199 421 209" stroke="#2578B7" stroke-width="6" stroke-linecap="round"/>
+</svg>

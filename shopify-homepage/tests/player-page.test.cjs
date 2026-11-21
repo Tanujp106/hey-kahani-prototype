@@ -5,20 +5,36 @@ const { join } = require('node:path');
 const vm = require('node:vm');
 const scriptPath = join(__dirname, '../assets/js/player-page.js');
 
-function fixture() {
+function fixture({ reduced = false, decode = () => Promise.resolve() } = {}) {
   const element = (dataset = {}) => ({
     dataset, hidden: true, attributes: {}, listeners: {}, textContent: '', tabIndex: -1,
     addEventListener(type, callback) { this.listeners[type] = callback; },
     setAttribute(key, value) { this.attributes[key] = value; },
+    removeAttribute(key) { delete this.attributes[key]; },
     focus() { this.focused = true; },
     classList: { toggle() {} },
   });
-  const thumbs = [
+  const dots = [
     element({ src: 'player.png', alt: 'Cream Player', caption: 'The Kahani Player', kind: 'product' }),
     element({ src: 'choosing.webp', alt: 'Child choosing a Koel', caption: 'A story of their choosing', kind: 'lifestyle' }),
     element({ src: 'floor.webp', alt: 'Siblings listening', caption: 'Room for imagination', kind: 'lifestyle' }),
   ];
-  const image = element(), caption = element(), status = element();
+  let image;
+  const mediaElement = (src, alt, kind) => Object.assign(element({ kind }), {
+    src, alt, naturalWidth: 1254, naturalHeight: 1254,
+    cloneNode() { return mediaElement(this.src, this.alt, this.dataset.kind); },
+    after(nextImage) { image = nextImage; },
+    decode() { return decode(this.src); },
+    getBoundingClientRect() { return { left: 80, top: 100, width: 480, height: 320 }; },
+    remove() { this.removed = true; },
+    animate(frames, options) {
+      const animation = element();
+      this.animation = { frames, options, listeners: animation.listeners };
+      return animation;
+    },
+  });
+  image = mediaElement('player.png', 'Cream Player', 'product');
+  const caption = element(), status = element();
   const controls = element(), previous = element({ hkGalleryStep: '-1' }), next = element({ hkGalleryStep: '1' });
   const gallery = element();
   gallery.querySelector = selector => ({
@@ -26,13 +42,14 @@ function fixture() {
     '[data-hk-gallery-status]': status,
   }[selector] || null);
   gallery.querySelectorAll = selector => ({
-    '[data-hk-gallery-thumb]': thumbs, '[data-hk-gallery-step]': [previous, next],
+    '[data-hk-gallery-dot]': dots, '[data-hk-gallery-step]': [previous, next],
     '[data-hk-gallery-controls]': [controls],
   }[selector] || []);
   let additions = 0;
   const primary = { click() { additions++; } };
   const sticky = element();
-  const zoom = element(), zoomImage = element(), zoomButton = element();
+  const zoom = element(), zoomImage = mediaElement(), zoomButton = element();
+  zoomImage.getBoundingClientRect = () => ({ left: 320, top: 140, width: 600, height: 600 });
   zoom.showModal = () => { zoom.open = true; };
   zoom.querySelector = () => zoomImage;
   const document = {
@@ -42,52 +59,89 @@ function fixture() {
     }[selector] || null; },
     querySelectorAll(selector) { return selector === '[data-hk-player-buy]' ? [sticky] : []; },
   };
-  if (existsSync(scriptPath)) vm.runInNewContext(readFileSync(scriptPath, 'utf8'), { document });
-  return { thumbs, image, caption, status, controls, previous, next, gallery, sticky, zoom, zoomImage, zoomButton, additions: () => additions };
+  if (existsSync(scriptPath)) vm.runInNewContext(readFileSync(scriptPath, 'utf8'), {
+    document,
+    window: { matchMedia: () => ({ matches: reduced }) },
+    getComputedStyle: () => ({ opacity: '1' }),
+  });
+  return { dots, get image() { return image; }, caption, status, controls, previous, next, gallery, sticky, zoom, zoomImage, zoomButton, additions: () => additions };
 }
 
-test('gallery selection updates image, description and accessible selected state', () => {
+test('gallery slides to the decoded image and updates its accessible selected state', async () => {
   const f = fixture();
-  assert.equal(typeof f.thumbs[1].listeners.click, 'function', 'gallery must be initialized');
-  f.thumbs[1].listeners.click();
+  assert.equal(typeof f.dots[1].listeners.click, 'function', 'gallery must be initialized');
+  const outgoing = f.image;
+  await f.dots[1].listeners.click();
   assert.equal(f.image.src, 'choosing.webp');
   assert.equal(f.image.alt, 'Child choosing a Koel');
   assert.equal(f.image.dataset.kind, 'lifestyle');
   assert.equal(f.caption.textContent, 'A story of their choosing');
   assert.equal(f.status.textContent, 'Image 2 of 3: A story of their choosing');
-  assert.equal(f.thumbs[1].attributes['aria-pressed'], 'true');
-  assert.equal(f.thumbs[0].attributes['aria-pressed'], 'false');
+  assert.equal(f.dots[1].attributes['aria-pressed'], 'true');
+  assert.equal(f.dots[0].attributes['aria-pressed'], 'false');
   assert.equal(f.controls.hidden, false);
+  assert.equal(outgoing.attributes['aria-hidden'], 'true');
+  assert.equal(outgoing.animation.frames[1].transform, 'translateX(-110%)', 'moving forward slides the old image out to the left');
+  assert.equal(f.image.animation.frames[0].transform, 'translateX(110%)', 'the new image slides in from the right');
+  outgoing.animation.listeners.finish();
+  assert.equal(outgoing.removed, true);
 });
 
-test('gallery wraps with buttons and keeps keyboard selection and focus together', () => {
+test('gallery wraps with buttons and keeps keyboard selection and focus together', async () => {
   const f = fixture();
   assert.equal(typeof f.previous.listeners.click, 'function', 'previous control must be initialized');
-  f.previous.listeners.click();
+  await f.previous.listeners.click();
   assert.equal(f.image.src, 'floor.webp');
-  f.next.listeners.click();
+  await f.next.listeners.click();
   assert.equal(f.image.src, 'player.png');
   let prevented = false;
-  f.thumbs[0].listeners.keydown({ key: 'ArrowRight', preventDefault() { prevented = true; } });
+  await f.dots[0].listeners.keydown({ key: 'ArrowRight', preventDefault() { prevented = true; } });
   assert.equal(prevented, true);
   assert.equal(f.image.src, 'choosing.webp');
-  assert.equal(f.thumbs[1].focused, true);
-  assert.equal(f.thumbs[1].tabIndex, 0);
-  assert.equal(f.thumbs[0].tabIndex, -1);
-  f.thumbs[1].listeners.keydown({ key: 'End', preventDefault() {} });
+  assert.equal(f.dots[1].focused, true);
+  assert.equal(f.dots[1].tabIndex, 0);
+  assert.equal(f.dots[0].tabIndex, -1);
+  await f.dots[1].listeners.keydown({ key: 'End', preventDefault() {} });
   assert.equal(f.image.src, 'floor.webp');
-  f.thumbs[2].listeners.keydown({ key: 'Home', preventDefault() {} });
+  await f.dots[2].listeners.keydown({ key: 'Home', preventDefault() {} });
   assert.equal(f.image.src, 'player.png');
 });
 
-test('zoom opens the selected image with its accessible description', () => {
-  const f = fixture();
-  assert.equal(typeof f.zoomButton.listeners.click, 'function', 'zoom must be initialized');
-  f.thumbs[2].listeners.click();
-  f.zoomButton.listeners.click();
-  assert.equal(f.zoom.open, true);
-  assert.equal(f.zoomImage.src, 'floor.webp');
-  assert.equal(f.zoomImage.alt, 'Siblings listening');
+test('only the latest gallery selection takes effect when media load out of order', async () => {
+  const pending = {};
+  const f = fixture({ decode: (src) => new Promise((resolve, reject) => { pending[src] = { resolve, reject }; }) });
+  const first = f.next.listeners.click();
+  const second = f.next.listeners.click();
+  assert.equal(f.image.src, 'player.png', 'keep showing the current image during loading');
+  pending['floor.webp'].resolve();
+  await second;
+  pending['choosing.webp'].resolve();
+  await first;
+  assert.equal(f.image.src, 'floor.webp');
+  const failed = f.dots[1].listeners.click();
+  pending['choosing.webp'].reject();
+  await failed;
+  assert.equal(f.image.src, 'floor.webp', 'failed media keep the current image in place');
+  assert.equal(f.dots[2].tabIndex, 0);
+});
+
+test('zoom morphs the selected image into the dialog and uses a fade for reduced motion', async () => {
+  for (const reduced of [false, true]) {
+    const f = fixture({ reduced });
+    assert.equal(typeof f.zoomButton.listeners.click, 'function', 'zoom must be initialized');
+    await f.dots[2].listeners.click();
+    f.zoomButton.listeners.click();
+    assert.equal(f.zoom.open, true);
+    assert.equal(f.zoomImage.src, 'floor.webp');
+    assert.equal(f.zoomImage.alt, 'Siblings listening');
+    const [start] = f.zoomImage.animation.frames;
+    if (reduced) {
+      assert.equal(start.transform, undefined);
+      assert.equal(start.opacity, 0);
+    } else {
+      assert.equal(start.transform, 'translate(-300px, -180px) scale(0.8)');
+    }
+  }
 });
 
 test('sticky purchase uses the same product addition as the main purchase control', () => {

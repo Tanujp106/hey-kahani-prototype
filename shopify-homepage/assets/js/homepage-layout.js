@@ -23,17 +23,13 @@
     const previous = section.querySelector('[data-hk-rail-prev]');
     const next = section.querySelector('[data-hk-rail-next]');
     const dotList = section.querySelector('[data-hk-rail-dots]');
-    const dots = dotList ? Array.from(dotList.querySelectorAll('[data-hk-rail-dot]')) : [];
-    const featureCards = dots.length ? Array.from(track.children).filter((card) => card.classList.contains('hk-feature')) : [];
+    let dots = [];
+    let stops = [];
+    let activeDot;
     const motion = () => (reducedMotion.matches ? 'auto' : 'smooth');
-    const stepSize = () => {
-      const card = featureCards[0];
-      if (!card) return track.clientWidth * 0.85;
-      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
-      return card.offsetWidth + gap;
-    };
+    const maximumScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
     const syncControls = () => {
-      const maximum = Math.max(0, track.scrollWidth - track.clientWidth);
+      const maximum = maximumScroll();
       if (previous) {
         previous.hidden = maximum < 2;
         previous.disabled = track.scrollLeft <= 2;
@@ -43,34 +39,63 @@
         next.disabled = track.scrollLeft >= maximum - 2;
       }
       if (!dots.length) return;
-      const size = stepSize();
-      const maxIndex = dots.length - 1;
-      const position = size > 0 ? Math.min(maxIndex, Math.max(0, track.scrollLeft / size)) : 0;
-      const index = Math.min(maxIndex, Math.max(0, Math.round(position)));
-      dots.forEach((dot, dotIndex) => {
-        const active = dotIndex === index;
-        dot.classList.toggle('is-active', active);
-        if (active) dot.setAttribute('aria-current', 'true');
-        else dot.removeAttribute('aria-current');
-      });
-      const first = dots[0];
-      if (dotList?.style && first && typeof first.offsetLeft === 'number') {
-        const stride = dots[1] ? dots[1].offsetLeft - first.offsetLeft : 0;
-        const center = first.offsetLeft + first.offsetWidth / 2 + position * stride;
-        dotList.style.setProperty('--hk-feature-dot-x', `${center - 9}px`);
+      const nearest = stops.findIndex((left, index) => (
+        index === stops.length - 1 || track.scrollLeft < (left + stops[index + 1]) / 2
+      ));
+      const current = dots[nearest];
+      if (current !== activeDot) {
+        activeDot?.removeAttribute('aria-current');
+        current.setAttribute('aria-current', 'true');
+        activeDot = current;
       }
     };
+
+    const updatePagination = () => {
+      if (dotList) {
+        const maximum = maximumScroll();
+        const slides = Array.from(track.children).filter((slide) => !slide.hidden);
+        stops = [];
+        if (maximum >= 2 && slides.length > 1) {
+          // Measure each slide from the first so rail insets and gaps are respected.
+          const start = slides[0].getBoundingClientRect().left;
+          stops.push(0);
+          for (const slide of slides.slice(1)) {
+            const left = slide.getBoundingClientRect().left - start;
+            if (left >= maximum - 2) break;
+            if (left > stops[stops.length - 1] + 2) stops.push(left);
+          }
+          // Several cards can share the final reachable scroll position.
+          stops.push(maximum);
+        }
+        if (dots.length !== stops.length) {
+          dots = stops.map((_, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'hk-carousel-dot';
+            dot.setAttribute('aria-label', `Go to position ${index + 1} of ${stops.length}`);
+            dot.setAttribute('aria-controls', track.id);
+            dot.addEventListener('click', () => track.scrollTo({ left: stops[index], behavior: motion() }));
+            return dot;
+          });
+          dotList.replaceChildren(...dots);
+        }
+        dotList.hidden = dots.length < 2;
+      }
+      syncControls();
+    };
+
     const scroll = (direction) => {
-      track.scrollBy({ left: direction * stepSize(), behavior: motion() });
+      if (!stops.length) {
+        track.scrollBy({ left: direction * track.clientWidth * 0.85, behavior: motion() });
+        return;
+      }
+      const left = direction > 0
+        ? stops.find((stop) => stop > track.scrollLeft + 2)
+        : stops.findLast((stop) => stop < track.scrollLeft - 2);
+      if (left !== undefined) track.scrollTo({ left, behavior: motion() });
     };
     previous?.addEventListener('click', () => scroll(-1));
     next?.addEventListener('click', () => scroll(1));
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        track.scrollTo({ left: index * stepSize(), behavior: motion() });
-      });
-    });
-    if (dotList && featureCards.length) dotList.hidden = false;
     track.addEventListener('scroll', syncControls, { passive: true });
     track.addEventListener('keydown', (event) => {
       if (event.target !== track) return;
@@ -80,7 +105,7 @@
       }
       if (event.key === 'Home' || event.key === 'End') {
         event.preventDefault();
-        track.scrollTo({ left: event.key === 'Home' ? 0 : track.scrollWidth, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+        track.scrollTo({ left: event.key === 'Home' ? 0 : maximumScroll(), behavior: motion() });
       }
     });
 
@@ -104,7 +129,7 @@
         });
         track.scrollTo({ left: 0, behavior: 'auto' });
         if (status) status.textContent = `${visible} ${visible === 1 ? 'Koel' : 'Koels'} shown${selected === 'all' ? '' : ` in ${filter.textContent.trim()}`}.`;
-        syncControls();
+        updatePagination();
       });
     });
     // Keep the full catalogue height so a shorter filter cannot move the waves or the page.
@@ -121,9 +146,9 @@
       window.addEventListener('resize', lockCatalogueHeight);
       window.addEventListener('load', lockCatalogueHeight);
     }
-    if ('ResizeObserver' in window) new window.ResizeObserver(syncControls).observe(track);
-    window.addEventListener('resize', syncControls);
-    syncControls();
+    if ('ResizeObserver' in window) new window.ResizeObserver(updatePagination).observe(track);
+    window.addEventListener('resize', updatePagination);
+    updatePagination();
   });
 
   // In-page navigation closes the existing desktop menu as well as the mobile drawer.

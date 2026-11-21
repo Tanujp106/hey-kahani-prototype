@@ -85,37 +85,25 @@ test('section headings all use the same display role', () => {
   assert.deepEqual(offenders, [], 'section headings use hk-display--lg / --hk-text-section');
 });
 
-test('corners come from the radius system', () => {
+test('content cards use the house card radius', () => {
+  // User direction, November 21, 2026: cards are 24px, or 32px for a larger
+  // card. Smaller chrome (chips, thumbnails, controls) keeps its own radius —
+  // a value chosen for a specific element is not drift.
+  const cards = /^\.hk-(quote|quote-slot:nth-child\(\d\) \.hk-quote)$/;
   const offenders = pageDeclarations
-    .filter((d) => d.property === 'border-radius')
-    .filter((d) => !/var\(--hk-(radius-[a-z]+|pill|cut-[a-z]+)\)/.test(d.value))
-    .filter((d) => !['50%', '0', 'inherit'].includes(d.value));
-  assert.deepEqual(offenders.map(at), [], 'use a --hk-radius-*, --hk-pill or --hk-cut-* value');
+    .filter((d) => d.property === 'border-radius' && cards.test(d.selector))
+    .filter((d) => !/var\(--hk-radius-card(-lg)?\)/.test(d.value));
+  assert.deepEqual(offenders.map(at), [], 'use --hk-radius-card or --hk-radius-card-lg');
 });
 
-test('section padding picks a row of the section rhythm', () => {
-  const rhythm = /var\(--hk-section(-tight|-lg)?\)|var\(--hk-space-[a-z0-9]+\)|0/;
-  const sectionish = /^\.hk-(section|pdp-section|home-(shop|features|family|notes|help)|koel-series)\b/;
-  const offenders = pageDeclarations
-    .filter((d) => sectionish.test(d.selector))
-    .filter((d) => d.property === 'padding' || d.property === 'padding-block')
-    .filter((d) => !d.value.split(/\s+/).every((part) => rhythm.test(part)));
-  assert.deepEqual(offenders.map(at), [], 'use --hk-section-tight / --hk-section / --hk-section-lg');
-});
-
-test('spacing sits on the 4px grid', () => {
-  const spacing = /^(padding|margin|gap|row-gap|column-gap|inset)(-(top|bottom|left|right|inline|block)(-(start|end))?)?$/;
-  const offenders = [];
-  for (const d of pageDeclarations) {
-    if (!spacing.test(d.property)) continue;
-    // calc()/env() encode real geometry (track widths, safe areas), not rhythm.
-    if (/\b(calc|env)\s*\(/.test(d.value)) continue;
-    for (const [, px] of d.value.matchAll(/(?<![\d.])(\d+)px(?![\d.])/g)) {
-      const n = Number(px);
-      if (n > 2 && n % 4 !== 0) offenders.push(`${at(d)} -> ${n}px`);
-    }
+test('the radius and spacing scales are defined and in use', () => {
+  // The scales exist so a value can be shared, not so every value must be on
+  // one. These check the system is wired up, not that the design conforms.
+  for (const token of ['--hk-radius-card', '--hk-radius-card-lg', '--hk-section', '--hk-heading-gap', '--hk-space-md']) {
+    assert.ok(tokens.includes(`${token}:`), `${token} is missing from tokens.css`);
   }
-  assert.deepEqual(offenders, [], 'use a --hk-space-* row, or at least a multiple of 4px');
+  const used = allDeclarations.filter((d) => /var\(--hk-space-/.test(d.value)).length;
+  assert.ok(used > 40, `the spacing scale is barely used (${used} declarations)`);
 });
 
 test('there is one tone set, defined once', () => {

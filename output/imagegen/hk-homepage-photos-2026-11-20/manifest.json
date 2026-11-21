@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-20",
+  "style_guide": "../../../docs/photography-style-guide.md",
+  "tool": "Built-in image_gen",
+  "generation": "One new independent-choice photo; four previously approved direction samples reused.",
+  "web_export": "cwebp quality 85, method 6, native dimensions retained; no crop or upscaling.",
+  "images": [
+    {
+      "id": "01-choosing-a-story",
+      "master": "output/imagegen/hk-photo-style-approval-2026-11-20/01-choosing-a-story.png",
+      "web_asset": "shopify-homepage/assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp",
+      "width": 1254,
+      "height": 1254,
+      "master_sha256": "67c23be0d01078c73953129cd9a5a522c212ddaf32a7ed416a9c6778465c5fe7",
+      "master_bytes": 2475597,
+      "web_bytes": 188224,
+      "provenance": "Generated photographic concept; approximate product recreation"
+    },
+    {
+      "id": "02-stories-on-the-floor",
+      "master": "output/imagegen/hk-photo-style-approval-2026-11-20/02-stories-on-the-floor.png",
+      "web_asset": "shopify-homepage/assets/images/editorial/photography-2026-11-20/02-stories-on-the-floor.webp",
+      "width": 1254,
+      "height": 1254,
+      "master_sha256": "6bd32f960fb9728131e9c7d051d55b93eadd8f7027b8a1fd6faa4a2b62b3e842",
+      "master_bytes": 2775079,
+      "web_bytes": 244816,
+      "provenance": "Generated photographic concept; approximate product recreation"
+    },
+    {
+      "id": "03-breakfast-giggles",
+      "master": "output/imagegen/hk-photo-style-approval-2026-11-20/03-breakfast-giggles.png",
+      "web_asset": "shopify-homepage/assets/images/editorial/photography-2026-11-20/03-breakfast-giggles.webp",
+      "width": 1254,
+      "height": 1254,
+      "master_sha256": "103739932559314c78f8ff1b9a2d3b423701ade150e2137f66fc06364316257a",
+      "master_bytes": 2522057,
+      "web_bytes": 194802,
+      "provenance": "Generated photographic concept; approximate product recreation"
+    },
+    {
+      "id": "04-bedtime-wind-down",
+      "master": "output/imagegen/hk-photo-style-approval-2026-11-20/04-bedtime-wind-down.png",
+      "web_asset": "shopify-homepage/assets/images/editorial/photography-2026-11-20/04-bedtime-wind-down.webp",
+      "width": 1254,
+      "height": 1254,
+      "master_sha256": "ff88421788bc111a977abc6f298ad6445892aa3e4e229eb687b999d70ef56411",
+      "master_bytes": 2223805,
+      "web_bytes": 127512,
+      "provenance": "Generated photographic concept; approximate product recreation"
+    },
+    {
+      "id": "05-independent-choice",
+      "master": "output/imagegen/hk-homepage-photos-2026-11-20/05-independent-choice.png",
+      "web_asset": "shopify-homepage/assets/images/editorial/photography-2026-11-20/05-independent-choice.webp",
+      "width": 1254,
+      "height": 1254,
+      "master_sha256": "c014b6f3baaeb295ed942d2d8c52c1a895c06588010a26d24cb934abd0f217d3",
+      "master_bytes": 2659230,
+      "web_bytes": 231022,
+      "provenance": "Generated photographic concept; approximate product recreation"
+    }
+  ],
+  "homepage_replacements": [
+    {
+      "placement": "Player menu default and Kahani Player row",
+      "old": "assets/images/product/player-hero.jpg",
+      "new": "assets/images/editorial/photography-2026-11-20/02-stories-on-the-floor.webp"
+    },
+    {
+      "placement": "Player menu See how it works row",
+      "old": "assets/images/product/player-desktop.jpg",
+      "new": "assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp"
+    },
+    {
+      "placement": "Tap a Koel. Hear a Kahani. feature",
+      "old": "assets/images/editorial/hk-shot-05.png",
+      "new": "assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp"
+    },
+    {
+      "placement": "Stories that feel like home feature",
+      "old": "assets/images/editorial/hk-shot-03.png",
+      "new": "assets/images/editorial/photography-2026-11-20/03-breakfast-giggles.webp"
+    },
+    {
+      "placement": "Made for little hands feature",
+      "old": "assets/images/editorial/hk-shot-02.png",
+      "new": "assets/images/editorial/photography-2026-11-20/05-independent-choice.webp"
+    },
+    {
+      "placement": "A story for the quieter moments feature",
+      "old": "assets/images/editorial/hk-shot-06.png",
+      "new": "assets/images/editorial/photography-2026-11-20/04-bedtime-wind-down.webp"
+    }
+  ],
+  "scope": "Active homepage lifestyle photographs and Player-menu lifestyle images. Existing product cutouts, studio product view, Koel artwork, vector assets and hidden founder portrait retained.",
+  "verification": {
+    "generated_image": "Inspected inline for style, Indian casting, candid action, hands and product identity.",
+    "browser": "On November 20, 2026, checked all four homepage feature photos at 1440x1000 desktop and 390x844 mobile, plus both desktop Player-menu lifestyle photos with agent-browser. Corrected SVG mask fitting, menu image fitting and the first-card decoration overlap; verified saved source after stylesheet version refresh.",
+    "source_checks": "All 56 image sources and 24 dynamic image references resolve; four feature images have accurate square dimensions and descriptive alt text; six old lifestyle references are absent; five WebP files decode at native dimensions; all master hashes match.",
+    "tests": {
+      "command": "node --test shopify-homepage/tests/how-layout.test.cjs",
+      "passed": 4,
+      "failed": 0
+    },
+    "whitespace": "git diff --check passed for the edited homepage and image README.",
+    "browser_evidence": "../../qa/homepage-photo-crops-2026-11-20/review.json"
+  }
+}

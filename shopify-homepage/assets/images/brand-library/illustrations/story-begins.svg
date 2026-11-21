@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="400" viewBox="0 0 520 400" fill="none">
+  <title>Let the story begin</title>
+  <desc>A Koel sits on the cream and red Kahani Player. Broad blue listening ripples and a musical note rise beside it.</desc>
+  <!-- A new listening composition in the flat loose-cut illustration system. -->
+  <path d="M183 221C181 188 183 154 193 133C205 109 229 99 260 100C291 101 317 114 328 137C337 158 337 189 335 220" stroke="#E6CEAD" stroke-width="17" stroke-linecap="round"/>
+  <path d="M184 219C182 186 186 155 196 135C207 113 230 103 260 104C289 105 313 116 324 139C333 159 334 188 332 219" stroke="#FFF1D6" stroke-width="11" stroke-linecap="round"/>
+  <path d="M153 213L155 327C155 355 198 371 256 371C314 372 359 354 360 327L362 213Z" fill="#E6CEAD"/>
+  <path d="M154 259L155 323C156 348 199 360 257 361C315 361 359 347 360 323L361 260Z" fill="#D3000A"/>
+  <path d="M153 212L154 266C155 289 199 304 257 304C315 305 360 289 361 266L362 212Z" fill="#FFF1D6"/>
+  <path d="M362 212C361 187 318 171 259 171C200 170 155 186 153 210C152 235 198 250 257 250C315 251 360 236 362 212Z" fill="#E6CEAD"/>
+  <path d="M357 208C355 187 315 175 259 175C204 174 161 188 159 208C158 229 201 243 257 243C312 244 355 230 357 208Z" fill="#FFF1D6"/>
+  <path d="M328 204C327 190 298 180 258 180C218 180 188 189 188 203L189 211C190 225 219 235 258 234C298 234 327 225 328 212Z" fill="#2B9863"/>
+  <path d="M328 202C326 188 298 179 258 179C219 178 189 188 188 202C189 216 219 226 258 226C298 227 327 217 328 202Z" fill="#FFF1D6"/>
+  <path d="M253 216C234 209 223 201 223 191C242 189 255 201 255 210C258 197 271 188 291 190C290 204 275 212 253 216Z" fill="#2B9863"/>
+  <path d="M255 213L261 187" stroke="#05334A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M260 194C250 188 245 183 247 177C259 177 265 185 260 194Z" fill="#FECB74"/>
+  <g stroke="#05334A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M257 255V266M252 260H262M253 292H262"/>
+    <path d="M230 272L225 277L231 281M283 273L288 278L282 282"/>
+    <path d="M251 272L256 277L251 282ZM263 273V282"/>
+  </g>
+  <!-- Listening ripples: open, unequal arcs with room around the product. -->
+  <path d="M379 163C401 189 402 222 383 247M409 137C445 175 445 234 416 270" stroke="#63C3FE" stroke-width="13" stroke-linecap="round"/>
+  <path d="M128 174C109 198 110 225 127 246M100 151C72 184 71 232 98 267" stroke="#2578B7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M162 90C160 83 153 79 145 81C136 83 131 90 135 96C139 103 152 101 158 97C163 93 165 89 165 82L164 51L191 57L191 72L165 67" fill="#D3000A"/>
+  <path d="M370 73C375 63 384 59 394 61M359 89C371 84 381 87 386 94" stroke="#FF5D27" stroke-width="6" stroke-linecap="round"/>
+</svg>

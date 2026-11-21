@@ -258,7 +258,7 @@ input {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   column-gap: clamp(20px, 3vw, 44px);
-  padding-block: var(--hk-space-sm);
+  padding-block: 14px;
   padding-inline: clamp(12px, 2vw, 20px);
 }
 
@@ -293,7 +293,7 @@ input {
 .hk-nav__links {
   display: none;
   align-items: center;
-  gap: clamp(16px, 2vw, 24px);
+  gap: clamp(16px, 2vw, 26px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -303,8 +303,8 @@ input {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: var(--hk-space-xs) var(--hk-space-sm);
-  margin-inline: -var(--hk-space-2xs);
+  padding: 8px 14px;
+  margin-inline: -6px;
   border-radius: var(--hk-pill);
   color: var(--hk-ink);
   font-size: var(--hk-text-body-sm);
@@ -335,9 +335,9 @@ input {
   display: flex;
   align-items: center;
   justify-self: end;
-  gap: var(--hk-space-2xs);
+  gap: 6px;
   min-height: 48px;
-  padding: var(--hk-space-2xs) var(--hk-space-sm);
+  padding: 5px 12px;
   border: 1px solid color-mix(in srgb, var(--hk-husk) 78%, var(--hk-kesar));
   border-radius: var(--hk-pill);
   background: color-mix(in srgb, var(--hk-husk) 46%, var(--hk-kesar));
@@ -427,7 +427,7 @@ input {
 
 .hk-nav__drawer a {
   display: block;
-  padding: var(--hk-space-sm) 0;
+  padding: 14px 0;
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
   color: var(--hk-ink);
@@ -453,7 +453,7 @@ input {
   height: var(--hk-mega-h);
   overflow: hidden;
   border: 1px solid var(--hk-hairline);
-  border-radius: var(--hk-radius-xl);
+  border-radius: var(--hk-radius-card);
   background: var(--hk-canvas);
   box-shadow: var(--hk-shadow-soft);
   opacity: 0;
@@ -584,7 +584,7 @@ input {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--hk-space-xs);
+  gap: 10px;
   align-content: center;
   min-width: 0;
 }
@@ -592,7 +592,7 @@ input {
 .hk-mega__row {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
-  gap: var(--hk-space-sm);
+  gap: 14px;
   align-items: center;
   min-height: 48px;
   color: var(--hk-ink);
@@ -614,7 +614,7 @@ input {
   display: block;
   width: 48px;
   height: 48px;
-  border-radius: var(--hk-radius-md);
+  border-radius: 12px;
   object-fit: cover;
   background: var(--hk-kesar);
 }
@@ -657,7 +657,7 @@ input {
   justify-content: center;
   gap: var(--hk-space-xs);
   min-height: 52px;
-  padding: var(--hk-space-md) 28px;
+  padding: 15px 28px;
   border-radius: var(--hk-pill);
   border: 0 solid transparent;
   font-size: var(--hk-text-body-sm);
@@ -765,11 +765,11 @@ input {
 
 .hk-section__intro {
   max-width: 40rem;
-  margin-bottom: var(--hk-heading-gap);
+  margin-bottom: 40px;
 }
 
 .hk-section__intro p {
-  margin: var(--hk-space-sm) 0 0;
+  margin: 14px 0 0;
   font-size: var(--hk-text-body);
   font-weight: var(--hk-font-weight-body);
   line-height: 1.5;
@@ -874,7 +874,7 @@ input {
 }
 
 .hk-hero .hk-lead {
-  margin-top: var(--hk-space-sm);
+  margin-top: 14px;
   max-width: 38ch;
   opacity: 0.78;
 }
@@ -937,7 +937,7 @@ input {
 /* Why Hey Kahani — USP feature stage.
    The bottom stays short so the card meets How it works. */
 .hk-section--how {
-  padding-block: var(--hk-section-lg) var(--hk-space-sm);
+  padding-block: clamp(72px, 9vw, 112px) var(--hk-space-sm);
   background: var(--hk-canvas); /* white */
 }
 
@@ -1031,7 +1031,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px 20px var(--hk-space-md);
+  padding: 22px 22px 16px;
 }
 
 .hk-step__number {
@@ -1100,7 +1100,7 @@ input {
 }
 
 .hk-section--app {
-  padding-block: var(--hk-section) var(--hk-section-lg);
+  padding-block: clamp(48px, 6vw, 72px) clamp(72px, 9vw, 112px);
 }
 
 .hk-how__header {
@@ -1115,7 +1115,7 @@ input {
 }
 
 .hk-how__lead {
-  margin: var(--hk-space-sm) auto 0;
+  margin: 14px auto 0;
   max-width: 76ch;
   text-align: center;
 }
@@ -1124,7 +1124,7 @@ input {
   --hk-how-panel-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --hk-how-panel-duration: 420ms;
   display: grid;
-  gap: clamp(20px, 3vw, 32px);
+  gap: clamp(22px, 3vw, 32px);
   width: 100%;
 }
 
@@ -1132,7 +1132,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--hk-space-xs);
+  gap: 10px;
 }
 
 .hk-how-tabs__btn {
@@ -1140,7 +1140,7 @@ input {
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  padding: var(--hk-space-xs) var(--hk-space-md);
+  padding: 10px 18px;
   border: 0;
   border-radius: var(--hk-pill);
   background: var(--hk-tint-kesar);
@@ -1352,7 +1352,7 @@ input {
   aspect-ratio: 1;
   box-sizing: border-box;
   border: 5px solid var(--hk-kesar);
-  border-radius: var(--hk-cut-a);
+  border-radius: var(--hk-cut-d);
   overflow: hidden;
   background: var(--hk-kesar);
   transform: rotate(var(--hk-benefit-photo-tilt));
@@ -1671,20 +1671,20 @@ input {
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--hk-space-sm);
-  margin-top: 20px;
+  margin-top: 22px;
 }
 
 .hk-app__store {
   display: inline-flex;
   align-items: center;
-  gap: var(--hk-space-xs);
+  gap: 10px;
   min-width: 148px;
   min-height: 48px;
-  padding: var(--hk-space-2xs) var(--hk-space-sm);
+  padding: 6px 14px;
   color: var(--hk-on-dark);
   background: #080808;
   border: 1px solid #777;
-  border-radius: var(--hk-radius-sm);
+  border-radius: var(--hk-radius-chip);
   text-align: left;
   user-select: none;
 }
@@ -1733,7 +1733,7 @@ input {
   max-width: 28ch;
   display: grid;
   justify-items: start;
-  gap: var(--hk-space-xs);
+  gap: 10px;
 }
 
 @media (min-width: 800px) {
@@ -2235,14 +2235,14 @@ input {
 
 .hk-koels__intro .hk-btn-row {
   justify-content: center;
-  margin-top: var(--hk-space-xs);
+  margin-top: 10px;
 }
 
 .hk-koel-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--hk-space-xl) var(--hk-space-lg);
-  margin-top: var(--hk-space-md);
+  margin-top: 18px;
   padding-block: var(--hk-space-xs) var(--hk-space-sm);
 }
 
@@ -2353,7 +2353,7 @@ input {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: var(--hk-space-xs);
+  gap: 10px;
   text-align: left;
   pointer-events: none;
 }
@@ -2384,10 +2384,10 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--hk-space-2xs);
+  gap: 6px;
   margin: 0;
   max-width: calc(100% - 24px);
-  padding: var(--hk-space-2xs) var(--hk-space-xs);
+  padding: 5px 10px;
   border-radius: var(--hk-pill);
   border: 1px solid rgba(5, 51, 74, 0.12);
   backdrop-filter: blur(12px) saturate(1.05);
@@ -2423,7 +2423,7 @@ input {
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 44px;
-  gap: var(--hk-space-xs);
+  gap: 12px;
   min-height: 44px;
 }
 
@@ -2439,7 +2439,7 @@ input {
   margin: 0;
   min-width: 0;
   min-height: 44px;
-  padding: 0 var(--hk-space-2xs);
+  padding: 0 6px;
   border: 1.5px solid rgba(180, 0, 35, 0.55);
   border-radius: var(--hk-pill);
   background: rgba(255, 252, 247, 0.92);
@@ -2601,6 +2601,13 @@ input {
 }
 
 @media (max-width: 360px) {
+  /* Keep two Koels a row: recover width from the insets, not the column count. */
+  .hk-koel__actions {
+    right: 8px;
+    left: 8px;
+    gap: 8px;
+  }
+
   .hk-koel__preview {
     padding-inline: 2px;
   }
@@ -2618,11 +2625,11 @@ input {
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: var(--hk-space-xs);
+  gap: 10px;
   width: max-content;
   max-width: calc(100vw - 32px);
   min-height: 48px;
-  padding: var(--hk-space-sm) var(--hk-space-md);
+  padding: 12px 18px;
   border: 1px solid var(--hk-husk);
   border-radius: var(--hk-radius-md);
   background: var(--hk-kesar);
@@ -2662,9 +2669,9 @@ input {
 .hk-bag-list__item {
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr);
-  gap: var(--hk-space-sm);
+  gap: 14px;
   align-items: start;
-  padding: var(--hk-space-md) 0;
+  padding: 18px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   background: transparent;
 }
@@ -2703,7 +2710,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--hk-space-xs) var(--hk-space-sm);
+  gap: 10px 12px;
   margin-top: var(--hk-space-sm);
 }
 
@@ -2984,7 +2991,7 @@ input {
   .hk-player__usps {
     align-items: flex-start;
     max-width: 28rem;
-    gap: var(--hk-space-md);
+    gap: 18px;
     margin-top: 0;
     margin-inline: auto;
   }
@@ -3104,7 +3111,7 @@ input {
   grid-area: copy;
   display: flex;
   flex-direction: column;
-  gap: var(--hk-space-md);
+  gap: 18px;
   max-width: 60ch;
   color: var(--hk-ink);
 }
@@ -3119,7 +3126,7 @@ input {
 }
 
 .hk-founder__copy > .hk-founder__sign {
-  margin-top: var(--hk-space-2xs);
+  margin-top: 6px;
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-body);
   font-weight: 700;
@@ -3225,7 +3232,7 @@ input {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: start;
-  gap: clamp(16px, 2.5vw, 32px);
+  gap: clamp(18px, 2.5vw, 32px);
   row-gap: var(--hk-space-lg);
   max-width: 1000px;
   margin: 104px auto 0;
@@ -3243,7 +3250,7 @@ input {
 
 .hk-quote-slot:nth-child(3),
 .hk-quote-slot:nth-child(5) {
-  margin-top: var(--hk-space-md);
+  margin-top: 18px;
 }
 
 .hk-quote-slot:nth-child(4) {
@@ -3261,7 +3268,7 @@ input {
   padding: 0;
   border: 0;
   /* Content-sized surfaces echo the soft-postcard contour without clipping copy. */
-  border-radius: var(--hk-cut-a);
+  border-radius: var(--hk-radius-card);
   background: transparent;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
   transform: rotate(var(--hk-quote-tilt));
@@ -3269,7 +3276,7 @@ input {
 }
 
 .hk-quote-slot:nth-child(2) .hk-quote {
-  border-radius: var(--hk-cut-b);
+  border-radius: var(--hk-radius-card);
   --hk-quote-tilt: 2deg;
   --hk-quote-surface: var(--hk-lavender);
   --hk-quote-accent: var(--hk-story-ink);
@@ -3288,7 +3295,7 @@ input {
 }
 
 .hk-quote-slot:nth-child(5) .hk-quote {
-  border-radius: var(--hk-cut-c);
+  border-radius: var(--hk-radius-card);
   --hk-quote-tilt: -1.5deg;
   --hk-quote-surface: var(--hk-sky);
   --hk-quote-accent: var(--hk-story-ink);
@@ -3322,7 +3329,7 @@ input {
   flex-direction: column;
   min-height: 350px;
   margin: 0;
-  padding: clamp(20px, 2.5vw, 28px);
+  padding: clamp(22px, 2.5vw, 30px);
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: inherit;
   background: var(--hk-canvas);
@@ -3358,7 +3365,7 @@ input {
 }
 
 .hk-quote p {
-  margin: var(--hk-space-sm) 0 28px;
+  margin: 14px 0 28px;
   color: var(--hk-ink);
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-subhead);
@@ -3369,9 +3376,9 @@ input {
 .hk-quote footer {
   display: flex;
   align-items: center;
-  gap: var(--hk-space-xs);
+  gap: 10px;
   margin-top: auto;
-  padding-top: 20px;
+  padding-top: 22px;
   border-top: 1px dashed rgba(0, 0, 0, 0.12);
   color: var(--hk-ink);
   font-size: var(--hk-text-body-sm);
@@ -3387,7 +3394,7 @@ input {
 }
 
 .hk-quote footer small {
-  margin-top: var(--hk-space-2xs);
+  margin-top: 3px;
   font-size: var(--hk-text-fine);
   line-height: 1.5;
 }
@@ -3460,7 +3467,7 @@ input {
 
 .hk-faq details {
   border-bottom: 1px solid var(--hk-hairline);
-  padding: clamp(20px, 2.8vw, 28px) 0;
+  padding: clamp(22px, 2.8vw, 28px) 0;
 }
 
 .hk-faq summary {
@@ -3503,7 +3510,7 @@ input {
 .hk-faq__content {
   min-height: 0;
   /* Padding (not p margin) so measured height matches the open auto height. */
-  padding: var(--hk-space-sm) 0 var(--hk-space-xs);
+  padding: 14px 0 8px;
 }
 
 .hk-faq details p {
@@ -3538,7 +3545,7 @@ input {
   --hk-footer-fg-soft: rgba(255, 241, 214, 0.72);
   --hk-footer-line: rgba(255, 241, 214, 0.28);
   background: var(--hk-sindoor);
-  padding: clamp(32px, 4.5vw, 52px) 0 clamp(20px, 3vw, 28px);
+  padding: clamp(32px, 4.5vw, 52px) 0 clamp(22px, 3vw, 28px);
   color: var(--hk-footer-fg);
 }
 
@@ -3547,8 +3554,8 @@ input {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--hk-space-sm) 28px;
-  padding-bottom: 20px;
+  gap: 14px 28px;
+  padding-bottom: 22px;
   border-bottom: 1px solid var(--hk-footer-line);
 }
 
@@ -3654,7 +3661,7 @@ input {
   gap: var(--hk-space-2xs);
   width: 100%;
   min-width: 0;
-  padding: var(--hk-space-2xs) var(--hk-space-2xs) var(--hk-space-2xs) var(--hk-space-md);
+  padding: 4px 4px 4px 18px;
   border-radius: var(--hk-pill);
   background: var(--hk-kesar);
 }
@@ -3698,7 +3705,7 @@ input {
 .hk-footer .hk-newsletter .hk-btn--primary {
   flex: 0 0 auto;
   min-height: 44px;
-  padding: var(--hk-space-xs) 20px;
+  padding: 10px 20px;
   background: var(--hk-sindoor);
   color: var(--hk-kesar);
   box-shadow: none;
@@ -3720,7 +3727,7 @@ input {
 
 .hk-footer .hk-newsletter small {
   display: block;
-  margin-top: var(--hk-space-xs);
+  margin-top: 10px;
   font-size: var(--hk-text-fine);
   color: var(--hk-footer-fg-soft);
 }
@@ -3740,7 +3747,7 @@ input {
 
 .hk-footer__col {
   display: grid;
-  gap: var(--hk-space-xs);
+  gap: 10px;
   align-content: start;
 }
 
@@ -3772,7 +3779,7 @@ input {
   gap: var(--hk-space-sm) var(--hk-space-lg);
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--hk-space-md);
+  padding-top: 18px;
 }
 
 .hk-footer__legal {
@@ -3834,7 +3841,7 @@ input {
 .hk-dialog__art {
   width: 180px;
   height: 180px;
-  margin: 0 auto var(--hk-space-md);
+  margin: 0 auto 18px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: var(--hk-shadow-soft);
@@ -3881,7 +3888,7 @@ input {
   align-items: center;
   justify-content: space-between;
   gap: var(--hk-space-sm);
-  padding: 20px 20px var(--hk-space-md);
+  padding: 20px 22px 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -3898,7 +3905,7 @@ input {
   flex: 1;
   min-height: 0;
   overflow: auto;
-  padding: var(--hk-space-xs) 20px var(--hk-space-lg);
+  padding: 8px 22px 24px;
 }
 
 .hk-drawer__empty {
@@ -3958,7 +3965,7 @@ input {
   align-items: baseline;
   justify-content: space-between;
   gap: var(--hk-space-md);
-  margin-bottom: var(--hk-space-sm);
+  margin-bottom: 14px;
   font-size: var(--hk-text-body);
   font-weight: 700;
   color: var(--hk-ink);
@@ -4015,13 +4022,13 @@ input {
 
 .hk-nav-search {
   display: block;
-  margin-bottom: var(--hk-space-sm);
+  margin-bottom: 14px;
 }
 
 .hk-nav-search input {
   width: 100%;
   min-height: 48px;
-  padding: var(--hk-space-sm) var(--hk-space-sm);
+  padding: 12px 14px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: var(--hk-radius-sm);
   background: var(--hk-canvas);

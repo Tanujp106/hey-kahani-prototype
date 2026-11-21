@@ -32,11 +32,12 @@ test('the first-purchase path precedes content shopping and local navigation/ass
   }
 });
 
-function fixture(reduced = false) {
+function fixture(reduced = false, withPager = false) {
   const element = () => ({
     hidden: false, disabled: false, attrs: {}, events: {},
     addEventListener(name, callback) { this.events[name] = callback; },
     setAttribute(name, value) { this.attrs[name] = value; },
+    removeAttribute(name) { delete this.attrs[name]; },
     classList: { toggle() {} },
   });
   const previous = element(), next = element(), track = element(), status = element();
@@ -52,18 +53,32 @@ function fixture(reduced = false) {
     querySelector() { return i === 0 ? { click: () => { this.paused = true; } } : null; },
   }));
   track.querySelectorAll = () => cards;
+  const pager = withPager ? {
+    hidden: true,
+    replaceChildren(...dots) { this.dots = dots; },
+  } : null;
+  if (pager) Object.assign(track, {
+    id: 'test-rail',
+    scrollWidth: 1310,
+    clientWidth: 680,
+    children: Array.from({ length: 6 }, (_, index) => ({
+      getBoundingClientRect: () => ({ left: 72 + index * 220 - track.scrollLeft }),
+    })),
+  });
   const section = {
     querySelector(selector) { return {
       '[data-hk-rail-track]': track, '[data-hk-rail-prev]': previous,
       '[data-hk-rail-next]': next, '[data-hk-filter-status]': status,
+      '[data-hk-rail-dots]': pager,
     }[selector] || null; },
-    querySelectorAll: () => filters,
+    querySelectorAll: () => withPager ? [] : filters,
   };
+  let resize;
   vm.runInNewContext(source, {
-    document: { querySelectorAll: selector => selector === '[data-hk-rail]' ? [section] : [] },
-    window: { matchMedia: () => ({ matches: reduced }), addEventListener() {} },
+    document: { createElement: element, querySelectorAll: selector => selector === '[data-hk-rail]' ? [section] : [] },
+    window: { matchMedia: () => ({ matches: reduced }), addEventListener(name, callback) { if (name === 'resize') resize = callback; } },
   });
-  return { previous, next, track, filters, cards, status };
+  return { previous, next, track, filters, cards, status, pager, resize };
 }
 
 test('hero header offsets update when the announcement or navigation size changes', () => {
@@ -109,12 +124,51 @@ test('collection filters preserve products, pause hidden audio, announce results
   assert.equal(status.textContent, '3 Koels shown.');
 });
 
-test('the story rail exposes brand carousel arrows and one dot per card', () => {
-  const feature = html.match(/<section[^>]*\bid="why"[\s\S]*?<\/section>/)[0];
-  assert.match(feature, /data-hk-rail-prev[^>]*aria-controls="how-it-works"/);
-  assert.match(feature, /data-hk-rail-next[^>]*aria-controls="how-it-works"/);
-  assert.equal((feature.match(/data-hk-rail-dot(?!s)/g) || []).length, 4);
-  assert.match(source, /data-hk-rail-dot/);
+test('the storefront carousels expose shared pagination and arrows', () => {
+  const player = readFileSync(join(root, 'kahani-player/index.html'), 'utf8');
+  for (const [page, id, trackId] of [
+    [html, 'why', 'how-it-works'],
+    [html, 'koel-series', 'series-rail'],
+    [player, 'koels', 'koels-rail'],
+    [player, 'more-koels', 'more-koels-rail'],
+  ]) {
+    const section = page.match(new RegExp(`<section[^>]*\\bid="${id}"[^>]*>[\\s\\S]*?<\\/section>`))[0];
+    assert.match(section, new RegExp(`data-hk-rail-prev[^>]*aria-controls="${trackId}"`));
+    assert.match(section, new RegExp(`data-hk-rail-next[^>]*aria-controls="${trackId}"`));
+    assert.match(section, /class="hk-carousel-dots"[^>]*\bdata-hk-rail-dots hidden/);
+  }
+  assert.equal((player.match(/class="hk-carousel-dot"[^>]*\bdata-hk-gallery-dot/g) || []).length, 5);
+});
+
+test('the dot pager tracks reachable positions and updates after scrolling and resizing', () => {
+  const { pager, track, previous, next, resize } = fixture(true, true);
+  assert.equal(pager.hidden, false);
+  assert.equal(pager.dots.length, 4);
+  assert.equal(pager.dots[0].attrs['aria-current'], 'true');
+  assert.equal(pager.dots[3].attrs['aria-controls'], 'test-rail');
+
+  pager.dots[3].events.click();
+  assert.equal(track.lastScroll.left, 630, 'the last dot targets the end of the rail');
+  assert.equal(track.lastScroll.behavior, 'auto');
+  track.events.scroll();
+  assert.equal(next.disabled, true);
+  assert.equal(pager.dots[3].attrs['aria-current'], 'true');
+  assert.equal(pager.dots[0].attrs['aria-current'], undefined);
+
+  previous.events.click();
+  assert.equal(track.lastScroll.left, 440);
+  track.scrollLeft = 222;
+  track.events.scroll();
+  assert.equal(pager.dots[1].attrs['aria-current'], 'true');
+
+  track.clientWidth = 900;
+  resize();
+  assert.equal(pager.dots.length, 3);
+  assert.equal(pager.dots[1].attrs['aria-current'], 'true');
+  track.clientWidth = track.scrollWidth;
+  resize();
+  assert.equal(pager.hidden, true);
+  assert.equal(pager.dots.length, 0);
 });
 
 test('rails respect boundaries, reduced motion and nested keyboard controls', () => {

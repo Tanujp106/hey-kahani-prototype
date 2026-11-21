@@ -1,0 +1,192 @@
+{
+  "type": "Non-browser CSS-equation and transformed-image-bound audit",
+  "date": "2026-11-21",
+  "cases": 16268,
+  "widthRange": [
+    240,
+    2560
+  ],
+  "widthStep": 4,
+  "heights": [
+    280,
+    320,
+    375,
+    390,
+    568,
+    600,
+    700,
+    768,
+    844,
+    900,
+    1024,
+    1080,
+    1366,
+    1440
+  ],
+  "rootFontSizes": [
+    16,
+    20
+  ],
+  "result": "pass",
+  "examples": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "fontPx": 16,
+      "layout": "stacked",
+      "stage": [
+        288,
+        311.04
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "fontPx": 16,
+      "layout": "stacked",
+      "stage": [
+        358,
+        386.64
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        568,
+        320
+      ],
+      "fontPx": 16,
+      "layout": "stacked",
+      "stage": [
+        172.8,
+        186.62
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "fontPx": 16,
+      "layout": "stacked",
+      "stage": [
+        384,
+        414.72
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        210.6,
+        227.45
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        896,
+        700
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        378.0,
+        408.24
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        980,
+        700
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        425.14,
+        459.15
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        445.26,
+        480.88
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        1280,
+        800
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        480,
+        518.4
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        480,
+        518.4
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        480,
+        518.4
+      ],
+      "boundsWithinStage": true
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "fontPx": 16,
+      "layout": "columns",
+      "stage": [
+        480,
+        518.4
+      ],
+      "boundsWithinStage": true
+    }
+  ],
+  "limitations": "Checks the declared group geometry, source constraints and transformed image bounds. Does not measure browser layout, typography, paint, shadow extents, hover behavior or visual appearance.",
+  "sourceAudit": "CSS blocks balance; all rules outside hero and the concurrently edited feature rail match the pre-task snapshot. Current feature-rail work and photo masks are preserved. HTML differs only by the stylesheet cache version; JS differs only by its header-clearance comment.",
+  "concurrentChanges": "Feature-rail responsiveness was edited separately during this task and deliberately retained; it is outside this hero audit."
+}

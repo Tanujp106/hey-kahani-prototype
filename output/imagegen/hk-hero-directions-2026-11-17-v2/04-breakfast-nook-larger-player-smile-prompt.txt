@@ -1,0 +1,7 @@
+Use case: precise-object-edit.
+Edit this exact photograph, preserving the existing child identity, face shape, freckles, hair, outfit, pose, hands, gaze toward the Koel, camera angle, framing, room, oak table, colors, daylight, and clean left-side space.
+Make ONLY these two targeted changes:
+1. Enlarge the Kahani Player on the table by approximately 25% in BOTH width and height, scaling the entire product proportionally, including its carry handle. Keep its base resting on the same tabletop location and maintain the exact cream cylindrical housing, arch handle, five embossed controls, red fabric speaker band and light wood base. Match the existing light and adjust its contact shadow naturally. It should look a little more substantial next to the child, still a compact portable player, not an oversized appliance.
+2. Give this same child a subtle, warm, natural smile while still looking at the illustrated Koel in his hand: gently lifted corners of the mouth and slightly happier eyes. A small relaxed smile, not a big grin or laugh. Preserve the child's facial identity and natural skin texture.
+Keep all THREE Koels at EXACTLY their current small size, positions and artwork, including the one held in the child's hand. Do not enlarge the Koels.
+Preserve everything else. Maintain photorealistic natural home photography, the warm cream and peach palette, no text or watermark. Output one edited image in the same wide aspect ratio.

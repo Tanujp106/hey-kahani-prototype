@@ -92,10 +92,11 @@ prefix, the `asset` path prefix, and a handful of named slots. Anything else is
 identical on every page by construction. The partials map to Liquid snippets on
 the Shopify side, with the slots as snippet parameters.
 
-Both pages share one type scale, one section rhythm (`--hk-section-tight` /
-`--hk-section` / `--hk-section-lg`), one 4px spacing grid, one radius set, one
-tone set (`hk-tone--*`) and one named tint set. `../design.md` documents the
-rules. `tests/consistency.test.cjs` enforces them:
+Both pages share one type scale, one tone set (`hk-tone--*`), one named tint
+set, one Koel rail and one card radius (`--hk-radius-card`, 24px). Tokens exist
+so a value can be shared — **not** so every value must sit on a row. A value
+tuned for a specific element stays as it is; see "A deliberate value is not
+drift" in `../design.md`. `tests/consistency.test.cjs` enforces the rules:
 
 ```bash
 node --test tests/*.test.cjs
@@ -128,7 +129,7 @@ included items → family story samples → specifications → two Koel rows →
 and FAQ scripts are reused. Page-specific composition and media interactions
 live in `assets/css/player-page.css` and `assets/js/player-page.js`.
 
-The gallery supports thumbnails, arrow/Home/End keys, previous/next controls
+The gallery supports pagination dots, arrow/Home/End keys, previous/next controls
 and a native enlarge-image dialog. The sticky purchase action forwards to the
 same Player bag action. The shared prototype bag persists across page navigation
 in the current tab, including quantity and removal updates; its approved $129 USD snapshot comes from
