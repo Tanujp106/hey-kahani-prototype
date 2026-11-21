@@ -1,0 +1,55 @@
+  <svg class="hk-waves hk-break" style="--hk-wave-from: var(--hk-canvas); --hk-wave-to: var(--hk-sindoor)" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-wave-from)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/><path fill="var(--hk-sky)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14L1440 28C1253 54 1114 54 926 37C691 16 587 18 395 38C203 58 102 54 0 36Z"/><path fill="var(--hk-mango)" d="M0 36C102 54 203 58 395 38C587 18 691 16 926 37C1114 54 1253 54 1440 28L1440 42C1253 68 1114 68 926 51C691 30 587 32 395 52C203 72 102 68 0 50Z"/><path fill="var(--hk-marigold)" d="M0 50C102 68 203 72 395 52C587 32 691 30 926 51C1114 68 1253 68 1440 42L1440 56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/><path fill="var(--hk-wave-to)" d="M0 90H1440V56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/></svg>
+
+  <footer class="hk-footer" id="footer">
+    <div class="hk-wrap">
+      <div class="hk-footer__top">
+        <a class="hk-wordmark hk-footer__wordmark" href="/">
+          <img src="{{asset}}images/brand/wordmark-cream.svg" width="275" height="131" alt="Hey Kahani">
+        </a>
+        <form class="hk-newsletter" action="#" method="post" onsubmit="return false;">
+          <label class="visually-hidden" for="newsletter-email">Email address</label>
+          <div class="hk-newsletter__row">
+            <input id="newsletter-email" type="email" name="email" placeholder="Email address" autocomplete="email">
+            <button class="hk-btn hk-btn--primary" type="submit">Join</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="hk-footer__main">
+        <nav class="hk-footer__cols" aria-label="Footer">
+          <div class="hk-footer__col">
+            <h3>Start here</h3>
+            <a href="{{base}}#player">The Player</a>
+            <a href="{{base}}#how-it-works">How it works</a>
+            <a href="/products/founders-bundle">Founder's Bundle</a>
+          </div>
+          <div class="hk-footer__col">
+            <h3>Explore stories</h3>
+            <a href="{{base}}#koels">Shop Koels</a>
+            <a href="/koels-listing">All stories</a>
+            <a href="{{base}}#why">Why Hey Kahani</a>
+          </div>
+          <div class="hk-footer__col">
+            <h3>About</h3>
+            <a class="hk-deferred" href="{{base}}#founder" hidden>Our story</a>
+            <a href="{{base}}#community">Community</a>
+            <a href="{{base}}#faqs">FAQs</a>
+          </div>
+          <div class="hk-footer__col">
+            <h3>Help</h3>
+            <a href="{{base}}#faqs">Support</a>
+            <a href="/kahani-app">Companion app</a>
+            <a href="#top">Back to top</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hk-footer__base">
+        <p class="hk-footer__legal">© <span id="year">2026</span> Hey Kahani. All rights reserved.</p>
+        <div class="hk-footer__legal-links">
+          <a href="/privacy-policy">Privacy</a>
+          <a href="/terms-of-service">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>

@@ -50,7 +50,7 @@ input {
   top: 0;
   background: var(--hk-action);
   color: var(--hk-on-action);
-  padding: 8px 12px;
+  padding: var(--hk-space-xs) var(--hk-space-sm);
   z-index: 1000;
 }
 
@@ -65,7 +65,7 @@ input {
 }
 
 .hk-eyebrow {
-  margin: 0 0 12px;
+  margin: 0 0 var(--hk-space-sm);
   font-size: var(--hk-text-eyebrow);
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -97,7 +97,7 @@ input {
 }
 
 .hk-lead {
-  margin: 16px 0 0;
+  margin: var(--hk-space-md) 0 0;
   font-size: var(--hk-text-body);
   font-weight: var(--hk-font-weight-body);
   line-height: 1.5;
@@ -145,7 +145,7 @@ input {
 /* Announcement — editable store messaging above the sticky navigation. */
 .hk-announcement {
   position: relative;
-  padding: 8px var(--hk-gutter);
+  padding: var(--hk-space-xs) var(--hk-gutter);
   background: var(--hk-sindoor);
   color: var(--hk-kesar);
   text-align: center;
@@ -168,7 +168,7 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--hk-space-xs);
   margin: 0;
   opacity: 0;
   filter: blur(8px);
@@ -219,7 +219,7 @@ input {
   position: sticky;
   top: 0;
   z-index: 50;
-  padding-top: 12px;
+  padding-top: var(--hk-space-sm);
   margin-bottom: calc(-1 * (var(--hk-nav-h) + 12px));
   background: transparent;
   color: var(--hk-ink);
@@ -229,7 +229,7 @@ input {
   position: relative;
   isolation: isolate;
   border: 1px solid var(--hk-hairline);
-  border-radius: 28px;
+  border-radius: var(--hk-radius-xl);
   background: transparent;
   box-shadow: var(--hk-shadow-soft);
 }
@@ -258,7 +258,7 @@ input {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   column-gap: clamp(20px, 3vw, 44px);
-  padding-block: 14px;
+  padding-block: var(--hk-space-sm);
   padding-inline: clamp(12px, 2vw, 20px);
 }
 
@@ -293,7 +293,7 @@ input {
 .hk-nav__links {
   display: none;
   align-items: center;
-  gap: clamp(16px, 2vw, 26px);
+  gap: clamp(16px, 2vw, 24px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -303,9 +303,9 @@ input {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 8px 14px;
-  margin-inline: -6px;
-  border-radius: 9999px;
+  padding: var(--hk-space-xs) var(--hk-space-sm);
+  margin-inline: -var(--hk-space-2xs);
+  border-radius: var(--hk-pill);
   color: var(--hk-ink);
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
@@ -320,7 +320,7 @@ input {
 @media (hover: hover) and (pointer: fine) {
   .hk-nav__link:hover {
     color: var(--hk-action);
-    background: #ffffff;
+    background: var(--hk-canvas);
     box-shadow: none;
     text-decoration: none;
   }
@@ -335,9 +335,9 @@ input {
   display: flex;
   align-items: center;
   justify-self: end;
-  gap: 6px;
+  gap: var(--hk-space-2xs);
   min-height: 48px;
-  padding: 5px 12px;
+  padding: var(--hk-space-2xs) var(--hk-space-sm);
   border: 1px solid color-mix(in srgb, var(--hk-husk) 78%, var(--hk-kesar));
   border-radius: var(--hk-pill);
   background: color-mix(in srgb, var(--hk-husk) 46%, var(--hk-kesar));
@@ -381,7 +381,7 @@ input {
   right: 4px;
   min-width: 16px;
   height: 16px;
-  padding: 0 4px;
+  padding: 0 var(--hk-space-2xs);
   border-radius: var(--hk-pill);
   background: var(--hk-action);
   color: var(--hk-on-action);
@@ -410,7 +410,7 @@ input {
   border-top: 1px solid var(--hk-hairline);
   background: transparent;
   padding: 8px clamp(12px, 2vw, 20px) 20px;
-  border-radius: 0 0 28px 28px;
+  border-radius: 0 0 var(--hk-radius-xl) var(--hk-radius-xl);
 }
 
 .hk-nav__drawer.is-open {
@@ -427,7 +427,7 @@ input {
 
 .hk-nav__drawer a {
   display: block;
-  padding: 14px 0;
+  padding: var(--hk-space-sm) 0;
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
   color: var(--hk-ink);
@@ -435,7 +435,7 @@ input {
 
 .hk-nav__link.is-active {
   color: var(--hk-action);
-  background: #ffffff;
+  background: var(--hk-canvas);
   box-shadow: none;
 }
 
@@ -453,7 +453,7 @@ input {
   height: var(--hk-mega-h);
   overflow: hidden;
   border: 1px solid var(--hk-hairline);
-  border-radius: 24px;
+  border-radius: var(--hk-radius-xl);
   background: var(--hk-canvas);
   box-shadow: var(--hk-shadow-soft);
   opacity: 0;
@@ -530,7 +530,7 @@ input {
   height: 100%;
   min-height: 0;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: var(--hk-radius-lg);
   background: var(--hk-kesar);
   text-decoration: none;
   color: var(--hk-canvas);
@@ -574,7 +574,7 @@ input {
   place-items: center;
   width: 40px;
   height: 40px;
-  border-radius: 9999px;
+  border-radius: var(--hk-pill);
   background: var(--hk-canvas);
   color: var(--hk-ink);
 }
@@ -584,7 +584,7 @@ input {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: var(--hk-space-xs);
   align-content: center;
   min-width: 0;
 }
@@ -592,7 +592,7 @@ input {
 .hk-mega__row {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
-  gap: 14px;
+  gap: var(--hk-space-sm);
   align-items: center;
   min-height: 48px;
   color: var(--hk-ink);
@@ -614,7 +614,7 @@ input {
   display: block;
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: var(--hk-radius-md);
   object-fit: cover;
   background: var(--hk-kesar);
 }
@@ -628,7 +628,7 @@ input {
   place-items: center;
   width: 40px;
   height: 40px;
-  border-radius: 9999px;
+  border-radius: var(--hk-pill);
   background: var(--hk-gulab);
   color: var(--hk-on-action);
 }
@@ -655,10 +655,10 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--hk-space-xs);
   min-height: 52px;
-  padding: 15px 28px;
-  border-radius: 9999px;
+  padding: var(--hk-space-md) 28px;
+  border-radius: var(--hk-pill);
   border: 0 solid transparent;
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
@@ -707,9 +707,48 @@ input {
 .hk-btn-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--hk-space-sm);
   margin-top: 28px;
 }
+
+/* One horizontal Koel rail. A page sets the column count and the gap;
+   the track geometry, scrollbar handling and card sizing are shared. */
+.hk-koel-rail {
+  --hk-rail-columns: 4;
+  --hk-rail-gap: var(--hk-space-lg);
+  --hk-rail-min: 0px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max(
+    var(--hk-rail-min),
+    calc((100% - (var(--hk-rail-gap) * (var(--hk-rail-columns) - 1))) / var(--hk-rail-columns))
+  );
+  gap: var(--hk-rail-gap);
+  /* Keep the 12px card reveal inside the horizontal scrollport. */
+  padding: var(--hk-space-2xs) 1px var(--hk-space-sm);
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.hk-koel-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.hk-koel-rail .hk-koel {
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 2 / 3;
+  scroll-snap-align: start;
+}
+
+/* Card tones — the one tone component. Both pages use these class names.
+   Do not restate a colour mix on a component; add a row here instead. */
+.hk-tone--kesar { --hk-tone: var(--hk-tone-kesar); }
+.hk-tone--mango { --hk-tone: var(--hk-tone-mango); }
+.hk-tone--lavender { --hk-tone: var(--hk-tone-lavender); }
+.hk-tone--sky { --hk-tone: var(--hk-tone-sky); }
+.hk-tone--green { --hk-tone: var(--hk-tone-green); }
+[class*="hk-tone--"] { background: var(--hk-tone); }
 
 /* Sections */
 .hk-section {
@@ -726,11 +765,11 @@ input {
 
 .hk-section__intro {
   max-width: 40rem;
-  margin-bottom: 40px;
+  margin-bottom: var(--hk-heading-gap);
 }
 
 .hk-section__intro p {
-  margin: 14px 0 0;
+  margin: var(--hk-space-sm) 0 0;
   font-size: var(--hk-text-body);
   font-weight: var(--hk-font-weight-body);
   line-height: 1.5;
@@ -835,7 +874,7 @@ input {
 }
 
 .hk-hero .hk-lead {
-  margin-top: 14px;
+  margin-top: var(--hk-space-sm);
   max-width: 38ch;
   opacity: 0.78;
 }
@@ -898,7 +937,7 @@ input {
 /* Why Hey Kahani — USP feature stage.
    The bottom stays short so the card meets How it works. */
 .hk-section--how {
-  padding-block: clamp(72px, 9vw, 112px) var(--hk-space-sm);
+  padding-block: var(--hk-section-lg) var(--hk-space-sm);
   background: var(--hk-canvas); /* white */
 }
 
@@ -909,11 +948,11 @@ input {
 }
 
 .hk-steps__intro {
-  margin-bottom: 24px;
+  margin-bottom: var(--hk-space-lg);
 }
 
 .hk-steps__intro .hk-lead {
-  margin-top: 12px;
+  margin-top: var(--hk-space-sm);
   max-width: 58ch;
   text-wrap: pretty;
 }
@@ -992,12 +1031,12 @@ input {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 22px 22px 16px;
+  padding: 20px 20px var(--hk-space-md);
 }
 
 .hk-step__number {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: var(--hk-space-xs);
   color: var(--hk-gulab);
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-subhead);
@@ -1011,7 +1050,7 @@ input {
 }
 
 .hk-step__copy p {
-  margin: 4px 0 0;
+  margin: var(--hk-space-2xs) 0 0;
   font-size: var(--hk-text-body);
   line-height: 1.4;
   color: var(--hk-muted);
@@ -1061,7 +1100,7 @@ input {
 }
 
 .hk-section--app {
-  padding-block: clamp(48px, 6vw, 72px) clamp(72px, 9vw, 112px);
+  padding-block: var(--hk-section) var(--hk-section-lg);
 }
 
 .hk-how__header {
@@ -1076,7 +1115,7 @@ input {
 }
 
 .hk-how__lead {
-  margin: 14px auto 0;
+  margin: var(--hk-space-sm) auto 0;
   max-width: 76ch;
   text-align: center;
 }
@@ -1085,7 +1124,7 @@ input {
   --hk-how-panel-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --hk-how-panel-duration: 420ms;
   display: grid;
-  gap: clamp(22px, 3vw, 32px);
+  gap: clamp(20px, 3vw, 32px);
   width: 100%;
 }
 
@@ -1093,7 +1132,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: var(--hk-space-xs);
 }
 
 .hk-how-tabs__btn {
@@ -1101,10 +1140,10 @@ input {
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  padding: 10px 18px;
+  padding: var(--hk-space-xs) var(--hk-space-md);
   border: 0;
-  border-radius: 9999px;
-  background: color-mix(in srgb, var(--hk-kesar) 72%, white 28%);
+  border-radius: var(--hk-pill);
+  background: var(--hk-tint-kesar);
   color: var(--hk-ink);
   font-family: var(--hk-font-body);
   font-size: var(--hk-text-body-sm);
@@ -1236,7 +1275,7 @@ input {
 
 .hk-how-panel--simple {
   /* Lighter Parrot: 48% brand green / 52% white. Full #2B9863 read too dark. */
-  --hk-benefit-surface: color-mix(in srgb, var(--hk-parrot) 48%, white 52%);
+  --hk-benefit-surface: var(--hk-tint-parrot);
   --hk-benefit-frame: url("../images/brand-library/containers/benefit-plump-panel-parrot.svg?v=light-20261116");
   --hk-benefit-backdrop-shape: url("../images/brand-library/decorative/tilted-arch.svg");
   --hk-benefit-corner-shape: url("../images/brand-library/decorative/double-dip.svg");
@@ -1248,7 +1287,7 @@ input {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: 32px;
+  gap: var(--hk-space-xl);
   box-sizing: border-box;
   width: 100%;
   padding: 0;
@@ -1258,7 +1297,7 @@ input {
   position: relative;
   isolation: isolate;
   width: min(100%, 25rem);
-  padding: 32px 12px 48px;
+  padding: var(--hk-space-xl) var(--hk-space-sm) var(--hk-space-xxl);
   box-sizing: border-box;
   margin-inline: auto;
   min-width: 0;
@@ -1313,7 +1352,7 @@ input {
   aspect-ratio: 1;
   box-sizing: border-box;
   border: 5px solid var(--hk-kesar);
-  border-radius: 28px 44px 32px 38px;
+  border-radius: var(--hk-cut-a);
   overflow: hidden;
   background: var(--hk-kesar);
   transform: rotate(var(--hk-benefit-photo-tilt));
@@ -1493,7 +1532,7 @@ input {
 }
 
 .hk-how-panel__cta {
-  margin-top: 4px;
+  margin-top: var(--hk-space-2xs);
 }
 
 @media (min-width: 800px) {
@@ -1509,7 +1548,7 @@ input {
 
   .hk-how-panel__visual {
     width: min(100%, 27rem);
-    padding: 48px 28px 80px 20px;
+    padding: var(--hk-space-xxl) 28px 80px 20px;
   }
 
   .hk-how-panel__copy {
@@ -1631,21 +1670,21 @@ input {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 22px;
+  gap: var(--hk-space-sm);
+  margin-top: 20px;
 }
 
 .hk-app__store {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--hk-space-xs);
   min-width: 148px;
   min-height: 48px;
-  padding: 6px 14px;
-  color: #fff;
+  padding: var(--hk-space-2xs) var(--hk-space-sm);
+  color: var(--hk-on-dark);
   background: #080808;
   border: 1px solid #777;
-  border-radius: 8px;
+  border-radius: var(--hk-radius-sm);
   text-align: left;
   user-select: none;
 }
@@ -1694,7 +1733,7 @@ input {
   max-width: 28ch;
   display: grid;
   justify-items: start;
-  gap: 10px;
+  gap: var(--hk-space-xs);
 }
 
 @media (min-width: 800px) {
@@ -2166,7 +2205,7 @@ input {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 4px;
+  margin-bottom: var(--hk-space-2xs);
 }
 
 .hk-koels__intro {
@@ -2176,7 +2215,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: var(--hk-space-sm);
 }
 
 .hk-koels__mark {
@@ -2196,15 +2235,15 @@ input {
 
 .hk-koels__intro .hk-btn-row {
   justify-content: center;
-  margin-top: 10px;
+  margin-top: var(--hk-space-xs);
 }
 
 .hk-koel-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px 24px;
-  margin-top: 18px;
-  padding-block: 8px 12px;
+  gap: var(--hk-space-xl) var(--hk-space-lg);
+  margin-top: var(--hk-space-md);
+  padding-block: var(--hk-space-xs) var(--hk-space-sm);
 }
 
 .hk-koels .hk-koel-grid {
@@ -2249,7 +2288,7 @@ input {
 @media (max-width: 800px) {
   .hk-koel-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px 12px;
+    gap: var(--hk-space-lg) var(--hk-space-sm);
   }
 
 }
@@ -2314,7 +2353,7 @@ input {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: 10px;
+  gap: var(--hk-space-xs);
   text-align: left;
   pointer-events: none;
 }
@@ -2345,11 +2384,11 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: var(--hk-space-2xs);
   margin: 0;
   max-width: calc(100% - 24px);
-  padding: 5px 10px;
-  border-radius: 9999px;
+  padding: var(--hk-space-2xs) var(--hk-space-xs);
+  border-radius: var(--hk-pill);
   border: 1px solid rgba(5, 51, 74, 0.12);
   backdrop-filter: blur(12px) saturate(1.05);
   -webkit-backdrop-filter: blur(12px) saturate(1.05);
@@ -2384,7 +2423,7 @@ input {
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 44px;
-  gap: 8px;
+  gap: var(--hk-space-xs);
   min-height: 44px;
 }
 
@@ -2396,13 +2435,13 @@ input {
   flex: 1 1 auto;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: var(--hk-space-2xs);
   margin: 0;
   min-width: 0;
   min-height: 44px;
-  padding: 0 6px;
+  padding: 0 var(--hk-space-2xs);
   border: 1.5px solid rgba(180, 0, 35, 0.55);
-  border-radius: 9999px;
+  border-radius: var(--hk-pill);
   background: rgba(255, 252, 247, 0.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -2468,13 +2507,13 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: var(--hk-space-2xs);
   min-height: 44px;
   padding: 0;
   border: 0;
   border-radius: 50%;
   background: var(--hk-sindoor);
-  color: var(--hk-on-action, #fff);
+  color: var(--hk-on-action);
   font-family: var(--hk-font-body);
   font-size: var(--hk-text-body-sm);
   font-weight: 600;
@@ -2543,7 +2582,7 @@ input {
     bottom: 72px;
     left: 10px;
     grid-template-columns: minmax(0, 1fr);
-    gap: 4px;
+    gap: var(--hk-space-2xs);
   }
 
   .hk-koel__title {
@@ -2579,11 +2618,11 @@ input {
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--hk-space-xs);
   width: max-content;
   max-width: calc(100vw - 32px);
   min-height: 48px;
-  padding: 12px 18px;
+  padding: var(--hk-space-sm) var(--hk-space-md);
   border: 1px solid var(--hk-husk);
   border-radius: var(--hk-radius-md);
   background: var(--hk-kesar);
@@ -2623,9 +2662,9 @@ input {
 .hk-bag-list__item {
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr);
-  gap: 14px;
+  gap: var(--hk-space-sm);
   align-items: start;
-  padding: 18px 0;
+  padding: var(--hk-space-md) 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   background: transparent;
 }
@@ -2655,7 +2694,7 @@ input {
 
 .hk-bag-list__meta {
   display: block;
-  margin-top: 4px;
+  margin-top: var(--hk-space-2xs);
   font-size: var(--hk-text-fine);
   color: var(--hk-muted);
 }
@@ -2664,8 +2703,8 @@ input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 12px;
-  margin-top: 12px;
+  gap: var(--hk-space-xs) var(--hk-space-sm);
+  margin-top: var(--hk-space-sm);
 }
 
 .hk-bag-list__qty {
@@ -2675,7 +2714,7 @@ input {
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: var(--hk-radius-sm);
   overflow: hidden;
-  background: #fff;
+  background: var(--hk-canvas);
 }
 
 .hk-bag-list__qty button {
@@ -2712,7 +2751,7 @@ input {
   width: 36px;
   height: 36px;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--hk-pill);
   background: transparent;
   color: var(--hk-muted);
   cursor: pointer;
@@ -2779,21 +2818,21 @@ input {
 
 .hk-player__intro .hk-lead {
   max-width: none;
-  margin-top: 16px;
+  margin-top: var(--hk-space-md);
 }
 
 .hk-player__purchase {
   grid-area: purchase;
   display: grid;
   justify-items: start;
-  gap: 12px;
-  margin-top: 24px;
+  gap: var(--hk-space-sm);
+  margin-top: var(--hk-space-lg);
 }
 
 .hk-player__price {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: var(--hk-space-xs);
   margin: 0;
   color: var(--hk-ink);
 }
@@ -2817,7 +2856,7 @@ input {
 .hk-player__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--hk-space-sm);
 }
 
 .hk-player__actions .hk-btn {
@@ -2884,7 +2923,7 @@ input {
 .hk-player__usp {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--hk-space-md);
   min-width: 0;
   margin: 0;
   color: var(--hk-ink);
@@ -2910,7 +2949,7 @@ input {
       "purchase"
       "usps";
     justify-items: center;
-    gap: 24px;
+    gap: var(--hk-space-lg);
   }
 
   .hk-player__copy {
@@ -2945,7 +2984,7 @@ input {
   .hk-player__usps {
     align-items: flex-start;
     max-width: 28rem;
-    gap: 18px;
+    gap: var(--hk-space-md);
     margin-top: 0;
     margin-inline: auto;
   }
@@ -3065,7 +3104,7 @@ input {
   grid-area: copy;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: var(--hk-space-md);
   max-width: 60ch;
   color: var(--hk-ink);
 }
@@ -3080,7 +3119,7 @@ input {
 }
 
 .hk-founder__copy > .hk-founder__sign {
-  margin-top: 6px;
+  margin-top: var(--hk-space-2xs);
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-body);
   font-weight: 700;
@@ -3117,7 +3156,7 @@ input {
       "intro photo"
       "copy photo";
     column-gap: clamp(48px, 6vw, 80px);
-    row-gap: 24px;
+    row-gap: var(--hk-space-lg);
   }
 
   .hk-founder__copy {
@@ -3132,7 +3171,7 @@ input {
 
   .hk-founder__photo {
     position: absolute;
-    inset: 24px;
+    inset: var(--hk-space-lg);
     width: calc(100% - 48px);
     height: calc(100% - 48px);
     aspect-ratio: auto;
@@ -3170,7 +3209,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: var(--hk-space-sm);
   max-width: 40rem;
   margin-inline: auto;
   text-align: center;
@@ -3178,7 +3217,7 @@ input {
 
 .hk-community__intro .hk-lead {
   max-width: 48ch;
-  margin: 4px 0 0;
+  margin: var(--hk-space-2xs) 0 0;
   text-wrap: balance;
 }
 
@@ -3186,8 +3225,8 @@ input {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: start;
-  gap: clamp(18px, 2.5vw, 32px);
-  row-gap: 24px;
+  gap: clamp(16px, 2.5vw, 32px);
+  row-gap: var(--hk-space-lg);
   max-width: 1000px;
   margin: 104px auto 0;
 }
@@ -3204,7 +3243,7 @@ input {
 
 .hk-quote-slot:nth-child(3),
 .hk-quote-slot:nth-child(5) {
-  margin-top: 18px;
+  margin-top: var(--hk-space-md);
 }
 
 .hk-quote-slot:nth-child(4) {
@@ -3222,7 +3261,7 @@ input {
   padding: 0;
   border: 0;
   /* Content-sized surfaces echo the soft-postcard contour without clipping copy. */
-  border-radius: 26px 34px 28px 22px / 30px 24px 34px 26px;
+  border-radius: var(--hk-cut-a);
   background: transparent;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
   transform: rotate(var(--hk-quote-tilt));
@@ -3230,7 +3269,7 @@ input {
 }
 
 .hk-quote-slot:nth-child(2) .hk-quote {
-  border-radius: 34px 24px 30px 28px / 26px 34px 24px 32px;
+  border-radius: var(--hk-cut-b);
   --hk-quote-tilt: 2deg;
   --hk-quote-surface: var(--hk-lavender);
   --hk-quote-accent: var(--hk-story-ink);
@@ -3249,7 +3288,7 @@ input {
 }
 
 .hk-quote-slot:nth-child(5) .hk-quote {
-  border-radius: 32px 26px 34px 24px / 28px 32px 24px 34px;
+  border-radius: var(--hk-cut-c);
   --hk-quote-tilt: -1.5deg;
   --hk-quote-surface: var(--hk-sky);
   --hk-quote-accent: var(--hk-story-ink);
@@ -3283,7 +3322,7 @@ input {
   flex-direction: column;
   min-height: 350px;
   margin: 0;
-  padding: clamp(22px, 2.5vw, 30px);
+  padding: clamp(20px, 2.5vw, 28px);
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: inherit;
   background: var(--hk-canvas);
@@ -3295,7 +3334,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--hk-space-md);
   min-height: 64px;
 }
 
@@ -3305,7 +3344,7 @@ input {
   width: 96px;
   height: 96px;
   /* The asset's own clearspace sits within the card padding, away from the copy. */
-  margin-block: -16px;
+  margin-block: -var(--hk-space-md);
   object-fit: contain;
   pointer-events: none;
 }
@@ -3319,7 +3358,7 @@ input {
 }
 
 .hk-quote p {
-  margin: 14px 0 28px;
+  margin: var(--hk-space-sm) 0 28px;
   color: var(--hk-ink);
   font-family: var(--hk-font-display);
   font-size: var(--hk-text-subhead);
@@ -3330,9 +3369,9 @@ input {
 .hk-quote footer {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--hk-space-xs);
   margin-top: auto;
-  padding-top: 22px;
+  padding-top: 20px;
   border-top: 1px dashed rgba(0, 0, 0, 0.12);
   color: var(--hk-ink);
   font-size: var(--hk-text-body-sm);
@@ -3348,7 +3387,7 @@ input {
 }
 
 .hk-quote footer small {
-  margin-top: 3px;
+  margin-top: var(--hk-space-2xs);
   font-size: var(--hk-text-fine);
   line-height: 1.5;
 }
@@ -3356,15 +3395,15 @@ input {
 @media (max-width: 900px) {
   .hk-community__intro {
     max-width: 32rem;
-    padding-inline: 24px;
+    padding-inline: var(--hk-space-lg);
   }
 
   .hk-quotes {
     grid-template-columns: minmax(0, 1fr);
     max-width: 28rem;
-    gap: 24px;
+    gap: var(--hk-space-lg);
     margin: 64px auto 0;
-    padding-inline: 12px;
+    padding-inline: var(--hk-space-sm);
   }
 
   .hk-quote {
@@ -3386,7 +3425,7 @@ input {
 
   .hk-quote__body {
     min-height: 0;
-    padding: 24px;
+    padding: var(--hk-space-lg);
   }
 
 }
@@ -3416,12 +3455,12 @@ input {
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--hk-space-sm);
 }
 
 .hk-faq details {
   border-bottom: 1px solid var(--hk-hairline);
-  padding: clamp(22px, 2.8vw, 28px) 0;
+  padding: clamp(20px, 2.8vw, 28px) 0;
 }
 
 .hk-faq summary {
@@ -3464,7 +3503,7 @@ input {
 .hk-faq__content {
   min-height: 0;
   /* Padding (not p margin) so measured height matches the open auto height. */
-  padding: 14px 0 8px;
+  padding: var(--hk-space-sm) 0 var(--hk-space-xs);
 }
 
 .hk-faq details p {
@@ -3499,7 +3538,7 @@ input {
   --hk-footer-fg-soft: rgba(255, 241, 214, 0.72);
   --hk-footer-line: rgba(255, 241, 214, 0.28);
   background: var(--hk-sindoor);
-  padding: clamp(32px, 4.5vw, 52px) 0 clamp(22px, 3vw, 28px);
+  padding: clamp(32px, 4.5vw, 52px) 0 clamp(20px, 3vw, 28px);
   color: var(--hk-footer-fg);
 }
 
@@ -3508,8 +3547,8 @@ input {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 14px 28px;
-  padding-bottom: 22px;
+  gap: var(--hk-space-sm) 28px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--hk-footer-line);
 }
 
@@ -3535,7 +3574,7 @@ input {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: flex-end;
-  gap: 8px 12px;
+  gap: var(--hk-space-xs) var(--hk-space-sm);
   max-width: 36rem;
   font-size: var(--hk-text-body-sm);
   font-weight: var(--hk-font-weight-body);
@@ -3552,7 +3591,7 @@ input {
 }
 
 .hk-footer__community a:hover {
-  color: #fff;
+  color: var(--hk-on-dark);
 }
 
 .hk-footer__main {
@@ -3574,7 +3613,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: var(--hk-space-sm);
   max-width: 28rem;
 }
 
@@ -3605,18 +3644,18 @@ input {
 
 .hk-footer .hk-newsletter {
   width: 100%;
-  margin-top: 8px;
+  margin-top: var(--hk-space-xs);
   min-width: 0;
 }
 
 .hk-newsletter__row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--hk-space-2xs);
   width: 100%;
   min-width: 0;
-  padding: 4px 4px 4px 18px;
-  border-radius: 999px;
+  padding: var(--hk-space-2xs) var(--hk-space-2xs) var(--hk-space-2xs) var(--hk-space-md);
+  border-radius: var(--hk-pill);
   background: var(--hk-kesar);
 }
 
@@ -3641,7 +3680,7 @@ input {
   min-width: 0;
   min-height: 44px;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--hk-pill);
   padding: 0;
   background: transparent;
   color: var(--hk-sindoor);
@@ -3659,7 +3698,7 @@ input {
 .hk-footer .hk-newsletter .hk-btn--primary {
   flex: 0 0 auto;
   min-height: 44px;
-  padding: 10px 20px;
+  padding: var(--hk-space-xs) 20px;
   background: var(--hk-sindoor);
   color: var(--hk-kesar);
   box-shadow: none;
@@ -3681,27 +3720,27 @@ input {
 
 .hk-footer .hk-newsletter small {
   display: block;
-  margin-top: 10px;
+  margin-top: var(--hk-space-xs);
   font-size: var(--hk-text-fine);
   color: var(--hk-footer-fg-soft);
 }
 
 .hk-footer__cols {
   display: grid;
-  gap: 24px 28px;
+  gap: var(--hk-space-lg) 28px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 @media (min-width: 600px) {
   .hk-footer__cols {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px 32px;
+    gap: 20px var(--hk-space-xl);
   }
 }
 
 .hk-footer__col {
   display: grid;
-  gap: 10px;
+  gap: var(--hk-space-xs);
   align-content: start;
 }
 
@@ -3724,16 +3763,16 @@ input {
 }
 
 .hk-footer__col a:hover {
-  color: #fff;
+  color: var(--hk-on-dark);
 }
 
 .hk-footer__base {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 24px;
+  gap: var(--hk-space-sm) var(--hk-space-lg);
   justify-content: space-between;
   align-items: center;
-  padding-top: 18px;
+  padding-top: var(--hk-space-md);
 }
 
 .hk-footer__legal {
@@ -3746,7 +3785,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: var(--hk-space-md);
 }
 
 .hk-footer__legal-links a {
@@ -3756,7 +3795,7 @@ input {
 }
 
 .hk-footer__legal-links a:hover {
-  color: #fff;
+  color: var(--hk-on-dark);
 }
 
 /* Dialogs */
@@ -3766,7 +3805,7 @@ input {
   border-radius: var(--hk-radius-lg);
   width: min(92vw, 440px);
   box-shadow: var(--hk-shadow-product);
-  background: #fff;
+  background: var(--hk-canvas);
   color: var(--hk-ink);
 }
 
@@ -3775,15 +3814,15 @@ input {
 }
 
 .hk-dialog__body {
-  padding: 24px;
+  padding: var(--hk-space-lg);
 }
 
 .hk-dialog__head {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: var(--hk-space-sm);
+  margin-bottom: var(--hk-space-md);
 }
 
 .hk-dialog__head h2 {
@@ -3795,7 +3834,7 @@ input {
 .hk-dialog__art {
   width: 180px;
   height: 180px;
-  margin: 0 auto 18px;
+  margin: 0 auto var(--hk-space-md);
   border-radius: 50%;
   overflow: hidden;
   box-shadow: var(--hk-shadow-soft);
@@ -3834,15 +3873,15 @@ input {
   flex-direction: column;
   flex: 1;
   min-height: 0;
-  background: #fff;
+  background: var(--hk-canvas);
 }
 
 .hk-drawer__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 20px 22px 16px;
+  gap: var(--hk-space-sm);
+  padding: 20px 20px var(--hk-space-md);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -3859,7 +3898,7 @@ input {
   flex: 1;
   min-height: 0;
   overflow: auto;
-  padding: 8px 22px 24px;
+  padding: var(--hk-space-xs) 20px var(--hk-space-lg);
 }
 
 .hk-drawer__empty {
@@ -3882,7 +3921,7 @@ input {
   flex: 0 0 auto;
   width: 144px;
   height: 144px;
-  margin-bottom: 24px;
+  margin-bottom: var(--hk-space-lg);
 }
 
 .hk-drawer__empty-title {
@@ -3896,7 +3935,7 @@ input {
 
 .hk-drawer__empty-copy {
   max-width: 28ch;
-  margin: 12px 0 24px;
+  margin: var(--hk-space-sm) 0 var(--hk-space-lg);
   font-size: var(--hk-text-body);
   font-weight: var(--hk-font-weight-body);
   line-height: 1.5;
@@ -3911,15 +3950,15 @@ input {
 .hk-drawer__foot {
   padding: 18px 22px calc(18px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  background: #fff;
+  background: var(--hk-canvas);
 }
 
 .hk-drawer__total {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: var(--hk-space-md);
+  margin-bottom: var(--hk-space-sm);
   font-size: var(--hk-text-body);
   font-weight: 700;
   color: var(--hk-ink);
@@ -3939,7 +3978,7 @@ input {
 .hk-drawer__link {
   display: block;
   width: 100%;
-  margin-top: 12px;
+  margin-top: var(--hk-space-sm);
   border: 0;
   background: transparent;
   color: var(--hk-ink);
@@ -3952,7 +3991,7 @@ input {
 }
 
 .hk-drawer__note {
-  margin: 12px 0 0;
+  margin: var(--hk-space-sm) 0 0;
   font-size: var(--hk-text-fine);
   line-height: 1.4;
   color: var(--hk-muted);
@@ -3976,16 +4015,16 @@ input {
 
 .hk-nav-search {
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: var(--hk-space-sm);
 }
 
 .hk-nav-search input {
   width: 100%;
   min-height: 48px;
-  padding: 12px 14px;
+  padding: var(--hk-space-sm) var(--hk-space-sm);
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: var(--hk-radius-sm);
-  background: #fff;
+  background: var(--hk-canvas);
   color: var(--hk-ink);
 }
 

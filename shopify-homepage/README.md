@@ -69,6 +69,41 @@ toolbar. It connects to the Agentation MCP server at `http://localhost:4747`
 for feedback in Codex. The generated bundle stays in the ignored `.tmp/`
 directory, and hosted storefront pages skip loading it.
 
+## Shared chrome and the token system — November 21, 2026
+
+The navigation and footer have one source each, in `partials/`. Pages contain
+only markers:
+
+```html
+<!-- hk:header:start --> … <!-- hk:header:end -->
+<!-- hk:footer:start --> … <!-- hk:footer:end -->
+```
+
+Edit `partials/header.html`, `partials/footer.html` or `partials/pages.json`,
+then regenerate:
+
+```bash
+node scripts/sync-chrome.cjs          # write the pages
+node scripts/sync-chrome.cjs --check  # fail if a page has drifted
+```
+
+`partials/pages.json` holds the only per-page differences: the `base` anchor
+prefix, the `asset` path prefix, and a handful of named slots. Anything else is
+identical on every page by construction. The partials map to Liquid snippets on
+the Shopify side, with the slots as snippet parameters.
+
+Both pages share one type scale, one section rhythm (`--hk-section-tight` /
+`--hk-section` / `--hk-section-lg`), one 4px spacing grid, one radius set, one
+tone set (`hk-tone--*`) and one named tint set. `../design.md` documents the
+rules. `tests/consistency.test.cjs` enforces them:
+
+```bash
+node --test tests/*.test.cjs
+```
+
+Verification for this pass: the full Node suite plus the consistency suite;
+source-level checks only. No browser or visual verification was performed.
+
 ## Sources
 
 - Visual system: `../design-refresh.md`, `../taste.md`, brand guide

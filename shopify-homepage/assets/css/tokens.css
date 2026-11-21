@@ -17,6 +17,7 @@
   --hk-action-hover: var(--hk-sindoor);
   --hk-action-pressed: var(--hk-temple);
   --hk-on-action: #ffffff;
+  --hk-on-dark: #ffffff; /* text on Sindoor/near-black surfaces */
   --hk-body: var(--hk-ink);
   --hk-muted: #3d3d3d;
   --hk-canvas: #ffffff;
@@ -52,20 +53,57 @@
   --hk-radius-sm: 10px;
   --hk-radius-md: 14px;
   --hk-radius-lg: 20px;
+  --hk-radius-card: 24px;
   --hk-radius-xl: 28px;
   --hk-pill: 9999px;
 
+  /* Loose cut — the soft-postcard contour. Three named cuts so a group of
+     cards varies as a family instead of each one being hand-tuned, plus the
+     broader blob used to crop a photo. Do not write a new corner set inline. */
+  --hk-cut-a: 26px 34px 28px 22px / 30px 24px 34px 26px;
+  --hk-cut-b: 34px 24px 30px 28px / 26px 34px 24px 32px;
+  --hk-cut-c: 32px 26px 34px 24px / 28px 32px 24px 34px;
+  --hk-cut-blob: 43% 38% 42% 36%;
+
+  --hk-space-2xs: 4px;
   --hk-space-xs: 8px;
   --hk-space-sm: 12px;
   --hk-space-md: 16px;
   --hk-space-lg: 24px;
   --hk-space-xl: 32px;
   --hk-space-xxl: 48px;
+  /* Section rhythm — November 21, 2026.
+     Pick a row, like the type scale. Do not write a section padding between
+     the rows. Tight is the narrow-screen step, and the step for a band that
+     sits directly against the one above it. */
+  --hk-section-tight: 48px;
   --hk-section: 72px;
   --hk-section-lg: 96px;
+  /* Space under a section heading block, whichever heading component it is. */
+  --hk-heading-gap: 32px;
   --hk-gutter: 24px;
   --hk-content: 1120px;
   --hk-prose: 640px;
+
+  /* Card tones — November 21, 2026. One value per name, site-wide.
+     Homepage values are canonical. A tone sets --hk-tone as well as the
+     background, so a component can reuse the same colour for a fade or
+     border without restating the mix. */
+  --hk-tone-kesar: var(--hk-kesar);
+  --hk-tone-mango: var(--hk-mango);
+  --hk-tone-lavender: var(--hk-lavender);
+  --hk-tone-sky: color-mix(in srgb, var(--hk-sky) 28%, white);
+  --hk-tone-green: color-mix(in srgb, var(--hk-parrot) 20%, white);
+
+  /* Tints — a brand colour softened over white. Every tint the site uses is
+     named here. Do not write a new color-mix inside a component; add a row. */
+  --hk-tint-sky: color-mix(in srgb, var(--hk-sky) 22%, white);
+  --hk-tint-sky-hover: color-mix(in srgb, var(--hk-sky) 34%, white);
+  --hk-tint-mango-soft: color-mix(in srgb, var(--hk-mango) 28%, white);
+  --hk-tint-mango: color-mix(in srgb, var(--hk-mango) 72%, white);
+  --hk-tint-mango-hover: color-mix(in srgb, var(--hk-mango) 88%, white);
+  --hk-tint-parrot: color-mix(in srgb, var(--hk-parrot) 48%, white 52%);
+  --hk-tint-kesar: color-mix(in srgb, var(--hk-kesar) 72%, white 28%);
 
   --hk-shadow-product: 0 8px 28px rgba(5, 51, 74, 0.14);
   --hk-shadow-soft: 0 4px 16px rgba(5, 51, 74, 0.1);

@@ -209,6 +209,98 @@ Display sizes ease down on a phone. Body, UI, eyebrow, and fine print stay the s
 
 **Hard rule:** Leads and running copy use Body only. Do not set a raw `font-size` on paragraphs, leads, feature descriptions, or FAQ answers. Controls stay on UI. Legal stays on Fine. FAQ questions moved to Body on November 17, 2026, when Subhead read too large. Answers stay on Body.
 
+## Component and token system — November 21, 2026
+
+Every page in `shopify-homepage/` is assembled from the same components and the
+same token rows. This section is the project rule; the brand guide does not
+prescribe it. A value that is not on a row below is a local override — delete it
+rather than adding a row to fit it. `tests/consistency.test.cjs` enforces all of
+it, so a drifted value fails the suite rather than reaching a page.
+
+### Shared chrome
+
+The navigation (with its mega panel) and the footer have one source each:
+`shopify-homepage/partials/header.html` and `partials/footer.html`. Pages carry
+only `<!-- hk:header:start -->` / `<!-- hk:footer:start -->` markers; run
+`node scripts/sync-chrome.cjs` after editing a partial. Never edit the chrome
+inside a page.
+
+`partials/pages.json` declares the only values allowed to differ per page: the
+`base` prefix for anchors that may live on another page, the `asset` prefix, and
+a short list of named slots. A difference that is not in that file is drift.
+These partials become `header.liquid` and `footer.liquid` on the Shopify side,
+with the slots as snippet parameters.
+
+### Section rhythm
+
+Sections pick a row, exactly as type does:
+
+| Row | Token | Value |
+| --- | --- | --- |
+| Tight | `--hk-section-tight` | 48px |
+| Base | `--hk-section` | 72px |
+| Large | `--hk-section-lg` | 96px |
+
+Tight is the narrow-screen step and the step for a band sitting directly against
+the one above it. Space under any section heading block is `--hk-heading-gap`
+(32px), whichever heading component carries it — `hk-home-heading`,
+`hk-section__intro` or `hk-pdp-heading` all use it.
+
+### Spacing
+
+Prefer a `--hk-space-*` row: 4, 8, 12, 16, 24, 32, 48px. Where a composition
+genuinely needs a value between rows, it must still be a multiple of 4px.
+Geometry inside `calc()` and `env()` is exempt — a track width or a safe-area
+inset is not rhythm.
+
+### Shape
+
+Corners come from `--hk-radius-sm` (10px), `--hk-radius-md` (14px),
+`--hk-radius-lg` (20px), `--hk-radius-xl` (28px) or `--hk-pill`. The
+soft-postcard contour is three named cuts, `--hk-cut-a` / `-b` / `-c`, so a
+group of cards varies as a family instead of each card being hand-tuned;
+`--hk-cut-blob` is the broader contour used to crop a photo. Do not write a new
+corner set inline.
+
+### Tones and tints
+
+`--hk-tone-kesar`, `--hk-tone-mango`, `--hk-tone-lavender`, `--hk-tone-sky` and
+`--hk-tone-green` are the card tones, one value per name site-wide. The homepage
+feature cards and the Player benefit tiles both use the `hk-tone--<name>` class;
+a tone sets `--hk-tone` as well as the background, so a component can reuse the
+same colour for a fade or a border without restating the mix.
+
+`--hk-tint-*` names every other brand-colour-over-white value the site uses.
+Before November 21, 2026 Sky Blue appeared over white at five different
+strengths across four components. A component must not write its own
+`color-mix()` against a brand colour; add a named row instead. Mixing a
+component variable is still fine — that is one rule producing a tint per slot.
+
+### Surfaces and text
+
+Surfaces use `--hk-canvas`; text on a Sindoor or near-black surface uses
+`--hk-on-dark`. No literal `#fff` in a component.
+
+### The phone illustration is exempt
+
+`.hk-phone*` is a picture of an interface, not page chrome. Its corners,
+colours and spacing are part of the drawing, as its type already is.
+
+### Changes this pass made visible
+
+- The Player page's section padding moved from 44px to `--hk-section` (72px),
+  and its narrow step from 32px to `--hk-section-tight` (48px).
+- The Player page no longer pins `--hk-text-section` to 40px, so its section
+  titles scale 34–48px like the homepage's.
+- Homepage sections moved to the nearest rhythm row; the largest single shift
+  was about 28px.
+- "Discover the Koels." and "Little stories. Shared feelings." moved from Title
+  to Section size. "Made for the way kids listen." stays at Title size, as set
+  above.
+- The Player benefit tiles adopted the homepage tone values, so their photo
+  fades are stronger.
+- Spacing values off the 4px grid moved to it; every move was 2px or less.
+
 ## Logo and brand marks
 
 Guide pages 13–17:
@@ -317,22 +409,21 @@ $129 sits beside the name, without the USD label. No struck original price
 or percent-off badge is shown, because no compare-at price is confirmed. Section jumps clear the navbar only. The page keeps bottom padding
 so the footer stays above the bar. The first fold keeps the gallery beside the
 purchase on wide screens and stacks it above the purchase on phones. The
-purchase leads with the Section-size title and Gulab price, then a short
-description and four unboxed icon highlights. Add to cart follows the
-highlights. Features, In the box and Explore Koels sit underneath as text
-links. The gallery has no caption, and the finish line is not shown. The
-benefits heading, “Made for the way kids listen.”, uses Title size. One
+purchase leads with the title and Gulab price, then a short description and
+four unboxed icon highlights. Add to cart follows the highlights. The product
+title and all section headings on this page use 40px at every viewport.
+The gallery has no caption, and the finish line is not shown. One
 four-card grid below the fold explains the Player's benefits. Each photo
 fills its card. A linear colour fade and a progressive blur rise from the
 bottom, so the copy does not sit on a solid block. The “Meet
 their new story companion.” band and the navigation that points at it
-are hidden for now. In What’s included, Explore the story discs is a
-secondary button. The companion app card links to the App Store and
-Google Play. The specifications band is a full-width Kesar section with
-the homepage wave on both edges, and the unconfirmed-hardware note is
-removed. The “Their first favourite is waiting.” rail hides its scrollbar.
-Previous and next sit together below the cards, as on the homepage. The
-sample-content note under that rail is removed. The Player FAQ uses the
+are hidden for now. In What’s included, Explore Koels uses the primary
+button style. The companion app card uses App Store and Google Play badges.
+The testimonials use the homepage cards and copy. The specifications band
+is a full-width Kesar section with the homepage wave on both edges and
+individual icon containers. Both Koel carousels have hidden scrollbars,
+centered arrows below the cards, and a primary Explore all Koels button.
+The Player FAQ uses the
 homepage list and the same centered title. It has no card. The Player footer uses the homepage
 wave, signup, and links.
 
@@ -430,9 +521,9 @@ shows five cards, with 40px of space above and below that section.
 The One Player strip is a Sindoor bar with a Sindoor wave on the top and bottom. The three labels use Open Sans at UI size, with a wide gap, centered in the bar. They are not links. No colour-wave stack sits above or below it. How it works
 stays inside the content column so the first card is not cut off on the left.
 The heading and lead are removed. The first card has no step list, and each card link
-is a primary button. November 18, 2026: each story card was 58% of the viewport wide, up to 1040px, at a 1.7 ratio. November 21, 2026 supersedes that ratio: the fixed short card squeezed the copy. Photos still fill a square on the left while the rail is wide.
+is a primary button. November 18, 2026: each story card was 58% of the viewport wide, up to 1040px, at a 1.7 ratio. November 21, 2026 supersedes that ratio: the fixed short card squeezed the copy. Photos still fill a square on the left while the rail is wide. The cards use four distinct grounds in order: light Sky, Mango, light Parrot and Lavender. The family-life section uses 72px of vertical padding.
 The Player section’s bottom edge uses the colour wave. The top edge is a Kesar wave,
-with 40px of padding inside the Player content. The red Koel catalogue wraps in rows and
+with 72px of padding in the Player content wrapper. The red Koel catalogue wraps in rows and
 has no eyebrow above the heading. November 21, 2026: four compact cards a row
 down to 800px, then two. The one-across phone step is retired because those
 cards read too large. Filtering keeps the full catalogue height, so the waves
@@ -626,8 +717,8 @@ hardware are reference content, not approved Hey Kahani claims or assets.
   Testimonials now place Moon and stars, Little home, Rain cloud, Spinning top
   and Pebble pair in a separate header area beside each quote mark, replacing
   the old large motifs behind the words. Long wave was removed from the
-  quiet/screen-free card on November 14, 2026. Content-sized, softly irregular
-  card surfaces retain the existing brand-pastel mix and quote hierarchy.
+  quiet/screen-free card on November 14, 2026. The homepage quote cards use a
+  uniform 24px radius and retain the brand-pastel mix and quote hierarchy.
   Fixed-aspect container SVGs are not stretched to hold long quotes. The copy,
   attributions, five-card arrangement and existing interaction behaviour are
   preserved.

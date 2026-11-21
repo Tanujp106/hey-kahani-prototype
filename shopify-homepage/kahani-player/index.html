@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -8,17 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=newsletter-opacity-20261121">
-  <link rel="stylesheet" href="../assets/css/homepage-layout.css?v=feature-graphic-outset-20261121">
-  <link rel="stylesheet" href="../assets/css/player-page.css?v=player-benefit-fade-20261121">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=20261121">
+  <link rel="stylesheet" href="../assets/css/homepage-layout.css?v=20261121">
+  <link rel="stylesheet" href="../assets/css/player-page.css?v=player-page-feedback-20261121">
   <noscript><style>
-    .hk-pdp .hk-faq details[open] .hk-faq__panel { height: auto; }
-    .hk-pdp .hk-faq details[open] p { opacity: 1; }
+    /* The FAQ panel is collapsed by script; keep open answers readable without it. */
+    .hk-faq details[open] .hk-faq__panel { height: auto; }
+    .hk-faq details[open] p { opacity: 1; }
   </style></noscript>
 </head>
 <body class="hk-pdp" id="top">
   <a class="hk-skip" href="#main">Skip to content</a>
-  <aside class="hk-announcement" aria-label="Welcome to Hey Kahani"><ul class="hk-announcement__messages"><li class="is-active"><span>Little stories. Lasting roots.</span></li></ul></aside>
+  <aside class="hk-announcement" aria-label="Welcome to Hey Kahani"><ul class="hk-announcement__messages" data-hk-announcement aria-live="polite"><li class="is-active"><span>Little stories. Lasting roots.</span></li></ul></aside>
+  <!-- hk:header:start -->
   <header class="hk-nav">
     <div class="hk-wrap hk-nav__float">
     <div class="hk-nav__inner">
@@ -156,6 +158,7 @@
     </div>
     </div>
   </header>
+  <!-- hk:header:end -->
   <div class="hk-pdp-buybar" aria-label="Kahani Player purchase">
     <div class="hk-wrap hk-pdp-buybar__inner">
       <div class="hk-pdp-buybar__offer">
@@ -195,7 +198,7 @@
         </div>
         <div class="hk-pdp-purchase">
           <header class="hk-pdp-purchase__heading">
-            <h1 class="hk-display hk-display--hero" id="player-title">The Kahani Player</h1>
+            <h1 class="hk-display hk-display--lg" id="player-title">The Kahani Player</h1>
             <p class="hk-pdp-price" data-hk-player-price data-product-handle="kahani-player" data-price-minor="12900" data-currency="USD" data-price-kind="approved">$129 <span>USD</span></p>
           </header>
           <div class="hk-pdp-purchase__intro">
@@ -213,39 +216,34 @@
             <button class="hk-btn hk-btn--primary" type="button" data-hk-player-add="Kahani Player">Add to cart</button>
             <noscript><p>The prototype bag needs JavaScript. You can still explore the Player and stories below.</p></noscript>
           </div>
-          <nav class="hk-pdp-purchase__links" aria-label="Explore the Player">
-            <a class="hk-pdp-text-link" href="#player-benefits">Features</a>
-            <a class="hk-pdp-text-link" href="#included">In the box</a>
-            <a class="hk-pdp-text-link" href="#koels">Explore Koels</a>
-          </nav>
         </div>
       </div>
     </section>
     <section class="hk-pdp-section hk-wrap" id="player-benefits" aria-labelledby="player-benefits-title">
-      <header class="hk-pdp-heading"><h2 class="hk-display hk-display--md" id="player-benefits-title">Made for the way kids listen.</h2></header>
+      <header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="player-benefits-title">Made for the way kids listen.</h2></header>
       <div class="hk-pdp-benefits">
-        <article class="hk-pdp-benefit hk-pdp-tone--mango">
+        <article class="hk-pdp-benefit hk-tone--mango">
           <img src="../assets/images/editorial/photography-2026-11-20/02-stories-on-the-floor.webp" width="1254" height="1254" alt="" loading="lazy" decoding="async">
           <div class="hk-pdp-benefit__copy">
             <h3 class="hk-display hk-display--md">Screen-free by design</h3>
             <p>Stories play right on the Player, so they can listen while they draw, build or wind down.</p>
           </div>
         </article>
-        <article class="hk-pdp-benefit hk-pdp-tone--sky">
+        <article class="hk-pdp-benefit hk-tone--sky">
           <img src="../assets/images/editorial/photography-2026-11-20/05-independent-choice.webp" width="1254" height="1254" alt="" loading="lazy" decoding="async">
           <div class="hk-pdp-benefit__copy">
             <h3 class="hk-display hk-display--md">Made for little hands</h3>
             <p>A carry handle and five physical buttons let kids move the Player and control playback themselves.</p>
           </div>
         </article>
-        <article class="hk-pdp-benefit hk-pdp-tone--green">
+        <article class="hk-pdp-benefit hk-tone--green">
           <img src="../assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp" width="1254" height="1254" alt="" loading="lazy" decoding="async">
           <div class="hk-pdp-benefit__copy">
             <h3 class="hk-display hk-display--md">They pick the story</h3>
             <p>Each Koel is a physical story disc. Kids can choose one from the shelf and place it on top to start listening.</p>
           </div>
         </article>
-        <article class="hk-pdp-benefit hk-pdp-tone--lavender">
+        <article class="hk-pdp-benefit hk-tone--lavender">
           <img src="../assets/images/product/family.jpg" width="1018" height="1006" alt="" loading="lazy" decoding="async">
           <div class="hk-pdp-benefit__copy">
             <h3 class="hk-display hk-display--md">Stories that feel like home</h3>
@@ -284,7 +282,7 @@
     <!-- Meet the Player, native horizontal feature rail. -->
     <section class="hk-pdp-section hk-pdp-meet" id="how-it-works" aria-labelledby="meet-title" data-hk-rail hidden>
       <div class="hk-wrap hk-home-heading"><div><header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="meet-title">Meet their new story companion.</h2><p class="hk-lead">Simple for them. A little magic for every day.</p></header></div><div class="hk-rail-controls" aria-label="Player features"><button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="player-feature-rail" aria-label="Previous Player features" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="player-feature-rail" aria-label="Next Player features" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div></div>
-      <div class="hk-pdp-feature-rail hk-home-scroll" id="player-feature-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Meet the Kahani Player"><article class="hk-pdp-feature hk-pdp-tone--mango"><img class="" src="../assets/images/product/family.jpg" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">A little disc. A whole world.</h3><p>Every Koel opens a story. Familiar names, everyday adventures and celebrations they can return to.</p><a class="hk-btn hk-btn--primary" href="#koels">Explore the Koels</a></div></article><article class="hk-pdp-feature hk-pdp-tone--sky"><img class="" src="../assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">They choose. They place. They play.</h3><p>Let them pick a Koel, set it on top of the Player and let the story begin. No phone or tablet needed to listen.</p><a class="hk-btn hk-btn--primary" href="#player">Meet their Player</a></div></article><article class="hk-pdp-feature hk-pdp-tone--lavender"><img class="" src="../assets/images/app/hk-shot-04.png" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">A little help for grown-ups.</h3><p>The companion app is for setup and guidance. Their listening stays on the Player.</p><a class="hk-btn hk-btn--primary" href="#companion-app">Meet the app</a></div></article><article class="hk-pdp-feature hk-pdp-tone--green"><img class="" src="../assets/images/editorial/photography-2026-11-20/03-breakfast-giggles.webp" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">From their first story to the next.</h3><p>Start with the Player, then explore more Koels as their story shelf grows.</p><a class="hk-btn hk-btn--primary" href="#more-koels">Find another Kahani</a></div></article></div>
+      <div class="hk-pdp-feature-rail hk-home-scroll" id="player-feature-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Meet the Kahani Player"><article class="hk-pdp-feature hk-tone--mango"><img class="" src="../assets/images/product/family.jpg" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">A little disc. A whole world.</h3><p>Every Koel opens a story. Familiar names, everyday adventures and celebrations they can return to.</p><a class="hk-btn hk-btn--primary" href="#koels">Explore the Koels</a></div></article><article class="hk-pdp-feature hk-tone--sky"><img class="" src="../assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">They choose. They place. They play.</h3><p>Let them pick a Koel, set it on top of the Player and let the story begin. No phone or tablet needed to listen.</p><a class="hk-btn hk-btn--primary" href="#player">Meet their Player</a></div></article><article class="hk-pdp-feature hk-tone--lavender"><img class="" src="../assets/images/app/hk-shot-04.png" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">A little help for grown-ups.</h3><p>The companion app is for setup and guidance. Their listening stays on the Player.</p><a class="hk-btn hk-btn--primary" href="#companion-app">Meet the app</a></div></article><article class="hk-pdp-feature hk-tone--green"><img class="" src="../assets/images/editorial/photography-2026-11-20/03-breakfast-giggles.webp" width="800" height="800" alt="" loading="lazy" decoding="async"><div><h3 class="hk-display hk-display--md">From their first story to the next.</h3><p>Start with the Player, then explore more Koels as their story shelf grows.</p><a class="hk-btn hk-btn--primary" href="#more-koels">Find another Kahani</a></div></article></div>
     </section>
     <section class="hk-pdp-section hk-wrap" id="included" aria-labelledby="included-title">
       <header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="included-title">What’s included?</h2></header>
@@ -301,7 +299,7 @@
           <div>
             <h3 class="hk-display">Kahani Koels</h3>
             <p>Included story discs vary by the product or bundle you choose.</p>
-            <a class="hk-btn hk-btn--secondary" href="#koels">Explore the story discs</a>
+            <a class="hk-btn hk-btn--primary" href="#koels">Explore Koels</a>
           </div>
         </article>
         <article class="hk-pdp-included__app" id="companion-app">
@@ -309,30 +307,149 @@
           <div>
             <h3 class="hk-display">Companion app</h3>
             <p>Grown-ups use the app to set up the Player.</p>
-            <div class="hk-pdp-included__downloads">
-              <a class="hk-btn hk-btn--secondary" href="https://apps.apple.com/in/app/hey-kahani/id6769677703" target="_blank" rel="noopener noreferrer">App Store</a>
-              <a class="hk-btn hk-btn--secondary" href="https://play.google.com/store/apps/details?id=com.heykahani.app" target="_blank" rel="noopener noreferrer">Google Play</a>
+            <div class="hk-app__downloads hk-pdp-included__downloads">
+              <a class="hk-app__store" href="https://apps.apple.com/in/app/hey-kahani/id6769677703" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M19.8 14.9c0-3.4 2.8-5.1 2.9-5.2-1.6-2.3-4-2.6-4.9-2.7-2.1-.2-4.1 1.2-5.2 1.2-1 0-2.7-1.2-4.4-1.1-2.3 0-4.5 1.4-5.7 3.4C.1 14.6 1.9 20.8 4.2 24c1.1 1.6 2.3 3.4 4.1 3.3 1.6-.1 2.3-1.1 4.4-1.1s2.7 1.1 4.5 1c1.9 0 3-1.6 4.1-3.2 1.3-1.8 1.8-3.6 1.8-3.7-.1 0-3.3-1.3-3.3-5.4ZM16.4 4.8C17.3 3.7 18 2.2 17.8.7c-1.3.1-2.9.9-3.8 2-.8.9-1.6 2.5-1.4 3.9 1.4.1 2.9-.7 3.8-1.8Z"/></svg>
+                <span><small>Download on the</small><strong>App Store</strong></span>
+              </a>
+              <a class="hk-app__store" href="https://play.google.com/store/apps/details?id=com.heykahani.app" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 28 30" aria-hidden="true"><path fill="#63c3fe" d="M2 1 17 15 2 29Z"/><path fill="#2b9863" d="m2 1 19 11-4 3Z"/><path fill="#fecb74" d="m21 12 5 3-5 3-4-3Z"/><path fill="#d3000a" d="m2 29 15-14 4 3Z"/></svg>
+                <span><small>GET IT ON</small><strong>Google Play</strong></span>
+              </a>
             </div>
           </div>
         </article>
       </div>
     </section>
-    <!-- Reference order 7: family stories. These are labeled design samples, not customer reviews. -->
-    <section class="hk-pdp-section hk-wrap" id="family-stories" aria-labelledby="family-title">
-      <header class="hk-pdp-heading"><h2 class="hk-display hk-display--md" id="family-title">Little stories. Shared feelings.</h2></header>
-      <div class="hk-pdp-quotes"><figure class="hk-pdp-quote hk-pdp-tone--lavender"><div class="hk-pdp-quote__top"><span class="hk-pdp-sample">Fictional sample</span><img class="" src="../assets/images/brand-library/illustrations/moon-and-stars.svg" width="96" height="96" alt="" loading="lazy" decoding="async"></div><blockquote><p>“Bedtime used to be a negotiation. Now she asks for one more Kahani, and actually settles.”</p></blockquote><figcaption><strong>Ananya R.</strong><span>Mother of two · Brooklyn</span></figcaption></figure><figure class="hk-pdp-quote hk-pdp-tone--mango"><div class="hk-pdp-quote__top"><span class="hk-pdp-sample">Fictional sample</span><img class="" src="../assets/images/brand-library/illustrations/little-home.svg" width="96" height="96" alt="" loading="lazy" decoding="async"></div><blockquote><p>“It’s the first thing that feels like our house. The festivals, the jokes, the names she already knows.”</p></blockquote><figcaption><strong>Dev Patel</strong><span>Dad of a 5-year-old · Chicago</span></figcaption></figure><figure class="hk-pdp-quote hk-pdp-tone--sky"><div class="hk-pdp-quote__top"><span class="hk-pdp-sample">Fictional sample</span><img class="" src="../assets/images/brand-library/illustrations/rain-cloud.svg" width="96" height="96" alt="" loading="lazy" decoding="async"></div><blockquote><p>“Screen free without feeling like a compromise. He picks the Koel. We get the quiet.”</p></blockquote><figcaption><strong>Meera &amp; Josh</strong><span>Parents · Austin</span></figcaption></figure></div>
+    <section class="hk-section hk-community" id="family-stories" aria-labelledby="family-title">
+      <div class="hk-wrap hk-community__content">
+        <div class="hk-section__intro hk-community__intro">
+          <h2 class="hk-display hk-display--lg" id="family-title">Stories worth sharing.</h2>
+          <p class="hk-lead">Parents tell us bedtime got softer, car rides got calmer, and culture finally felt close enough to hold.</p>
+        </div>
+        <div class="hk-quotes">
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <div class="hk-quote__header" aria-hidden="true">
+                  <span class="hk-quote__mark">“</span>
+                  <!-- Bedtime: a complete moon illustration beside the quote mark. -->
+                  <img class="hk-quote__graphic" src="../assets/images/brand-library/illustrations/moon-and-stars.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                </div>
+                <p>Bedtime used to be a negotiation. Now she asks for one more Kahani, and actually settles.</p>
+                <footer>
+                  <span><strong>Ananya R.</strong><small>Mother of two · Brooklyn</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <div class="hk-quote__header" aria-hidden="true">
+                  <span class="hk-quote__mark">“</span>
+                  <!-- Belonging: a little home, separate from the reading area. -->
+                  <img class="hk-quote__graphic" src="../assets/images/brand-library/illustrations/little-home.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                </div>
+                <p>It’s the first thing that feels like our house. The festivals, the jokes, the names she already knows.</p>
+                <footer>
+                  <span><strong>Dev Patel</strong><small>Dad of a 5-year-old · Chicago</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <div class="hk-quote__header" aria-hidden="true">
+                  <span class="hk-quote__mark">“</span>
+                  <!-- Quiet: rain cloud for a calm, screen-free moment. -->
+                  <img class="hk-quote__graphic" src="../assets/images/brand-library/illustrations/rain-cloud.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                </div>
+                <p>Screen free without feeling like a compromise. He picks the Koel. We get the quiet.</p>
+                <footer>
+                  <span><strong>Meera &amp; Josh</strong><small>Parents · Austin</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <div class="hk-quote__header" aria-hidden="true">
+                  <span class="hk-quote__mark">“</span>
+                  <!-- Independent play: the spinning top. -->
+                  <img class="hk-quote__graphic" src="../assets/images/brand-library/illustrations/spinning-top.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                </div>
+                <p>She lines up her Koels and decides what we’re listening to. That little bit of independence is lovely.</p>
+                <footer>
+                  <span><strong>Priya S.</strong><small>Mum of a 4-year-old · London</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+          <div class="hk-quote-slot">
+            <article class="hk-quote">
+              <blockquote class="hk-quote__body">
+                <div class="hk-quote__header" aria-hidden="true">
+                  <span class="hk-quote__mark">“</span>
+                  <!-- Shared stories: two related forms. -->
+                  <img class="hk-quote__graphic" src="../assets/images/brand-library/decorative/pebble-pair.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                </div>
+                <p>The familiar names and little details start so many conversations. Story time is something we share now.</p>
+                <footer>
+                  <span><strong>Rohan &amp; Aisha</strong><small>Parents · Toronto</small></span>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+        </div>
+      </div>
     </section>
     <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14V48H0Z"/></svg>
     <section class="hk-pdp-section hk-pdp-specs" id="specifications" aria-labelledby="spec-title">
       <div class="hk-wrap">
         <header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="spec-title">The Player, in a little more detail.</h2></header>
-        <dl><div><dt><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg>Story format</dt><dd>Physical, circular Koel discs</dd></div><div><dt><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>Playback controls</dt><dd>Previous, play / pause, next</dd></div><div><dt><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>Volume controls</dt><dd>Physical plus and minus buttons</dd></div><div><dt><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V9a7 7 0 0 1 14 0v11M3 20h4M17 20h4"/></svg>Carry handle</dt><dd>Integrated arch handle</dd></div><div><dt><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="4"/><circle cx="12" cy="15" r="3"/><path d="M11 6h2"/></svg>Appearance</dt><dd>Cream body, Gulab band, wood base</dd></div><div><dt><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg>Companion app</dt><dd>Setup and guidance for grown-ups</dd></div></dl>
+        <dl>
+          <div>
+            <dt><span class="hk-pdp-specs__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg></span>Story format</dt>
+            <dd>Physical, circular Koel discs</dd>
+          </div>
+          <div>
+            <dt><span class="hk-pdp-specs__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg></span>Playback controls</dt>
+            <dd>Previous, play / pause, next</dd>
+          </div>
+          <div>
+            <dt><span class="hk-pdp-specs__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span>Volume controls</dt>
+            <dd>Physical plus and minus buttons</dd>
+          </div>
+          <div>
+            <dt><span class="hk-pdp-specs__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V9a7 7 0 0 1 14 0v11M3 20h4M17 20h4"/></svg></span>Carry handle</dt>
+            <dd>Integrated arch handle</dd>
+          </div>
+          <div>
+            <dt><span class="hk-pdp-specs__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="4"/><circle cx="12" cy="15" r="3"/><path d="M11 6h2"/></svg></span>Appearance</dt>
+            <dd>Cream body, Gulab band, wood base</dd>
+          </div>
+          <div>
+            <dt><span class="hk-pdp-specs__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></span>Companion app</dt>
+            <dd>Setup and guidance for grown-ups</dd>
+          </div>
+        </dl>
       </div>
     </section>
     <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/></svg>
     <section class="hk-pdp-section hk-wrap hk-pdp-stories" id="koels" aria-labelledby="koels-title" data-hk-rail data-preview-src="../assets/audio/preview-sample.mp3" data-preview-demo="true">
-      <div class="hk-home-heading"><div><header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="koels-title">Their first favourite is waiting.</h2><p class="hk-lead">Start exploring South Asian stories. Every Koel needs a Kahani Player.</p></header></div><a class="hk-pdp-text-link" href="/#koels">Explore all Koels</a></div>
-      <div class="hk-pdp-koel-rail hk-home-scroll" id="koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Their first favourite is waiting."><article
+      <div class="hk-home-heading">
+        <header class="hk-pdp-heading">
+          <h2 class="hk-display hk-display--lg" id="koels-title">Their first favourite is waiting.</h2>
+          <p class="hk-lead">Start exploring South Asian stories. Every Koel needs a Kahani Player.</p>
+        </header>
+        <form action="/#koels">
+          <button class="hk-btn hk-btn--primary" type="submit">Explore all Koels</button>
+        </form>
+      </div>
+      <div class="hk-koel-rail hk-pdp-koel-rail hk-home-scroll" id="koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Their first favourite is waiting."><article
           class="hk-koel"
           data-hk-koel
           data-collection="Kahani Original"
@@ -469,8 +586,16 @@
       </div>
     </section>
     <section class="hk-pdp-section hk-wrap hk-pdp-stories" id="more-koels" aria-labelledby="more-koels-title" data-hk-rail data-preview-src="../assets/audio/preview-sample.mp3" data-preview-demo="true">
-      <div class="hk-home-heading"><div><header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="more-koels-title">And then, one more Kahani.</h2><p class="hk-lead">Little adventures for a growing story shelf.</p></header></div><a class="hk-pdp-text-link" href="/#koels">Explore all Koels</a><div class="hk-rail-controls" aria-label="stories"><button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="more-koels-rail" aria-label="Previous stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="more-koels-rail" aria-label="Next stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div></div>
-      <div class="hk-pdp-koel-rail hk-home-scroll" id="more-koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="And then, one more Kahani."><article
+      <div class="hk-home-heading">
+        <header class="hk-pdp-heading">
+          <h2 class="hk-display hk-display--lg" id="more-koels-title">And then, one more Kahani.</h2>
+          <p class="hk-lead">Little adventures for a growing story shelf.</p>
+        </header>
+        <form action="/#koels">
+          <button class="hk-btn hk-btn--primary" type="submit">Explore all Koels</button>
+        </form>
+      </div>
+      <div class="hk-koel-rail hk-pdp-koel-rail hk-home-scroll" id="more-koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="And then, one more Kahani."><article
           class="hk-koel"
           data-hk-koel
           data-collection="Kahani Original"
@@ -601,7 +726,10 @@
             </button>
           </div>
         </article></div>
-      <p class="hk-pdp-prototype-note">Story artwork and prices are sample content. Audio previews use a demo recording.</p>
+      <div class="hk-rail-controls hk-rail-controls--below" role="group" aria-label="Story controls">
+        <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="more-koels-rail" aria-label="Previous stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+        <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="more-koels-rail" aria-label="Next stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+      </div>
     </section>
     <section class="hk-section hk-home-faq" id="faqs" aria-labelledby="faq-title">
       <div class="hk-wrap hk-home-faq__grid">
@@ -617,7 +745,9 @@
       </div>
     </section>
   </main>
+  <!-- hk:footer:start -->
   <svg class="hk-waves hk-break" style="--hk-wave-from: var(--hk-canvas); --hk-wave-to: var(--hk-sindoor)" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-wave-from)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/><path fill="var(--hk-sky)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14L1440 28C1253 54 1114 54 926 37C691 16 587 18 395 38C203 58 102 54 0 36Z"/><path fill="var(--hk-mango)" d="M0 36C102 54 203 58 395 38C587 18 691 16 926 37C1114 54 1253 54 1440 28L1440 42C1253 68 1114 68 926 51C691 30 587 32 395 52C203 72 102 68 0 50Z"/><path fill="var(--hk-marigold)" d="M0 50C102 68 203 72 395 52C587 32 691 30 926 51C1114 68 1253 68 1440 42L1440 56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/><path fill="var(--hk-wave-to)" d="M0 90H1440V56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/></svg>
+
   <footer class="hk-footer" id="footer">
     <div class="hk-wrap">
       <div class="hk-footer__top">
@@ -671,6 +801,7 @@
       </div>
     </div>
   </footer>
+  <!-- hk:footer:end -->
   <dialog class="hk-dialog" id="koel-dialog" aria-labelledby="koel-dialog-title">
     <div class="hk-dialog__body">
       <div class="hk-dialog__head">
@@ -753,9 +884,9 @@
     document.getElementById("year").textContent = String(new Date().getFullYear());
   </script>
   <script src="../assets/js/inline-preview.js" defer></script>
-  <script src="../assets/js/main.js?v=player-bag-20261120" defer></script>
-  <script src="../assets/js/homepage-layout.js?v=feature-dots-20261121" defer></script>
-  <script src="../assets/js/player-page.js?v=20261120" defer></script>
+  <script src="../assets/js/main.js?v=20261121" defer></script>
+  <script src="../assets/js/homepage-layout.js?v=20261121" defer></script>
+  <script src="../assets/js/player-page.js?v=20261121" defer></script>
   <script type="module">
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
       import('../.tmp/agentation.js').catch((error) => console.warn('Agentation preview unavailable', error));

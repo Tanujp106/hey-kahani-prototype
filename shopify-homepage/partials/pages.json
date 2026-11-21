@@ -1,0 +1,42 @@
+{
+  "_comment": [
+    "Single source of truth for the shared chrome. partials/header.html and",
+    "partials/footer.html own the markup; this file declares the only values that",
+    "differ per page. Run `node scripts/sync-chrome.cjs` after editing either.",
+    "These partials map to Shopify Liquid snippets (header.liquid / footer.liquid)",
+    "with these slots becoming snippet parameters.",
+    "",
+    "base  — prefix for section anchors that may live on another page.",
+    "asset — prefix for files under assets/.",
+    "",
+    "Every slot below is a real, reviewed difference. Anything not listed here is",
+    "identical on every page by construction; tests/shared-chrome.test.cjs fails",
+    "if a page drifts from the partial."
+  ],
+  "pages": [
+    {
+      "file": "index.html",
+      "base": "",
+      "asset": "assets/",
+      "slots": {
+        "nav-start-href": "#shop",
+        "nav-koels-href": "/koels-listing",
+        "nav-how-hidden": "",
+        "mega-player-row3-href": "/products/founders-bundle",
+        "mega-player-row3-label": "Founder's Bundle"
+      }
+    },
+    {
+      "file": "kahani-player/index.html",
+      "base": "/",
+      "asset": "../assets/",
+      "slots": {
+        "nav-start-href": "#player",
+        "nav-koels-href": "/#koels",
+        "nav-how-hidden": " hidden",
+        "mega-player-row3-href": "#included",
+        "mega-player-row3-label": "What’s included"
+      }
+    }
+  ]
+}
