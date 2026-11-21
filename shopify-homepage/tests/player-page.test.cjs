@@ -151,6 +151,36 @@ test('sticky purchase uses the same product addition as the main purchase contro
   assert.equal(f.additions(), 1);
 });
 
+test('the purchase strip hides at the footer wave and returns above it', () => {
+  const wave = { classList: { contains: (name) => name === 'hk-waves' } };
+  const footer = { previousElementSibling: wave };
+  const buybar = { hidden: true };
+  const observed = [];
+  let report;
+  vm.runInNewContext(readFileSync(scriptPath, 'utf8'), {
+    document: {
+      querySelector: (selector) => ({ '.hk-pdp-buybar': buybar, '#footer': footer })[selector] ?? null,
+      querySelectorAll: () => [],
+    },
+    window: {
+      IntersectionObserver: class {
+        constructor(callback) { report = callback; }
+        observe(target) { observed.push(target); }
+      },
+    },
+  });
+
+  assert.deepEqual(observed, [wave, footer]);
+  report([{ target: wave, isIntersecting: false }, { target: footer, isIntersecting: false }]);
+  assert.equal(buybar.hidden, false);
+  report([{ target: wave, isIntersecting: true }]);
+  assert.equal(buybar.hidden, true);
+  report([{ target: wave, isIntersecting: false }, { target: footer, isIntersecting: true }]);
+  assert.equal(buybar.hidden, true);
+  report([{ target: footer, isIntersecting: false }]);
+  assert.equal(buybar.hidden, false);
+});
+
 test('story rails provide playable demo audio that resolves from the nested Player route', () => {
   const page = join(__dirname, '../kahani-player/index.html');
   const html = readFileSync(page, 'utf8');

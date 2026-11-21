@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css?v=20261121">
   <link rel="stylesheet" href="../assets/css/homepage-layout.css?v=carousel-dots-half-20261121">
-  <link rel="stylesheet" href="../assets/css/player-page.css?v=player-image-only-zoom-20261121">
+  <link rel="stylesheet" href="../assets/css/player-page.css?v=pdp-footer-buybar-20261121">
   <noscript><style>
     /* The FAQ panel is collapsed by script; keep open answers readable without it. */
     .hk-faq details[open] .hk-faq__panel { height: auto; }
@@ -159,13 +159,13 @@
     </div>
   </header>
   <!-- hk:header:end -->
-  <div class="hk-pdp-buybar" aria-label="Kahani Player purchase">
+  <div class="hk-pdp-buybar" aria-label="Kahani Player purchase" hidden>
     <div class="hk-wrap hk-pdp-buybar__inner">
       <div class="hk-pdp-buybar__offer">
         <a class="hk-pdp-buybar__name" href="#player">Kahani Player</a>
         <p class="hk-pdp-buybar__price" data-hk-player-price-snapshot data-price-minor="12900" data-currency="USD">$129</p>
       </div>
-      <div class="hk-pdp-buybar__purchase"><button class="hk-btn hk-btn--primary" type="button" data-hk-player-buy hidden>Add to cart</button><noscript><a class="hk-btn hk-btn--primary" href="#player">View Player</a></noscript></div>
+      <div class="hk-pdp-buybar__purchase"><button class="hk-btn hk-btn--primary" type="button" data-hk-player-buy hidden>Add to cart</button></div>
     </div>
   </div>
   <main id="main">
@@ -892,7 +892,7 @@
   <script src="../assets/js/inline-preview.js" defer></script>
   <script src="../assets/js/main.js?v=20261121" defer></script>
   <script src="../assets/js/homepage-layout.js?v=carousel-dots-20261121" defer></script>
-  <script src="../assets/js/player-page.js?v=gallery-slide-20261121" defer></script>
+  <script src="../assets/js/player-page.js?v=pdp-footer-buybar-20261121" defer></script>
   <script type="module">
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
       import('../.tmp/agentation.js').catch((error) => console.warn('Agentation preview unavailable', error));

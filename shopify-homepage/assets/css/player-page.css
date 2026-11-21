@@ -1,5 +1,5 @@
 /* Kahani Player product page. Shared type, buttons, nav, bag, audio and FAQ stay in the base styles. */
-.hk-pdp { --hk-pdp-buybar-space: 108px; --hk-pdp-sticky-clearance: var(--hk-navigation-height, 104px); padding-bottom: var(--hk-pdp-buybar-space); }
+.hk-pdp { --hk-pdp-buybar-space: 108px; --hk-pdp-sticky-clearance: var(--hk-navigation-height, 104px); }
 .hk-pdp [hidden] { display: none !important; }
 .hk-pdp .hk-nav { margin-bottom: 0; }
 .hk-pdp main section { scroll-margin-top: var(--hk-pdp-sticky-clearance); }
@@ -10,8 +10,13 @@
 .hk-pdp .hk-home-heading { align-items: center; }
 .hk-pdp .hk-home-heading .hk-pdp-heading { margin-bottom: 0; }
 .hk-pdp-section { padding-block: 44px; }
+/* The three sections right after the hero get more air above their headings. */
+#player-benefits.hk-pdp-section,
+#closer-look.hk-pdp-section,
+#included.hk-pdp-section { padding-top: 80px; }
+.hk-pdp-gallery .hk-carousel-dots:not([hidden]) { margin-top: 20px; }
 
-/* The same persistent purchase control throughout the reference's scroll sequence. */
+/* Fixed purchase control, shown while the footer is out of view. */
 .hk-pdp-buybar { position: fixed; right: 0; bottom: 0; left: 0; z-index: 35; padding-block: var(--hk-space-md); background: rgba(255, 255, 255, .97); border-top: 1px solid var(--hk-divider); }
 .hk-pdp-buybar__inner { display: flex; gap: var(--hk-space-lg); align-items: center; justify-content: space-between; }
 .hk-pdp-buybar__offer { display: flex; align-items: baseline; gap: var(--hk-space-md); min-width: 0; }
@@ -32,8 +37,8 @@
 .hk-pdp-gallery__stage {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.12;
-  max-block-size: max(280px, calc(var(--hk-pdp-fold-space) - 68px));
+  aspect-ratio: 0.94;
+  max-block-size: max(420px, calc(var(--hk-pdp-fold-space) + 56px));
   overflow: hidden;
   isolation: isolate;
   border-radius: var(--hk-radius-xl);
@@ -192,12 +197,13 @@
 .hk-pdp-included__downloads .hk-app__store:hover { background: #242424; }
 .hk-pdp-specs { background: var(--hk-kesar); }
 .hk-pdp-specs .hk-pdp-heading { text-align: center; }
-.hk-pdp-specs dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; margin: 0; }
-.hk-pdp-specs dl > div { position: relative; display: grid; align-content: center; gap: 12px; min-block-size: 48px; padding-inline-start: 60px; }
-.hk-pdp-specs dt { font-size: var(--hk-text-body-sm); font-weight: 700; }
-.hk-pdp-specs__icon { position: absolute; inset-block-start: 0; inset-inline-start: 0; display: grid; place-items: center; inline-size: 48px; block-size: 48px; border-radius: var(--hk-radius-sm); background: var(--hk-tone-sky); color: var(--hk-story-ink); }
+/* Each spec is a white card on the cream band: icon tile on the left, title and value aligned beside it. */
+.hk-pdp-specs dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; max-width: 1040px; margin: 0 auto; }
+.hk-pdp-specs dl > div { position: relative; display: grid; align-content: center; gap: 4px; min-block-size: 96px; padding: 20px 24px 20px 100px; background: var(--hk-canvas); border-radius: var(--hk-radius-md); box-shadow: var(--hk-shadow-soft); }
+.hk-pdp-specs dt { margin: 0; font-size: var(--hk-text-body); font-weight: 700; line-height: 1.3; }
+.hk-pdp-specs__icon { position: absolute; inset-block-start: 50%; inset-inline-start: 24px; translate: 0 -50%; display: grid; place-items: center; inline-size: 56px; block-size: 56px; border-radius: var(--hk-radius-sm); background: var(--hk-tone-sky); color: var(--hk-story-ink); }
 .hk-pdp-specs__icon .hk-reveal { display: block; opacity: 1; transform: none; transition: none; }
-.hk-pdp-specs dd { margin: 0; font-size: var(--hk-text-body-sm); }
+.hk-pdp-specs dd { margin: 0; font-size: var(--hk-text-body-sm); line-height: 1.45; color: var(--hk-muted); }
 .hk-pdp-koel-rail { --hk-rail-columns: 4; --hk-rail-gap: var(--hk-space-lg); scrollbar-width: none; }
 .hk-pdp-stories .hk-home-heading > form { flex: none; }
 .hk-pdp-stories > .hk-rail-controls--below { justify-content: center; margin-top: var(--hk-space-xs); }
@@ -254,6 +260,9 @@
 @media (max-width: 699px) {
   .hk-pdp { --hk-pdp-buybar-space: 96px; }
   .hk-pdp-section { padding-block: 32px; }
+  #player-benefits.hk-pdp-section,
+  #closer-look.hk-pdp-section,
+  #included.hk-pdp-section { padding-top: 56px; }
   .hk-pdp-buybar__inner { gap: var(--hk-space-sm); }
   .hk-pdp-buybar__offer { gap: 10px; }
   .hk-pdp-buybar__name { max-width: 10ch; line-height: 1.3; }
@@ -262,7 +271,7 @@
   .hk-pdp-hero { padding-bottom: var(--hk-space-md); }
   .hk-pdp-breadcrumbs { display: none; }
   .hk-pdp-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .hk-pdp-gallery__stage { max-block-size: 360px; }
+  .hk-pdp-gallery__stage { max-block-size: 440px; }
   .hk-pdp-purchase__action .hk-btn { min-height: 44px; padding-block: 10px; }
   .hk-pdp-details { grid-template-columns: minmax(0, 1fr); gap: var(--hk-space-md); }
   .hk-pdp-detail { min-height: clamp(300px, 78vw, 375px); }
@@ -278,7 +287,9 @@
     gap: var(--hk-space-xl);
     margin-inline: auto;
   }
-  .hk-pdp-specs dl { grid-template-columns: minmax(0, 1fr); row-gap: var(--hk-space-md); }
+  .hk-pdp-specs dl { grid-template-columns: minmax(0, 1fr); row-gap: 12px; }
+  .hk-pdp-specs dl > div { min-block-size: 84px; padding: 16px 18px 16px 88px; }
+  .hk-pdp-specs__icon { inset-inline-start: 18px; }
   .hk-pdp-koel-rail { --hk-rail-columns: 2; --hk-rail-gap: var(--hk-space-md); }
 }
 @media (max-width: 559px) {

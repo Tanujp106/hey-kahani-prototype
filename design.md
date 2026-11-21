@@ -418,8 +418,10 @@ structure are unchanged.
 On the Kahani Player page, the purchase bar is fixed to the bottom of the
 viewport. It is a little taller. The detail links are removed. The approved
 $129 sits beside the name, without the USD label. No struck original price
-or percent-off badge is shown, because no compare-at price is confirmed. Section jumps clear the navbar only. The page keeps bottom padding
-so the footer stays above the bar. The first fold keeps the gallery beside the
+or percent-off badge is shown, because no compare-at price is confirmed.
+Section jumps clear the navbar only. The purchase bar hides when the footer
+or its leading wave enters view and returns when both leave. The footer ends
+the page. The first fold keeps the gallery beside the
 purchase on wide screens and stacks it above the purchase on phones. The
 purchase leads with the title and Gulab price, then a short description and
 four unboxed icon highlights. Add to cart follows the highlights. The product
