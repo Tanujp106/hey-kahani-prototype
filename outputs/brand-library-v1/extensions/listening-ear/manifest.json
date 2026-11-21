@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-16",
+  "style": "A / Loose cut shapes",
+  "assets": [
+    {
+      "id": "hk-illustrations-listening-ear",
+      "name": "Listening ear",
+      "file": "listening-ear.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "formats": [
+        "svg"
+      ],
+      "role": "Supporting screen-free listening illustration; replaces the paper boat in the Screen free card",
+      "palette": {
+        "ear": "#63C3FE",
+        "innerEar": "#FFF1D6",
+        "detail": "#05334A",
+        "sound": "#2578B7"
+      },
+      "recommendedMinimumWidthPx": 96
+    }
+  ]
+}

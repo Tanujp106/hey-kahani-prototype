@@ -55,6 +55,20 @@ python3 -m http.server 5175
 
 Then open `http://localhost:5175`.
 
+### Agentation feedback
+
+From `shopify-homepage/`, build the local feedback toolbar once:
+
+```bash
+npm --prefix .agentation ci
+npm --prefix .agentation run build
+```
+
+Refresh the homepage or `/kahani-player/` on localhost to use the Agentation
+toolbar. It connects to the Agentation MCP server at `http://localhost:4747`
+for feedback in Codex. The generated bundle stays in the ignored `.tmp/`
+directory, and hosted storefront pages skip loading it.
+
 ## Sources
 
 - Visual system: `../design-refresh.md`, `../taste.md`, brand guide

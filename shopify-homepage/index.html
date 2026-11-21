@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css?v=mobile-tighten-20261121">
-  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=two-up-20261121">
+  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=faq-intro-removed-20261121">
 </head>
 <body class="hk-homepage">
   <a class="hk-skip" href="#main">Skip to content</a>
@@ -201,7 +201,7 @@
         <div class="hk-hero__copy">
           <p class="hk-campaign__label">A world of stories. Made for little hands.</p>
           <h1 class="hk-display hk-display--hero" id="hero-title">South Asian stories,<br> screen-free.</h1>
-          <p class="hk-lead">A story Player for ages 3–6, with little discs called Koels.<br> Place a Koel on top and let a South Asian story begin.</p>
+          <p class="hk-lead">A story Player for ages 3–6, with little discs called Koels. Place a Koel on top and let a South Asian story begin.</p>
           <div class="hk-btn-row">
             <a class="hk-btn hk-btn--primary" href="#shop">Shop the Player</a>
           </div>
@@ -415,6 +415,7 @@
     <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-sindoor)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/></svg>
 
 <section class="hk-section hk-home-features" id="why" aria-label="How it works" data-hk-rail>
+  <div class="hk-feature-stage">
   <div class="hk-feature-rail hk-home-scroll" id="how-it-works" data-hk-rail-track tabindex="0" role="region" aria-label="How Hey Kahani fits into family life">
       <article class="hk-feature hk-feature--mango">
         <div class="hk-feature__visual"><img class="hk-feature__photo" src="assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp" width="1254" height="1254" alt="An Indian girl placing a circular Koel on the Kahani Player" loading="lazy" decoding="async"><img class="hk-feature__graphic" src="assets/images/brand-library/illustrations/open-storybook-sky.svg" width="96" height="96" alt="" aria-hidden="true" loading="lazy"></div>
@@ -440,15 +441,16 @@
         <a class="hk-btn hk-btn--primary" href="#community">Find their everyday moments</a></div>
       </article>
   </div>
-  <div class="hk-feature-nav" role="group" aria-label="How it works controls">
     <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-prev aria-controls="how-it-works" aria-label="Previous story" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="how-it-works" aria-label="Next story" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+  <div class="hk-feature-nav" role="group" aria-label="How it works controls">
     <div class="hk-feature-dots" data-hk-rail-dots hidden>
       <button class="hk-feature-dot is-active" type="button" data-hk-rail-dot aria-current="true" aria-label="Show Tap a Koel. Hear a Kahani."></button>
       <button class="hk-feature-dot" type="button" data-hk-rail-dot aria-label="Show Stories that feel like home"></button>
       <button class="hk-feature-dot" type="button" data-hk-rail-dot aria-label="Show Made for little hands"></button>
       <button class="hk-feature-dot" type="button" data-hk-rail-dot aria-label="Show A story for the quieter moments"></button>
     </div>
-    <button class="hk-icon-btn hk-rail-control" type="button" data-hk-rail-next aria-controls="how-it-works" aria-label="Next story" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </section>
 
@@ -977,11 +979,8 @@
     </aside>
     <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/></svg>
 
-    <section class="hk-section hk-home-faq" id="faqs" aria-labelledby="faq-title">
+    <section class="hk-section hk-home-faq" id="faqs" aria-label="Frequently asked questions">
       <div class="hk-wrap hk-home-faq__grid">
-        <div class="hk-section__intro hk-faq__intro hk-reveal">
-          <h2 class="hk-display hk-display--lg" id="faq-title">Small questions.<br><span>Straight answers.</span></h2><p class="hk-lead">Everything from their first Player to their next favourite story.</p>
-        </div>
         <div class="hk-faq hk-reveal" data-hk-faq>
           <details><summary>Do Koels need a Kahani Player?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>Yes. Koels are physical story discs for the Kahani Player. If you’re new to Hey Kahani, start with the Player; if you already have one, you can add more Koels to your collection.</p></div></div></details>
           <details>
@@ -1164,6 +1163,11 @@
   </script>
   <script src="assets/js/inline-preview.js" defer></script>
   <script src="assets/js/main.js?v=responsive-nav-20261121" defer></script>
-  <script src="assets/js/homepage-layout.js?v=responsive-homepage-20261121" defer></script>
+  <script src="assets/js/homepage-layout.js?v=koel-filter-static-20261121" defer></script>
+  <script type="module">
+    if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
+      import('./.tmp/agentation.js').catch((error) => console.warn('Agentation preview unavailable', error));
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-17",
+  "style": "H / Freeform rhythm, flat brand-colour strokes",
+  "authoring": "Original editable SVG paths; no raster tracing, filters or external resources.",
+  "assets": [
+    {
+      "id": "hk-speaker-ripples",
+      "file": "speaker-ripples.svg",
+      "viewBox": [0, 0, 640, 320],
+      "role": "Quiet background sound arcs, anchored to the Player speaker band instead of arbitrary filled blobs.",
+      "palette": {"Mango Yellow": "#FECB74"},
+      "placement": "Scale proportionally; align the centre to the red speaker band's midpoint. Keep product, labels and controls above the decoration.",
+      "websiteFile": "shopify-homepage/assets/images/brand-library/decorative/speaker-ripples.svg"
+    }
+  ]
+}

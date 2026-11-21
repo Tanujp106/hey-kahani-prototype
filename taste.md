@@ -4,6 +4,12 @@ Rules for how the detached `shopify-homepage/` should look and behave.
 Token values live in `design-refresh.md`. This file is the judgment layer: what to do, what never to do, and how to resolve conflicts.
 
 **Scope:** visual refresh only. Do not alter or import `frontend/`.  
+**Layout update, November 17, 2026:** the user has now authorised rebuilding
+section layouts, navigation and order around Yoto's homepage while retaining
+this visual language. The current section-specific structure in `design.md`
+supersedes the older order and fixed-layout examples below. Keep work under
+`shopify-homepage/`; the earlier frontend remains separate.
+
 **North star, November 10, 2026:** human, kid-focused, minimal. Soft organic shapes frame content; small flat vectors and occasional hand-drawn details bring warmth. Product and copy stay clear. Use the brand palette with discipline.
 
 The questionnaire decisions in [design.md](design.md#active-graphic-direction--november-10-2026) govern this update. Reference images inform the approach; they are not layouts to copy. The dense generated concepts were rejected. The simplified generated revision is a discussion reference, not an approved implementation.

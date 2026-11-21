@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-labelledby="hk-story-disc-title">
+<title id="hk-story-disc-title">Circular story disc with sound marks</title>
+<path d="M190 65 C261 60 318 108 321 180 C325 252 271 314 198 320 C124 326 64 279 60 206 C55 135 113 71 190 65 Z" fill="#FFF1D6"/>
+<path d="M185 85 C248 79 299 124 301 185 C303 246 255 299 193 300 C130 302 80 262 79 201 C78 143 124 91 185 85 Z" fill="#63C3FE"/>
+<path d="M101 210 C118 161 146 139 185 145 C223 151 214 209 247 220 C265 227 280 215 297 193 L289 240 C252 268 219 260 204 231 C192 207 192 178 173 178 C149 177 129 202 113 239 Z" fill="#FFF1D6"/>
+<path d="M99 258 Q141 288 181 276" fill="none" stroke="#2578B7" stroke-width="7" stroke-linecap="round"/>
+<g fill="none" stroke="#2578B7" stroke-width="10" stroke-linecap="round">
+<path d="M289 63 Q312 71 321 91"/>
+<path d="M307 37 Q345 49 357 82"/>
+</g></svg>

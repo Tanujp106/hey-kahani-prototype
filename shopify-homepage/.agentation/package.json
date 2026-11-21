@@ -1,0 +1,13 @@
+{
+  "name": "hey-kahani-agentation-preview",
+  "private": true,
+  "scripts": {
+    "build": "esbuild preview.mjs --bundle --minify --format=esm --outfile=../.tmp/agentation.js"
+  },
+  "devDependencies": {
+    "agentation": "3.1.2",
+    "esbuild": "^0.28.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

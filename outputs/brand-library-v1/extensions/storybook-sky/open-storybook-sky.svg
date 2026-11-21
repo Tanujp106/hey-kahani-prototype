@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-labelledby="hk-storybook-sky-title">
+  <title id="hk-storybook-sky-title">Open storybook with a blue cover</title>
+  <!-- Flat, loose-cut book: Sky cover, Monsoon binding, Kesar pages and Mango details. -->
+  <path d="M38 151 C90 120 149 128 198 159 C247 126 308 121 359 145 L370 324 Q370 335 359 333 C300 326 246 341 202 359 C152 338 96 330 39 341 Q29 343 30 332 Z" fill="#2578B7"/>
+  <path d="M34 141 C91 111 149 122 198 152 C249 119 309 114 361 138 L367 314 C301 309 247 327 201 346 C152 325 95 319 31 329 Z" fill="#63C3FE"/>
+  <path d="M53 120 C101 99 154 115 198 143 L199 315 C151 290 108 281 50 294 Z" fill="#FFF1D6"/>
+  <path d="M198 143 C242 113 293 99 338 114 L350 292 C296 281 247 292 199 315 Z" fill="#FFF1D6"/>
+  <path d="M305 109 Q322 109 338 114 L341 156 Q324 141 302 142 Z" fill="#FECB74"/>
+  <path d="M137 119 Q147 122 159 127 L158 221 L148 211 L137 218 Z" fill="#FECB74"/>
+  <path d="M198 146 Q193 229 199 315" fill="none" stroke="#05334A" stroke-width="7" stroke-linecap="round"/>
+  <g fill="none" stroke="#05334A" stroke-width="7" stroke-linecap="round">
+    <path d="M77 162 Q98 155 118 161 M76 202 Q110 194 166 221 M75 243 Q112 236 166 260"/>
+    <path d="M231 175 Q259 158 285 157 M233 216 Q272 192 316 199 M234 256 Q275 234 319 240"/>
+  </g>
+  <g fill="none" stroke="#FECB74" stroke-width="11" stroke-linecap="round">
+    <path d="M283 76 Q302 84 310 101"/>
+    <path d="M299 50 Q334 62 344 93"/>
+    <path d="M320 27 Q365 45 376 82"/>
+  </g>
+</svg>

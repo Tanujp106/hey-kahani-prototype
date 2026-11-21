@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-21",
+  "purpose": "More playful photo silhouettes for the four homepage feature cards, requested with the supplied screenshot.",
+  "style": "H / Freeform rhythm; broad, softly irregular filled silhouettes, adapted to square photography without stretching the original landscape container assets.",
+  "authoring": "Original editable SVG paths informed by Double hill, Lopsided pebble, Quiet tide and Off-centre arch. No changes to the photographs.",
+  "viewBox": [0, 0, 1000, 1000],
+  "contentSafeRect": {"x": 120, "y": 150, "width": 760, "height": 700},
+  "fit": "Use as proportional masks with cover sizing. The broad middle and shallow edge recesses preserve image subjects; review actual photo fit. Do not crop faces or Player controls to fit a shape.",
+  "assets": [
+    {"file": "cloud-cut.svg", "placement": "Tap a Koel. Hear a Kahani.", "webFile": "shopify-homepage/assets/images/brand-library/masks/cloud-cut.svg"},
+    {"file": "wandering-pebble.svg", "placement": "Stories that feel like home", "webFile": "shopify-homepage/assets/images/brand-library/masks/wandering-pebble.svg"},
+    {"file": "double-wave.svg", "placement": "Made for little hands", "webFile": "shopify-homepage/assets/images/brand-library/masks/double-wave.svg"},
+    {"file": "soft-arch.svg", "placement": "A story for the quieter moments", "webFile": "shopify-homepage/assets/images/brand-library/masks/soft-arch.svg"}
+  ]
+}

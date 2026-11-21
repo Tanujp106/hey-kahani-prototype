@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-16",
+  "style": "A / Loose cut shapes and H / Freeform rhythm",
+  "assets": [
+    {
+      "id": "hk-screen-free-kite-kesar",
+      "file": "flying-kite.svg",
+      "derivedFrom": "../../svg/illustrations/flying-kite.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "change": "Only the Mango facet becomes Kesar, keeping the kite silhouette legible on Mango."
+    },
+    {
+      "id": "hk-screen-free-corner-ring-crop",
+      "file": "corner-ring-crop.svg",
+      "derivedFrom": "../../svg/decorative/crooked-ring.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "change": "Original ring translated without scaling and cropped at top/right by the SVG viewport; website mask supplies the lighter card tint."
+    }
+  ]
+}

@@ -20,6 +20,77 @@ or PNG exports. Use them as small, proportionally scaled strokes in their own
 space, away from words and controls. Current card combinations and responsive
 rules are documented in `design.md` and the website image README.
 
+### Website addition — November 15, 2026
+
+The Koels introduction uses a new [Sky-cover open storybook](extensions/storybook-sky/open-storybook-sky.svg)
+with its own [manifest](extensions/storybook-sky/manifest.json). This editable
+SVG retains the selected loose-cut style and book/listening subject, with Sky,
+Monsoon, Kesar, Mango and Story Ink colours for use on the Sindoor background.
+It is separate from the original 36 assets and preview sheets.
+
+### Website addition — November 16, 2026
+
+The Screen free card uses a new [Listening ear](extensions/listening-ear/listening-ear.svg)
+with its own [manifest](extensions/listening-ear/manifest.json). It replaces the
+paper boat with an illustration directly related to listening. Sky, Kesar,
+Story Ink and Monsoon colours follow the selected loose-cut system. This SVG-only
+addition is separate from the original 36-asset preview sheets.
+
+The same day's [Screen free refinements](extensions/screen-free-refinement/manifest.json)
+provide a Kesar-facet kite variant and a top/right-cropped Crooked ring. The
+original library drawings remain unchanged; use these variants only where the
+card-specific composition calls for them.
+
+The [all-card refinement](extensions/benefit-asset-refinement-v2/manifest.json)
+adds a Little hand and an abstract circular Story disc, plus proportional cropped
+Soft corner and Sky puddle variants. Use the hand for the little-hands copy and
+the disc for tap-to-play; neither adds a new product claim. The existing Marigold
+supports festival copy. Larger corner silhouettes use faint card-derived fills,
+so coverage increases without making the background an early focal point.
+
+### Container clipping — November 16, 2026
+
+Website card decoration must be clipped by the actual card contour, not the
+asset's rectangular viewport. The Why cards now use the full library artwork
+and matching nine-slice alpha masks generated from their container SVGs. The
+build and native containment verification helpers are in
+`extensions/benefit-frame-clipping/`. This supersedes the earlier pre-cropped
+corner variants for live card use. Tap to play uses Tilted arch and Double dip
+so its shapes differ from Screen free.
+
+### How it works additions — November 16, 2026
+
+The initial homepage How it works treatment used three new original SVG scenes
+in [`extensions/how-it-works/`](extensions/how-it-works/README.md), with a
+[manifest](extensions/how-it-works/manifest.json): Choose a Koel, Place on Player,
+and Story begins. They use the selected flat loose-cut language to explain the
+real circular-disc interaction. The Player is an editorial interpretation of
+the supplied hardware reference; the abstract disc art is not published story
+artwork. This instructional extension permits the product depiction needed for
+these steps; the original supporting illustration set remains unchanged.
+The user's subsequent same-day correction replaces these scenes with existing
+photographic-style images in the live section and reduces its height. The SVGs
+remain available as exploration assets; they are no longer embedded there.
+
+### Player sound backdrop — November 17, 2026
+
+The Player section's Pebble pair was replaced after the user said the blobs
+did not make sense. [`extensions/player-sound-field/manifest.json`](extensions/player-sound-field/manifest.json)
+documents a new original `speaker-ripples.svg`: open Mango sound arcs anchored
+to the speaker band, with clear space for the actual product. Its job is to
+support listening, not fill arbitrary empty corners. Keep the scale proportional
+and the backdrop below the photo and labels. This is a section-specific asset
+decision; Pebble pair remains available for other suitable compositions.
+
+### Feature photo masks — November 21, 2026
+
+The homepage feature photos use four new square masks in
+[`extensions/feature-photo-masks/manifest.json`](extensions/feature-photo-masks/manifest.json):
+Cloud cut, Wandering pebble, Double wave and Soft arch. These broader, more playful
+silhouettes preserve a usable centre and are authored for square photos rather
+than stretched from the landscape containers. Use proportional cover sizing;
+check real image subjects at the edges. The original 36 library assets remain intact.
+
 ## Start here: choose the graphic's job
 
 Practical usage guidance added November 14, 2026. The style is selected; the

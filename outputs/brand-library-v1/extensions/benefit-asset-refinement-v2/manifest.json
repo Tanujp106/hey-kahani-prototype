@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-16",
+  "style": "A / Loose cut shapes and H / Freeform rhythm",
+  "assets": [
+    {
+      "id": "hk-illustrations-little-hand",
+      "file": "little-hand.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "role": "Supports Made for little hands; ordinary hand, not a new product capability."
+    },
+    {
+      "id": "hk-illustrations-story-disc",
+      "file": "story-disc.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "role": "Abstract circular story token supporting Tap a Koel; not published story artwork or a merchandise render."
+    },
+    {
+      "id": "hk-soft-corner-corner-crop",
+      "file": "soft-corner-corner-crop.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "derivedFrom": "../../svg/decorative/soft-corner.svg",
+      "role": "Proportional cropped background contour; CSS supplies a quiet card tint."
+    },
+    {
+      "id": "hk-sky-puddle-corner-crop",
+      "file": "sky-puddle-corner-crop.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "derivedFrom": "../../svg/decorative/sky-puddle.svg",
+      "role": "Proportional cropped background contour; CSS supplies a quiet card tint."
+    }
+  ]
+}

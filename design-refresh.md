@@ -80,7 +80,7 @@ typography:
   # Never override font-size on .hk-how__header, .hk-app__header, or other section titles.
   display-lg:
     fontFamily: "Averia Serif Libre, Georgia, serif"
-    fontSize: 40px # --hk-text-section clamp max; all section titles
+    fontSize: 48px # --hk-text-section clamp max; all section titles. Raised Nov 14, 2026.
     fontWeight: 700
     lineHeight: 1.12
     letterSpacing: -0.015em
@@ -122,13 +122,14 @@ typography:
     fontWeight: 500
     lineHeight: 1.5
     letterSpacing: -0.01em
+  # The 30px step size was retired November 16, 2026. Smaller titles use display-sm / --hk-text-subhead.
   title:
     fontFamily: "Averia Serif Libre, Georgia, serif"
-    fontSize: 30px # --hk-text-step how-it-works step titles
+    fontSize: 24px
     fontWeight: 700
     lineHeight: 1.25
     letterSpacing: 0
-    cssToken: "--hk-text-step"
+    cssToken: "--hk-text-subhead"
   body-strong:
     fontFamily: "Open Sans, Helvetica, Arial, sans-serif"
     fontSize: 17px

@@ -99,6 +99,20 @@
         syncControls();
       });
     });
+    // Keep the full catalogue height so a shorter filter cannot move the waves or the page.
+    if (filters.length && cards.length && track.style && typeof track.getBoundingClientRect === 'function') {
+      const lockCatalogueHeight = () => {
+        const hidden = cards.map((card) => card.hidden);
+        cards.forEach((card) => { card.hidden = false; });
+        track.style.minHeight = '0px';
+        const height = Math.ceil(track.getBoundingClientRect().height);
+        track.style.minHeight = `${height}px`;
+        cards.forEach((card, index) => { card.hidden = hidden[index]; });
+      };
+      lockCatalogueHeight();
+      window.addEventListener('resize', lockCatalogueHeight);
+      window.addEventListener('load', lockCatalogueHeight);
+    }
     if ('ResizeObserver' in window) new window.ResizeObserver(syncControls).observe(track);
     window.addEventListener('resize', syncControls);
     syncControls();

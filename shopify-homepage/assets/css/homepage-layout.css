@@ -38,7 +38,7 @@
   min-height: 100svh;
   max-height: none;
   margin-top: calc(-1 * var(--hk-announcement-height, 37px));
-  padding-top: calc(var(--hk-announcement-height, 37px) + var(--hk-navigation-height, 110px) + clamp(24px, 4vw, 56px));
+  padding-top: calc(var(--hk-announcement-height, 37px) + var(--hk-navigation-height, 110px) + clamp(24px, 3vw, 40px));
   padding-bottom: clamp(32px, 5vw, 64px);
   padding-inline: max(var(--hk-gutter), calc((100% - var(--hk-content)) / 2));
   background: var(--hk-canvas-soft);
@@ -95,7 +95,7 @@
   position: relative;
   isolation: isolate;
   justify-self: end;
-  width: min(100%, 34rem, 72svh);
+  width: min(100%, 34rem, 76svh);
   aspect-ratio: 25 / 26;
   z-index: 0;
   pointer-events: none;
@@ -199,8 +199,20 @@ html { overflow-x: clip; }
   padding-bottom: 20px;
   box-sizing: border-box;
 }
-.hk-feature-rail:has(+ .hk-feature-nav .hk-feature-dots:not([hidden])) { scrollbar-width: none; }
-.hk-feature-rail:has(+ .hk-feature-nav .hk-feature-dots:not([hidden]))::-webkit-scrollbar { display: none; }
+.hk-feature-rail { scrollbar-width: none; }
+.hk-feature-rail::-webkit-scrollbar { display: none; }
+.hk-feature-stage {
+  position: relative;
+  --hk-feature-inset: max(var(--hk-gutter), calc((100% - var(--hk-content)) / 2));
+}
+.hk-feature-stage > .hk-rail-control {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  transform: translateY(-50%);
+}
+.hk-feature-stage > [data-hk-rail-prev] { left: calc(var(--hk-feature-inset) + 16px); }
+.hk-feature-stage > [data-hk-rail-next] { right: calc(var(--hk-feature-inset) + 16px); }
 .hk-feature { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(17rem, 0.95fr); align-items: center; gap: clamp(20px, 2.5vw, 40px); width: 100%; height: auto; min-width: 0; padding: clamp(24px, 2.6vw, 40px); overflow: visible; border-radius: var(--hk-radius-lg); scroll-snap-align: start; background: var(--hk-kesar); }
 .hk-feature--mango { background: var(--hk-mango); }
 .hk-feature--sky { background: color-mix(in srgb, var(--hk-sky) 28%, white); }
@@ -225,17 +237,24 @@ html { overflow-x: clip; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   width: min(100% - (var(--hk-gutter) * 2), var(--hk-content));
-  margin: 20px auto 0;
+  margin: 16px auto 0;
 }
 .hk-home-features .hk-rail-control { flex: none; color: var(--hk-ink); background: var(--hk-canvas); border-color: var(--hk-husk); }
-.hk-feature-dots:not([hidden]) { display: flex; align-items: center; gap: 2px; }
+.hk-feature-dots:not([hidden]) {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px;
+  border: 1px solid var(--hk-husk);
+  border-radius: var(--hk-pill);
+  background: var(--hk-canvas);
+}
 .hk-feature-dot {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   border: 0;
   border-radius: var(--hk-pill);
@@ -244,16 +263,13 @@ html { overflow-x: clip; }
 }
 .hk-feature-dot::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: var(--hk-pill);
   background: var(--hk-husk);
 }
-.hk-feature-dot.is-active::before { background: var(--hk-gulab); transform: scale(1.25); }
+.hk-feature-dot.is-active::before { background: var(--hk-gulab); transform: scale(1.2); }
 .hk-feature-dot:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: 2px; }
-@media (max-width: 340px) {
-  .hk-feature-dots:not([hidden]) { display: grid; grid-template-columns: repeat(2, 44px); }
-}
 @container feature-rail (max-width: 760px) {
   .hk-feature { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
   .hk-feature__visual { width: min(100%, 26rem); }
@@ -291,7 +307,7 @@ html { overflow-x: clip; }
 }
 
 .hk-shop-card--player {
-  --hk-shop-card-bg: color-mix(in srgb, var(--hk-sky) 46%, white);
+  --hk-shop-card-bg: color-mix(in srgb, var(--hk-sky) 22%, white);
 }
 
 .hk-shop-card--koels {
@@ -366,7 +382,8 @@ html { overflow-x: clip; }
 .hk-home-discovery .hk-how-tabs__btn { background: transparent; color: var(--hk-kesar); border: 1px solid color-mix(in srgb, var(--hk-kesar) 55%, transparent); }
 .hk-home-discovery .hk-how-tabs__btn.is-active { background: var(--hk-kesar); color: var(--hk-sindoor); }
 .hk-home-discovery .hk-how-tabs__btn:focus-visible { outline-color: var(--hk-kesar); }
-.hk-home-discovery .hk-koel-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-columns: auto; gap: 24px; width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; overflow-x: visible; padding: 4px 2px 24px; }
+.hk-home-discovery { overflow-anchor: none; }
+.hk-home-discovery .hk-koel-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-columns: auto; gap: 24px; width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; overflow-x: visible; overflow-anchor: none; padding: 4px 2px 24px; }
 .hk-home-discovery .hk-koel { container: koel-card / inline-size; scroll-snap-align: start; min-height: 0; }
 .hk-home-discovery .hk-koel[hidden] { display: none; }
 .hk-home-discovery .hk-koel__title { overflow-wrap: anywhere; }
@@ -415,10 +432,8 @@ html { overflow-x: clip; }
 .hk-help-icon svg { width: 28px; height: 28px; }
 .hk-help-card h3 { font-size: var(--hk-text-subhead); }
 .hk-help-card p { margin: 0; font-size: var(--hk-text-body); line-height: 1.5; }
-#faqs > .hk-home-faq__grid { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 3fr); align-items: center; gap: clamp(32px, 5vw, 64px); }
-.hk-home-faq .hk-faq__intro { justify-self: center; margin: 0; text-align: center; }
-.hk-home-faq .hk-faq__intro .hk-lead { max-width: none; margin-top: 20px; margin-bottom: 0; }
-.hk-home-faq .hk-faq { width: 100%; max-width: none; margin: 0; }
+#faqs > .hk-home-faq__grid { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; }
+.hk-home-faq .hk-faq { width: min(100%, 46rem); margin: 0; }
 
 /* The Koels colour stack breaks every section. Caps match the sections they join. */
 .hk-break { display: block; margin: 0 0 -1px; }
@@ -440,7 +455,7 @@ html { overflow-x: clip; }
 @media (hover: hover) and (pointer: fine) {
   .hk-rail-control:not(:disabled):hover { background: var(--hk-kesar); color: var(--hk-sindoor); }
   .hk-home-discovery .hk-how-tabs__btn:not(.is-active):hover { background: var(--hk-kesar); color: var(--hk-sindoor); transform: none; }
-  .hk-shop-card--player:hover { background: color-mix(in srgb, var(--hk-sky) 64%, white); }
+  .hk-shop-card--player:hover { background: color-mix(in srgb, var(--hk-sky) 34%, white); }
   .hk-shop-card--koels:hover { background: color-mix(in srgb, var(--hk-mango) 88%, white); }
 }
 
@@ -448,10 +463,6 @@ html { overflow-x: clip; }
   .hk-home-help > .hk-wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hk-home-quotes { grid-auto-columns: 44%; }
   .hk-home-heading { align-items: flex-start; }
-}
-
-@media (max-width: 800px) {
-  #faqs > .hk-home-faq__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
 
 @media (max-width: 720px) {
@@ -583,7 +594,31 @@ html { overflow-x: clip; }
 .hk-koel-series { margin-block: 0; padding-block: clamp(40px, 4vw, 56px) 72px; background: var(--hk-canvas); }
 .hk-koel-series + .hk-waves--edge { background: var(--hk-canvas); }
 .hk-koel-series .hk-home-heading { margin-bottom: 28px; }
-.hk-series-rail { display: grid; grid-auto-flow: column; grid-auto-columns: max(190px, calc((100% - 64px) / 5)); gap: 16px; padding: 4px 1px 20px; }
+.hk-series-rail { display: grid; grid-auto-flow: column; grid-auto-columns: max(190px, calc((100% - 64px) / 5)); gap: 16px; padding: 4px 1px; scrollbar-width: none; }
+.hk-series-rail::-webkit-scrollbar { display: none; }
+.hk-koel-series > .hk-wrap { display: grid; }
+.hk-koel-series .hk-home-heading { grid-column: 1; grid-row: 1; }
+.hk-koel-series .hk-series-rail,
+.hk-koel-series .hk-rail-controls { grid-column: 1; grid-row: 2; }
+.hk-koel-series .hk-rail-controls {
+  position: relative;
+  z-index: 2;
+  align-self: stretch;
+  width: 100%;
+  margin: 0;
+  pointer-events: none;
+}
+.hk-koel-series .hk-rail-control {
+  position: absolute;
+  top: 50%;
+  color: var(--hk-ink);
+  background: var(--hk-canvas);
+  border-color: var(--hk-husk);
+  pointer-events: auto;
+  transform: translateY(-50%);
+}
+.hk-koel-series [data-hk-rail-prev] { left: 8px; }
+.hk-koel-series [data-hk-rail-next] { right: 8px; }
 .hk-series-rail .hk-koel { min-height: 0; aspect-ratio: 2 / 3; scroll-snap-align: start; }
 .hk-series-rail .hk-koel__copy { grid-template-columns: minmax(0, 1fr); left: 12px; right: 12px; bottom: 68px; gap: 4px; }
 .hk-series-rail .hk-koel__title { overflow-wrap: anywhere; }
@@ -616,5 +651,6 @@ html { overflow-x: clip; }
     justify-items: center;
   }
   .hk-feature__copy { align-items: center; text-align: center; }
-  .hk-feature-nav { display: none; }
+  .hk-feature-nav,
+  .hk-feature-stage > .hk-rail-control { display: none; }
 }

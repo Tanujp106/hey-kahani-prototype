@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-16",
+  "style": "A / Loose cut shapes with H / Freeform rhythm",
+  "authoring": "Original hand-authored editable SVG paths, created for the three-step homepage layout. No existing library illustration was reused.",
+  "provenance": "Player silhouette informed by shopify-homepage/assets/images/product/hk-shot-07.png and design.md manufacturing-reference rules. Editorial illustrations, not approved product photography. Disc designs are abstract examples, not published Koel artwork.",
+  "assets": [
+    {
+      "id": "hk-instructions-choose-a-koel",
+      "file": "choose-a-koel.svg",
+      "viewBox": [0, 0, 520, 400],
+      "role": "Step 1: a small hand selects one of three circular story discs."
+    },
+    {
+      "id": "hk-instructions-place-on-player",
+      "file": "place-on-player.svg",
+      "viewBox": [0, 0, 520, 400],
+      "role": "Step 2: a hand lowers the chosen circular Koel onto the Player's top plate."
+    },
+    {
+      "id": "hk-instructions-story-begins",
+      "file": "story-begins.svg",
+      "viewBox": [0, 0, 520, 400],
+      "role": "Step 3: the placed Koel and listening ripples show the story playing."
+    }
+  ],
+  "websiteDirectory": "shopify-homepage/assets/images/brand-library/illustrations/"
+}

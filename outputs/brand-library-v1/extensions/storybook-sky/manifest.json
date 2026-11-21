@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-15",
+  "style": "A / Loose cut shapes",
+  "assets": [
+    {
+      "id": "hk-illustrations-open-storybook-sky",
+      "name": "Open storybook \u2014 Sky cover",
+      "file": "open-storybook-sky.svg",
+      "viewBox": [
+        0,
+        0,
+        400,
+        400
+      ],
+      "formats": [
+        "svg"
+      ],
+      "role": "Book and listening illustration for the Sindoor Koels introduction",
+      "palette": {
+        "cover": "#63C3FE",
+        "binding": "#2578B7",
+        "pages": "#FFF1D6",
+        "details": "#FECB74",
+        "ink": "#05334A"
+      },
+      "recommendedMinimumWidthPx": 96
+    }
+  ]
+}

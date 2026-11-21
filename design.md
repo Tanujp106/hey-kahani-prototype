@@ -313,9 +313,19 @@ structure are unchanged.
 
 On the Kahani Player page, the purchase bar is fixed to the bottom of the
 viewport. Section jumps clear the navbar only. The page keeps bottom padding
-so the footer stays above the bar. November 21, 2026: the purchase title uses
-Section size. The tagline, the two description lines, and the four feature
-labels use UI size.
+so the footer stays above the bar. The first fold keeps the gallery beside the
+purchase on wide screens and stacks it above the purchase on phones. The
+purchase uses a Section-size title and a short description. The gallery has
+no caption, and the finish line is not shown. Features, box contents, and
+Koels are three quiet cards, each with a short line under the label. The
+benefits heading, “Made for the way kids listen.”, uses Title size. One
+four-card grid below the fold explains the Player's benefits. The “Meet
+their new story companion.” band and the navigation that points at it
+are hidden for now. In What’s included, Explore the story discs is a
+secondary button. The companion app card links to the App Store and
+Google Play. The specifications band is a full-width Kesar section with
+the homepage wave on both edges, and the unconfirmed-hardware note is
+removed.
 
 ### Homepage structure — November 17, 2026
 
@@ -347,9 +357,7 @@ the asset drawing system, product facts or content approvals.
   stories in a native horizontal rail → Player-first purchase choices → Koel
   discovery → family moments and retained sample quotes → compact founder/app
   editorial cards → practical help links → split FAQ → newsletter and sitemap.
-  November 17, 2026: the FAQ intro heading and lead are center aligned. November 21, 2026: that intro is vertically centered beside the question list. The
-  heading breaks after “Small questions.” so “Straight answers.” stays on one
-  line. The “Explore all FAQs” link under that intro is removed. The practical-help link
+  November 21, 2026: the homepage FAQ heading and lead are removed. The question list stays. The “Explore all FAQs” link is removed. The practical-help link
   to the FAQ page stays. The practical help row is four left-aligned white cards on a Kesar band,
   with a Kesar wave along the top and bottom. Each card has a stroke icon,
   a bold title, and a short supporting line. Hover is a slightly warm white. The four existing journeys and destinations stay;
@@ -365,7 +373,8 @@ the asset drawing system, product facts or content approvals.
   stacks above the copy, and below 520px it uses the full card width. The old
   58vw width and 1.7 ratio are retired because they squeezed the cards.
   Same day: the story rail is a carousel. Previous and next use the existing
-  circular ink buttons and Lucide chevrons. Four dots sit between them: Husk
+  circular ink buttons and Lucide chevrons, centered on the left and right of
+  the card row. The four dots sit below in a small Husk-outlined group: Husk
   for the others, Gulab for the current card. No new control style.
   On a narrow screen the story cards stack and stick under the navbar, and the
   pager is hidden. The featured Koels wrap into two columns instead of a
@@ -402,7 +411,7 @@ the local 42–88px headline is retired. The hero uses the shared Hero token
 “Already have a Player?” link is removed. The copy block sits low in the fold, raised enough that the Shop the Player
 button clears the bottom edge, then another 32px. The hero ground is white.
 The nav bar is a little shorter. The shop heading is centered, without the
-eyebrow, with 40px more space above and below the section. November 18, 2026: the Player shop tile is light Sky and the Koels tile is light Mango. A fine pointer lifts the tile and deepens its colour; reduced motion keeps the colour change only. The price, description, and button are off these tiles, and there is no offer badge. The Player tile links to the Player page. The Koels tile links to the Koel row. The $129 price stays in the Player section. The featured Koel row
+eyebrow, with 40px more space above and below the section. November 18, 2026: the Player shop tile is light Sky and the Koels tile is light Mango. November 21, 2026: the Player tile uses a softer Sky, about one fifth Sky mixed with white. The featured Koel row hides its scrollbar. Previous and next sit at the vertical center of the row, one on the left and one on the right. A fine pointer lifts the tile and deepens its colour; reduced motion keeps the colour change only. The price, description, and button are off these tiles, and there is no offer badge. The Player tile links to the Player page. The Koels tile links to the Koel row. The $129 price stays in the Player section. The featured Koel row
 shows five cards, with 40px of space above and below that section.
 The One Player strip is a Sindoor bar with a Sindoor wave on the top and bottom. The three labels use Open Sans at UI size, with a wide gap, centered in the bar. They are not links. No colour-wave stack sits above or below it. How it works
 stays inside the content column so the first card is not cut off on the left.
@@ -412,7 +421,8 @@ The Player section’s bottom edge uses the colour wave. The top edge is a Kesar
 with 40px of padding inside the Player content. The red Koel catalogue wraps in rows and
 has no eyebrow above the heading. November 21, 2026: four compact cards a row
 down to 800px, then two. The one-across phone step is retired because those
-cards read too large. The practical help row stays two by two on a phone, with
+cards read too large. Filtering keeps the full catalogue height, so the waves
+and the page stay put when a shorter collection is shown. The practical help row stays two by two on a phone, with
 a smaller icon and smaller title and supporting line. A wave that meets a white section ends in white. The lead breaks after the first sentence so it reads as two lines.
 The copy’s left edge and the Player’s right edge sit on the 1120px content
 column, the same width as the nav. The Player is 15% larger than the reduced
