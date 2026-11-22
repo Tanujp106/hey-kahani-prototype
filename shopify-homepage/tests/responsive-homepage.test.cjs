@@ -134,6 +134,11 @@ function length(value, viewport, basis, properties = {}) {
 const pageTokenSelectors = /<body\b[^>]*\bclass="[^"]*\bhk-homepage\b/.test(html) ? [':root', '.hk-homepage'] : [':root'];
 const tokensAt = probe(...pageTokenSelectors);
 const wrap = probe('.hk-wrap');
+const homepageContent = probe('.hk-homepage main');
+
+function homepageContentViewport(viewport) {
+  return { ...viewport, tokens: { ...viewport.tokens, ...homepageContent(viewport) } };
+}
 
 function splitValues(value) {
   const parts = [];
@@ -241,7 +246,7 @@ test('the logo and header controls have width in both closed and expanded search
   });
 });
 
-const faqGrid = probe('#faqs .hk-wrap', '#faqs .hk-home-faq__grid', '#faqs > .hk-home-faq__grid', '.hk-home-faq__grid');
+const faqGrid = probe('#faqs .hk-wrap', '#faqs .hk-home-faq__grid', '#faqs > .hk-home-faq__grid', '.hk-home-faq__grid', '.hk-homepage #faqs > .hk-home-faq__grid');
 const faqLine = probe('.hk-home-faq .hk-faq__intro h2 span', '.hk-home-faq .hk-faq__intro span');
 
 test('the FAQ title can wrap and the answers have their own usable column', () => {
@@ -249,8 +254,37 @@ test('the FAQ title can wrap and the answers have their own usable column', () =
     const style = faqGrid(viewport);
     if (style.display !== 'grid') return 'the general FAQ wrapper overrides the homepage grid';
     if (faqLine(viewport)['white-space'] === 'nowrap') return 'the FAQ title prevents wrapping within its column';
-    if (fractionalTracks(style, viewport, content).at(-1) < 220) return 'FAQ answers have a cramped column';
+    const answerWidth = content - inlinePadding(style, viewport, viewport.pageWidth);
+    if (fractionalTracks(style, viewport, answerWidth).at(-1) < 220) return 'FAQ answers have a cramped column';
   });
+});
+
+test('the homepage shares the Player phone type scale and keeps the default scale above it', () => {
+  const playerContent = probe('.hk-pdp main');
+  const phoneTypeSizes = {
+    '--hk-text-hero': 24,
+    '--hk-text-section': 24,
+    '--hk-text-md': 20,
+    '--hk-text-subhead': 18,
+    '--hk-text-body': 16,
+    '--hk-text-body-sm': 14,
+  };
+
+  for (const width of [290, 393, 699, 699.25, 768, 1440]) {
+    const viewport = { width, height: 852, pageWidth: width };
+    viewport.tokens = tokensAt(viewport);
+    const home = homepageContentViewport(viewport);
+    const player = { ...viewport, tokens: { ...viewport.tokens, ...playerContent(viewport) } };
+
+    for (const [role, size] of Object.entries(phoneTypeSizes)) {
+      if (width <= 699) {
+        assert.equal(length(home.tokens[role], home, width), size, `${role} on the homepage at ${width}px`);
+        assert.equal(length(player.tokens[role], player, width), size, `${role} on the Player page at ${width}px`);
+      } else {
+        assert.equal(home.tokens[role], viewport.tokens[role], `${role} outside the phone layout`);
+      }
+    }
+  }
 });
 
 const orientationCopy = probe('.hk-home-orientation span');
@@ -267,7 +301,7 @@ test('the three badges allow labels to wrap inside their small-screen tracks', (
 const hero = probe('.hk-hero', '.hk-home-hero', '.hk-hero.hk-home-hero');
 const heroArt = probe('.hk-campaign__art');
 const shopGrid = probe('.hk-home-shop__cards');
-const playerGrid = probe('.hk-player > .hk-wrap', '.hk-player.hk-section > .hk-wrap');
+const playerGrid = probe('.hk-player > .hk-wrap', '.hk-player.hk-section > .hk-wrap', '.hk-homepage .hk-player > .hk-wrap');
 
 function fractionalTracks(style, viewport, basis) {
   const columns = style['grid-template-columns'];
@@ -292,6 +326,22 @@ test('hero art fits its track and Shop and Player keep usable columns in portrai
       if (trackWidth < 220) return `${name} column has only ${Math.floor(trackWidth)}px`;
     }
   }, [320, 568, 844, 1024]);
+});
+
+test('the phone Player section uses one layer of section padding and stacks its actions', () => {
+  const playerSection = probe('.hk-section', '.hk-player.hk-section');
+  const playerActions = probe('.hk-player__actions');
+  const playerHighlights = probe('.hk-player__usps');
+  const button = probe('.hk-btn', '.hk-homepage main .hk-btn');
+  const viewport = { width: 393, height: 852, pageWidth: 393 };
+  viewport.tokens = tokensAt(viewport);
+
+  assert.equal(length(playerSection(viewport)['padding-block'], viewport, 393), 32);
+  assert.equal(length(playerGrid(viewport)['padding-block'], viewport, 393), 0);
+  assert.equal(playerActions(viewport).display, 'grid');
+  assert.equal(fractionalTracks(playerActions(viewport), viewport, 361).length, 1);
+  assert.equal(fractionalTracks(playerHighlights(viewport), viewport, 361).length, 2);
+  assert.equal(length(button(viewport)['min-height'], viewport, 361), 44);
 });
 
 const series = probe('.hk-home-scroll', '.hk-koel-rail', '.hk-series-rail', '.hk-koel-rail.hk-home-scroll');
@@ -340,7 +390,7 @@ test('the feature rail contains overflow and leaves room for text at both contai
     const inner = viewport.pageWidth - inlinePadding(track, viewport, viewport.pageWidth);
     const isCarousel = track.display === 'grid';
     const cardWidth = isCarousel ? length(track['grid-auto-columns'], viewport, inner, track) : inner;
-    const itemViewport = { ...viewport, container: inner };
+    const itemViewport = { ...homepageContentViewport(viewport), container: inner };
     const card = feature(itemViewport);
     const columnCount = splitValues(card['grid-template-columns']).length;
     const cardInner = cardWidth - inlinePadding(card, itemViewport, cardWidth);
@@ -348,7 +398,7 @@ test('the feature rail contains overflow and leaves room for text at both contai
     const typeSize = length(featureCopy(itemViewport)['font-size'], itemViewport, copyWidth);
     if (isCarousel && !['auto', 'scroll'].includes(track['overflow-x'])) return 'the rail does not own its overflow';
     if (cardWidth > inner + 0.01 || copyWidth < 180) return `feature has only ${Math.floor(copyWidth)}px for its copy`;
-    if (typeSize < 17) return `feature text drops below the storefront body size (${typeSize}px)`;
+    if (typeSize !== (viewport.width <= 699 ? 16 : 17)) return `feature text uses the wrong body size (${typeSize}px)`;
   });
 });
 

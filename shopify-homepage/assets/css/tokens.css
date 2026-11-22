@@ -44,6 +44,13 @@
   --hk-text-body-sm: 0.9375rem; /* 15. Controls, navigation, short meta. Not sentences. */
   --hk-text-eyebrow: 0.8125rem; /* 13. Uppercase labels only. */
   --hk-text-fine: 0.75rem; /* 12. Legal, disclaimers, tiny badges. */
+
+  /* Compact content sizes from the Player page. */
+  --hk-text-compact-heading: 1.5rem;
+  --hk-text-compact-title: 1.25rem;
+  --hk-text-compact-subhead: 1.125rem;
+  --hk-text-compact-body: 1rem;
+  --hk-text-compact-label: 0.875rem;
   /* Phone illustration only. These are a picture of an interface, not page copy. */
   --hk-text-picture-title: 1.25rem; /* 20 */
   --hk-text-picture: 0.75rem; /* 12 */
@@ -123,12 +130,23 @@
 /* Player typography follows the Yoto Mini product-page scale. */
 .hk-pdp main,
 .hk-pdp-buybar {
-  --hk-text-hero: 1.5rem;
-  --hk-text-section: 1.5rem;
-  --hk-text-md: 1.25rem;
-  --hk-text-subhead: 1.125rem;
-  --hk-text-body: 1rem;
-  --hk-text-body-sm: 0.875rem;
+  --hk-text-hero: var(--hk-text-compact-heading);
+  --hk-text-section: var(--hk-text-compact-heading);
+  --hk-text-md: var(--hk-text-compact-title);
+  --hk-text-subhead: var(--hk-text-compact-subhead);
+  --hk-text-body: var(--hk-text-compact-body);
+  --hk-text-body-sm: var(--hk-text-compact-label);
+}
+
+@media (max-width: 699px) {
+  .hk-homepage main {
+    --hk-text-hero: var(--hk-text-compact-heading);
+    --hk-text-section: var(--hk-text-compact-heading);
+    --hk-text-md: var(--hk-text-compact-title);
+    --hk-text-subhead: var(--hk-text-compact-subhead);
+    --hk-text-body: var(--hk-text-compact-body);
+    --hk-text-body-sm: var(--hk-text-compact-label);
+  }
 }
 
 @media (min-width: 768px) {

@@ -552,15 +552,6 @@ html { overflow-x: clip; }
   .hk-home-orientation span { flex-direction: column; min-width: 0; gap: 6px; padding-block: var(--hk-space-2xs); white-space: normal; }
 }
 
-@media (max-width: 520px) {
-  .hk-home-help > .hk-wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--hk-space-sm); }
-  .hk-help-card { gap: var(--hk-space-xs); padding: 14px; }
-  .hk-help-icon { width: 36px; height: 36px; }
-  .hk-help-icon svg { width: 18px; height: 18px; }
-  .hk-help-card h3 { font-size: var(--hk-text-body); }
-  .hk-help-card p { font-size: var(--hk-text-body-sm); line-height: 1.4; }
-}
-
 @media (max-width: 420px) {
   .hk-home-hero .hk-hero__copy br { display: none; }
   .hk-home-hero .hk-btn-row { flex-direction: column; align-items: stretch; }
@@ -681,4 +672,71 @@ html { overflow-x: clip; }
 }
 @media (width < 480px) {
   .hk-koel-rail.hk-home-scroll { --hk-rail-columns: 1.5; }
+}
+
+@media (max-width: 699px) {
+  /* The same testimonial and FAQ markup appears on both storefront pages. */
+  .hk-community,
+  #faqs.hk-section { padding-block: var(--hk-space-xl); }
+  .hk-community__intro { gap: var(--hk-space-xs); margin-block-end: 0; }
+  .hk-community .hk-community__intro .hk-lead { margin-top: 0; font-size: var(--hk-text-body-sm); }
+  .hk-quotes { margin-block-start: var(--hk-space-sm); }
+  #faqs > .hk-home-faq__grid { padding-inline: var(--hk-space-sm); }
+  .hk-homepage #faqs > .hk-home-faq__grid { padding-inline: min(var(--hk-space-sm), 3.5vw); }
+  .hk-faq__intro { margin-bottom: var(--hk-space-md); }
+  .hk-faq { gap: 0; }
+  .hk-faq details { padding-block: 0; }
+  .hk-faq summary { min-height: 48px; padding-block: var(--hk-space-sm); }
+  .hk-faq__content { padding-block: var(--hk-space-2xs) var(--hk-space-md); }
+
+  .hk-homepage main { font-size: var(--hk-text-body); }
+  .hk-homepage main .hk-btn { min-height: 44px; padding: var(--hk-space-xs) var(--hk-space-md); }
+  .hk-homepage .hk-home-heading { gap: var(--hk-space-sm); margin-bottom: var(--hk-space-md); }
+  .hk-homepage .hk-home-heading .hk-lead { margin-top: var(--hk-space-xs); }
+  .hk-home-hero .hk-campaign__label { margin-bottom: var(--hk-space-sm); }
+  .hk-home-hero .hk-lead { margin-top: var(--hk-space-sm); }
+  .hk-home-hero .hk-btn-row { margin-top: var(--hk-space-md); }
+
+  .hk-koel-series,
+  .hk-home-features,
+  .hk-player.hk-section,
+  .hk-home-help { padding-block: var(--hk-space-xl); }
+  .hk-home-shop.hk-section { padding-block: var(--hk-space-xl) var(--hk-space-md); }
+  .hk-home-shop__cards { gap: var(--hk-space-md); }
+  .hk-shop-card { padding-bottom: var(--hk-space-md); }
+  .hk-shop-card,
+  .hk-shop-card:focus-visible,
+  .hk-feature { border-radius: var(--hk-radius-card); }
+  .hk-shop-card__cta { margin-top: var(--hk-space-sm); }
+  .hk-feature__copy h3 { margin-bottom: var(--hk-space-xs); }
+  .hk-feature__copy p { margin-bottom: var(--hk-space-2xs); line-height: 1.5; }
+
+  .hk-homepage .hk-player > .hk-wrap { gap: var(--hk-space-md); padding-block: 0; }
+  .hk-player__intro { justify-self: stretch; text-align: left; }
+  .hk-player__intro .hk-lead { margin-top: var(--hk-space-sm); }
+  .hk-player__purchase { width: 100%; justify-items: stretch; }
+  .hk-player__amount { color: var(--hk-gulab); }
+  .hk-player__actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .hk-player__usps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--hk-space-md) var(--hk-space-lg);
+    max-width: none;
+    padding-top: var(--hk-space-lg);
+    border-top: 1px solid var(--hk-divider);
+  }
+  .hk-player__usp { gap: var(--hk-space-xs); font-size: var(--hk-text-body-sm); }
+  .hk-player__usp svg { width: 20px; height: 20px; }
+
+  .hk-home-discovery.hk-section--warm { padding-block: var(--hk-space-xl) 0; }
+  .hk-discovery-toolbar { margin: 0 0 var(--hk-space-xs); }
+  .hk-home-discovery .hk-koel-grid { margin-top: 0; padding-block-end: var(--hk-space-md); }
+  .hk-home-discovery > .hk-waves--end { position: relative; bottom: auto; margin-top: var(--hk-space-md); }
+
+  .hk-home-help > .hk-wrap { gap: var(--hk-space-sm); }
+  .hk-help-card { gap: var(--hk-space-xs); padding: var(--hk-space-sm); }
+  .hk-help-icon { width: 36px; height: 36px; }
+  .hk-help-icon svg { width: 18px; height: 18px; }
+  .hk-help-card h3 { font-size: var(--hk-text-body); }
 }

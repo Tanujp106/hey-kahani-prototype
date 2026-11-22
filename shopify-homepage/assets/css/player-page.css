@@ -263,9 +263,7 @@
   .hk-pdp-stories .hk-home-heading > header { flex-basis: 100%; }
 }
 @media (max-width: 699px) {
-  .hk-pdp-section,
-  .hk-pdp .hk-community,
-  .hk-pdp #faqs.hk-section { padding-block: var(--hk-space-xl); }
+  .hk-pdp-section { padding-block: var(--hk-space-xl); }
   #player-benefits.hk-pdp-section,
   #closer-look.hk-pdp-section { padding-top: var(--hk-space-xl); }
   .hk-pdp-heading { margin-bottom: var(--hk-space-lg); }
@@ -324,9 +322,6 @@
   .hk-pdp-included__downloads { margin-top: var(--hk-space-sm); gap: var(--hk-space-xs); }
   .hk-pdp-included__downloads .hk-app__store { min-width: 0; gap: var(--hk-space-xs); padding-inline: var(--hk-space-xs); }
   .hk-pdp-included__downloads .hk-app__store > svg { width: 20px; height: 24px; }
-  .hk-pdp .hk-community__intro { gap: var(--hk-space-xs); margin-block-end: 0; }
-  .hk-pdp .hk-community__intro .hk-lead { margin-top: 0; }
-  .hk-pdp .hk-quotes { margin-block-start: var(--hk-space-sm); }
   .hk-pdp-specs dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .hk-pdp-specs dl > div { align-content: start; min-block-size: 0; padding: var(--hk-space-sm); }
   .hk-pdp-specs__icon {
@@ -339,12 +334,6 @@
   #koels.hk-pdp-stories { margin-block-start: 0; }
   .hk-pdp-stories .hk-home-heading { gap: var(--hk-space-sm); margin-bottom: var(--hk-space-md); }
   .hk-pdp-koel-rail { --hk-rail-columns: 2; --hk-rail-gap: var(--hk-space-md); --hk-rail-min: 160px; }
-  .hk-pdp #faqs > .hk-home-faq__grid { padding-inline: var(--hk-space-sm); }
-  .hk-pdp .hk-faq__intro { margin-bottom: var(--hk-space-md); }
-  .hk-pdp .hk-faq { gap: 0; }
-  .hk-pdp .hk-faq details { padding-block: 0; }
-  .hk-pdp .hk-faq summary { min-height: 48px; padding-block: var(--hk-space-sm); }
-  .hk-pdp .hk-faq__content { padding-block: var(--hk-space-2xs) var(--hk-space-md); }
 }
 @media (min-width: 560px) and (max-width: 699px) {
   .hk-pdp-benefits,

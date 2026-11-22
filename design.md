@@ -179,10 +179,12 @@ Guide pages 9 and 23:
 Use the actual font families, not a visually similar display serif or a substitute rounded font. Fallbacks may keep the site usable while fonts load; they are not an alternative brand direction.
 
 The guide does not prescribe a website type scale. The scale below is the
-storefront default. The Kahani Player product content uses the smaller sizes
-documented below. Use the shared type roles in both cases.
+storefront default. The Kahani Player product content and the homepage on
+phones use the compact version documented below. Use the same type roles in
+both cases.
 
-Display sizes ease down on a phone. Body, UI, eyebrow, and fine print stay the same size everywhere, so sentences do not shrink.
+The default display sizes ease down with the viewport. The default Body, UI,
+Eyebrow and Fine roles have fixed sizes.
 
 ### What to use when
 
@@ -207,16 +209,18 @@ Display sizes ease down on a phone. Body, UI, eyebrow, and fine print stay the s
 
 `--hk-text-lead` and `--hk-text-hero-lead` are aliases of Body. The old 30px step size is retired.
 
-### Kahani Player type scale — November 22, 2026
+### Compact storefront type scale — November 22, 2026
 
-The [Yoto Mini product page](https://us.yotoplay.com/players/yoto-mini-4) sets
-the reference for size. The Player uses Averia Serif Libre and Open Sans.
-Set the core roles in `assets/css/tokens.css` for the product content and
-purchase bar. The navigation, footer, bag and dialogs use the storefront default.
+The [Yoto Mini product page](https://us.yotoplay.com/players/yoto-mini-4) set
+the size reference for the Kahani Player, with Averia Serif Libre and Open Sans.
+The phone column also applies to the homepage's main content through 699px.
+Use the compact roles in `assets/css/tokens.css`. Navigation, footer, bag and
+dialogs use the storefront default on both pages. The two wider columns below
+apply to the Player page.
 
 | Role | Phone | From 768px | From 1024px |
 | --- | ---: | ---: | ---: |
-| Product title | 24px | 32px | 40px |
+| Product title or homepage hero | 24px | 32px | 40px |
 | Section heading | 24px | 24px | 32px |
 | Card title | 20px | 20px | 24px |
 | Subhead | 18px | 18px | 20px |
@@ -585,6 +589,16 @@ the asset drawing system, product facts or content approvals.
 The layout is in `shopify-homepage/assets/css/homepage-layout.css`, with small
 DOM enhancements in `assets/js/homepage-layout.js`. Base visual tokens and
 existing commerce/prototype boundaries remain in their original sources.
+
+### Homepage phone layout — November 22, 2026
+
+Through 699px, the homepage uses the compact type scale and the Player's 32px
+section rhythm. Both pages use the same compact testimonial and FAQ styling.
+Question rows have a 48px minimum height. The homepage tapers the extra FAQ
+inset on the narrowest phones.
+
+The homepage Player section uses a Gulab Red price, stacked purchase actions
+and a two-column grid for the four highlights.
 
 ### Earlier section decisions
 
