@@ -1,19 +1,22 @@
 #!/usr/bin/env node
 /**
- * Renders the shared chrome partials into every page listed in
- * partials/pages.json, between the hk:header / hk:footer markers.
+ * Renders shared storefront partials into the pages listed in
+ * partials/pages.json, between each component's start and end markers.
  *
  *   node scripts/sync-chrome.cjs          write the pages
  *   node scripts/sync-chrome.cjs --check  exit non-zero if any page has drifted
  *
- * The partials are the single source of truth. Edit partials/header.html,
- * partials/footer.html or partials/pages.json, never the chrome inside a page.
+ * Edit the partials or page data, then regenerate the standalone HTML.
  */
 const { readFileSync, writeFileSync } = require('node:fs');
 const { join } = require('node:path');
 
 const ROOT = join(__dirname, '..');
-const REGIONS = ['header', 'footer'];
+const REGIONS = ['header', 'testimonials', 'faq', 'footer', 'dialogs'];
+
+function escapeText(value) {
+  return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+}
 
 function render(partial, page) {
   const missing = new Set();
@@ -55,14 +58,20 @@ function main() {
   const partials = Object.fromEntries(
     REGIONS.map((region) => [region, readFileSync(join(ROOT, `partials/${region}.html`), 'utf8')])
   );
+  const faqItem = readFileSync(join(ROOT, 'partials/faq-item.html'), 'utf8').trimEnd();
 
   const drifted = [];
   for (const page of config.pages) {
+    const faqItems = page.faqs.map(({ question, answer }) => render(faqItem, {
+      ...page,
+      slots: { question: escapeText(question), answer: escapeText(answer) },
+    })).join('\n');
+    const pageWithFaqs = { ...page, slots: { ...page.slots, 'faq-items': faqItems } };
     const path = join(ROOT, page.file);
     const before = readFileSync(path, 'utf8');
     let after = before;
     for (const region of REGIONS) {
-      after = splice(after, region, render(partials[region], page), page.file);
+      after = splice(after, region, render(partials[region], pageWithFaqs), page.file);
     }
     if (after === before) continue;
     drifted.push(page.file);
@@ -71,13 +80,13 @@ function main() {
 
   if (check) {
     if (drifted.length) {
-      console.error(`Chrome drift in: ${drifted.join(', ')}\nRun: node scripts/sync-chrome.cjs`);
+      console.error(`Shared component drift in: ${drifted.join(', ')}\nRun: node scripts/sync-chrome.cjs`);
       process.exit(1);
     }
-    console.log(`chrome in sync (${config.pages.length} pages)`);
+    console.log(`shared components in sync (${config.pages.length} pages)`);
     return;
   }
-  console.log(drifted.length ? `updated: ${drifted.join(', ')}` : 'chrome already in sync');
+  console.log(drifted.length ? `updated: ${drifted.join(', ')}` : 'shared components already in sync');
 }
 
 main();

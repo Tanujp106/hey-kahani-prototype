@@ -119,3 +119,27 @@
   /* Tall enough for stacked wordmark clearspace (brand guide page 17). */
   --hk-nav-h: 96px;
 }
+
+/* Player typography follows the Yoto Mini product-page scale. */
+.hk-pdp main,
+.hk-pdp-buybar {
+  --hk-text-hero: 1.5rem;
+  --hk-text-section: 1.5rem;
+  --hk-text-md: 1.25rem;
+  --hk-text-subhead: 1.125rem;
+  --hk-text-body: 1rem;
+  --hk-text-body-sm: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .hk-pdp main { --hk-text-hero: 2rem; }
+}
+
+@media (min-width: 1024px) {
+  .hk-pdp main {
+    --hk-text-hero: 2.5rem;
+    --hk-text-section: 2rem;
+    --hk-text-md: 1.5rem;
+    --hk-text-subhead: 1.25rem;
+  }
+}

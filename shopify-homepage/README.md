@@ -69,28 +69,28 @@ toolbar. It connects to the Agentation MCP server at `http://localhost:4747`
 for feedback in Codex. The generated bundle stays in the ignored `.tmp/`
 directory, and hosted storefront pages skip loading it.
 
-## Shared chrome and the token system — November 21, 2026
+## Shared storefront components — November 22, 2026
 
-The navigation and footer have one source each, in `partials/`. Pages contain
-only markers:
+The navigation, footer, testimonials, FAQ accordion, dialogs and snackbar have
+shared sources in `partials/`. The generated markup sits between markers in the
+standalone pages.
 
 ```html
 <!-- hk:header:start --> … <!-- hk:header:end -->
 <!-- hk:footer:start --> … <!-- hk:footer:end -->
 ```
 
-Edit `partials/header.html`, `partials/footer.html` or `partials/pages.json`,
-then regenerate:
+Edit the relevant partial or the page data in `partials/pages.json`, then
+regenerate.
 
 ```bash
 node scripts/sync-chrome.cjs          # write the pages
 node scripts/sync-chrome.cjs --check  # fail if a page has drifted
 ```
 
-`partials/pages.json` holds the only per-page differences: the `base` anchor
-prefix, the `asset` path prefix, and a handful of named slots. Anything else is
-identical on every page by construction. The partials map to Liquid snippets on
-the Shopify side, with the slots as snippet parameters.
+`partials/pages.json` supplies anchor and asset prefixes, named slots, and the
+questions and answers for each page. In Shopify, use Liquid sections or
+snippets for the shared markup and section settings for the FAQ copy.
 
 Both pages share one type scale, one tone set (`hk-tone--*`), one named tint
 set, one Koel rail and one card radius (`--hk-radius-card`, 24px). Tokens exist
@@ -129,12 +129,14 @@ included items → family story samples → specifications → two Koel rows →
 and FAQ scripts are reused. Page-specific composition and media interactions
 live in `assets/css/player-page.css` and `assets/js/player-page.js`.
 
-The gallery supports pagination dots, arrow/Home/End keys, previous/next controls
-and a native enlarge-image dialog. The sticky purchase action forwards to the
-same Player bag action. The shared prototype bag persists across page navigation
-in the current tab, including quantity and removal updates; its approved $129 USD snapshot comes from
-`data/player.json`. Shopify should provide product identity, native prices,
-availability, media and actual checkout when integrated.
+The gallery supports swipe, pagination dots, arrow/Home/End keys, previous/next
+controls and a native enlarge-image dialog. On phones, the benefits and included
+items use horizontal card rails, the close-ups stack vertically, and the
+specifications scan in two columns. The sticky purchase action forwards
+to the same Player bag action. The shared prototype bag persists across page
+navigation in the current tab, including quantity and removal updates. Its
+approved $129 USD snapshot comes from `data/player.json`. Shopify should provide
+product identity, native prices, availability, media and checkout.
 
 Existing generated photos remain concept media. The wide media block uses a
 still image and a named how-to link because no product video was supplied.

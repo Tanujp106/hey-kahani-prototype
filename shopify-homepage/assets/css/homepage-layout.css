@@ -1,6 +1,6 @@
 /* November 17: Yoto's section roles, expressed in the existing Hey Kahani system.
    Colours, typography, CTA skins and original product-card styling live in styles.css. */
-.hk-homepage { --hk-gutter: clamp(16px, 4vw, 24px); }
+.hk-homepage, .hk-pdp { --hk-gutter: clamp(16px, 4vw, 24px); }
 .hk-home-eyebrow {
   margin: 0 0 var(--hk-space-sm);
   font-size: var(--hk-text-eyebrow);
@@ -172,6 +172,14 @@ html { overflow-x: clip; }
 .hk-home-features { padding-block: var(--hk-section); overflow: visible; }
 .hk-home-scroll { min-width: 0; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--hk-husk) transparent; }
 .hk-home-scroll:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: 5px; }
+.hk-koel-rail.hk-home-scroll {
+  max-width: none;
+  margin-inline-end: calc(-1 * var(--hk-gutter));
+  padding-inline-end: var(--hk-gutter);
+  scroll-padding-inline: 1px var(--hk-gutter);
+  scroll-snap-type: x mandatory;
+}
+.hk-koel-rail.hk-home-scroll:focus-visible { outline-offset: -2px; }
 .hk-rail-pagination {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -237,7 +245,7 @@ html { overflow-x: clip; }
   display: grid;
   grid-auto-flow: column;
   /* Leave room for the next card to show while keeping the navbar-aligned inset. */
-  grid-auto-columns: min(1040px, calc(100% - 16px));
+  grid-auto-columns: min(1040px, calc(100% - var(--hk-space-xl)));
   gap: clamp(16px, 2.25vw, 40px);
   width: 100%;
   max-width: 100%;
@@ -285,10 +293,11 @@ html { overflow-x: clip; }
   justify-self: center;
   margin: 0;
 }
-@media (max-width: 519px) {
+@media (max-width: 760px) {
   .hk-rail-pagination { grid-template-columns: minmax(0, 1fr); }
-  .hk-rail-pagination > .hk-carousel-dots:not([hidden]),
-  .hk-rail-controls { grid-column: 1; }
+  .hk-rail-pagination > .hk-carousel-dots:not([hidden]) { grid-column: 1; }
+  .hk-rail-pagination .hk-rail-controls,
+  .hk-rail-pagination:not(:has(.hk-carousel-dots:not([hidden]))) { display: none; }
 }
 .hk-carousel-dot {
   display: grid;
@@ -646,17 +655,15 @@ html { overflow-x: clip; }
 .hk-series-rail .hk-koel__actions { left: 10px; right: 10px; bottom: 12px; gap: 6px; }
 .hk-series-rail .hk-koel__preview { padding-inline: var(--hk-space-xs); }
 
-/* Phone: the featured Koels wrap as two columns, and the story cards stack and stick. */
+@media (width < 1120px) {
+  .hk-series-rail { --hk-rail-columns: 4; }
+}
+@media (width < 912px) {
+  .hk-series-rail { --hk-rail-columns: 3; }
+}
+/* The story cards stack and stick on phones. */
 @media (max-width: 760px) {
-  .hk-series-rail.hk-koel-rail {
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-columns: auto;
-    padding-bottom: var(--hk-space-2xs);
-    overflow: visible;
-    scroll-snap-type: none;
-  }
+  .hk-series-rail { --hk-rail-columns: 2; }
   .hk-feature-rail.hk-home-scroll {
     display: flex;
     flex-direction: column;
@@ -671,4 +678,7 @@ html { overflow-x: clip; }
     justify-items: center;
   }
   .hk-feature__copy { align-items: center; text-align: center; }
+}
+@media (width < 480px) {
+  .hk-koel-rail.hk-home-scroll { --hk-rail-columns: 1.5; }
 }

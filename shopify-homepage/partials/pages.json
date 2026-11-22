@@ -1,17 +1,9 @@
 {
   "_comment": [
-    "Single source of truth for the shared chrome. partials/header.html and",
-    "partials/footer.html own the markup; this file declares the only values that",
-    "differ per page. Run `node scripts/sync-chrome.cjs` after editing either.",
-    "These partials map to Shopify Liquid snippets (header.liquid / footer.liquid)",
-    "with these slots becoming snippet parameters.",
-    "",
-    "base  — prefix for section anchors that may live on another page.",
-    "asset — prefix for files under assets/.",
-    "",
-    "Every slot below is a real, reviewed difference. Anything not listed here is",
-    "identical on every page by construction; tests/shared-chrome.test.cjs fails",
-    "if a page drifts from the partial."
+    "Regenerate the shared sections with node scripts/sync-chrome.cjs.",
+    "base prefixes cross-page anchors. asset prefixes files under assets/.",
+    "Slots capture per-page navigation, section IDs and reveal classes.",
+    "FAQ questions and answers are plain text rendered through one accordion partial."
   ],
   "pages": [
     {
@@ -20,9 +12,38 @@
       "asset": "assets/",
       "slots": {
         "nav-start-href": "#shop",
-        "nav-koels-href": "/koels-listing",
-        "nav-how-hidden": ""
-      }
+        "nav-koels-href": "https://www.heykahani.com/koels-listing",
+        "nav-how-hidden": "",
+        "testimonials-id": "community",
+        "testimonials-prefix": "community",
+        "testimonials-reveal": " hk-reveal"
+      },
+      "faqs": [
+        {
+          "question": "Do Koels need a Kahani Player?",
+          "answer": "Yes. Koels are physical story discs for the Kahani Player. If you’re new to Hey Kahani, start with the Player; if you already have one, you can add more Koels to your collection."
+        },
+        {
+          "question": "What age is Hey Kahani for?",
+          "answer": "Hey Kahani is made for kids around ages 3 to 6, with stories that grow alongside them. Younger ones can listen too, with a grown-up nearby."
+        },
+        {
+          "question": "What languages do you support?",
+          "answer": "Every Kahani launches in English first. More stories will come in Hindi, Gujarati, Tamil, Telugu, Punjabi, Urdu, and Bengali, so the words and names feel familiar."
+        },
+        {
+          "question": "Do kids need a phone or tablet to listen?",
+          "answer": "No. Kids listen on the Player. Grown-ups use the companion app for setup and guidance. For them, the story stays screen free."
+        },
+        {
+          "question": "How do Koels work?",
+          "answer": "Each Koel is a round story disc. Kids spot the artwork, place it on the Player, and the story begins. No menus. No fuss."
+        },
+        {
+          "question": "What’s in the box?",
+          "answer": "The product listing shows what is included with the Player or bundle you choose. Koels are the story discs used with the Player; check the included stories when choosing your first purchase."
+        }
+      ]
     },
     {
       "file": "kahani-player/index.html",
@@ -31,8 +52,37 @@
       "slots": {
         "nav-start-href": "#player",
         "nav-koels-href": "/#koels",
-        "nav-how-hidden": " hidden"
-      }
+        "nav-how-hidden": " hidden",
+        "testimonials-id": "family-stories",
+        "testimonials-prefix": "family",
+        "testimonials-reveal": ""
+      },
+      "faqs": [
+        {
+          "question": "What is the Kahani Player?",
+          "answer": "A screen-free audio player for South Asian stories. Children choose a circular Koel story disc, place it on top, and listen."
+        },
+        {
+          "question": "What age is Hey Kahani for?",
+          "answer": "Hey Kahani is made for kids around ages 3 to 6. Younger children can listen with a grown-up nearby."
+        },
+        {
+          "question": "Do kids need a phone or tablet to listen?",
+          "answer": "No. Kids listen on the Player. Grown-ups use the companion app for setup and guidance. For them, the story stays screen free."
+        },
+        {
+          "question": "How do Koels work?",
+          "answer": "Each Koel is a round story disc. Children spot the artwork, place it on the Player, and the story begins. Koels need a Kahani Player."
+        },
+        {
+          "question": "What comes with my Player?",
+          "answer": "The Kahani Player is the listening device. Included Koels and other box contents depend on the product or bundle you choose. Final pack contents will be listed before purchase."
+        },
+        {
+          "question": "Where can I find the hardware specifications?",
+          "answer": "The physical controls, carry handle and Player appearance are shown above. Battery, charging, connectivity, dimensions and weight details are still to be confirmed."
+        }
+      ]
     }
   ]
 }

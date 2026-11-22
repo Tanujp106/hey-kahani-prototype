@@ -124,25 +124,33 @@ test('collection filters preserve products, pause hidden audio, announce results
   assert.equal(status.textContent, '3 Koels shown.');
 });
 
-test('product and feature rails have their arrow group below the track in the shared pagination row', () => {
+test('product and feature rails put pagination below the track and use arrows where needed', () => {
   const player = readFileSync(join(root, 'kahani-player/index.html'), 'utf8');
-  for (const [page, id, trackId] of [
+  for (const [page, id, trackId, hasArrows = true] of [
     [html, 'why', 'how-it-works'],
     [html, 'koel-series', 'series-rail'],
     [html, 'koels', 'koel-rail'],
-    [player, 'closer-look', 'closer-look-rail'],
+    [player, 'player-benefits', 'player-benefits-rail'],
+    [player, 'included', 'player-included-rail', false],
     [player, 'how-it-works', 'player-feature-rail'],
-    [player, 'koels', 'koels-rail'],
-    [player, 'more-koels', 'more-koels-rail'],
+    [player, 'koels', 'koels-rail', false],
+    [player, 'more-koels', 'more-koels-rail', false],
   ]) {
     const section = page.match(new RegExp(`<section[^>]*\\bid="${id}"[^>]*>[\\s\\S]*?<\\/section>`))[0];
-    const footer = section.match(/<div class="hk-rail-pagination(?: hk-wrap)?"[^>]*>\s*<div class="hk-carousel-dots"[^>]*><\/div>\s*<div class="hk-rail-controls"[^>]*>[\s\S]*?<\/div>\s*<\/div>/);
-    assert.ok(footer, `Missing the shared controls for ${trackId}`);
-    assert.ok(footer.index > section.indexOf(`id="${trackId}"`), `Controls must follow ${trackId}`);
-    assert.match(footer[0], new RegExp(`data-hk-rail-prev[^>]*aria-controls="${trackId}"`));
-    assert.match(footer[0], new RegExp(`data-hk-rail-next[^>]*aria-controls="${trackId}"`));
-    assert.match(footer[0], /class="hk-carousel-dots"[^>]*\bdata-hk-rail-dots hidden/);
+    const footerStart = section.indexOf('<div class="hk-rail-pagination');
+    const footer = section.slice(footerStart);
+    assert.ok(footerStart > section.indexOf(`id="${trackId}"`), `Controls must follow ${trackId}`);
+    assert.match(footer, /class="hk-carousel-dots"[^>]*\bdata-hk-rail-dots hidden/);
+    if (hasArrows) {
+      assert.match(footer, new RegExp(`data-hk-rail-prev[^>]*aria-controls="${trackId}"`));
+      assert.match(footer, new RegExp(`data-hk-rail-next[^>]*aria-controls="${trackId}"`));
+    } else {
+      assert.doesNotMatch(footer, /hk-rail-controls|data-hk-rail-(?:prev|next)/);
+    }
   }
+  const closerLook = player.match(/<section[^>]*id="closer-look"[\s\S]*?<\/section>/)[0];
+  assert.doesNotMatch(closerLook, /data-hk-rail|hk-rail-pagination/);
+  assert.equal((closerLook.match(/<figure\b/g) || []).length, 3);
   for (const [page, id] of [[html, 'community'], [player, 'family-stories']]) {
     const section = page.match(new RegExp(`<section[^>]*\\bid="${id}"[^>]*>[\\s\\S]*?<\\/section>`))[0];
     assert.match(section, /data-hk-rail-track tabindex="0"/);

@@ -1,0 +1,73 @@
+  <dialog class="hk-dialog" id="koel-dialog" aria-labelledby="koel-dialog-title">
+    <div class="hk-dialog__body">
+      <div class="hk-dialog__head">
+        <h2 id="koel-dialog-title" data-hk-koel-title>Koel</h2>
+        <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close">×</button>
+      </div>
+      <div class="hk-dialog__art">
+        <img data-hk-koel-image src="{{asset}}images/koels/hk-shot-08-04-park-mindfulness.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
+      </div>
+      <p class="hk-dialog__meta" data-hk-koel-meta></p>
+      <button class="hk-btn hk-btn--primary" type="button" data-hk-koel-dialog-add style="width:100%">Add to bag</button>
+    </div>
+  </dialog>
+
+  <dialog class="hk-dialog hk-dialog--drawer" id="bag-dialog" aria-labelledby="bag-title">
+    <div class="hk-drawer">
+      <div class="hk-drawer__head">
+        <h2 id="bag-title">My bag</h2>
+        <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close bag">×</button>
+      </div>
+      <div class="hk-drawer__body">
+        <div class="hk-drawer__empty" data-hk-bag-empty>
+          <svg class="hk-drawer__empty-art" viewBox="0 0 160 160" width="160" height="160" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="80" cy="80" r="69" fill="var(--hk-kesar)"/>
+            <ellipse cx="80" cy="137" rx="42" ry="5" fill="var(--hk-husk)" opacity="0.45"/>
+            <path d="M48 60h64l6 65q1 10-9 10H51q-10 0-9-10Z" fill="var(--hk-canvas)" stroke="var(--hk-gulab)" stroke-width="2.8" stroke-linejoin="round"/>
+            <path d="M62 67V49a18 18 0 0 1 36 0v18" stroke="var(--hk-gulab)" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="m128 31 2.5 7.5L138 41l-7.5 2.5L128 51l-2.5-7.5L118 41l7.5-2.5Z" fill="var(--hk-husk)"/>
+            <path d="M25 92v12m-6-6h12" stroke="var(--hk-gulab)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3 class="hk-drawer__empty-title">Your bag is empty</h3>
+          <p class="hk-drawer__empty-copy">New here? Begin with the Player. Already have one? Find their next favourite Koel.</p>
+          <a class="hk-btn hk-btn--primary hk-drawer__empty-cta" href="#player" data-hk-close-dialog>Start with the Player</a>
+        </div>
+        <ul class="hk-bag-list" data-hk-bag-list hidden></ul>
+      </div>
+      <div class="hk-drawer__foot" data-hk-bag-foot hidden>
+        <div class="hk-drawer__total">
+          <span>Total</span>
+          <strong data-hk-bag-total>$0.00</strong>
+        </div>
+        <button class="hk-btn hk-btn--primary hk-drawer__checkout" type="button" data-hk-bag-checkout disabled>
+          Checkout
+        </button>
+        <button class="hk-drawer__link" type="button" data-hk-close-dialog>Keep exploring</button>
+        <p class="hk-drawer__note">Checkout connects when the Shopify storefront is live. Koel prices shown are design placeholders.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="hk-dialog" id="search-dialog" aria-labelledby="search-title">
+    <div class="hk-dialog__body">
+      <div class="hk-dialog__head">
+        <h2 id="search-title">Search</h2>
+        <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close search">×</button>
+      </div>
+      <label class="hk-nav-search">
+        <span class="visually-hidden">Search the store</span>
+        <input type="search" name="q" placeholder="Search stories, Player, Koels…" autocomplete="off" data-hk-search-input>
+      </label>
+      <p class="hk-muted">Search will connect once the Shopify storefront is live. For now, browse Shop Koels below.</p>
+      <div class="hk-btn-row">
+        <a class="hk-btn hk-btn--primary" href="#koels" data-hk-close-dialog>Browse Koels</a>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="hk-snackbar" data-hk-snackbar role="status" aria-live="polite" aria-atomic="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 12.5 9.5 17 19 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span data-hk-snackbar-message></span>
+  </div>

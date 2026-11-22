@@ -294,14 +294,15 @@ test('hero art fits its track and Shop and Player keep usable columns in portrai
   }, [320, 568, 844, 1024]);
 });
 
-const series = probe('.hk-home-scroll', '.hk-koel-rail', '.hk-series-rail');
+const series = probe('.hk-home-scroll', '.hk-koel-rail', '.hk-series-rail', '.hk-koel-rail.hk-home-scroll');
 const catalogue = probe('.hk-home-scroll', '.hk-koel-grid', '.hk-koels .hk-koel-grid', '.hk-home-discovery .hk-koel-grid');
 const koelActions = probe('.hk-koel__actions');
 
 test('Koel card widths accommodate playback, add to bag and the copy at every grid transition', () => {
   forEachWidth((viewport, content) => {
     const seriesStyle = series(viewport);
-    const seriesInner = content - inlinePadding(seriesStyle, viewport, content);
+    const seriesWidth = content - length(seriesStyle['margin-inline-end'], viewport, content);
+    const seriesInner = seriesWidth - inlinePadding(seriesStyle, viewport, seriesWidth);
     const seriesCard = length(seriesStyle['grid-auto-columns'], viewport, seriesInner, seriesStyle);
     const list = catalogue(viewport);
     const tracks = fractionalTracks(list, viewport, content - inlinePadding(list, viewport, content));
@@ -309,6 +310,10 @@ test('Koel card widths accommodate playback, add to bag and the copy at every gr
     // A 190px card allows a 44px add target and playback label with its icon,
     // while retaining the card insets, shared spacing, and visible title area.
     if (seriesCard < 190 || seriesCard > seriesInner + 0.01) return `featured Koel is ${Math.floor(seriesCard)}px within a ${Math.floor(seriesInner)}px rail`;
+    const gap = columnGap(seriesStyle, viewport, seriesWidth);
+    const visible = seriesWidth - 1;
+    const nextStart = Math.floor((visible + gap) / (seriesCard + gap)) * (seriesCard + gap);
+    if (visible - nextStart < 16) return 'the featured Koel rail gives less than 16px to the next card';
 
     // User direction, November 21, 2026: the Koel catalogue stays two to a row
     // on a phone rather than widening to one. A catalogue card is therefore
@@ -325,7 +330,7 @@ test('Koel card widths accommodate playback, add to bag and the copy at every gr
   });
 });
 
-const rail = probe('.hk-home-scroll', '.hk-feature-rail');
+const rail = probe('.hk-home-scroll', '.hk-feature-rail', '.hk-feature-rail.hk-home-scroll');
 const feature = probe('.hk-feature');
 const featureCopy = probe('.hk-feature__copy p');
 
@@ -333,21 +338,22 @@ test('the feature rail contains overflow and leaves room for text at both contai
   forEachWidth(viewport => {
     const track = rail(viewport);
     const inner = viewport.pageWidth - inlinePadding(track, viewport, viewport.pageWidth);
-    const cardWidth = length(track['grid-auto-columns'], viewport, inner, track);
+    const isCarousel = track.display === 'grid';
+    const cardWidth = isCarousel ? length(track['grid-auto-columns'], viewport, inner, track) : inner;
     const itemViewport = { ...viewport, container: inner };
     const card = feature(itemViewport);
     const columnCount = splitValues(card['grid-template-columns']).length;
     const cardInner = cardWidth - inlinePadding(card, itemViewport, cardWidth);
     const copyWidth = columnCount === 1 ? cardInner : (cardInner - columnGap(card, itemViewport, cardWidth)) / 2;
     const typeSize = length(featureCopy(itemViewport)['font-size'], itemViewport, copyWidth);
-    if (!['auto', 'scroll'].includes(track['overflow-x'])) return 'the rail does not own its overflow';
+    if (isCarousel && !['auto', 'scroll'].includes(track['overflow-x'])) return 'the rail does not own its overflow';
     if (cardWidth > inner + 0.01 || copyWidth < 180) return `feature has only ${Math.floor(copyWidth)}px for its copy`;
     if (typeSize < 17) return `feature text drops below the storefront body size (${typeSize}px)`;
   });
 });
 
 const railPagination = probe('.hk-rail-pagination');
-const railArrows = probe('.hk-rail-controls');
+const railArrows = probe('.hk-rail-controls', '.hk-rail-pagination .hk-rail-controls');
 const railArrow = probe('.hk-rail-control');
 const carouselDot = probe('.hk-carousel-dot');
 
@@ -362,9 +368,14 @@ test('card rail dots and right-aligned arrow targets fit at every viewport', () 
     // The two Koel rails have up to eight dots. Leave room for the dot pill's padding and border.
     const dotsWidth = 8 * length(carouselDot(viewport).width, viewport, width) + 6;
 
+    if (viewport.width <= 760) {
+      if (arrows.display !== 'none') return 'card rail arrows are visible on a phone';
+      if (columns.length !== 1 || dotsWidth > width) return 'the centered dot pager does not fit on a phone';
+      return;
+    }
+
     if (arrows['justify-self'] !== 'end') return 'the arrow group does not align to the right';
     if (arrowWidth < 44) return 'a rail arrow target is narrower than 44px';
-    if (columns.length === 1 && Math.max(arrowsWidth, dotsWidth) <= width) return;
     const needed = dotsWidth + 2 * (arrowsWidth + columnGap(nav, viewport, width));
     if (columns.length !== 3 || needed > width) return `carousel controls require ${Math.ceil(needed)}px of ${Math.floor(width)}px`;
   });
@@ -390,6 +401,10 @@ test('testimonials and the footer signup retain space for their content', () => 
     if (rail) {
       cardWidth = length(grid['grid-auto-columns'], viewport, quoteInner);
       if (cardWidth > quoteInner + 0.01) return `a quote card is ${Math.ceil(cardWidth)}px in a ${Math.floor(quoteInner)}px rail`;
+      const gap = columnGap(grid, viewport, quoteInner);
+      const visible = quoteWidth - inlinePadding(grid, viewport, quoteWidth) / 2;
+      const nextStart = Math.floor((visible + gap) / (cardWidth + gap)) * (cardWidth + gap);
+      if (visible - nextStart < 16) return 'the testimonial rail gives less than 16px to the next card';
     } else {
       const slots = fractionalTracks(grid, viewport, quoteInner);
       cardWidth = slots.length === 1 ? slots[0] : slots[0] + slots[1] + columnGap(grid, viewport, quoteInner);

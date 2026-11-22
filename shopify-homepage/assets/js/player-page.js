@@ -127,6 +127,23 @@
   gallery.querySelectorAll('[data-hk-gallery-step]').forEach((button) => {
     button.addEventListener('click', () => selectImage(requested + Number(button.dataset.hkGalleryStep)));
   });
+  const stage = gallery.querySelector('#player-gallery-stage');
+  let touchStart;
+  stage?.addEventListener('pointerdown', (event) => {
+    if (event.pointerType !== 'touch') return;
+    touchStart = event.isPrimary && !event.target.closest('button')
+      ? { id: event.pointerId, x: event.clientX, y: event.clientY }
+      : null;
+  }, { passive: true });
+  stage?.addEventListener('pointercancel', () => { touchStart = null; });
+  stage?.addEventListener('pointerup', (event) => {
+    if (!touchStart || event.pointerId !== touchStart.id) return;
+    const dx = event.clientX - touchStart.x;
+    const dy = event.clientY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(dx) < 44 || Math.abs(dx) <= Math.abs(dy) * 1.25) return;
+    return selectImage(requested + (dx < 0 ? 1 : -1));
+  }, { passive: true });
   gallery.querySelectorAll('[data-hk-gallery-controls]').forEach((controls) => { controls.hidden = false; });
 
   const zoom = document.querySelector('#player-zoom');

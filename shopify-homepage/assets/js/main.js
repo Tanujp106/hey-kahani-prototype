@@ -437,16 +437,20 @@
   });
 
   const playerSection = document.querySelector("#player");
+  const playerPrice = playerSection?.querySelector("[data-hk-player-price]");
+  const playerImage = playerSection?.querySelector(".hk-player__photo")?.src || "";
+  const savedPlayer = bagItems.find((item) => item.key === playerPrice?.dataset.productHandle);
+  if (savedPlayer && playerImage) savedPlayer.image = resolveProductImage(playerImage);
+
   playerSection?.querySelector("[data-hk-player-add]")?.addEventListener("click", (event) => {
-    const price = playerSection.querySelector("[data-hk-player-price]");
-    const priceMinor = Number(price?.dataset.priceMinor);
-    if (!price?.dataset.productHandle || !Number.isInteger(priceMinor)) return;
+    const priceMinor = Number(playerPrice?.dataset.priceMinor);
+    if (!playerPrice?.dataset.productHandle || !Number.isInteger(priceMinor)) return;
 
     addItemToBag({
-      key: price.dataset.productHandle,
+      key: playerPrice.dataset.productHandle,
       title: event.currentTarget.dataset.hkPlayerAdd,
       meta: "",
-      image: playerSection.querySelector(".hk-player__photo").src,
+      image: playerImage,
       price: priceMinor / 100,
     });
   });

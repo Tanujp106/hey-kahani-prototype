@@ -1,4 +1,4 @@
-@import url("./tokens.css?v=type-scale-20261116");
+@import url("./tokens.css?v=player-type-20261122");
 @import url("./benefit-frame-masks.css?v=20261116");
 
 *,
@@ -730,7 +730,7 @@ input {
   grid-auto-flow: column;
   grid-auto-columns: max(
     var(--hk-rail-min),
-    calc((100% - (var(--hk-rail-gap) * (var(--hk-rail-columns) - 1))) / var(--hk-rail-columns))
+    calc((100% - var(--hk-rail-gap) * var(--hk-rail-columns) - var(--hk-space-md)) / var(--hk-rail-columns))
   );
   gap: var(--hk-rail-gap);
   /* Keep the 12px card reveal inside the horizontal scrollport. */
@@ -3423,7 +3423,7 @@ input {
   .hk-quotes {
     grid-auto-flow: column;
     grid-template-columns: none;
-    grid-auto-columns: min(78vw, 320px);
+    grid-auto-columns: min(76vw, 320px);
     align-items: stretch;
     max-width: none;
     gap: var(--hk-space-md);
@@ -3467,6 +3467,10 @@ input {
     padding: var(--hk-space-lg);
   }
 
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .hk-quotes { grid-auto-columns: min(320px, calc((100% - 3 * var(--hk-space-md)) / 2)); }
 }
 
 /* FAQ */

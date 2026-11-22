@@ -5,6 +5,14 @@ const { join } = require('node:path');
 const vm = require('node:vm');
 const scriptPath = join(__dirname, '../assets/js/player-page.js');
 
+test('the gallery zoom image belongs to a closed dialog after the shared footer', () => {
+  const page = readFileSync(join(__dirname, '../kahani-player/index.html'), 'utf8');
+  const afterFooter = page.split('<!-- hk:footer:end -->')[1];
+  assert.match(afterFooter, /^\s*<!-- hk:dialogs:start -->/);
+  assert.match(afterFooter, /<!-- hk:dialogs:end -->\s*<dialog\b[^>]*id="player-zoom"[^>]*>\s*<img[^>]*>[\s\S]*?<\/dialog>/);
+  assert.doesNotMatch(afterFooter, /<dialog\b[^>]*\bopen(?:\s|=|>)/);
+});
+
 function fixture({ reduced = false, decode = () => Promise.resolve() } = {}) {
   const element = (dataset = {}) => ({
     dataset, hidden: true, attributes: {}, listeners: {}, textContent: '', tabIndex: -1,
@@ -36,10 +44,11 @@ function fixture({ reduced = false, decode = () => Promise.resolve() } = {}) {
   image = mediaElement('player.png', 'Cream Player', 'product');
   const caption = element(), status = element();
   const controls = element(), previous = element({ hkGalleryStep: '-1' }), next = element({ hkGalleryStep: '1' });
-  const gallery = element();
+  const gallery = element(), stage = element();
   gallery.querySelector = selector => ({
     '[data-hk-gallery-image]': image, '[data-hk-gallery-caption]': caption,
     '[data-hk-gallery-status]': status,
+    '#player-gallery-stage': stage,
   }[selector] || null);
   gallery.querySelectorAll = selector => ({
     '[data-hk-gallery-dot]': dots, '[data-hk-gallery-step]': [previous, next],
@@ -64,7 +73,7 @@ function fixture({ reduced = false, decode = () => Promise.resolve() } = {}) {
     window: { matchMedia: () => ({ matches: reduced }) },
     getComputedStyle: () => ({ opacity: '1' }),
   });
-  return { dots, get image() { return image; }, caption, status, controls, previous, next, gallery, sticky, zoom, zoomImage, zoomButton, additions: () => additions };
+  return { dots, get image() { return image; }, caption, status, controls, previous, next, gallery, stage, sticky, zoom, zoomImage, zoomButton, additions: () => additions };
 }
 
 test('gallery slides to the decoded image and updates its accessible selected state', async () => {
@@ -105,6 +114,26 @@ test('gallery wraps with buttons and keeps keyboard selection and focus together
   assert.equal(f.image.src, 'floor.webp');
   await f.dots[2].listeners.keydown({ key: 'Home', preventDefault() {} });
   assert.equal(f.image.src, 'player.png');
+});
+
+test('horizontal swipes change the gallery image and vertical scrolling leaves it alone', async () => {
+  const f = fixture();
+  const pointer = { pointerType: 'touch', pointerId: 1, isPrimary: true, target: { closest: () => null } };
+  const start = { ...pointer, clientX: 180, clientY: 100 };
+
+  f.stage.listeners.pointerdown?.(start);
+  await f.stage.listeners.pointerup?.({ ...pointer, clientX: 90, clientY: 104 });
+  assert.equal(f.image.src, 'choosing.webp');
+  assert.equal(f.dots[1].attributes['aria-pressed'], 'true');
+
+  f.stage.listeners.pointerdown(start);
+  await f.stage.listeners.pointerup({ ...pointer, clientX: 120, clientY: 230 });
+  assert.equal(f.image.src, 'choosing.webp');
+
+  f.stage.listeners.pointerdown(start);
+  f.stage.listeners.pointercancel(pointer);
+  await f.stage.listeners.pointerup({ ...pointer, clientX: 90, clientY: 104 });
+  assert.equal(f.image.src, 'choosing.webp');
 });
 
 test('only the latest gallery selection takes effect when media load out of order', async () => {
@@ -209,9 +238,10 @@ test('Player purchase and sticky purchase both reach the shared bag with the app
   const count = { textContent: '' };
   const total = { textContent: '' };
   const price = { dataset: { productHandle: product.handle, priceMinor: String(product.priceMinor), currency: product.currency } };
+  const photo = { src: '../assets/images/product/player-cutout.png' };
   const section = { querySelector(selector) { return {
     '[data-hk-player-add]': button, '[data-hk-player-price]': price,
-    '.hk-player__photo': { src: '../assets/images/product/player-cutout.png' },
+    '.hk-player__photo': photo,
   }[selector] || null; } };
   const message = { textContent: '' };
   const snackbar = { querySelector: () => message, classList: { add() {}, remove() {} } };
@@ -220,6 +250,7 @@ test('Player purchase and sticky purchase both reach the shared bag with the app
     showModal() { this.open = true; },
     querySelector: selector => selector === '[data-hk-bag-total]' ? total : null,
   };
+  let savedBag;
   const environment = {
     document: {
       addEventListener() {},
@@ -232,11 +263,16 @@ test('Player purchase and sticky purchase both reach the shared bag with the app
         '[data-hk-player-buy-now]': buyNow,
       }[selector] || []; },
     },
-    window: { matchMedia: () => ({ matches: true }), addEventListener() {}, setTimeout() {}, clearTimeout() {} },
+    window: {
+      matchMedia: () => ({ matches: true }), addEventListener() {}, setTimeout() {}, clearTimeout() {},
+      sessionStorage: { getItem: () => null, setItem: (_, value) => { savedBag = JSON.parse(value); } },
+    },
   };
   vm.runInNewContext(readFileSync(join(__dirname, '../assets/js/main.js'), 'utf8'), environment);
   vm.runInNewContext(readFileSync(scriptPath, 'utf8'), environment);
+  photo.src = '../assets/images/editorial/photography-2026-11-20/01-choosing-a-story.webp';
   button.click();
+  assert.equal(savedBag[0].image, '../assets/images/product/player-cutout.png');
   assert.equal(message.textContent, 'Kahani Player added to bag');
   assert.equal(count.textContent, '1');
   listeners.sticky();
@@ -299,8 +335,13 @@ test('bag survives navigation between homepage and Player page in the same tab',
   const storage = { getItem: key => entries.get(key) || null, setItem: (key, value) => entries.set(key, value) };
   const homepage = bagPage(storage);
   homepage.add();
+  const key = 'hk-prototype-bag-v1';
+  const legacyItems = JSON.parse(entries.get(key));
+  legacyItems[0].image = 'https://shop.example/assets/images/editorial/choosing.webp';
+  entries.set(key, JSON.stringify(legacyItems));
   const playerPage = bagPage(storage, 'https://shop.example/kahani-player/');
   assert.equal(playerPage.count.textContent, '1');
+  assert.equal(JSON.parse(entries.get(key))[0].image, 'https://shop.example/assets/images/product/player-cutout.png');
   playerPage.add();
   const returned = bagPage(storage);
   assert.equal(returned.count.textContent, '2');

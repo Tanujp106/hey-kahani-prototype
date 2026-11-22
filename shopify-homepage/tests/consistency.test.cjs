@@ -41,8 +41,12 @@ const allDeclarations = CSS.flatMap(declarations);
 const pageDeclarations = allDeclarations.filter((d) => !d.selector.startsWith(PICTURE_PREFIX));
 const at = (d) => `${d.file}:${d.line} (${d.selector}) ${d.property}: ${d.value}`;
 
-test('the shared header and footer are rendered from the partials, not copied', () => {
-  // Throws with the drifted page names if a page's chrome was hand-edited.
+test('the storefront header, footer, testimonials, FAQ and dialogs are rendered from shared partials', () => {
+  for (const page of PAGES) {
+    for (const part of ['header', 'footer', 'testimonials', 'faq', 'dialogs']) {
+      assert.ok(read(page).includes(`<!-- hk:${part}:start -->`), `${page} is missing the shared ${part}`);
+    }
+  }
   execFileSync(process.execPath, [join(ROOT, 'scripts/sync-chrome.cjs'), '--check'], { cwd: ROOT });
 });
 

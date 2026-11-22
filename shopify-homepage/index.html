@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=start-here-tiles-20261122">
-  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=start-here-tiles-20261122">
+  <link rel="stylesheet" href="assets/css/styles.css?v=rail-preview-20261122">
+  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=player-feedback-20261122">
   <noscript><style>
     /* The FAQ panel is collapsed by script; keep open answers readable without it. */
     .hk-faq details[open] .hk-faq__panel { height: auto; }
@@ -56,7 +56,7 @@
             <a class="hk-nav__link" href="#shop" aria-expanded="false" aria-controls="hk-mega" data-hk-mega-trigger="player">Start here</a>
           </li>
           <li>
-            <a class="hk-nav__link" href="/koels-listing" aria-expanded="false" aria-controls="hk-mega" data-hk-mega-trigger="koels">Shop Koel</a>
+            <a class="hk-nav__link" href="https://www.heykahani.com/koels-listing" aria-expanded="false" aria-controls="hk-mega" data-hk-mega-trigger="koels">Shop Koel</a>
           </li>
           <li><a class="hk-nav__link" href="#how-it-works" data-hk-mega-dismiss>How it works</a></li>
           <li class="hk-deferred" hidden><a class="hk-nav__link" href="#founder" data-hk-mega-dismiss>Our story</a></li>
@@ -84,7 +84,7 @@
     <div class="hk-nav__drawer" id="mobile-nav" data-hk-drawer>
       <ul>
         <li><a href="#shop">Start here</a></li>
-        <li><a href="/koels-listing">Shop Koel</a></li>
+        <li><a href="https://www.heykahani.com/koels-listing">Shop Koel</a></li>
         <li><a href="#how-it-works">How it works</a></li>
         <li class="hk-deferred" hidden><a href="#founder">Our story</a></li>
       </ul>
@@ -148,7 +148,7 @@
             </a>
           </li>
           <li>
-            <a class="hk-mega__row hk-mega__row--all" href="/koels-listing">
+            <a class="hk-mega__row hk-mega__row--all" href="https://www.heykahani.com/koels-listing">
               <span class="hk-mega__all-go" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
@@ -815,6 +815,7 @@
       </svg>
     </section>
 
+    <!-- hk:testimonials:start -->
     <section class="hk-section hk-community" id="community" aria-labelledby="community-title" data-hk-rail>
       <div class="hk-wrap hk-community__content">
         <div class="hk-section__intro hk-community__intro hk-reveal">
@@ -900,6 +901,7 @@
         </div>
       </div>
     </section>
+    <!-- hk:testimonials:end -->
 
 <!-- About is retained in its original standalone layout for later use. -->
     <section class="hk-section hk-deferred" id="founder" hidden aria-labelledby="founder-title">
@@ -969,11 +971,19 @@
     </aside>
     <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/></svg>
 
+    <!-- hk:faq:start -->
     <section class="hk-section hk-home-faq" id="faqs" aria-labelledby="faq-title">
       <div class="hk-wrap hk-home-faq__grid">
         <header class="hk-faq__intro"><h2 class="hk-display hk-display--lg" id="faq-title">Small questions. Straight answers.</h2></header>
         <div class="hk-faq hk-reveal" data-hk-faq>
-          <details><summary>Do Koels need a Kahani Player?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>Yes. Koels are physical story discs for the Kahani Player. If you’re new to Hey Kahani, start with the Player; if you already have one, you can add more Koels to your collection.</p></div></div></details>
+          <details>
+            <summary>Do Koels need a Kahani Player?</summary>
+            <div class="hk-faq__panel">
+              <div class="hk-faq__content">
+                <p>Yes. Koels are physical story discs for the Kahani Player. If you’re new to Hey Kahani, start with the Player; if you already have one, you can add more Koels to your collection.</p>
+              </div>
+            </div>
+          </details>
           <details>
             <summary>What age is Hey Kahani for?</summary>
             <div class="hk-faq__panel">
@@ -1017,6 +1027,7 @@
         </div>
       </div>
     </section>
+    <!-- hk:faq:end -->
   </main>
 
   <!-- hk:footer:start -->
@@ -1043,12 +1054,12 @@
             <h3>Start here</h3>
             <a href="#player">The Player</a>
             <a href="#how-it-works">How it works</a>
-            <a href="/products/founders-bundle">Founder's Bundle</a>
+            <a class="hk-deferred" href="/products/founders-bundle" hidden>Founder's Bundle</a>
           </div>
           <div class="hk-footer__col">
             <h3>Explore stories</h3>
             <a href="#koels">Shop Koels</a>
-            <a href="/koels-listing">All stories</a>
+            <a href="https://www.heykahani.com/koels-listing">All stories</a>
             <a href="#why">Why Hey Kahani</a>
           </div>
           <div class="hk-footer__col">
@@ -1060,7 +1071,7 @@
           <div class="hk-footer__col">
             <h3>Help</h3>
             <a href="#faqs">Support</a>
-            <a href="/kahani-app">Companion app</a>
+            <a href="https://www.heykahani.com/kahani-app">Companion app</a>
             <a href="#top">Back to top</a>
           </div>
         </nav>
@@ -1069,14 +1080,15 @@
       <div class="hk-footer__base">
         <p class="hk-footer__legal">© <span id="year">2026</span> Hey Kahani. All rights reserved.</p>
         <div class="hk-footer__legal-links">
-          <a href="/privacy-policy">Privacy</a>
-          <a href="/terms-of-service">Terms</a>
+          <a href="https://www.heykahani.com/privacy-policy">Privacy</a>
+          <a href="https://www.heykahani.com/terms-of-service">Terms</a>
         </div>
       </div>
     </div>
   </footer>
   <!-- hk:footer:end -->
 
+  <!-- hk:dialogs:start -->
   <dialog class="hk-dialog" id="koel-dialog" aria-labelledby="koel-dialog-title">
     <div class="hk-dialog__body">
       <div class="hk-dialog__head">
@@ -1084,7 +1096,7 @@
         <button class="hk-icon-btn" type="button" data-hk-close-dialog aria-label="Close">×</button>
       </div>
       <div class="hk-dialog__art">
-        <img data-hk-koel-image src="assets/images/koels/hk-shot-08-04-park-mindfulness.png" width="1254" height="1254" alt="">
+        <img data-hk-koel-image src="assets/images/koels/hk-shot-08-04-park-mindfulness.png" width="1254" height="1254" alt="" loading="lazy" decoding="async">
       </div>
       <p class="hk-dialog__meta" data-hk-koel-meta></p>
       <button class="hk-btn hk-btn--primary" type="button" data-hk-koel-dialog-add style="width:100%">Add to bag</button>
@@ -1150,12 +1162,13 @@
     </svg>
     <span data-hk-snackbar-message></span>
   </div>
+  <!-- hk:dialogs:end -->
 
   <script>
     document.getElementById("year").textContent = String(new Date().getFullYear());
   </script>
   <script src="assets/js/inline-preview.js" defer></script>
-  <script src="assets/js/main.js?v=20261121" defer></script>
+  <script src="assets/js/main.js?v=player-mobile-20261122" defer></script>
   <script src="assets/js/homepage-layout.js?v=carousel-dots-20261121" defer></script>
   <script type="module">
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {

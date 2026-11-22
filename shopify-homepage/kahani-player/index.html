@@ -8,9 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=start-here-tiles-20261122">
-  <link rel="stylesheet" href="../assets/css/homepage-layout.css?v=start-here-tiles-20261122">
-  <link rel="stylesheet" href="../assets/css/player-page.css?v=rail-controls-20261122">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=rail-preview-20261122">
+  <link rel="stylesheet" href="../assets/css/homepage-layout.css?v=player-feedback-20261122">
+  <link rel="stylesheet" href="../assets/css/player-page.css?v=player-feedback-20261122">
   <noscript><style>
     /* The FAQ panel is collapsed by script; keep open answers readable without it. */
     .hk-faq details[open] .hk-faq__panel { height: auto; }
@@ -171,7 +171,7 @@
           <figure>
             <div class="hk-pdp-gallery__stage" id="player-gallery-stage">
               <img class="hk-pdp-gallery__image hk-player__photo" src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="Kahani Player with cream body, carrying handle, five controls, Gulab red speaker band and wood base" data-hk-gallery-image data-kind="product" fetchpriority="high" decoding="async">
-              <div class="hk-pdp-gallery__arrows" data-hk-gallery-controls hidden><button class="hk-icon-btn" type="button" data-hk-gallery-step="-1" aria-label="Previous product image"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><button class="hk-icon-btn" type="button" data-hk-gallery-step="1" aria-label="Next product image"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div>
+              <div class="hk-pdp-gallery__arrows" data-hk-gallery-controls hidden><button class="hk-rail-control" type="button" data-hk-gallery-step="-1" aria-label="Previous product image"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><button class="hk-rail-control" type="button" data-hk-gallery-step="1" aria-label="Next product image"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div>
               <button class="hk-icon-btn hk-pdp-gallery__zoom" type="button" data-hk-gallery-zoom aria-label="Enlarge selected product image" aria-haspopup="dialog" aria-controls="player-zoom" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M10 7v6M7 10h6"/></svg></button>
             </div>
           </figure>
@@ -186,7 +186,7 @@
         </div>
         <div class="hk-pdp-purchase">
           <header class="hk-pdp-purchase__heading">
-            <h1 class="hk-display hk-display--lg" id="player-title">The Kahani Player</h1>
+            <h1 class="hk-display hk-display--hero" id="player-title">The Kahani Player</h1>
             <p class="hk-pdp-price" data-hk-player-price data-product-handle="kahani-player" data-price-minor="12900" data-compare-at-price-minor="15000" data-currency="USD" data-price-kind="approved">
               <span class="hk-pdp-price__current"><span class="visually-hidden">Current price in US dollars </span>$129</span>
               <s class="hk-pdp-price__original"><span class="visually-hidden">Original price </span>$150</s>
@@ -212,9 +212,9 @@
         </div>
       </div>
     </section>
-    <section class="hk-pdp-section hk-wrap" id="player-benefits" aria-labelledby="player-benefits-title">
+    <section class="hk-pdp-section hk-wrap" id="player-benefits" aria-labelledby="player-benefits-title" data-hk-rail>
       <header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="player-benefits-title">Made for the way kids listen.</h2></header>
-      <div class="hk-pdp-benefits">
+      <div class="hk-pdp-benefits hk-home-scroll" id="player-benefits-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Player benefits">
         <article class="hk-pdp-benefit hk-tone--mango">
           <img src="../assets/images/editorial/photography-2026-11-20/02-stories-on-the-floor.webp" width="1254" height="1254" alt="" loading="lazy" decoding="async">
           <div class="hk-pdp-benefit__copy">
@@ -244,39 +244,45 @@
           </div>
         </article>
       </div>
+      <div class="hk-rail-pagination">
+        <div class="hk-carousel-dots" role="group" aria-label="Player benefit carousel positions" data-hk-rail-dots hidden></div>
+        <div class="hk-rail-controls">
+          <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="player-benefits-rail" aria-label="Previous Player benefits" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+          <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="player-benefits-rail" aria-label="Next Player benefits" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+        </div>
+      </div>
     </section>
     <!-- Reference order 3: three product details. -->
-    <section class="hk-pdp-section hk-wrap" id="closer-look" aria-labelledby="closer-title" data-hk-rail>
+    <section class="hk-pdp-section hk-wrap" id="closer-look" aria-labelledby="closer-title">
       <header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="closer-title">Take a closer look.</h2></header>
-      <div class="hk-pdp-details" id="closer-look-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Kahani Player details">
+      <div class="hk-pdp-details">
         <figure class="hk-pdp-detail hk-pdp-detail--handle">
-          <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="" loading="lazy" decoding="async">
+          <div class="hk-pdp-detail__media">
+            <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="Cream carry handle above the circular Koel plate" loading="lazy" decoding="async">
+          </div>
           <figcaption>
             <h3 class="hk-display">Ready for little hands.</h3>
             <p>A carry handle, right where they need it.</p>
           </figcaption>
         </figure>
         <figure class="hk-pdp-detail hk-pdp-detail--controls">
-          <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="" loading="lazy" decoding="async">
+          <div class="hk-pdp-detail__media">
+            <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="Five physical buttons for volume and playback" loading="lazy" decoding="async">
+          </div>
           <figcaption>
             <h3 class="hk-display">A little more in their control.</h3>
             <p>Play, pause, skip and adjust the volume.</p>
           </figcaption>
         </figure>
         <figure class="hk-pdp-detail hk-pdp-detail--speaker">
-          <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="" loading="lazy" decoding="async">
+          <div class="hk-pdp-detail__media">
+            <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="Gulab Red woven speaker band above the wood-toned base" loading="lazy" decoding="async">
+          </div>
           <figcaption>
             <h3 class="hk-display">A familiar voice. A new world.</h3>
             <p>A Gulab red speaker band and warm wood base.</p>
           </figcaption>
         </figure>
-      </div>
-      <div class="hk-rail-pagination">
-        <div class="hk-carousel-dots" role="group" aria-label="Player detail carousel positions" data-hk-rail-dots hidden></div>
-        <div class="hk-rail-controls" role="group" aria-label="Player detail controls">
-          <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="closer-look-rail" aria-label="Previous Player details" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
-          <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="closer-look-rail" aria-label="Next Player details" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
-        </div>
       </div>
     </section>
     <!-- Meet the Player, native horizontal feature rail. -->
@@ -291,13 +297,13 @@
         </div>
       </div>
     </section>
-    <section class="hk-pdp-section hk-pdp-included-band" id="included" aria-labelledby="included-title">
+    <section class="hk-pdp-section hk-pdp-included-band" id="included" aria-labelledby="included-title" data-hk-rail>
       <svg class="hk-pdp-included-edge hk-pdp-included-edge--top" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path d="M0 24C110 42 250 46 395 18C560 2 700 4 926 30C1120 46 1280 42 1440 14V48H0Z"/>
       </svg>
       <div class="hk-wrap">
         <header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="included-title">What’s included?</h2></header>
-        <div class="hk-pdp-included">
+        <div class="hk-pdp-included hk-home-scroll" id="player-included-rail" data-hk-rail-track tabindex="0" role="region" aria-labelledby="included-title">
           <article>
             <img class="hk-pdp-included__device" src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="" loading="lazy" decoding="async">
             <div>
@@ -318,24 +324,28 @@
             <div>
               <h3 class="hk-display">Companion app</h3>
               <p>Grown-ups use the app to set up the Player.</p>
-              <div class="hk-app__downloads hk-pdp-included__downloads">
-                <a class="hk-app__store" href="https://apps.apple.com/in/app/hey-kahani/id6769677703" target="_blank" rel="noopener noreferrer">
-                  <svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M19.8 14.9c0-3.4 2.8-5.1 2.9-5.2-1.6-2.3-4-2.6-4.9-2.7-2.1-.2-4.1 1.2-5.2 1.2-1 0-2.7-1.2-4.4-1.1-2.3 0-4.5 1.4-5.7 3.4C.1 14.6 1.9 20.8 4.2 24c1.1 1.6 2.3 3.4 4.1 3.3 1.6-.1 2.3-1.1 4.4-1.1s2.7 1.1 4.5 1c1.9 0 3-1.6 4.1-3.2 1.3-1.8 1.8-3.6 1.8-3.7-.1 0-3.3-1.3-3.3-5.4ZM16.4 4.8C17.3 3.7 18 2.2 17.8.7c-1.3.1-2.9.9-3.8 2-.8.9-1.6 2.5-1.4 3.9 1.4.1 2.9-.7 3.8-1.8Z"/></svg>
-                  <span><small>Download on the</small><strong>App Store</strong></span>
-                </a>
-                <a class="hk-app__store" href="https://play.google.com/store/apps/details?id=com.heykahani.app" target="_blank" rel="noopener noreferrer">
-                  <svg viewBox="0 0 28 30" aria-hidden="true"><path fill="#63c3fe" d="M2 1 17 15 2 29Z"/><path fill="#2b9863" d="m2 1 19 11-4 3Z"/><path fill="#fecb74" d="m21 12 5 3-5 3-4-3Z"/><path fill="#d3000a" d="m2 29 15-14 4 3Z"/></svg>
-                  <span><small>GET IT ON</small><strong>Google Play</strong></span>
-                </a>
-              </div>
+            </div>
+            <div class="hk-app__downloads hk-pdp-included__downloads">
+              <a class="hk-app__store" href="https://apps.apple.com/in/app/hey-kahani/id6769677703" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M19.8 14.9c0-3.4 2.8-5.1 2.9-5.2-1.6-2.3-4-2.6-4.9-2.7-2.1-.2-4.1 1.2-5.2 1.2-1 0-2.7-1.2-4.4-1.1-2.3 0-4.5 1.4-5.7 3.4C.1 14.6 1.9 20.8 4.2 24c1.1 1.6 2.3 3.4 4.1 3.3 1.6-.1 2.3-1.1 4.4-1.1s2.7 1.1 4.5 1c1.9 0 3-1.6 4.1-3.2 1.3-1.8 1.8-3.6 1.8-3.7-.1 0-3.3-1.3-3.3-5.4ZM16.4 4.8C17.3 3.7 18 2.2 17.8.7c-1.3.1-2.9.9-3.8 2-.8.9-1.6 2.5-1.4 3.9 1.4.1 2.9-.7 3.8-1.8Z"/></svg>
+                <span><small>Download on the</small><strong>App Store</strong></span>
+              </a>
+              <a class="hk-app__store" href="https://play.google.com/store/apps/details?id=com.heykahani.app" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 28 30" aria-hidden="true"><path fill="#63c3fe" d="M2 1 17 15 2 29Z"/><path fill="#2b9863" d="m2 1 19 11-4 3Z"/><path fill="#fecb74" d="m21 12 5 3-5 3-4-3Z"/><path fill="#d3000a" d="m2 29 15-14 4 3Z"/></svg>
+                <span><small>GET IT ON</small><strong>Google Play</strong></span>
+              </a>
             </div>
           </article>
+        </div>
+        <div class="hk-rail-pagination">
+          <div class="hk-carousel-dots" role="group" aria-label="Included item carousel positions" data-hk-rail-dots hidden></div>
         </div>
       </div>
       <svg class="hk-pdp-included-edge hk-pdp-included-edge--bottom" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/>
       </svg>
     </section>
+    <!-- hk:testimonials:start -->
     <section class="hk-section hk-community" id="family-stories" aria-labelledby="family-title" data-hk-rail>
       <div class="hk-wrap hk-community__content">
         <div class="hk-section__intro hk-community__intro">
@@ -421,6 +431,7 @@
         </div>
       </div>
     </section>
+    <!-- hk:testimonials:end -->
     <svg class="hk-waves hk-waves--edge hk-break" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-kesar)" d="M0 24C110 42 250 46 395 18C560 2 700 4 926 30C1120 46 1280 42 1440 14V48H0Z"/></svg>
     <section class="hk-pdp-section hk-pdp-specs" id="specifications" aria-labelledby="spec-title">
       <div class="hk-wrap">
@@ -460,9 +471,7 @@
           <h2 class="hk-display hk-display--lg" id="koels-title">Their first favourite is waiting.</h2>
           <p class="hk-lead">Start exploring South Asian stories. Every Koel needs a Kahani Player.</p>
         </header>
-        <form action="/#koels">
-          <button class="hk-btn hk-btn--primary" type="submit">Explore all Koels</button>
-        </form>
+        <a class="hk-btn hk-btn--primary" href="/#koels">Explore all Koels</a>
       </div>
       <div class="hk-koel-rail hk-pdp-koel-rail hk-home-scroll" id="koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Their first favourite is waiting."><article
           class="hk-koel"
@@ -597,10 +606,6 @@
         </article></div>
       <div class="hk-rail-pagination">
         <div class="hk-carousel-dots" role="group" aria-label="First Koel carousel positions" data-hk-rail-dots hidden></div>
-        <div class="hk-rail-controls" role="group" aria-label="Story controls">
-          <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="koels-rail" aria-label="Previous stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
-          <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="koels-rail" aria-label="Next stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
-        </div>
       </div>
     </section>
     <section class="hk-pdp-section hk-wrap hk-pdp-stories" id="more-koels" aria-labelledby="more-koels-title" data-hk-rail data-preview-src="../assets/audio/preview-sample.mp3" data-preview-demo="true">
@@ -609,9 +614,7 @@
           <h2 class="hk-display hk-display--lg" id="more-koels-title">And then, one more Kahani.</h2>
           <p class="hk-lead">Little adventures for a growing story shelf.</p>
         </header>
-        <form action="/#koels">
-          <button class="hk-btn hk-btn--primary" type="submit">Explore all Koels</button>
-        </form>
+        <a class="hk-btn hk-btn--primary" href="/#koels">Explore all Koels</a>
       </div>
       <div class="hk-koel-rail hk-pdp-koel-rail hk-home-scroll" id="more-koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="And then, one more Kahani."><article
           class="hk-koel"
@@ -746,25 +749,65 @@
         </article></div>
       <div class="hk-rail-pagination">
         <div class="hk-carousel-dots" role="group" aria-label="More Koel carousel positions" data-hk-rail-dots hidden></div>
-        <div class="hk-rail-controls" role="group" aria-label="Story controls">
-          <button class="hk-rail-control" type="button" data-hk-rail-prev aria-controls="more-koels-rail" aria-label="Previous stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
-          <button class="hk-rail-control" type="button" data-hk-rail-next aria-controls="more-koels-rail" aria-label="Next stories" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
-        </div>
       </div>
     </section>
+    <!-- hk:faq:start -->
     <section class="hk-section hk-home-faq" id="faqs" aria-labelledby="faq-title">
       <div class="hk-wrap hk-home-faq__grid">
         <header class="hk-faq__intro"><h2 class="hk-display hk-display--lg" id="faq-title">Small questions. Straight answers.</h2></header>
         <div class="hk-faq hk-reveal" data-hk-faq>
-          <details><summary>What is the Kahani Player?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>A screen-free audio player for South Asian stories. Children choose a circular Koel story disc, place it on top, and listen.</p></div></div></details>
-          <details><summary>What age is Hey Kahani for?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>Hey Kahani is made for kids around ages 3 to 6. Younger children can listen with a grown-up nearby.</p></div></div></details>
-          <details><summary>Do kids need a phone or tablet to listen?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>No. Kids listen on the Player. Grown-ups use the companion app for setup and guidance. For them, the story stays screen free.</p></div></div></details>
-          <details><summary>How do Koels work?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>Each Koel is a round story disc. Children spot the artwork, place it on the Player, and the story begins. Koels need a Kahani Player.</p></div></div></details>
-          <details><summary>What comes with my Player?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>The Kahani Player is the listening device. Included Koels and other box contents depend on the product or bundle you choose. Final pack contents will be listed before purchase.</p></div></div></details>
-          <details><summary>Where can I find the hardware specifications?</summary><div class="hk-faq__panel"><div class="hk-faq__content"><p>The physical controls, carry handle and Player appearance are shown above. Battery, charging, connectivity, dimensions and weight details are still to be confirmed.</p></div></div></details>
+          <details>
+            <summary>What is the Kahani Player?</summary>
+            <div class="hk-faq__panel">
+              <div class="hk-faq__content">
+                <p>A screen-free audio player for South Asian stories. Children choose a circular Koel story disc, place it on top, and listen.</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>What age is Hey Kahani for?</summary>
+            <div class="hk-faq__panel">
+              <div class="hk-faq__content">
+                <p>Hey Kahani is made for kids around ages 3 to 6. Younger children can listen with a grown-up nearby.</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>Do kids need a phone or tablet to listen?</summary>
+            <div class="hk-faq__panel">
+              <div class="hk-faq__content">
+                <p>No. Kids listen on the Player. Grown-ups use the companion app for setup and guidance. For them, the story stays screen free.</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>How do Koels work?</summary>
+            <div class="hk-faq__panel">
+              <div class="hk-faq__content">
+                <p>Each Koel is a round story disc. Children spot the artwork, place it on the Player, and the story begins. Koels need a Kahani Player.</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>What comes with my Player?</summary>
+            <div class="hk-faq__panel">
+              <div class="hk-faq__content">
+                <p>The Kahani Player is the listening device. Included Koels and other box contents depend on the product or bundle you choose. Final pack contents will be listed before purchase.</p>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>Where can I find the hardware specifications?</summary>
+            <div class="hk-faq__panel">
+              <div class="hk-faq__content">
+                <p>The physical controls, carry handle and Player appearance are shown above. Battery, charging, connectivity, dimensions and weight details are still to be confirmed.</p>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
     </section>
+    <!-- hk:faq:end -->
   </main>
   <!-- hk:footer:start -->
   <svg class="hk-waves hk-break" style="--hk-wave-from: var(--hk-canvas); --hk-wave-to: var(--hk-sindoor)" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="var(--hk-wave-from)" d="M0 0H1440V14C1253 40 1114 40 926 23C691 2 587 4 395 24C203 44 102 40 0 22Z"/><path fill="var(--hk-sky)" d="M0 22C102 40 203 44 395 24C587 4 691 2 926 23C1114 40 1253 40 1440 14L1440 28C1253 54 1114 54 926 37C691 16 587 18 395 38C203 58 102 54 0 36Z"/><path fill="var(--hk-mango)" d="M0 36C102 54 203 58 395 38C587 18 691 16 926 37C1114 54 1253 54 1440 28L1440 42C1253 68 1114 68 926 51C691 30 587 32 395 52C203 72 102 68 0 50Z"/><path fill="var(--hk-marigold)" d="M0 50C102 68 203 72 395 52C587 32 691 30 926 51C1114 68 1253 68 1440 42L1440 56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/><path fill="var(--hk-wave-to)" d="M0 90H1440V56C1253 82 1114 82 926 65C691 44 587 46 395 66C203 86 102 82 0 64Z"/></svg>
@@ -790,12 +833,12 @@
             <h3>Start here</h3>
             <a href="/#player">The Player</a>
             <a href="/#how-it-works">How it works</a>
-            <a href="/products/founders-bundle">Founder's Bundle</a>
+            <a class="hk-deferred" href="/products/founders-bundle" hidden>Founder's Bundle</a>
           </div>
           <div class="hk-footer__col">
             <h3>Explore stories</h3>
             <a href="/#koels">Shop Koels</a>
-            <a href="/koels-listing">All stories</a>
+            <a href="https://www.heykahani.com/koels-listing">All stories</a>
             <a href="/#why">Why Hey Kahani</a>
           </div>
           <div class="hk-footer__col">
@@ -807,7 +850,7 @@
           <div class="hk-footer__col">
             <h3>Help</h3>
             <a href="/#faqs">Support</a>
-            <a href="/kahani-app">Companion app</a>
+            <a href="https://www.heykahani.com/kahani-app">Companion app</a>
             <a href="#top">Back to top</a>
           </div>
         </nav>
@@ -816,13 +859,14 @@
       <div class="hk-footer__base">
         <p class="hk-footer__legal">© <span id="year">2026</span> Hey Kahani. All rights reserved.</p>
         <div class="hk-footer__legal-links">
-          <a href="/privacy-policy">Privacy</a>
-          <a href="/terms-of-service">Terms</a>
+          <a href="https://www.heykahani.com/privacy-policy">Privacy</a>
+          <a href="https://www.heykahani.com/terms-of-service">Terms</a>
         </div>
       </div>
     </div>
   </footer>
   <!-- hk:footer:end -->
+  <!-- hk:dialogs:start -->
   <dialog class="hk-dialog" id="koel-dialog" aria-labelledby="koel-dialog-title">
     <div class="hk-dialog__body">
       <div class="hk-dialog__head">
@@ -896,8 +940,7 @@
     </svg>
     <span data-hk-snackbar-message></span>
   </div>
-
-
+  <!-- hk:dialogs:end -->
   <dialog class="hk-dialog hk-pdp-zoom" id="player-zoom" aria-label="Enlarged product image">
     <img src="../assets/images/product/player-cutout.png" width="800" height="800" alt="" loading="lazy" decoding="async">
     <button class="hk-icon-btn hk-pdp-zoom__close" type="button" data-hk-close-dialog aria-label="Close enlarged image">×</button>
@@ -906,9 +949,9 @@
     document.getElementById("year").textContent = String(new Date().getFullYear());
   </script>
   <script src="../assets/js/inline-preview.js" defer></script>
-  <script src="../assets/js/main.js?v=20261121" defer></script>
+  <script src="../assets/js/main.js?v=player-mobile-20261122" defer></script>
   <script src="../assets/js/homepage-layout.js?v=carousel-dots-20261121" defer></script>
-  <script src="../assets/js/player-page.js?v=pdp-purchase-offer-20261121" defer></script>
+  <script src="../assets/js/player-page.js?v=player-mobile-20261122" defer></script>
   <script type="module">
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
       import('../.tmp/agentation.js').catch((error) => console.warn('Agentation preview unavailable', error));
