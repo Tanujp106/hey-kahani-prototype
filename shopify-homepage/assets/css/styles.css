@@ -3206,7 +3206,7 @@ input {
   }
 }
 
-/* Family stories — staggered keepsake windows */
+/* Family stories */
 .hk-community {
   position: relative;
   isolation: isolate;
@@ -3239,45 +3239,44 @@ input {
 
 .hk-quotes {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: start;
-  gap: clamp(18px, 2.5vw, 32px);
-  row-gap: var(--hk-space-lg);
+  grid-auto-flow: column;
+  grid-auto-columns: min(76vw, 320px);
+  gap: var(--hk-space-md);
   max-width: 1000px;
-  margin: 104px auto 0;
+  margin: 48px auto 0;
+  padding: 12px var(--hk-gutter) 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--hk-gutter);
+  scrollbar-width: none;
 }
+
+.hk-quotes::-webkit-scrollbar { display: none; }
+.hk-quotes.is-ticking { scroll-snap-type: none; scroll-behavior: auto; }
+.hk-quotes:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: -2px; }
+
+.hk-quotes__toggle {
+  position: absolute;
+  inset: auto var(--hk-gutter) var(--hk-space-md) auto;
+  z-index: 2;
+}
+
+.hk-quotes__toggle[hidden] { display: none; }
+.hk-quotes__toggle:not(:focus) { clip-path: inset(50%); }
 
 .hk-quote-slot {
   position: relative;
-  grid-column: span 2;
   min-width: 0;
-}
-
-/* The quote track is focusable so the phone rail can be scrolled from a
-   keyboard; give it the same ring the other rails use. */
-.hk-quotes:focus-visible { outline: 2px solid var(--hk-gulab); outline-offset: 5px; }
-
-.hk-quote-slot:nth-child(2) {
-  margin-top: -44px;
-}
-
-.hk-quote-slot:nth-child(3),
-.hk-quote-slot:nth-child(5) {
-  margin-top: 18px;
-}
-
-.hk-quote-slot:nth-child(4) {
-  grid-column: 2 / span 2;
-}
-
-.hk-quote-slot:nth-child(5) {
-  grid-column: 4 / span 2;
+  scroll-snap-align: start;
 }
 
 .hk-quote {
   --hk-quote-tilt: -3deg;
   --hk-quote-surface: var(--hk-kesar);
   --hk-quote-accent: var(--hk-sindoor);
+  height: 100%;
   padding: 0;
   border: 0;
   /* Content-sized surfaces echo the soft-postcard contour without clipping copy. */
@@ -3288,26 +3287,26 @@ input {
   transition: transform 220ms var(--hk-ease), box-shadow 220ms var(--hk-ease);
 }
 
-.hk-quote-slot:nth-child(2) .hk-quote {
+.hk-quote-slot--lavender .hk-quote {
   border-radius: var(--hk-radius-card);
   --hk-quote-tilt: 2deg;
   --hk-quote-surface: var(--hk-lavender);
   --hk-quote-accent: var(--hk-story-ink);
 }
 
-.hk-quote-slot:nth-child(3) .hk-quote {
+.hk-quote-slot--mango .hk-quote {
   --hk-quote-tilt: -2deg;
   --hk-quote-surface: var(--hk-mango);
   --hk-quote-accent: var(--hk-temple);
 }
 
-.hk-quote-slot:nth-child(4) .hk-quote {
+.hk-quote-slot--husk .hk-quote {
   --hk-quote-tilt: 1.5deg;
   --hk-quote-surface: var(--hk-husk);
   --hk-quote-accent: var(--hk-temple);
 }
 
-.hk-quote-slot:nth-child(5) .hk-quote {
+.hk-quote-slot--sky .hk-quote {
   border-radius: var(--hk-radius-card);
   --hk-quote-tilt: -1.5deg;
   --hk-quote-surface: var(--hk-sky);
@@ -3418,46 +3417,20 @@ input {
     padding-inline: var(--hk-space-lg);
   }
 
-  /* Five stacked cards made the section taller than the rest of the page put
-     together. On a phone the quotes swipe instead — user direction, November 21, 2026. */
   .hk-quotes {
-    grid-auto-flow: column;
-    grid-template-columns: none;
-    grid-auto-columns: min(76vw, 320px);
-    align-items: stretch;
     max-width: none;
-    gap: var(--hk-space-md);
-    margin: 48px 0 0;
     margin-inline: calc(-1 * var(--hk-gutter));
-    padding: 12px var(--hk-gutter) 18px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--hk-gutter);
-    scrollbar-width: none;
   }
-
-  .hk-quotes::-webkit-scrollbar { display: none; }
-
-  /* Equal-height cards so the snap does not land on a ragged edge. */
-  .hk-quote-slot { height: 100%; scroll-snap-align: start; }
-  .hk-quotes .hk-quote { height: 100%; }
 
   .hk-quote {
     --hk-quote-tilt: -1.5deg;
   }
 
-  .hk-quote-slot:nth-child(n) {
-    grid-column: auto;
-    margin-top: 0;
-  }
-
-  .hk-quote-slot:nth-child(2) .hk-quote {
+  .hk-quote-slot--lavender .hk-quote {
     --hk-quote-tilt: 1.5deg;
   }
 
-  .hk-quote-slot:nth-child(3) .hk-quote {
+  .hk-quote-slot--mango .hk-quote {
     --hk-quote-tilt: -1deg;
   }
 

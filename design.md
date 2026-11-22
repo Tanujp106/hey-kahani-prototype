@@ -311,8 +311,10 @@ What this means in practice:
 - **A list of short facts goes two to a row.** The specifications grid uses
   two columns on phones, with each icon above its label.
 
-The testimonials use the same swipe and keyboard scrolling on both pages,
-with no visible dots or arrows. The Player testimonial intro uses 14px text.
+The testimonials run as one continuous ticker on both pages. The ticker yields
+to touch and resumes automatically once the gesture and any scrolling end. The
+keyboard pause control appears on focus. Reduced motion uses the same row with
+manual scrolling. The Player testimonial intro uses 14px text.
 The Player FAQ has an extra side inset on phones.
 
 ### Chips
@@ -493,12 +495,14 @@ the highlights have 24px of padding above the icons.
 The gallery crossfades to the next decoded image. The zoom opens from the
 selected image into the dialog and uses opacity only with reduced motion.
 The gallery has no caption, and the finish line is not shown. The
-three close-up cards frame the handle, playback buttons and speaker base in
-separate landscape crops, with captions on Kesar beneath each image. The four
-benefits use a two-column grid on larger screens and snap to each card on
-phones. Each photo fills its card. A linear colour fade and
-a progressive blur rise from the
-bottom, so the copy does not sit on a solid block. The “Meet
+three close-up cards use separate views of the carry handle, playback buttons
+and speaker base. The handle comes from the supplied rear three-quarter render
+(`1-1.1374.png`). The controls and speaker come from the existing front and
+angled production-colour concept renders. A linear Kesar fade and progressive
+blur connect the bottom of each image to its caption. The four benefits use a
+two-column grid on larger screens and snap to each card on phones. Each benefit
+photo fills its card, with a linear colour fade and progressive blur behind the
+copy. The “Meet
 their new story companion.” band and the navigation that points at it
 are hidden for now. What’s included has a light Sky background and three
 equal square images with left-aligned captions beneath them on wide screens.
@@ -509,6 +513,7 @@ is a full-width Kesar section with the homepage wave on both edges, a
 centered heading and Gulab icons on Kesar tiles. The icons settle once
 as they enter view and lift slightly on hover with motion enabled.
 Both Koel carousels use a dot pager and a primary Explore all Koels button.
+On phones, the button follows the cards and pager in each section.
 The Player FAQ uses the
 homepage list and the same centered title. It has no card. The Player footer uses the homepage
 wave, signup, and links.
@@ -566,11 +571,13 @@ the asset drawing system, product facts or content approvals.
   the photo, on the card colour. The story rail is a carousel.
   The story rail uses the shared bottom-right arrows. The dot pager marks
   the current scroll position in Gulab. Same day: that pager is half the size it was drawn
-  at, on the homepage and the Player page. Each target is 22px and each mark
-  is 6px, inside the same Husk pill.
-  On a narrow screen the story cards stack and stick under the navbar and
-  their pager is hidden. The featured Koels scroll horizontally with the
-  next card partly visible. The How it works band keeps a short top and bottom padding.
+  at, on the homepage and the Player page. The shared pager has 22px targets
+  and 6px markers inside a Husk pill. How it works uses 4px markers without
+  a pill, with 24px targets. On a narrow screen the story cards stack under
+  the navbar, each 12px lower than the card before it. Reduced motion keeps
+  the cards in normal flow. Featured Koels snap one card at a time with the
+  next card partly visible. The featured rail and collection filters hide their
+  scrollbars. The How it works band keeps a short top and bottom padding.
 - The Player is offered before the Koel catalogue. The approved $129 USD price
   remains bound to its existing product snapshot. Koels explicitly require the
   Player; no first-purchase bundle contents, bundle price, additional device
@@ -619,8 +626,9 @@ The One Player strip is a Sindoor bar with a Sindoor wave on the top and bottom.
 stays inside the content column so the first card is not cut off on the left.
 The heading and lead are removed. The first card has no step list, and each card link
 is a primary button. November 18, 2026: each story card was 58% of the viewport wide, up to 1040px, at a 1.7 ratio. November 21, 2026 supersedes that ratio: the fixed short card squeezed the copy. Photos still fill a square on the left while the rail is wide. The cards use four distinct grounds in order: light Sky, Mango, light Parrot and Lavender. The family-life section uses 72px of vertical padding.
-The Player section’s bottom edge uses the colour wave. The top edge is a Kesar wave,
-with 72px of padding in the Player content wrapper. The red Koel catalogue wraps in rows and
+The Player section’s bottom edge uses the colour wave. On phones, the content
+ends beside that wave without extra bottom padding. The top edge uses a Kesar wave.
+The red Koel catalogue wraps in rows and
 has no eyebrow above the heading. November 21, 2026: four compact cards a row
 down to 800px, then two. The one-across phone step is retired because those
 cards read too large. Filtering keeps the full catalogue height, so the waves

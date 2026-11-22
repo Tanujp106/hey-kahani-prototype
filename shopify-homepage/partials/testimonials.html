@@ -1,9 +1,10 @@
-    <section class="hk-section hk-community" id="{{slot:testimonials-id}}" aria-labelledby="{{slot:testimonials-prefix}}-title" data-hk-rail>
+    <section class="hk-section hk-community" id="{{slot:testimonials-id}}" aria-labelledby="{{slot:testimonials-prefix}}-title" data-hk-rail data-hk-quote-ticker>
       <div class="hk-wrap hk-community__content">
         <div class="hk-section__intro hk-community__intro{{slot:testimonials-reveal}}">
           <h2 class="hk-display hk-display--lg" id="{{slot:testimonials-prefix}}-title">Stories worth sharing.</h2>
           <p class="hk-lead">Parents tell us bedtime got softer, car rides got calmer, and culture finally felt close enough to hold.</p>
         </div>
+        <button class="hk-btn hk-btn--secondary hk-quotes__toggle" type="button" aria-controls="{{slot:testimonials-prefix}}-quotes" data-hk-quote-toggle hidden>Pause stories</button>
         <div class="hk-quotes{{slot:testimonials-reveal}}" id="{{slot:testimonials-prefix}}-quotes" data-hk-rail-track tabindex="0" role="region" aria-label="Stories worth sharing">
           <div class="hk-quote-slot">
             <article class="hk-quote">
@@ -20,7 +21,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--lavender">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -35,7 +36,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--mango">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -50,7 +51,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--husk">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -65,7 +66,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--sky">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">

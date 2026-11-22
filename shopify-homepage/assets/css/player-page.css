@@ -131,23 +131,28 @@
   border-radius: var(--hk-radius-lg);
   background: var(--hk-kesar);
 }
-.hk-pdp-detail__media {
-  position: relative;
-  aspect-ratio: 8 / 5;
-  overflow: hidden;
-}
-.hk-pdp-detail__media img {
-  position: absolute;
-  inset: 0;
+.hk-pdp-detail > img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center var(--hk-detail-focus);
+  height: auto;
 }
-.hk-pdp-detail--handle { --hk-detail-focus: top; }
-.hk-pdp-detail--controls { --hk-detail-focus: 57%; }
-.hk-pdp-detail--speaker { --hk-detail-focus: bottom; }
-.hk-pdp-detail figcaption { padding: var(--hk-space-md) clamp(16px, 2vw, 26px) var(--hk-space-lg); }
+.hk-pdp-detail figcaption {
+  position: relative;
+  padding: var(--hk-space-md) clamp(16px, 2vw, 26px) var(--hk-space-lg);
+}
+.hk-pdp-detail figcaption::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 100%;
+  width: 100%;
+  aspect-ratio: 20 / 3;
+  background: linear-gradient(to bottom, transparent, var(--hk-kesar));
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 90%);
+  mask-image: linear-gradient(to bottom, transparent, #000 90%);
+  pointer-events: none;
+}
 .hk-pdp-detail h3 { font-size: var(--hk-text-subhead); }
 .hk-pdp-detail p { margin: var(--hk-space-xs) 0 0; }
 
@@ -211,6 +216,7 @@
 .hk-pdp-specs__icon .hk-reveal { display: block; opacity: 1; transform: none; transition: none; }
 .hk-pdp-specs dd { margin: 0; font-size: var(--hk-text-body-sm); line-height: 1.45; color: var(--hk-muted); }
 .hk-pdp-koel-rail { --hk-rail-columns: 4; --hk-rail-gap: var(--hk-space-lg); scrollbar-width: none; }
+.hk-pdp-stories__browse--below { display: none; }
 #koels.hk-pdp-stories { margin-block-start: var(--hk-space-lg); }
 .hk-pdp-zoom {
   width: max-content;
@@ -333,6 +339,8 @@
   }
   #koels.hk-pdp-stories { margin-block-start: 0; }
   .hk-pdp-stories .hk-home-heading { gap: var(--hk-space-sm); margin-bottom: var(--hk-space-md); }
+  .hk-pdp-stories__browse--heading { display: none; }
+  .hk-pdp-stories__browse--below { display: inline-flex; margin-block-start: var(--hk-space-md); }
   .hk-pdp-koel-rail { --hk-rail-columns: 2; --hk-rail-gap: var(--hk-space-md); --hk-rail-min: 160px; }
 }
 @media (min-width: 560px) and (max-width: 699px) {

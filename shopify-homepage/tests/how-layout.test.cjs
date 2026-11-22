@@ -153,10 +153,120 @@ test('product and feature rails put pagination below the track and use arrows wh
   assert.equal((closerLook.match(/<figure\b/g) || []).length, 3);
   for (const [page, id] of [[html, 'community'], [player, 'family-stories']]) {
     const section = page.match(new RegExp(`<section[^>]*\\bid="${id}"[^>]*>[\\s\\S]*?<\\/section>`))[0];
+    assert.match(section, /data-hk-quote-ticker/);
+    assert.match(section, /data-hk-quote-toggle hidden/);
     assert.match(section, /data-hk-rail-track tabindex="0"/);
     assert.doesNotMatch(section, /data-hk-rail-(?:prev|next|dots)|hk-rail-pagination/);
   }
   assert.equal((player.match(/class="hk-carousel-dot"[^>]*\bdata-hk-gallery-dot/g) || []).length, 5);
+});
+
+test('the shared quote ticker wraps one full set and supports pausing and reduced motion', () => {
+  const reduced = { matches: false, addEventListener(_, callback) { this.change = callback; } };
+  const cards = [0, 300, 600].map(left => ({
+    getBoundingClientRect: () => ({ left }),
+    cloneNode: () => ({
+      getBoundingClientRect: () => ({ left: left + 900 }),
+      setAttribute(name, value) { this[name] = value; },
+      remove() { track.children.splice(track.children.indexOf(this), 1); },
+    }),
+  }));
+  const classes = new Set();
+  const target = () => ({ events: {}, addEventListener(name, callback) { this.events[name] = callback; } });
+  const track = Object.assign(target(), {
+    children: [...cards], scrollLeft: 0,
+    matches: () => true,
+    append(...copies) { this.children.push(...copies); },
+    classList: { add: value => classes.add(value), remove: value => classes.delete(value) },
+  });
+  const toggle = Object.assign(target(), { hidden: true });
+  const section = { querySelector: selector => selector === '[data-hk-quote-toggle]' ? toggle : track };
+  const frames = new Map();
+  const timers = new Map();
+  let nextFrame = 0;
+  let nextTimer = 0;
+  let setVisible;
+  vm.runInNewContext(source, {
+    document: { querySelectorAll: selector => selector === '[data-hk-quote-ticker]' ? [section] : [] },
+    window: {
+      matchMedia: query => query.includes('reduced-motion') ? reduced : { matches: false },
+      addEventListener() {},
+      requestAnimationFrame(callback) { frames.set(++nextFrame, callback); return nextFrame; },
+      cancelAnimationFrame(id) { frames.delete(id); },
+      setTimeout(callback) { timers.set(++nextTimer, callback); return nextTimer; },
+      clearTimeout(id) { timers.delete(id); },
+      IntersectionObserver: class {
+        constructor(callback) { setVisible = isIntersecting => callback([{ isIntersecting }]); }
+        observe() {}
+      },
+    },
+  });
+  const frame = time => {
+    const [[id, callback]] = frames;
+    frames.delete(id);
+    callback(time);
+  };
+  const finishIdleDelay = () => {
+    assert.equal(timers.size, 1);
+    const [[id, callback]] = timers;
+    timers.delete(id);
+    callback();
+  };
+
+  assert.equal(track.children.length, 6);
+  assert.ok(track.children.slice(3).every(copy => copy.inert && copy['aria-hidden'] === 'true'));
+  assert.equal(toggle.hidden, false);
+  assert.ok(classes.has('is-ticking'));
+  assert.equal(frames.size, 0, 'offscreen cards do not animate');
+  setVisible(true);
+  track.scrollLeft = 899;
+  frame(0);
+  frame(50);
+  assert.ok(track.scrollLeft > 0 && track.scrollLeft < 4, 'wrap includes the first copy’s trailing gap');
+  toggle.events.click();
+  assert.equal(frames.size, 0);
+  assert.equal(toggle.textContent, 'Resume stories');
+  toggle.events.click();
+  assert.equal(frames.size, 1);
+  track.events.focus();
+  assert.equal(frames.size, 0);
+  track.events.blur();
+  assert.equal(frames.size, 1);
+  const finger = { touches: [{ clientX: 100, clientY: 30 }] };
+  const release = { targetTouches: [] };
+  track.events.touchstart(finger);
+  track.events.touchend?.(release);
+  track.events.click?.();
+  assert.equal(toggle.textContent, 'Pause stories', 'a tap must not toggle the persistent pause');
+  finishIdleDelay();
+  assert.equal(frames.size, 1, 'a tap resumes playback automatically');
+
+  track.events.touchstart(finger);
+  assert.equal(frames.size, 0, 'the ticker yields to the gesture');
+  track.events.touchend(release);
+  const releaseTimer = nextTimer;
+  track.scrollLeft = 620;
+  track.events.scroll();
+  assert.ok(!timers.has(releaseTimer), 'momentum scrolling postpones the restart');
+  assert.equal(frames.size, 0);
+  finishIdleDelay();
+  frame(100);
+  assert.equal(track.scrollLeft, 620, 'resuming preserves the swiped position');
+  frame(150);
+  assert.ok(track.scrollLeft > 620);
+
+  toggle.events.click();
+  track.events.touchstart(finger);
+  track.events.touchcancel(release);
+  finishIdleDelay();
+  assert.equal(frames.size, 0, 'touch handling does not override an explicit pause');
+  toggle.events.click();
+  reduced.matches = true;
+  reduced.change();
+  assert.equal(frames.size, 0);
+  assert.equal(track.children.length, 3);
+  assert.equal(toggle.hidden, true);
+  assert.ok(!classes.has('is-ticking'));
 });
 
 test('the dot pager tracks reachable positions and updates after scrolling and resizing', () => {

@@ -8,9 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=homepage-mobile-20261122">
-  <link rel="stylesheet" href="../assets/css/homepage-layout.css?v=homepage-mobile-20261122">
-  <link rel="stylesheet" href="../assets/css/player-page.css?v=homepage-mobile-20261122">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=storefront-mobile-20261122">
+  <link rel="stylesheet" href="../assets/css/homepage-layout.css?v=storefront-mobile-20261122">
+  <link rel="stylesheet" href="../assets/css/player-page.css?v=storefront-mobile-20261122">
   <noscript><style>
     /* The FAQ panel is collapsed by script; keep open answers readable without it. */
     .hk-faq details[open] .hk-faq__panel { height: auto; }
@@ -256,28 +256,22 @@
     <section class="hk-pdp-section hk-wrap" id="closer-look" aria-labelledby="closer-title">
       <header class="hk-pdp-heading"><h2 class="hk-display hk-display--lg" id="closer-title">Take a closer look.</h2></header>
       <div class="hk-pdp-details">
-        <figure class="hk-pdp-detail hk-pdp-detail--handle">
-          <div class="hk-pdp-detail__media">
-            <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="Cream carry handle above the circular Koel plate" loading="lazy" decoding="async">
-          </div>
+        <figure class="hk-pdp-detail">
+          <img src="../assets/images/product/player-detail-handle.webp" width="960" height="600" alt="Angled view of the arched carry handle above the circular Koel plate" loading="lazy" decoding="async">
           <figcaption>
             <h3 class="hk-display">Ready for little hands.</h3>
             <p>A carry handle, right where they need it.</p>
           </figcaption>
         </figure>
-        <figure class="hk-pdp-detail hk-pdp-detail--controls">
-          <div class="hk-pdp-detail__media">
-            <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="Five physical buttons for volume and playback" loading="lazy" decoding="async">
-          </div>
+        <figure class="hk-pdp-detail">
+          <img src="../assets/images/product/player-detail-controls.webp" width="960" height="600" alt="Straight-on view of the five physical volume and playback buttons" loading="lazy" decoding="async">
           <figcaption>
             <h3 class="hk-display">A little more in their control.</h3>
             <p>Play, pause, skip and adjust the volume.</p>
           </figcaption>
         </figure>
-        <figure class="hk-pdp-detail hk-pdp-detail--speaker">
-          <div class="hk-pdp-detail__media">
-            <img src="../assets/images/product/player-cutout.png" width="573" height="1134" alt="Gulab Red woven speaker band above the wood-toned base" loading="lazy" decoding="async">
-          </div>
+        <figure class="hk-pdp-detail">
+          <img src="../assets/images/product/player-detail-speaker.webp" width="960" height="600" alt="Close-up of the Gulab Red woven speaker band and rounded wood-toned base" loading="lazy" decoding="async">
           <figcaption>
             <h3 class="hk-display">A familiar voice. A new world.</h3>
             <p>A Gulab red speaker band and warm wood base.</p>
@@ -346,12 +340,13 @@
       </svg>
     </section>
     <!-- hk:testimonials:start -->
-    <section class="hk-section hk-community" id="family-stories" aria-labelledby="family-title" data-hk-rail>
+    <section class="hk-section hk-community" id="family-stories" aria-labelledby="family-title" data-hk-rail data-hk-quote-ticker>
       <div class="hk-wrap hk-community__content">
         <div class="hk-section__intro hk-community__intro">
           <h2 class="hk-display hk-display--lg" id="family-title">Stories worth sharing.</h2>
           <p class="hk-lead">Parents tell us bedtime got softer, car rides got calmer, and culture finally felt close enough to hold.</p>
         </div>
+        <button class="hk-btn hk-btn--secondary hk-quotes__toggle" type="button" aria-controls="family-quotes" data-hk-quote-toggle hidden>Pause stories</button>
         <div class="hk-quotes" id="family-quotes" data-hk-rail-track tabindex="0" role="region" aria-label="Stories worth sharing">
           <div class="hk-quote-slot">
             <article class="hk-quote">
@@ -368,7 +363,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--lavender">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -383,7 +378,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--mango">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -398,7 +393,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--husk">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -413,7 +408,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--sky">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -471,7 +466,7 @@
           <h2 class="hk-display hk-display--lg" id="koels-title">Their first favourite is waiting.</h2>
           <p class="hk-lead">Start exploring South Asian stories. Every Koel needs a Kahani Player.</p>
         </header>
-        <a class="hk-btn hk-btn--primary" href="/#koels">Explore all Koels</a>
+        <a class="hk-btn hk-btn--primary hk-pdp-stories__browse--heading" href="/#koels">Explore all Koels</a>
       </div>
       <div class="hk-koel-rail hk-pdp-koel-rail hk-home-scroll" id="koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="Their first favourite is waiting."><article
           class="hk-koel"
@@ -607,6 +602,7 @@
       <div class="hk-rail-pagination">
         <div class="hk-carousel-dots" role="group" aria-label="First Koel carousel positions" data-hk-rail-dots hidden></div>
       </div>
+      <a class="hk-btn hk-btn--primary hk-pdp-stories__browse--below" href="/#koels">Explore all Koels</a>
     </section>
     <section class="hk-pdp-section hk-wrap hk-pdp-stories" id="more-koels" aria-labelledby="more-koels-title" data-hk-rail data-preview-src="../assets/audio/preview-sample.mp3" data-preview-demo="true">
       <div class="hk-home-heading">
@@ -614,7 +610,7 @@
           <h2 class="hk-display hk-display--lg" id="more-koels-title">And then, one more Kahani.</h2>
           <p class="hk-lead">Little adventures for a growing story shelf.</p>
         </header>
-        <a class="hk-btn hk-btn--primary" href="/#koels">Explore all Koels</a>
+        <a class="hk-btn hk-btn--primary hk-pdp-stories__browse--heading" href="/#koels">Explore all Koels</a>
       </div>
       <div class="hk-koel-rail hk-pdp-koel-rail hk-home-scroll" id="more-koels-rail" data-hk-rail-track tabindex="0" role="region" aria-label="And then, one more Kahani."><article
           class="hk-koel"
@@ -750,6 +746,7 @@
       <div class="hk-rail-pagination">
         <div class="hk-carousel-dots" role="group" aria-label="More Koel carousel positions" data-hk-rail-dots hidden></div>
       </div>
+      <a class="hk-btn hk-btn--primary hk-pdp-stories__browse--below" href="/#koels">Explore all Koels</a>
     </section>
     <!-- hk:faq:start -->
     <section class="hk-section hk-home-faq" id="faqs" aria-labelledby="faq-title">
@@ -950,7 +947,7 @@
   </script>
   <script src="../assets/js/inline-preview.js" defer></script>
   <script src="../assets/js/main.js?v=player-mobile-20261122" defer></script>
-  <script src="../assets/js/homepage-layout.js?v=carousel-dots-20261121" defer></script>
+  <script src="../assets/js/homepage-layout.js?v=quote-ticker-resume-20261122" defer></script>
   <script src="../assets/js/player-page.js?v=player-mobile-20261122" defer></script>
   <script type="module">
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {

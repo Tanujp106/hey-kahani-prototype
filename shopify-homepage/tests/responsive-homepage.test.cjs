@@ -431,6 +431,38 @@ test('card rail dots and right-aligned arrow targets fit at every viewport', () 
   });
 });
 
+test('mobile homepage rails keep their compact controls and spacing', () => {
+  const viewport = { width: 393, height: 852, pageWidth: 393 };
+  const featured = series(viewport);
+  assert.equal(featured['scrollbar-width'], 'none');
+  assert.equal(featured['scroll-snap-type'], 'x mandatory');
+  assert.equal(probe('.hk-koel-rail .hk-koel', '.hk-series-rail > .hk-koel')(viewport)['scroll-snap-stop'], 'always');
+
+  const filters = probe('.hk-discovery-filters')(viewport);
+  assert.equal(filters['overflow-x'], 'auto');
+  assert.equal(filters['scrollbar-width'], 'none');
+  const dots = probe('.hk-carousel-dots:not([hidden])', '#why .hk-carousel-dots:not([hidden])')(viewport);
+  assert.equal(dots.background, 'transparent');
+  const dot = probe('.hk-carousel-dot::before', '#why .hk-carousel-dot::before')(viewport);
+  assert.equal(dot.width, '4px');
+  assert.equal(dot.height, '4px');
+
+  const offsets = [1, 2, 3, 4].map(index => {
+    const card = probe('.hk-feature', '.hk-feature-rail > .hk-feature', `.hk-feature-rail > .hk-feature:nth-child(${index})`)(viewport);
+    assert.equal(card.position, 'sticky');
+    assert.match(card.top, /--hk-feature-stack-offset/);
+    return card['--hk-feature-stack-offset'] ?? '0px';
+  });
+  assert.deepEqual(offsets, ['0px', '12px', '24px', '36px']);
+
+  const playerSection = probe('.hk-player.hk-section', '.hk-homepage .hk-player.hk-section');
+  const playerWrap = probe('.hk-player > .hk-wrap', '.hk-homepage .hk-player > .hk-wrap');
+  for (const player of [playerSection, playerWrap]) {
+    assert.equal(player(viewport)['padding-block-end'], '0');
+    assert.equal(player({ ...viewport, width: 1024 })['padding-block-end'], undefined);
+  }
+});
+
 const quoteGrid = probe('.hk-quotes', '.hk-community .hk-quotes', '.hk-community__content .hk-quotes');
 const quoteBody = probe('.hk-quote__body', '.hk-community .hk-quote__body');
 const quoteHeader = probe('.hk-quote__header', '.hk-community .hk-quote__header');
@@ -442,22 +474,18 @@ const subscribeButton = probe('.hk-btn', '.hk-footer .hk-newsletter .hk-btn--pri
 test('testimonials and the footer signup retain space for their content', () => {
   forEachWidth((viewport, content) => {
     const grid = quoteGrid(viewport);
-    // On a phone the quotes are a swipe rail that bleeds to the viewport edges,
-    // so a card is one rail track rather than a share of the row.
-    const rail = grid['grid-auto-flow'] === 'column';
-    const quoteWidth = rail ? viewport.pageWidth : Math.min(content, length(grid['max-width'], viewport, content));
+    if (grid['grid-auto-flow'] !== 'column') return 'the testimonial cards do not form a single row';
+    const fullBleed = grid['max-width'] === 'none';
+    const quoteWidth = fullBleed ? viewport.pageWidth : Math.min(content, length(grid['max-width'], viewport, content));
     const quoteInner = quoteWidth - inlinePadding(grid, viewport, quoteWidth);
-    let cardWidth;
-    if (rail) {
-      cardWidth = length(grid['grid-auto-columns'], viewport, quoteInner);
-      if (cardWidth > quoteInner + 0.01) return `a quote card is ${Math.ceil(cardWidth)}px in a ${Math.floor(quoteInner)}px rail`;
-      const gap = columnGap(grid, viewport, quoteInner);
+    const cardWidth = length(grid['grid-auto-columns'], viewport, quoteInner);
+    const gap = columnGap(grid, viewport, quoteInner);
+    if (cardWidth > quoteInner + 0.01) return `a quote card is ${Math.ceil(cardWidth)}px in a ${Math.floor(quoteInner)}px rail`;
+    if (5 * (cardWidth + gap) < quoteWidth) return 'one set of five testimonials cannot fill the ticker';
+    if (fullBleed) {
       const visible = quoteWidth - inlinePadding(grid, viewport, quoteWidth) / 2;
       const nextStart = Math.floor((visible + gap) / (cardWidth + gap)) * (cardWidth + gap);
       if (visible - nextStart < 16) return 'the testimonial rail gives less than 16px to the next card';
-    } else {
-      const slots = fractionalTracks(grid, viewport, quoteInner);
-      cardWidth = slots.length === 1 ? slots[0] : slots[0] + slots[1] + columnGap(grid, viewport, quoteInner);
     }
     const cardTextWidth = cardWidth - inlinePadding(quoteBody(viewport), viewport, cardWidth) - 2;
     const graphic = length(quoteGraphic(viewport).width, viewport, cardTextWidth);

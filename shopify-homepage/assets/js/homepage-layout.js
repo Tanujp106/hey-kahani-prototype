@@ -29,6 +29,7 @@
     const motion = () => (reducedMotion.matches ? 'auto' : 'smooth');
     const maximumScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
     const syncControls = () => {
+      if (!previous && !next && !dots.length) return;
       const maximum = maximumScroll();
       if (previous) {
         previous.hidden = maximum < 2;
@@ -149,6 +150,125 @@
     if ('ResizeObserver' in window) new window.ResizeObserver(updatePagination).observe(track);
     window.addEventListener('resize', updatePagination);
     updatePagination();
+  });
+
+  document.querySelectorAll('[data-hk-quote-ticker]').forEach((section) => {
+    const track = section.querySelector('[data-hk-rail-track]');
+    const toggle = section.querySelector('[data-hk-quote-toggle]');
+    if (!track || !toggle) return;
+    const cards = Array.from(track.children);
+    if (cards.length < 2) return;
+
+    const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const speed = 42; // Pixels per second at every card width.
+    let copies = [];
+    let distance = 0;
+    let frame = 0;
+    let lastTime;
+    let position;
+    let visible = !('IntersectionObserver' in window);
+    let hovered = false;
+    let focused = false;
+    let paused = false;
+    let touching = false;
+    let resumeTimer = 0;
+
+    const tick = (time) => {
+      if (lastTime === undefined) position = Math.max(track.scrollLeft, 0) % distance;
+      else position = (position + Math.min(time - lastTime, 50) * speed / 1000) % distance;
+      track.scrollLeft = position;
+      lastTime = time;
+      frame = window.requestAnimationFrame(tick);
+    };
+    const syncPlayback = () => {
+      const shouldPlay = !reducedMotion.matches && distance > 0 && visible
+        && !hovered && !focused && !paused && !touching && !resumeTimer;
+      if (shouldPlay && !frame) frame = window.requestAnimationFrame(tick);
+      if (!shouldPlay && frame) {
+        window.cancelAnimationFrame(frame);
+        frame = 0;
+        lastTime = undefined;
+      }
+    };
+    const measure = () => {
+      // The first copy starts one full set and its closing gap past the original.
+      distance = copies.length ? copies[0].getBoundingClientRect().left - cards[0].getBoundingClientRect().left : 0;
+      syncPlayback();
+    };
+    const syncPreference = () => {
+      if (reducedMotion.matches) {
+        copies.forEach(copy => copy.remove());
+        copies = [];
+        track.classList.remove('is-ticking');
+      } else if (!copies.length) {
+        copies = cards.map(card => {
+          const copy = card.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.inert = true;
+          return copy;
+        });
+        track.append(...copies);
+        track.classList.add('is-ticking');
+      }
+      toggle.hidden = !copies.length;
+      measure();
+    };
+    const setPaused = (value) => {
+      if (reducedMotion.matches || paused === value) return;
+      paused = value;
+      toggle.textContent = paused ? 'Resume stories' : 'Pause stories';
+      syncPlayback();
+    };
+    const waitForScroll = () => {
+      if (reducedMotion.matches) return;
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(() => {
+        resumeTimer = 0;
+        syncPlayback();
+      }, 300);
+      syncPlayback();
+    };
+    const endTouch = (event) => {
+      if (event.targetTouches.length) return;
+      touching = false;
+      waitForScroll();
+    };
+    toggle.addEventListener('click', () => setPaused(!paused));
+    track.addEventListener('focus', () => { focused = track.matches(':focus-visible'); syncPlayback(); });
+    track.addEventListener('blur', () => { focused = false; syncPlayback(); });
+    track.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'touch' || !hoverPointer.matches) return;
+      hovered = true;
+      syncPlayback();
+    });
+    track.addEventListener('pointerleave', (event) => {
+      if (event.pointerType === 'touch') return;
+      hovered = false;
+      syncPlayback();
+    });
+    track.addEventListener('touchstart', () => {
+      touching = true;
+      syncPlayback();
+    }, { passive: true });
+    track.addEventListener('touchend', endTouch, { passive: true });
+    track.addEventListener('touchcancel', endTouch, { passive: true });
+    track.addEventListener('scroll', () => {
+      // A swipe can keep moving after the user's finger leaves the screen.
+      if (resumeTimer) waitForScroll();
+    }, { passive: true });
+    track.addEventListener('wheel', (event) => {
+      if (event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) waitForScroll();
+    }, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new window.IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        syncPlayback();
+      }).observe(track);
+    }
+    if ('ResizeObserver' in window) new window.ResizeObserver(measure).observe(track);
+    else window.addEventListener('resize', measure);
+    reducedMotion.addEventListener?.('change', syncPreference);
+    syncPreference();
   });
 
   // In-page navigation closes the existing desktop menu as well as the mobile drawer.

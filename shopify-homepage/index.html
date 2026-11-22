@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=homepage-mobile-20261122">
-  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=homepage-mobile-20261122">
+  <link rel="stylesheet" href="assets/css/styles.css?v=storefront-mobile-20261122">
+  <link rel="stylesheet" href="assets/css/homepage-layout.css?v=storefront-mobile-20261122">
   <noscript><style>
     /* The FAQ panel is collapsed by script; keep open answers readable without it. */
     .hk-faq details[open] .hk-faq__panel { height: auto; }
@@ -816,12 +816,13 @@
     </section>
 
     <!-- hk:testimonials:start -->
-    <section class="hk-section hk-community" id="community" aria-labelledby="community-title" data-hk-rail>
+    <section class="hk-section hk-community" id="community" aria-labelledby="community-title" data-hk-rail data-hk-quote-ticker>
       <div class="hk-wrap hk-community__content">
         <div class="hk-section__intro hk-community__intro hk-reveal">
           <h2 class="hk-display hk-display--lg" id="community-title">Stories worth sharing.</h2>
           <p class="hk-lead">Parents tell us bedtime got softer, car rides got calmer, and culture finally felt close enough to hold.</p>
         </div>
+        <button class="hk-btn hk-btn--secondary hk-quotes__toggle" type="button" aria-controls="community-quotes" data-hk-quote-toggle hidden>Pause stories</button>
         <div class="hk-quotes hk-reveal" id="community-quotes" data-hk-rail-track tabindex="0" role="region" aria-label="Stories worth sharing">
           <div class="hk-quote-slot">
             <article class="hk-quote">
@@ -838,7 +839,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--lavender">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -853,7 +854,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--mango">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -868,7 +869,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--husk">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -883,7 +884,7 @@
               </blockquote>
             </article>
           </div>
-          <div class="hk-quote-slot">
+          <div class="hk-quote-slot hk-quote-slot--sky">
             <article class="hk-quote">
               <blockquote class="hk-quote__body">
                 <div class="hk-quote__header" aria-hidden="true">
@@ -1169,7 +1170,7 @@
   </script>
   <script src="assets/js/inline-preview.js" defer></script>
   <script src="assets/js/main.js?v=player-mobile-20261122" defer></script>
-  <script src="assets/js/homepage-layout.js?v=carousel-dots-20261121" defer></script>
+  <script src="assets/js/homepage-layout.js?v=quote-ticker-resume-20261122" defer></script>
   <script type="module">
     if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
       import('./.tmp/agentation.js').catch((error) => console.warn('Agentation preview unavailable', error));
