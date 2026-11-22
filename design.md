@@ -311,7 +311,8 @@ What this means in practice:
 - **A list of short facts goes two to a row.** The specifications grid uses
   two columns on phones, with each icon above its label.
 
-The testimonials run as one continuous ticker on both pages. The ticker yields
+The testimonials run as one continuous ticker at 900px and below on every page. Wider screens keep the
+staggered static layout from before the ticker (user direction, November 22, 2026). The ticker yields
 to touch and resumes automatically once the gesture and any scrolling end. The
 keyboard pause control appears on focus. Reduced motion uses the same row with
 manual scrolling. The Player testimonial intro uses 14px text.
@@ -517,6 +518,32 @@ On phones, the button follows the cards and pager in each section.
 The Player FAQ uses the
 homepage list and the same centered title. It has no card. The Player footer uses the homepage
 wave, signup, and links.
+
+### Koel product page — November 22, 2026
+
+The user asked for one shared Koel page, not a page per Koel. It follows the section order of the
+[Yoto card page](https://us.yotoplay.com/products/bluey-the-beach-and-other-stories-na). It is built
+from the Player page components. `koel/index.html?koel=<handle>` renders any Koel
+from the catalogue embedded in the page. In Shopify, the product template fills this role.
+`assets/js/koel-page.js` fills the slots before the shared scripts run. Preview, bag, gallery and rails
+then work unchanged.
+
+Order: gallery and purchase → About this Kahani with the track list → How Koels work → story
+details → Every Koel needs a Kahani Player → testimonials → More Koels → FAQ. The gallery
+shows the Koel disc artwork on the Kesar stage, without the puddle, followed by three
+lifestyle photos. The purchase column has a collection chip, the price, four highlights,
+Preview and a primary Add to bag, and the line “Koels play on the Kahani Player, sold separately”.
+How Koels work uses the Sky band from What’s included. The story details use the Kesar band from
+the specifications. The Player card uses the feature card. More Koels uses the Player Koel rail.
+It leads with the same collection and leaves out the current Koel. Each card links to its own page.
+
+Prices are the homepage placeholders. The descriptions are draft copy.
+
+Same day, from review: story details are hidden for now. The Player feature card is Mango.
+The track card shows sample tracks and a running time. They are flagged
+`trackStatus: "placeholder"` and must be replaced before launch. Under the purchase buttons, a
+horizontal Sky “Needed to play” card shows the Player cut-out, the $129/$150 price and a
+Shop the Player link. It replaces the one-line note.
 
 ### Homepage structure — November 17, 2026
 

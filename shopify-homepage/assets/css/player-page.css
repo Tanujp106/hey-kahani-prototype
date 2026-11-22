@@ -163,7 +163,8 @@
 .hk-pdp-feature p { margin: 16px 0 22px; }
 .hk-pdp-feature .hk-btn { min-width: 0; }
 
-#included.hk-pdp-included-band {
+#included.hk-pdp-included-band,
+#how-koels-work.hk-pdp-included-band {
   --hk-included-wave: clamp(28px, 4vw, 56px);
   position: relative;
   padding-top: calc(var(--hk-included-wave) + var(--hk-space-lg));

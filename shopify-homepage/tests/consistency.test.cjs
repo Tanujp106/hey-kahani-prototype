@@ -13,8 +13,8 @@ const { execFileSync } = require('node:child_process');
 const { join } = require('node:path');
 
 const ROOT = join(__dirname, '..');
-const CSS = ['assets/css/styles.css', 'assets/css/homepage-layout.css', 'assets/css/player-page.css', 'assets/css/benefit-frame-masks.css'];
-const PAGES = ['index.html', 'kahani-player/index.html'];
+const CSS = ['assets/css/styles.css', 'assets/css/homepage-layout.css', 'assets/css/player-page.css', 'assets/css/benefit-frame-masks.css', 'assets/css/koel-page.css'];
+const PAGES = ['index.html', 'kahani-player/index.html', 'koel/index.html'];
 
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const tokens = read('assets/css/tokens.css');
@@ -142,7 +142,7 @@ test('surfaces and on-dark text come from tokens', () => {
 test('every global token a stylesheet references is defined', () => {
   const defined = new Set([...tokens.matchAll(/(--hk-[a-z0-9-]+)\s*:/g)].map((m) => m[1]));
   // Some tokens are measured and set on the document by the page scripts.
-  for (const script of ['assets/js/main.js', 'assets/js/homepage-layout.js', 'assets/js/player-page.js']) {
+  for (const script of ['assets/js/main.js', 'assets/js/homepage-layout.js', 'assets/js/player-page.js', 'assets/js/koel-page.js']) {
     for (const [, name] of read(script).matchAll(/setProperty\(\s*['"`](--hk-[a-z0-9-]+)/g)) defined.add(name);
   }
   // Component-scoped custom properties are declared in the component itself.

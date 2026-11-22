@@ -474,6 +474,11 @@ const subscribeButton = probe('.hk-btn', '.hk-footer .hk-newsletter .hk-btn--pri
 test('testimonials and the footer signup retain space for their content', () => {
   forEachWidth((viewport, content) => {
     const grid = quoteGrid(viewport);
+    // Above 900px the quotes keep their staggered static layout; the ticker is phones and tablets only.
+    if (viewport.width > 900) {
+      if (!/repeat\(6,/.test(grid['grid-template-columns'] || '')) return 'wide screens lost the staggered testimonial layout';
+      return;
+    }
     if (grid['grid-auto-flow'] !== 'column') return 'the testimonial cards do not form a single row';
     const fullBleed = grid['max-width'] === 'none';
     const quoteWidth = fullBleed ? viewport.pageWidth : Math.min(content, length(grid['max-width'], viewport, content));

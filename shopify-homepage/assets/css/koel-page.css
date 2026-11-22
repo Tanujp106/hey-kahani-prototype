@@ -1,0 +1,103 @@
+/* Koel product page. Built from the Player page components in player-page.css;
+   only what is specific to a Koel lives here. */
+
+/* Gallery: the Koel artwork is a disc on a Kesar square, so it sits straight on the Kesar stage. */
+.hk-kpdp .hk-pdp-gallery__stage::before { display: none; }
+.hk-kpdp .hk-pdp-gallery__image[data-kind='product'] { inset: 6%; width: 88%; height: 88%; object-fit: contain; }
+
+/* Collection chip (design.md: pill radius, 8px 16px). */
+.hk-kpdp-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 6px;
+  margin: 0 0 var(--hk-space-xs);
+  padding: var(--hk-space-xs) var(--hk-space-md);
+  border-radius: var(--hk-pill);
+  background: var(--hk-kesar);
+  font-size: var(--hk-text-fine);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+.hk-kpdp-chip svg { width: 14px; height: 14px; flex: none; color: var(--hk-gulab); }
+
+/* Purchase: the Koel card's Preview pill and a primary Add to bag, at button size. */
+.hk-kpdp .hk-pdp-purchase__action .hk-kpdp-preview { flex: 1 0 8rem; min-height: 52px; padding-inline: var(--hk-space-lg); }
+.hk-kpdp-add.is-added,
+.hk-kpdp-add.is-added:hover { background: var(--hk-ink); box-shadow: none; transform: none; }
+
+/* Needed to play: a horizontal Player card under the purchase buttons. */
+.hk-kpdp-needs {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--hk-space-md);
+  margin-top: var(--hk-space-lg);
+  padding: var(--hk-space-md);
+  border-radius: var(--hk-radius-card);
+}
+.hk-kpdp-needs__media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  padding: var(--hk-space-xs);
+  border-radius: var(--hk-radius-md);
+  background: var(--hk-canvas);
+}
+.hk-kpdp-needs__media img { width: 100%; height: 100%; object-fit: contain; }
+.hk-kpdp-needs__copy { display: grid; justify-items: start; gap: var(--hk-space-2xs); min-width: 0; }
+.hk-kpdp-needs__eyebrow { margin: 0; color: var(--hk-sindoor); font-size: var(--hk-text-eyebrow); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.hk-kpdp-needs__heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--hk-space-2xs) var(--hk-space-sm); }
+.hk-kpdp-needs__title { margin: 0; font-family: var(--hk-font-display); font-size: var(--hk-text-subhead); font-weight: 700; line-height: 1.2; }
+.hk-kpdp-needs .hk-pdp-price__current { font-size: var(--hk-text-subhead); }
+.hk-kpdp-needs__text { margin: 0; font-size: var(--hk-text-body-sm); }
+.hk-kpdp-needs__cta { min-height: 44px; margin-top: var(--hk-space-xs); padding: var(--hk-space-xs) var(--hk-space-lg); background: var(--hk-canvas); }
+.hk-kpdp-needs__cta:hover { background: var(--hk-canvas); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hk-kpdp-needs__cta svg { transition: transform var(--hk-duration) var(--hk-ease); }
+  .hk-kpdp-needs__cta:hover svg { transform: translateX(3px); }
+}
+
+/* About this Kahani: description beside the track list card. */
+.hk-kpdp-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 72px);
+  align-items: start;
+  padding-top: 80px;
+}
+.hk-kpdp-about__text { display: grid; gap: var(--hk-space-sm); max-width: 62ch; }
+.hk-kpdp-about__text p { margin: 0; }
+.hk-kpdp-tracks { padding: clamp(20px, 3vw, 32px); border-radius: var(--hk-radius-card); }
+.hk-kpdp-tracks h3 { margin: 0; font-size: var(--hk-text-subhead); }
+.hk-kpdp-tracks__meta { margin: var(--hk-space-2xs) 0 0; color: var(--hk-muted); font-size: var(--hk-text-body-sm); }
+.hk-kpdp-tracks__list { display: grid; margin: var(--hk-space-md) 0 0; padding: 0; list-style: none; counter-reset: hk-track; }
+.hk-kpdp-tracks__list li {
+  display: grid;
+  grid-template-columns: 2ch minmax(0, 1fr) auto;
+  gap: var(--hk-space-sm);
+  padding-block: var(--hk-space-sm);
+  border-top: 1px solid var(--hk-hairline);
+  counter-increment: hk-track;
+}
+.hk-kpdp-tracks__list li::before { content: counter(hk-track); color: var(--hk-muted); font-variant-numeric: tabular-nums; }
+.hk-kpdp-tracks__time { color: var(--hk-muted); font-size: var(--hk-text-body-sm); font-variant-numeric: tabular-nums; }
+.hk-kpdp-tracks__empty { margin: var(--hk-space-sm) 0 0; color: var(--hk-muted); font-size: var(--hk-text-body-sm); }
+
+/* Every Koel needs a Player: one Player feature card, product cut-out on the card tone. */
+.hk-kpdp-player .hk-pdp-feature { max-width: 1040px; }
+.hk-kpdp-player .hk-pdp-feature > img {
+  max-block-size: 380px;
+  border-radius: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 28px rgba(5, 51, 74, 0.14));
+}
+.hk-kpdp-player .hk-pdp-feature .hk-pdp-price { margin: var(--hk-space-xs) 0 0; }
+
+@media (max-width: 699px) {
+  .hk-kpdp .hk-pdp-purchase__action .hk-kpdp-preview { min-height: 44px; }
+  .hk-kpdp-about { grid-template-columns: minmax(0, 1fr); gap: var(--hk-space-lg); padding-top: var(--hk-space-xl); }
+  .hk-kpdp-player .hk-pdp-feature > img { max-block-size: 260px; }
+  .hk-kpdp-needs { grid-template-columns: 80px minmax(0, 1fr); gap: var(--hk-space-sm); padding: var(--hk-space-sm); }
+}

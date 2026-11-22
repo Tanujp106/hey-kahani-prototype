@@ -189,7 +189,8 @@ test('the shared quote ticker wraps one full set and supports pausing and reduce
   vm.runInNewContext(source, {
     document: { querySelectorAll: selector => selector === '[data-hk-quote-ticker]' ? [section] : [] },
     window: {
-      matchMedia: query => query.includes('reduced-motion') ? reduced : { matches: false },
+      // The ticker runs at 900px and below; this fixture is a phone.
+      matchMedia: query => query.includes('reduced-motion') ? reduced : { matches: query.includes('max-width: 900px'), addEventListener() {} },
       addEventListener() {},
       requestAnimationFrame(callback) { frames.set(++nextFrame, callback); return nextFrame; },
       cancelAnimationFrame(id) { frames.delete(id); },

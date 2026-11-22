@@ -1,4 +1,4 @@
-/* Player gallery and purchase controls. Product identity and price stay in the shared markup. */
+/* Product gallery and purchase controls for the Player and Koel pages. Product identity and price stay in the shared markup. */
 (() => {
   const addPlayer = document.querySelector('[data-hk-player-add]');
   document.querySelectorAll('[data-hk-player-add-sticky]').forEach((button) => {
@@ -127,7 +127,7 @@
   gallery.querySelectorAll('[data-hk-gallery-step]').forEach((button) => {
     button.addEventListener('click', () => selectImage(requested + Number(button.dataset.hkGalleryStep)));
   });
-  const stage = gallery.querySelector('#player-gallery-stage');
+  const stage = gallery.querySelector('.hk-pdp-gallery__stage');
   let touchStart;
   stage?.addEventListener('pointerdown', (event) => {
     if (event.pointerType !== 'touch') return;
@@ -146,7 +146,7 @@
   }, { passive: true });
   gallery.querySelectorAll('[data-hk-gallery-controls]').forEach((controls) => { controls.hidden = false; });
 
-  const zoom = document.querySelector('#player-zoom');
+  const zoom = document.querySelector('dialog.hk-pdp-zoom');
   const zoomButton = document.querySelector('[data-hk-gallery-zoom]');
   const zoomImage = zoom?.querySelector('img');
   if (zoomImage && zoomButton) {

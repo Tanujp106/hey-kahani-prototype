@@ -3313,6 +3313,32 @@ input {
   --hk-quote-accent: var(--hk-story-ink);
 }
 
+/* Wider screens: the staggered quote layout from before the ticker.
+   The ticker runs at 900px and below only (user direction, November 22, 2026). */
+@media (width > 900px) {
+  .hk-quotes {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-columns: auto;
+    align-items: start;
+    gap: clamp(18px, 2.5vw, 32px);
+    row-gap: var(--hk-space-lg);
+    margin: 104px auto 0;
+    padding: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .hk-quotes:focus-visible { outline-offset: 5px; }
+  .hk-quote-slot { grid-column: span 2; scroll-snap-align: none; }
+  .hk-quote-slot:nth-child(2) { margin-top: -44px; }
+  .hk-quote-slot:nth-child(3),
+  .hk-quote-slot:nth-child(5) { margin-top: 18px; }
+  .hk-quote-slot:nth-child(4) { grid-column: 2 / span 2; }
+  .hk-quote-slot:nth-child(5) { grid-column: 4 / span 2; }
+  .hk-quotes .hk-quote { height: auto; }
+  .hk-quotes__toggle { display: none; }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .hk-quote-slot:hover {
     z-index: 2;

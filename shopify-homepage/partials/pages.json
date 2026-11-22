@@ -83,6 +83,41 @@
           "answer": "The physical controls, carry handle and Player appearance are shown above. Battery, charging, connectivity, dimensions and weight details are still to be confirmed."
         }
       ]
+    },
+    {
+      "file": "koel/index.html",
+      "base": "/",
+      "asset": "../assets/",
+      "slots": {
+        "nav-start-href": "/#shop",
+        "nav-koels-href": "/#koels",
+        "nav-how-hidden": " hidden",
+        "testimonials-id": "family-stories",
+        "testimonials-prefix": "family",
+        "testimonials-reveal": ""
+      },
+      "faqs": [
+        {
+          "question": "Do Koels need a Kahani Player?",
+          "answer": "Yes. Koels are physical story discs for the Kahani Player. If you’re new to Hey Kahani, start with the Player; if you already have one, you can add more Koels to your collection."
+        },
+        {
+          "question": "How do Koels work?",
+          "answer": "Each Koel is a round story disc. Kids spot the artwork, place it on the Player, and the story begins. No menus. No fuss."
+        },
+        {
+          "question": "What age is Hey Kahani for?",
+          "answer": "Hey Kahani is made for kids around ages 3 to 6. Younger children can listen with a grown-up nearby."
+        },
+        {
+          "question": "What languages do you support?",
+          "answer": "Every Kahani launches in English first. More stories will come in Hindi, Gujarati, Tamil, Telugu, Punjabi, Urdu, and Bengali, so the words and names feel familiar."
+        },
+        {
+          "question": "Do kids need a phone or tablet to listen?",
+          "answer": "No. Kids listen on the Player. Grown-ups use the companion app for setup and guidance. For them, the story stays screen free."
+        }
+      ]
     }
   ]
 }

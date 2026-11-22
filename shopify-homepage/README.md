@@ -28,6 +28,13 @@ scroll-rail controls and collection filtering; there is no autoplay or new depen
 Search, checkout and demo audio keep their documented prototype boundaries.
 Browser visual verification has not been performed for this layout pass.
 
+## Koel product page — November 22, 2026
+
+One template, `koel/index.html`, serves every Koel: `/koel/?koel=night-train`. Records live in the
+`#hk-koel-catalog` JSON in that page. `assets/js/koel-page.js` fills the slots, and the page reuses
+the Player page CSS, with `assets/css/koel-page.css` for the Koel-only parts. Shared chrome comes from
+`partials/` through `node scripts/sync-chrome.cjs`. Tests: `tests/koel-page.test.cjs`.
+
 ## Open locally
 
 ### Hero responsiveness — November 21, 2026

@@ -48,7 +48,7 @@ function fixture({ reduced = false, decode = () => Promise.resolve() } = {}) {
   gallery.querySelector = selector => ({
     '[data-hk-gallery-image]': image, '[data-hk-gallery-caption]': caption,
     '[data-hk-gallery-status]': status,
-    '#player-gallery-stage': stage,
+    '.hk-pdp-gallery__stage': stage,
   }[selector] || null);
   gallery.querySelectorAll = selector => ({
     '[data-hk-gallery-dot]': dots, '[data-hk-gallery-step]': [previous, next],
@@ -64,7 +64,7 @@ function fixture({ reduced = false, decode = () => Promise.resolve() } = {}) {
   const document = {
     querySelector(selector) { return {
       '[data-hk-gallery]': gallery, '[data-hk-player-add]': primary,
-      '#player-zoom': zoom, '[data-hk-gallery-zoom]': zoomButton,
+      'dialog.hk-pdp-zoom': zoom, '[data-hk-gallery-zoom]': zoomButton,
     }[selector] || null; },
     querySelectorAll(selector) { return selector === '[data-hk-player-add-sticky]' ? [sticky] : []; },
   };

@@ -160,6 +160,8 @@
     if (cards.length < 2) return;
 
     const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    // The ticker is a phone and tablet treatment. Wider screens keep the static staggered quotes.
+    const tickerWidth = window.matchMedia('(max-width: 900px)');
     const speed = 42; // Pixels per second at every card width.
     let copies = [];
     let distance = 0;
@@ -196,7 +198,7 @@
       syncPlayback();
     };
     const syncPreference = () => {
-      if (reducedMotion.matches) {
+      if (reducedMotion.matches || !tickerWidth.matches) {
         copies.forEach(copy => copy.remove());
         copies = [];
         track.classList.remove('is-ticking');
@@ -268,6 +270,10 @@
     if ('ResizeObserver' in window) new window.ResizeObserver(measure).observe(track);
     else window.addEventListener('resize', measure);
     reducedMotion.addEventListener?.('change', syncPreference);
+    tickerWidth.addEventListener?.('change', () => {
+      if (!tickerWidth.matches) track.scrollLeft = 0;
+      syncPreference();
+    });
     syncPreference();
   });
 
