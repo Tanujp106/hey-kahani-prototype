@@ -562,9 +562,13 @@ for the full Shop section to target roughly 500–700px on desktop: compact
 180px image areas, shorter copy, tighter padding and no repeated benefit pills.
 Koel discovery now follows Shop directly, ahead of the introductory strip and
 feature stories. Narrow screens remain content-sized rather than height-clipped.
-November 21, 2026: both Shop cards have an “Explore now” CTA and their titles
-have no trailing period. The featured rail scrolls horizontally on wider
-screens and uses the shared bottom-right arrows.
+November 23, 2026: both Shop cards use a “Shop now” CTA, and their titles
+have no trailing period. The Koel card shows six existing artworks in a flat
+two-by-three grid, with no tilt, overlap, or 3D transform. The Player card
+keeps the product cut-out. The mango speaker-ripple graphic on that card is
+replaced by a Lavender tea blob in the Sky puddle silhouette, sitting behind
+the product. The featured rail scrolls horizontally on wider screens and uses
+the shared bottom-right arrows.
 
 The user explicitly requested a homepage rebuild around Yoto's current section
 roles and navigation, while preserving the Hey Kahani visual style already
